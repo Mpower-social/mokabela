@@ -23,6 +23,7 @@ class _ModulePageState extends State<ModulePage> {
   @override
   void initState() {
     _moduleBloc = ModuleBloc();
+    _moduleBloc.getFormConfigAndGenerateTables();
     super.initState();
   }
 
@@ -91,7 +92,10 @@ class _ModulePageState extends State<ModulePage> {
               Icons.next_plan,
               color: Colors.red,
             )
-          : Container(width: 1,height: 1,),
+          : Container(
+              width: 1,
+              height: 1,
+            ),
     );
   }
 }
