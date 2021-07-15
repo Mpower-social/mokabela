@@ -6,39 +6,37 @@
 /// id : 32
 
 class CatchmentArea {
-  String? name;
-  int? parent;
-  int? value;
-  String? locName;
-  int? locType;
-  int? id;
-
   CatchmentArea({
-      this.name, 
-      this.parent, 
-      this.value, 
-      this.locName, 
-      this.locType, 
-      this.id});
+    required this.name,
+    required this.parent,
+    required this.value,
+    required this.locName,
+    required this.locType,
+    required this.id,
+  });
 
-  CatchmentArea.fromJson(dynamic json) {
-    name = json["name"];
-    parent = json["parent"];
-    value = json["value"];
-    locName = json["loc_name"];
-    locType = json["loc_type"];
-    id = json["id"];
-  }
+  String name;
+  int parent;
+  int value;
+  String locName;
+  int locType;
+  int id;
 
-  Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    map["name"] = name;
-    map["parent"] = parent;
-    map["value"] = value;
-    map["loc_name"] = locName;
-    map["loc_type"] = locType;
-    map["id"] = id;
-    return map;
-  }
+  factory CatchmentArea.fromJson(Map<String, dynamic> json) => CatchmentArea(
+        name: json["name"],
+        parent: json["parent"],
+        value: json["value"],
+        locName: json["loc_name"],
+        locType: json["loc_type"],
+        id: json["id"],
+      );
 
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "parent": parent,
+        "value": value,
+        "loc_name": locName,
+        "loc_type": locType,
+        "id": id,
+      };
 }

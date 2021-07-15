@@ -2,23 +2,21 @@
 /// English : "Main Project"
 
 class Label {
+  Label({
+    this.bangla,
+    this.english,
+  });
+
   String? bangla;
   String? english;
 
-  Label({
-      this.bangla, 
-      this.english});
+  factory Label.fromJson(Map<String, dynamic> json) => Label(
+        bangla: json["Bangla"],
+        english: json["English"],
+      );
 
-  Label.fromJson(dynamic json) {
-    bangla = json["Bangla"];
-    english = json["English"];
-  }
-
-  Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    map["Bangla"] = bangla;
-    map["English"] = english;
-    return map;
-  }
-
+  Map<String, dynamic> toJson() => {
+        "Bangla": bangla,
+        "English": english,
+      };
 }

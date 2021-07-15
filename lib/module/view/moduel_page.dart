@@ -1,11 +1,11 @@
 import 'package:app_builder/module/bloc/module_bloc.dart';
-import 'package:app_builder/module/model/dto/module.dart';
+import 'package:app_builder/module/model/dto/module_item.dart';
 import 'package:app_builder/utils/navigator_utils.dart';
 import 'package:app_builder/utils/page_utils.dart';
 import 'package:flutter/material.dart';
 
 class ModulePage extends StatefulWidget {
-  final List<Module>? modules;
+  final List<ModuleItem>? modules;
 
   ModulePage({
     this.modules,
@@ -64,7 +64,7 @@ class _ModulePageState extends State<ModulePage> {
         stream: _moduleBloc.modulesStreamController.streamListener,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            var module = snapshot.data as Module;
+            var module = snapshot.data as ModuleItem;
             return _moduleItemWidget(module);
           } else {
             return Center(child: Text('No date found'));
@@ -72,7 +72,7 @@ class _ModulePageState extends State<ModulePage> {
         });
   }
 
-  Widget _moduleItemWidget(Module module) {
+  Widget _moduleItemWidget(ModuleItem module) {
     return ListTile(
       onTap: () {
         if (module.children != null && module.children!.length > 0) {

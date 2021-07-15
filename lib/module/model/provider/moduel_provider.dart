@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:app_builder/module/model/dto/module.dart';
+import 'package:app_builder/module/model/dto/module_item.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class ModuleProvider {
@@ -8,9 +8,9 @@ class ModuleProvider {
     return await rootBundle.loadString('assets/json/module_list_json.json');
   }
 
-  Future<Module> getModules() async {
+  Future<ModuleItem> getModules() async {
     String jsonString = await _loadModulesAsset();
     final jsonResponse = json.decode(jsonString);
-    return Module.fromJson(jsonResponse);
+    return ModuleItem.fromJson(jsonResponse);
   }
 }
