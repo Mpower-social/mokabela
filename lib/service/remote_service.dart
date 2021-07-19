@@ -1,15 +1,41 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:app_builder/form_config/model/dto/form_config.dart';
 import 'package:app_builder/form_definition/model/dto/form_item.dart';
 import 'package:app_builder/list_definition/model/dto/list_definition.dart';
 import 'package:app_builder/module/model/dto/module_item.dart';
 import 'package:app_builder/sync_data/model/data_item.dart';
+import 'package:app_builder/user/model/user.dart';
+import 'package:archive/archive.dart';
 import 'package:http/http.dart' as http;
 
 class RemoteService {
   final String baseUrl = 'http://dyn-bahis-dev.mpower-social.com:8043';
   var client = http.Client();
+
+  Future<User?> handleLogin(
+      String username, String password, String upazila) async {
+    try {
+      var url = Uri.parse('$baseUrl/bhmodule/app-user-verify/');
+      final response = await client.post(
+        url,
+        body: jsonEncode({
+          'username': '$username',
+          'password': '$password',
+          'upazila': '$upazila'
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        return userFromJson(utf8.decode(response.bodyBytes));
+      }
+
+      return null;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 
   Future<List<FormConfig>> fetchFormConfigs(int lastSyncTime) async {
     try {
@@ -86,5 +112,39 @@ class RemoteService {
     } catch (e) {
       throw Exception(e.toString());
     }
+  }
+
+  Future<File?> downloadCatchmentFile(Directory directory) async {
+    var catchmentFile;
+
+    try {
+      var url = Uri.parse('$baseUrl/bhmodule/catchment-data-sync/');
+      final response = await client.get(
+        url,
+      );
+
+      if (response.statusCode == 200) {
+        var archive = ZipDecoder().decodeBytes(response.bodyBytes);
+
+        for (ArchiveFile file in archive) {
+          var filename = file.name;
+          if (file.isFile) {
+            var data = file.content;
+            catchmentFile = File(directory.path + "/packages/" + filename);
+            if (catchmentFile.existsSync()) catchmentFile.deleteSync();
+
+            catchmentFile.createSync(recursive: true);
+            catchmentFile.writeAsBytesSync(data);
+          } else {
+            Directory(directory.path + "/packages/" + filename)
+              ..create(recursive: true);
+          }
+        }
+      }
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+
+    return catchmentFile;
   }
 }

@@ -14,12 +14,10 @@ class DashboardPage extends StatelessWidget {
       body: GetX<DashboardController>(
         init: dashboardController,
         builder: (controller) {
-          return controller.moduleItems.isNotEmpty
-              ? ModulePage(
-                  title: "Modules",
-                  moduleItems: controller.moduleItems,
-                )
-              : Container();
+          return ModulePage(
+            title: "Modules",
+            moduleItems: controller.moduleItems,
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(

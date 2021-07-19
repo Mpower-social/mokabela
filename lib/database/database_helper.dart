@@ -10,6 +10,7 @@ const String TABLE_NAME_APP_LOG = "AppLog";
 const String TABLE_NAME_FORM_ITEM = "FormItem";
 const String TABLE_NAME_LIST_ITEM = "ListItem";
 const String TABLE_NAME_DATA_ITEM = "DataItem";
+const String TABLE_NAME_CATCHMENT = "catchment";
 const String TABLE_NAME_MODULE_ITEM = "ModuleItem";
 
 class DatabaseHelper {
@@ -62,6 +63,10 @@ class DatabaseHelper {
 
     await db.execute(
       'CREATE TABLE $TABLE_NAME_LIST_ITEM( id INTEGER PRIMARY KEY, list_name TEXT NOT NULL, list_header TEXT, datasource TEXT, filter_definition TEXT, column_definition TEXT)',
+    );
+
+    await db.execute(
+      'CREATE TABLE $TABLE_NAME_CATCHMENT( id INTEGER PRIMARY KEY, division TEXT, division_label TEXT, district TEXT, dist_label TEXT, upazila TEXT, upazila_label TEXT)',
     );
 
     await db.execute(
