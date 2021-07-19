@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:app_builder/module/view/moduel_page.dart';
 import 'package:app_builder/views/dashboard_page.dart';
+import 'package:app_builder/views/side_bar_layout.dart';
 import 'package:app_builder/views/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

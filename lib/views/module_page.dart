@@ -9,17 +9,51 @@ import 'package:google_fonts/google_fonts.dart';
 class ModulePage extends StatelessWidget {
   final List<ModuleItem> moduleItems;
   final String title;
+  final bool showAppBar;
 
-  ModulePage({required this.title, this.moduleItems = const []});
+  ModulePage(
+      {required this.title,
+      this.showAppBar = true,
+      this.moduleItems = const []});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
+      appBar: showAppBar
+          ? AppBar(
+              backgroundColor: Colors.transparent,
+              iconTheme: IconThemeData(
+                color: Colors.black,
+              ),
+              toolbarHeight: 90,
+              elevation: 0,
+              centerTitle: true,
+              title: Text(
+                title,
+                style: GoogleFonts.roboto(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+            )
+          : PreferredSize(
+              preferredSize: Size(MediaQuery.of(context).size.width, 400),
+              child: Container(
+                height: 90,
+                child: Center(
+                  child: Text(
+                    title,
+                    style: GoogleFonts.roboto(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
       body: GridView.builder(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(20),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 1.2,
@@ -65,7 +99,7 @@ class ModulePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             CircleAvatar(
-                              radius: 30,
+                              radius: 25,
                               child: moduleItems[index].imgId != null &&
                                       moduleItems[index].imgId!.isNotEmpty
                                   ? CachedNetworkImage(

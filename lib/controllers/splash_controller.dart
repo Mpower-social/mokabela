@@ -5,6 +5,7 @@ import 'package:app_builder/user/model/user.dart';
 import 'package:app_builder/utils/preference_util.dart';
 import 'package:app_builder/views/dashboard_page.dart';
 import 'package:app_builder/views/login_page.dart';
+import 'package:app_builder/views/side_bar_layout.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -27,7 +28,9 @@ class SplashController extends GetxController {
     if (isLoggedIn != null && isLoggedIn) {
       var userResponse = await PreferenceUtil.getValue(PreferenceUtil.KEY_USER);
       var user = User.fromJson(json.decode(userResponse));
-      Get.offAll(() => DashboardPage());
+      Get.offAll(() => SideBarLayout(
+            user: user,
+          ));
     } else {
       Get.offAll(() => LoginPage());
     }

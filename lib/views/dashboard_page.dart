@@ -10,22 +10,41 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GetX<DashboardController>(
-        init: dashboardController,
-        builder: (controller) {
-          return ModulePage(
-            title: "Modules",
-            moduleItems: controller.moduleItems,
-          );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.sync),
-          onPressed: () async {
+    return SafeArea(
+      child: Scaffold(
+        body: GetX<DashboardController>(
+          init: dashboardController,
+          builder: (controller) {
+            var isEmpty = controller.moduleItems.isEmpty;
+
+            return ModulePage(
+              title: "Modules",
+              showAppBar: false,
+              moduleItems: isEmpty ? [] : controller.moduleItems,
+            );
+          },
+        ),
+        floatingActionButton: FloatingActionButton(child: Obx(() {
+          return syncController.communicationWithServer.value
+              ? SizedBox(
+                  width: 25,
+                  height: 25,
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.white,
+                  ),
+                )
+              : Icon(
+                  Icons.sync,
+                  size: 30,
+                );
+        }), onPressed: () async {
+          if (!syncController.communicationWithServer.value) {
             await syncController.startSync();
-            await dashboardController.fetchModuleConfig();
-          }),
+          }
+
+          await dashboardController.fetchModuleConfig();
+        }),
+      ),
     );
   }
 }

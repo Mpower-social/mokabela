@@ -4,6 +4,7 @@ import 'package:app_builder/service/remote_service.dart';
 import 'package:app_builder/user/model/catchment.dart';
 import 'package:app_builder/utils/preference_util.dart';
 import 'package:app_builder/views/dashboard_page.dart';
+import 'package:app_builder/views/side_bar_layout.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -82,7 +83,9 @@ class LoginController extends GetxController {
         PreferenceUtil.setValue(
             PreferenceUtil.KEY_USER, json.encode(user.toJson()));
 
-        Get.offAll(() => DashboardPage());
+        Get.offAll(() => SideBarLayout(
+              user: user,
+            ));
       } else {
         Get.snackbar(
           'Error',

@@ -7,14 +7,18 @@ import 'package:get/get.dart';
 import 'package:sqflite/sqflite.dart';
 
 class SyncController extends GetxController {
+  var communicationWithServer = false.obs;
+
   @override
   void onInit() async {
     super.onInit();
   }
 
   Future<void> startSync() async {
+    communicationWithServer.value = true;
     await startAppSync();
     await startDataSync();
+    communicationWithServer.value = false;
   }
 
   Future<void> startAppSync() async {
