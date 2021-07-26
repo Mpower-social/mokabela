@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:app_builder/database/database_helper.dart';
 import 'package:app_builder/form_definition/model/dto/form_item.dart';
+import 'package:app_builder/module/model/dto/catchment_area.dart';
 import 'package:app_builder/module/model/dto/module_item.dart';
 import 'package:app_builder/service/remote_service.dart';
 import 'package:get/get.dart';
@@ -82,6 +83,8 @@ class SyncController extends GetxController {
         },
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
+
+      await deleteAndSaveCatchmentArea(db, module.catchmentArea);
     }
   }
 
@@ -251,5 +254,18 @@ class SyncController extends GetxController {
     });
 
     return isObjectFound;
+  }
+
+  deleteAndSaveCatchmentArea(Database db, List<CatchmentArea> catchmentArea) {
+    db.execute('DELETE FROM geo_cluster');
+
+    catchmentArea.forEach((area) {
+      try {
+        db.rawInsert(
+            "INSERT INTO geo_cluster (value, name, loc_type , parent) VALUES ('${area.value}', '${area.name}', '${area.locType}', '${area.parent}')");
+      } catch (e) {
+        print(e);
+      }
+    });
   }
 }
