@@ -41,6 +41,8 @@ class LoginPage extends StatelessWidget {
                                   .requestFocus(new FocusNode()),
                               validator: (value) =>
                                   (value == null) ? "Select division" : null,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               value: controller.selectedDivision,
                               decoration: InputDecoration(
                                 labelText: 'Division*',
@@ -71,6 +73,8 @@ class LoginPage extends StatelessWidget {
                                   .requestFocus(new FocusNode()),
                               validator: (value) =>
                                   (value == null) ? "Select district" : null,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               value: controller.selectedDistrict,
                               decoration: InputDecoration(
                                 labelText: 'District*',
@@ -101,6 +105,8 @@ class LoginPage extends StatelessWidget {
                                   .requestFocus(new FocusNode()),
                               validator: (value) =>
                                   (value == null) ? "Select upazila" : null,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               value: controller.selectedUpazila,
                               decoration: InputDecoration(
                                 labelText: 'Upazila*',

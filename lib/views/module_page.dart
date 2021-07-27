@@ -53,7 +53,7 @@ class ModulePage extends StatelessWidget {
               ),
             ),
       body: GridView.builder(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.symmetric(horizontal: 10),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 1.2,

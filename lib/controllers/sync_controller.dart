@@ -17,8 +17,12 @@ class SyncController extends GetxController {
 
   Future<void> startSync() async {
     communicationWithServer.value = true;
-    await startAppSync();
-    await startDataSync();
+    try {
+      await startAppSync();
+      await startDataSync();
+    } catch (e) {
+      print(e);
+    }
     communicationWithServer.value = false;
   }
 

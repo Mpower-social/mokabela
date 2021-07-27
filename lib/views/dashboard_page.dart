@@ -15,12 +15,16 @@ class DashboardPage extends StatelessWidget {
         body: GetX<DashboardController>(
           init: dashboardController,
           builder: (controller) {
-            var isEmpty = controller.moduleItems.isEmpty;
+            var isEmpty = controller.moduleItem.value == null;
 
-            return ModulePage(
-              title: "Modules",
-              showAppBar: false,
-              moduleItems: isEmpty ? [] : controller.moduleItems,
+            return Padding(
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              child: ModulePage(
+                title: "Modules",
+                showAppBar: false,
+                moduleItems:
+                    isEmpty ? [] : controller.moduleItem.value!.children,
+              ),
             );
           },
         ),

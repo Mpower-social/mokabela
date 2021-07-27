@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     
    <application
-        android:label="app_builder"
+        android:label="App Builder"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/launcher_icon">
         <activity

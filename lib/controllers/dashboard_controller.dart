@@ -3,7 +3,7 @@ import 'package:app_builder/module/model/dto/module_item.dart';
 import 'package:get/get.dart';
 
 class DashboardController extends GetxController {
-  final moduleItems = List<ModuleItem>.empty().obs;
+  final moduleItem = Rx<ModuleItem?>(null);
 
   @override
   void onInit() async {
@@ -18,7 +18,7 @@ class DashboardController extends GetxController {
         'SELECT * FROM $TABLE_NAME_MODULE_ITEM WHERE app_id = 1 LIMIT 1');
     if (dbModules.isNotEmpty && dbModules.first['definition'] != null) {
       var module = moduleItemFromJson(dbModules.first['definition'] as String);
-      moduleItems.assign(module);
+      moduleItem.value = module;
     }
   }
 }
