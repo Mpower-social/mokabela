@@ -1,12 +1,13 @@
 import 'package:app_builder/database/database_helper.dart';
 import 'package:app_builder/list_definition/model/dto/list_definition.dart';
+import 'package:app_builder/list_definition/model/dto/list_item.dart';
+import 'package:app_builder/list_definition/model/dto/list_item_action.dart';
+import 'package:app_builder/list_definition/model/dto/list_item_content.dart';
 import 'package:get/get.dart';
 
 class ListController extends GetxController {
-  var tableContents = List<dynamic>.empty().obs;
-  var tableHeaders = List<dynamic>.empty().obs;
-  var currentSortColumn = 0.obs;
-  var isAscending = true.obs;
+  var expandList = List<RxBool>.empty(growable: true);
+  var listItems = List<ListItem>.empty().obs;
   final int listId;
 
   ListController({required this.listId});
@@ -18,81 +19,64 @@ class ListController extends GetxController {
   }
 
   Future<void> initializeListContent() async {
-    var listContents = [];
-    var listHeaders = [];
-    var listKeys = [];
-
     var db = await DatabaseHelper.instance.database;
     var dbLists = await db.rawQuery(
         'SELECT * FROM $TABLE_NAME_LIST_ITEM WHERE id = $listId LIMIT 1');
 
     if (dbLists.isNotEmpty) {
-      var listItem = ListDefinition.fromLocalJson(dbLists.first);
-      listItem.columnDefinition.forEach((column) {
-        if (column.label != null &&
-            column.label!.english != null &&
-            column.fieldName != null) {
-          listKeys.add(column.fieldName);
-          listHeaders.add(column.label!.english);
+      var listDefinition = ListDefinition.fromLocalJson(dbLists.first);
+      var listItem = ListItem(actions: [], contents: []);
+
+      listDefinition.columnDefinition.forEach((column) {
+        if (column.dataType == "action") {
+          column.actionDefinition.forEach((action) {
+            listItem.actions.add(ListItemAction(
+              formId: action.xformId,
+              formName: action.formTitle,
+              actionType: action.actionType,
+              actionName: action.label?.english ?? "",
+            ));
+          });
+        } else if (column.label != null && column.label!.english != null) {
+          listItem.contents.add(ListItemContent(
+            key: column.fieldName,
+            type: "content",
+            name: column.label!.english,
+            sortable: column.sortable,
+          ));
         }
       });
 
-      var dbListValues = await db.rawQuery(listItem.datasource!.query!);
+      List<ListItem> items = [];
+      var dbListValues = await db.rawQuery(listDefinition.datasource!.query!);
       dbListValues.forEach((listValue) {
-        var listValues = [];
+        var listContents =
+            listItemContentsFromJson(listItemContentToJson(listItem.contents));
 
-        listKeys.forEach((key) {
-          listValues.add(listValue[key]);
+        listContents.forEach((content) {
+          content.value = listValue[content.key];
         });
 
-        listContents.add(listValues);
+        items.add(ListItem(
+          actions: listItem.actions,
+          contents: listContents,
+        ));
       });
-    }
 
-    listContents.sort((contentA, contentB) {
-      var res = contentA[0].length.compareTo(contentB[0].length);
-
-      if (res != 0) {
-        return res;
-      }
-
-      return contentA[0].compareTo(contentB[0]);
-    });
-
-    tableHeaders.assignAll(listHeaders);
-    tableContents.assignAll(listContents);
-  }
-
-  sort(int index) {
-    if (currentSortColumn.value != index) {
-      currentSortColumn.value = index;
-      isAscending.value = false;
-    }
-
-    if (isAscending.value) {
-      isAscending.value = false;
-      tableContents.sort((contentA, contentB) {
+      items.sort((itemA, itemB) {
         try {
-          return int.parse(contentB[index])
-              .compareTo(int.parse(contentA[index]));
+          return int.parse(itemA.contents[0].value)
+              .compareTo(int.parse(itemB.contents[0].value));
         } catch (e) {
-          return contentB[index]
-              .toLowerCase()
-              .compareTo(contentA[index].toLowerCase());
+          return itemA.contents[0].value.compareTo(itemB.contents[0].value);
         }
       });
-    } else {
-      isAscending.value = true;
-      tableContents.sort((contentA, contentB) {
-        try {
-          return int.parse(contentA[index])
-              .compareTo(int.parse(contentB[index]));
-        } catch (e) {
-          return contentA[index]
-              .toLowerCase()
-              .compareTo(contentB[index].toLowerCase());
-        }
+
+      items.forEach((_) {
+        expandList.add(RxBool(false));
       });
+
+      listItems.assignAll(items);
     }
   }
 }

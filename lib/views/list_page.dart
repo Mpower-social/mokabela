@@ -1,4 +1,5 @@
 import 'package:app_builder/controllers/list_controller.dart';
+import 'package:app_builder/list_definition/model/dto/list_item_action.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,50 +38,87 @@ class ListPage extends StatelessWidget {
       body: GetX<ListController>(
         init: listController,
         builder: (controller) {
-          return SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: DataTable(
-                sortColumnIndex: controller.currentSortColumn.value,
-                sortAscending: controller.isAscending.value,
-                headingRowColor: MaterialStateProperty.all(Colors.amber),
-                columns: List.generate(
-                  controller.tableHeaders.length,
-                  (index) {
-                    return DataColumn(
-                      onSort: (columnIndex, _) => controller.sort(columnIndex),
-                      label: Center(
-                        child: Text(
-                          controller.tableHeaders[index],
-                          textAlign: TextAlign.center,
+          return ListView.builder(
+            itemCount: controller.listItems.length,
+            itemBuilder: (context, index) {
+              return Card(
+                margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                child: InkWell(
+                  onTap: () {
+                    controller.expandList[index].value =
+                        !controller.expandList[index].value;
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Obx(() {
+                            return controller.expandList[index].value
+                                ? findListItem(context, controller, index,
+                                    controller.listItems[index].contents.length)
+                                : findListItem(context, controller, index, 3);
+                          }),
                         ),
-                      ),
-                    );
-                  },
-                ),
-                rows: List.generate(
-                  controller.tableContents.length,
-                  (index) {
-                    return DataRow(
-                      cells: List.generate(
-                        controller.tableContents[index].length,
-                        (celllIndex) {
-                          return DataCell(
-                            Text(
-                              controller.tableContents[index][celllIndex],
-                              textAlign: TextAlign.center,
+                        SizedBox(width: 10),
+                        PopupMenuButton(
+                          onSelected: (ListItemAction? value) {
+                            Get.snackbar(
+                              'Action',
+                              '${value?.formName}',
+                              snackPosition: SnackPosition.BOTTOM,
+                            );
+                          },
+                          itemBuilder: (context) => List.generate(
+                            controller.listItems[index].actions.length,
+                            (actionIndex) => PopupMenuItem<ListItemAction>(
+                              value: controller
+                                  .listItems[index].actions[actionIndex],
+                              child: Text(
+                                controller.listItems[index].actions[actionIndex]
+                                    .actionName!,
+                              ),
                             ),
-                          );
-                        },
-                      ),
-                    );
-                  },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ),
+              );
+            },
           );
         },
+      ),
+    );
+  }
+
+  Widget findListItem(
+      BuildContext context, ListController controller, int index, int length) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: List.generate(
+        length,
+        (contentIndex) => RichText(
+          text: TextSpan(
+            style: DefaultTextStyle.of(context).style,
+            children: [
+              TextSpan(
+                text:
+                    '${controller.listItems[index].contents[contentIndex].name}: ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              TextSpan(
+                text: controller.listItems[index].contents[contentIndex].value,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
