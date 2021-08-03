@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>প্রাপ্তি সংক্রান্ত তথ্য-বর্ধিত পরিবারের সাথে যোগাযোগ</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/assess_extended_family/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/assess_extended_family/e_family/program_participation/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_extended_family/e_family/secure_attachment/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_extended_family/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/assess_extended_family/e_family/assist_in_program:label">
+            <value>শিশুর বর্ধিত পরিবার তার পারিবারিক অনুষ্ঠান/কর্মকাণ্ডে সহায়তা করে কি?</value>
+          </text>
+          <text id="/assess_extended_family/e_family/attachment/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_extended_family/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/assess_extended_family/e_family/secure_attachment:label">
+            <value>শিশুর বর্ধিত পরিবারের সদস্যের সাথে নিরাপদ অনুরুক্তি (secure attachment) আছে কি?</value>
+          </text>
+          <text id="/assess_extended_family/e_family/attachment:label">
+            <value>শিশুর বর্ধিত পরিবারের সদস্য দূরে থাকলেও (অনুরুক্তি- attachment) তারা শিশুর খোঁজ-খবর নেয় কি?</value>
+          </text>
+          <text id="/assess_extended_family/e_family/secure_attachment/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_extended_family/e_family/child_care/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_extended_family/e_family:label">
+            <value>৩.২। বর্ধিত পরিবারের সাথে যোগাযোগ</value>
+          </text>
+          <text id="/assess_extended_family/e_family/assist_in_program/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_extended_family/e_family/attachment/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_extended_family/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/assess_extended_family/e_family/child_care:label">
+            <value>শিশুর বর্ধিত পরিবার তার যত্ন-পরিচর্যায় সহায়তা করে কি?</value>
+          </text>
+          <text id="/assess_extended_family/e_family/program_participation:label">
+            <value>শিশুর বর্ধিত পরিবার তার পারিবারিক অনুষ্ঠান/কর্মকাণ্ডে অংশগ্রহণ করে কি?</value>
+          </text>
+          <text id="/assess_extended_family/e_family/assist_in_program/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_extended_family/social_worker_observation:label">
+            <value>সমাজকর্মীর পর্যবেক্ষণ (সমাজকর্মী উপরোক্ত বিষয়ে প্রশ্ন করবেন, গভীরভাবে তার আচরণ ও মনসংযোগ পর্যবেক্ষণ করবেন এবং সারসংক্ষেপ লিখবেন):</value>
+          </text>
+          <text id="/assess_extended_family/e_family/program_participation/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_extended_family/e_family/child_care/0:label">
+            <value>না</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/assess_extended_family/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/assess_extended_family/e_family/program_participation/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_extended_family/e_family/secure_attachment/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_extended_family/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/assess_extended_family/e_family/assist_in_program:label">
+            <value>Does the extended family of the child assist in his/her family programs / activities?</value>
+          </text>
+          <text id="/assess_extended_family/e_family/attachment/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_extended_family/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/assess_extended_family/e_family/secure_attachment:label">
+            <value>Is there a secure attachment with the child's extended family members?</value>
+          </text>
+          <text id="/assess_extended_family/e_family/attachment:label">
+            <value>Does the child's extended family members find out about the attachment even if they are away?</value>
+          </text>
+          <text id="/assess_extended_family/e_family/secure_attachment/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_extended_family/e_family/child_care/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_extended_family/e_family:label">
+            <value>3.2 Communication with extended family</value>
+          </text>
+          <text id="/assess_extended_family/e_family/assist_in_program/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_extended_family/e_family/attachment/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_extended_family/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/assess_extended_family/e_family/child_care:label">
+            <value>Does the extended family of the child assist in his/her care?</value>
+          </text>
+          <text id="/assess_extended_family/e_family/program_participation:label">
+            <value>Does the extended family of the child participate in his / her family programs / activities?</value>
+          </text>
+          <text id="/assess_extended_family/e_family/assist_in_program/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_extended_family/social_worker_observation:label">
+            <value>Social Worker Observation (Social Worker will ask the above questions, observe his behavior and psychology deeply and write a summary):</value>
+          </text>
+          <text id="/assess_extended_family/e_family/program_participation/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_extended_family/e_family/child_care/0:label">
+            <value>No</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <assess_extended_family id="assess_extended_family">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <e_family>
+            <program_participation/>
+            <assist_in_program/>
+            <child_care/>
+            <attachment/>
+            <secure_attachment/>
+          </e_family>
+          <social_worker_observation/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </assess_extended_family>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/assess_extended_family/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/assess_extended_family/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/assess_extended_family/username" type="string"/>
+      <bind calculate="date(format-date( /assess_extended_family/start ,'%Y-%m-%d'))" nodeset="/assess_extended_family/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/assess_extended_family/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_extended_family/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_extended_family/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_extended_family/e_family" required="true()"/>
+      <bind nodeset="/assess_extended_family/e_family/program_participation" required="true()" type="select1"/>
+      <bind nodeset="/assess_extended_family/e_family/assist_in_program" required="true()" type="select1"/>
+      <bind nodeset="/assess_extended_family/e_family/child_care" required="true()" type="select1"/>
+      <bind nodeset="/assess_extended_family/e_family/attachment" required="true()" type="select1"/>
+      <bind nodeset="/assess_extended_family/e_family/secure_attachment" required="true()" type="select1"/>
+      <bind nodeset="/assess_extended_family/social_worker_observation" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/assess_extended_family/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'3657abe9d9734b39892da475735e1cd3'" nodeset="/assess_extended_family/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/assess_extended_family/reg_info">
+      <input ref="/assess_extended_family/reg_info/date">
+        <label ref="jr:itext('/assess_extended_family/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_extended_family/reg_info/child_name_bn">
+        <label ref="jr:itext('/assess_extended_family/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_extended_family/reg_info/child_name_en">
+        <label ref="jr:itext('/assess_extended_family/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_extended_family/reg_info/reg_num">
+        <label ref="jr:itext('/assess_extended_family/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/assess_extended_family/e_family">
+      <label ref="jr:itext('/assess_extended_family/e_family:label')"/>
+      <select1 appearance="columns-pack" ref="/assess_extended_family/e_family/program_participation">
+        <label ref="jr:itext('/assess_extended_family/e_family/program_participation:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_extended_family/e_family/program_participation/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_extended_family/e_family/program_participation/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 appearance="columns-pack" ref="/assess_extended_family/e_family/assist_in_program">
+        <label ref="jr:itext('/assess_extended_family/e_family/assist_in_program:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_extended_family/e_family/assist_in_program/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_extended_family/e_family/assist_in_program/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 appearance="columns-pack" ref="/assess_extended_family/e_family/child_care">
+        <label ref="jr:itext('/assess_extended_family/e_family/child_care:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_extended_family/e_family/child_care/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_extended_family/e_family/child_care/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 appearance="columns-pack" ref="/assess_extended_family/e_family/attachment">
+        <label ref="jr:itext('/assess_extended_family/e_family/attachment:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_extended_family/e_family/attachment/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_extended_family/e_family/attachment/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 appearance="columns-pack" ref="/assess_extended_family/e_family/secure_attachment">
+        <label ref="jr:itext('/assess_extended_family/e_family/secure_attachment:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_extended_family/e_family/secure_attachment/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_extended_family/e_family/secure_attachment/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+    </group>
+    <input ref="/assess_extended_family/social_worker_observation">
+      <label ref="jr:itext('/assess_extended_family/social_worker_observation:label')"/>
+    </input>
+  </h:body>
+</h:html>

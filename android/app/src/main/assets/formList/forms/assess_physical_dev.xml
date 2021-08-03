@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>প্রাপ্তি সংক্রান্ত তথ্য-শারীরিক বিকাশ</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/assess_physical_dev/physical_dev/height_weight:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/receive_nutrition_regularly:label">
+            <value>শিশু কি নিয়মিত পুষ্টিকর খাবার (ডিম, দুধ, মাছ, মাংশ) পেতো?</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/take_meals_time:label">
+            <value>শিশুটি কয়বেলা খাবার পেতো?</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight:label">
+            <value>উত্তর ‘না’ হলে-</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight/1:label">
+            <value>1</value>
+          </text>
+          <text id="/assess_physical_dev/social_worker_observation:label">
+            <value>সমাজকর্মীর পর্যবেক্ষণ</value>
+          </text>
+          <text id="/assess_physical_dev/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/receive_nutrition_regularly/2:label">
+            <value>কখনো কখনো পেতো</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight/2:label">
+            <value>2</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/receive_nutrition_regularly/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight/4:label">
+            <value>4</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight_is_okay/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight/3:label">
+            <value>3</value>
+          </text>
+          <text id="/assess_physical_dev/social_worker_observation:hint">
+            <value>(সমাজকর্মী উপরোক্ত বিষয়ে প্রশ্ন করবেন, গভীরভাবে তার আচরণ ও মনসংযোগ পর্যবেক্ষণ করবেন এবং সারসংক্ষেপ লিখবেন)</value>
+          </text>
+          <text id="/assess_physical_dev/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/assess_physical_dev/note1:label">
+            <value>নির্দেশনা - [শিশু, ক্ষেত্রমত, তার মাতা-পিতা-অভিভাবক-পরিচর্যাকারীকে তার মতো করে প্রশ্নসমূহ করুন। উত্তরদাতার কথা মনযোগ সহকারে শুনুন, গোপনীয়তা রক্ষার আশ্বাস দিন, উত্তম যোগাযোগ দক্ষতা প্রদর্শন করুন এবং সামগ্রিক পরিস্থিতি গভীরভাবে পর্যবেক্ষণ করুন। সামগ্রিক পরিস্থিতি বিবেচনায় নিয়ে যথাযথ তথ্য লিখুন।]</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/receive_nutrition_regularly/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_physical_dev/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/assess_physical_dev/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev:label">
+            <value>শারীরিক বিকাশ</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight_is_okay:label">
+            <value>বয়স অনুপাতে শিশুটির গড় উচ্চতা ও ওজন ঠিক আছে কি?</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight_is_okay/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/assess_physical_dev/physical_dev/height_weight:jr:constraintMsg">
+            <value>if q2=2</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/receive_nutrition_regularly:label">
+            <value>Did the child regularly receive nutritious food (eggs, milk, fish, meat)?</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/take_meals_time:label">
+            <value>When did the child take food?</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight:label">
+            <value>If the answer is 'no'</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight/1:label">
+            <value>1</value>
+          </text>
+          <text id="/assess_physical_dev/social_worker_observation:label">
+            <value>Social Worker Observation</value>
+          </text>
+          <text id="/assess_physical_dev/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/receive_nutrition_regularly/2:label">
+            <value>Sometimes took</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight/2:label">
+            <value>2</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/receive_nutrition_regularly/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight/4:label">
+            <value>4</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight_is_okay/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight/3:label">
+            <value>3</value>
+          </text>
+          <text id="/assess_physical_dev/social_worker_observation:hint">
+            <value>Social Worker will ask the above questions, observe his behavior and psychology deeply and write a summary</value>
+          </text>
+          <text id="/assess_physical_dev/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/assess_physical_dev/note1:label">
+            <value>নির্দেশনা - [শিশু, ক্ষেত্রমত, তার মাতা-পিতা-অভিভাবক-পরিচর্যাকারীকে তার মতো করে প্রশ্নসমূহ করুন। উত্তরদাতার কথা মনযোগ সহকারে শুনুন, গোপনীয়তা রক্ষার আশ্বাস দিন, উত্তম যোগাযোগ দক্ষতা প্রদর্শন করুন এবং সামগ্রিক পরিস্থিতি গভীরভাবে পর্যবেক্ষণ করুন। সামগ্রিক পরিস্থিতি বিবেচনায় নিয়ে যথাযথ তথ্য লিখুন।]</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/receive_nutrition_regularly/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_physical_dev/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/assess_physical_dev/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev:label">
+            <value>Physical Development</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight_is_okay:label">
+            <value>Is the average height and weight of the child okay in proportion to age?</value>
+          </text>
+          <text id="/assess_physical_dev/physical_dev/height_weight_is_okay/1:label">
+            <value>Yes</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <assess_physical_dev id="assess_physical_dev">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <date/>
+          <note1/>
+          <physical_dev>
+            <height_weight_is_okay/>
+            <height_weight/>
+            <take_meals_time/>
+            <receive_nutrition_regularly/>
+          </physical_dev>
+          <social_worker_observation/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </assess_physical_dev>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/assess_physical_dev/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/assess_physical_dev/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/assess_physical_dev/username" type="string"/>
+      <bind nodeset="/assess_physical_dev/reg_info/child_name_bn" required="true()" type="string"/>
+      <bind nodeset="/assess_physical_dev/reg_info/child_name_en" required="true()" type="string"/>
+      <bind nodeset="/assess_physical_dev/reg_info/reg_num" required="true()" type="string"/>
+      <bind calculate="date(format-date( /assess_physical_dev/start ,'%Y-%m-%d'))" nodeset="/assess_physical_dev/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/assess_physical_dev/note1" readonly="true()" type="string"/>
+      <bind nodeset="/assess_physical_dev/physical_dev/height_weight_is_okay" required="true()" type="select1"/>
+      <bind jr:constraintMsg="jr:itext('/assess_physical_dev/physical_dev/height_weight:jr:constraintMsg')" nodeset="/assess_physical_dev/physical_dev/height_weight" relevant=" /assess_physical_dev/physical_dev/height_weight_is_okay =0" required="true()" type="select1"/>
+      <bind nodeset="/assess_physical_dev/physical_dev/take_meals_time" required="true()" type="int"/>
+      <bind nodeset="/assess_physical_dev/physical_dev/receive_nutrition_regularly" required="true()" type="select1"/>
+      <bind nodeset="/assess_physical_dev/social_worker_observation" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/assess_physical_dev/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'df76b5aa07114a83a6824c7423622b0a'" nodeset="/assess_physical_dev/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/assess_physical_dev/reg_info">
+      <input appearance="db" ref="/assess_physical_dev/reg_info/child_name_bn">
+        <label ref="jr:itext('/assess_physical_dev/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_physical_dev/reg_info/child_name_en">
+        <label ref="jr:itext('/assess_physical_dev/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_physical_dev/reg_info/reg_num">
+        <label ref="jr:itext('/assess_physical_dev/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_physical_dev/date">
+      <label ref="jr:itext('/assess_physical_dev/date:label')"/>
+    </input>
+    <input ref="/assess_physical_dev/note1">
+      <label ref="jr:itext('/assess_physical_dev/note1:label')"/>
+    </input>
+    <group appearance="field-list" ref="/assess_physical_dev/physical_dev">
+      <label ref="jr:itext('/assess_physical_dev/physical_dev:label')"/>
+      <select1 appearance="columns-pack" ref="/assess_physical_dev/physical_dev/height_weight_is_okay">
+        <label ref="jr:itext('/assess_physical_dev/physical_dev/height_weight_is_okay:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_physical_dev/physical_dev/height_weight_is_okay/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_physical_dev/physical_dev/height_weight_is_okay/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 appearance="columns-pack" ref="/assess_physical_dev/physical_dev/height_weight">
+        <label ref="jr:itext('/assess_physical_dev/physical_dev/height_weight:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_physical_dev/physical_dev/height_weight/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_physical_dev/physical_dev/height_weight/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_physical_dev/physical_dev/height_weight/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_physical_dev/physical_dev/height_weight/4:label')"/>
+          <value>4</value>
+        </item>
+      </select1>
+      <input ref="/assess_physical_dev/physical_dev/take_meals_time">
+        <label ref="jr:itext('/assess_physical_dev/physical_dev/take_meals_time:label')"/>
+      </input>
+      <select1 ref="/assess_physical_dev/physical_dev/receive_nutrition_regularly">
+        <label ref="jr:itext('/assess_physical_dev/physical_dev/receive_nutrition_regularly:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_physical_dev/physical_dev/receive_nutrition_regularly/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_physical_dev/physical_dev/receive_nutrition_regularly/0:label')"/>
+          <value>0</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_physical_dev/physical_dev/receive_nutrition_regularly/2:label')"/>
+          <value>2</value>
+        </item>
+      </select1>
+    </group>
+    <input ref="/assess_physical_dev/social_worker_observation">
+      <label ref="jr:itext('/assess_physical_dev/social_worker_observation:label')"/>
+      <hint ref="jr:itext('/assess_physical_dev/social_worker_observation:hint')"/>
+    </input>
+  </h:body>
+</h:html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <style name="AppThemeBase.Collect"/>
+
+    <style name="AppThemeBase" parent="Theme.Collect.Light">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+    </style>
+
+    <style name="Theme.Collect.Dark" parent="Theme.Collect.BaseDark">
+        <item name="android:buttonStyle">@style/Widget.Collect.Button.Custom</item>
+        <item name="imageButtonStyle">@style/Widget.Collect.ImageButton.Custom.Dark</item>
+    </style>
+
+    <style name="Theme.Collect.Light" parent="Theme.Collect.BaseLight">
+        <item name="android:buttonStyle">@style/Widget.Collect.Button.Custom</item>
+        <item name="imageButtonStyle">@style/Widget.Collect.ImageButton.Custom.Light</item>
+    </style>
+</resources>

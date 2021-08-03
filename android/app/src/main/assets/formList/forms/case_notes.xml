@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>কেস নোটস</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/case_notes/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/case_notes/case_notes:label">
+            <value>কেস নোটস</value>
+          </text>
+          <text id="/case_notes/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/case_notes/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/case_notes/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/case_notes/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/case_notes/case_notes:label">
+            <value>Case Notes</value>
+          </text>
+          <text id="/case_notes/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/case_notes/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/case_notes/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <case_notes id="case_notes">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <case_notes/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </case_notes>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/case_notes/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/case_notes/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/case_notes/username" type="string"/>
+      <bind calculate="date(format-date( /case_notes/start ,'%Y-%m-%d'))" nodeset="/case_notes/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/case_notes/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_notes/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_notes/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_notes/case_notes" required="true()" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/case_notes/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'e9bdb5629f7544518a0cab35074bbc00'" nodeset="/case_notes/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/case_notes/reg_info">
+      <input ref="/case_notes/reg_info/date">
+        <label ref="jr:itext('/case_notes/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/case_notes/reg_info/child_name_bn">
+        <label ref="jr:itext('/case_notes/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/case_notes/reg_info/child_name_en">
+        <label ref="jr:itext('/case_notes/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/case_notes/reg_info/reg_num">
+        <label ref="jr:itext('/case_notes/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <input ref="/case_notes/case_notes">
+      <label ref="jr:itext('/case_notes/case_notes:label')"/>
+    </input>
+  </h:body>
+</h:html>

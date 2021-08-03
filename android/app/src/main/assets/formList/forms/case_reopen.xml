@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>কেস রি-ওপেন</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/case_reopen/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/case_reopen/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/case_reopen/comment:label">
+            <value>মন্তব্য:</value>
+          </text>
+          <text id="/case_reopen/reg_info/case_id:label">
+            <value>Case ID</value>
+          </text>
+          <text id="/case_reopen/case_reopen_date:label">
+            <value>রি-ওপেনের তারিখ</value>
+          </text>
+          <text id="/case_reopen/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/case_reopen/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/case_reopen/case_reopen_reason:label">
+            <value>রি-ওপেনের কারণ:</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/case_reopen/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/case_reopen/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/case_reopen/comment:label">
+            <value>Comments</value>
+          </text>
+          <text id="/case_reopen/reg_info/case_id:label">
+            <value>Case ID</value>
+          </text>
+          <text id="/case_reopen/case_reopen_date:label">
+            <value>Reopenning Date</value>
+          </text>
+          <text id="/case_reopen/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/case_reopen/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/case_reopen/case_reopen_reason:label">
+            <value>Reason for Reopen</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <case_reopen id="case_reopen">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+            <case_id/>
+          </reg_info>
+          <case_reopen_date/>
+          <case_reopen_reason/>
+          <comment/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </case_reopen>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/case_reopen/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/case_reopen/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/case_reopen/username" type="string"/>
+      <bind calculate="date(format-date( /case_reopen/start ,'%Y-%m-%d'))" nodeset="/case_reopen/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/case_reopen/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_reopen/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_reopen/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_reopen/reg_info/case_id" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_reopen/case_reopen_date" required="true()" type="date"/>
+      <bind nodeset="/case_reopen/case_reopen_reason" required="true()" type="string"/>
+      <bind nodeset="/case_reopen/comment" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/case_reopen/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'3ed81052c65f425884fbcfe6a87d910a'" nodeset="/case_reopen/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/case_reopen/reg_info">
+      <input ref="/case_reopen/reg_info/date">
+        <label ref="jr:itext('/case_reopen/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/case_reopen/reg_info/child_name_bn">
+        <label ref="jr:itext('/case_reopen/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/case_reopen/reg_info/child_name_en">
+        <label ref="jr:itext('/case_reopen/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/case_reopen/reg_info/reg_num">
+        <label ref="jr:itext('/case_reopen/reg_info/reg_num:label')"/>
+      </input>
+      <input appearance="db" ref="/case_reopen/reg_info/case_id">
+        <label ref="jr:itext('/case_reopen/reg_info/case_id:label')"/>
+      </input>
+    </group>
+    <input appearance="no-calendar" ref="/case_reopen/case_reopen_date">
+      <label ref="jr:itext('/case_reopen/case_reopen_date:label')"/>
+    </input>
+    <input ref="/case_reopen/case_reopen_reason">
+      <label ref="jr:itext('/case_reopen/case_reopen_reason:label')"/>
+    </input>
+    <input ref="/case_reopen/comment">
+      <label ref="jr:itext('/case_reopen/comment:label')"/>
+    </input>
+  </h:body>
+</h:html>

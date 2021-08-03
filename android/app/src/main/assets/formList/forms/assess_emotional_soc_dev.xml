@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>প্রাপ্তি সংক্রান্ত তথ্য-আবেগীয় ও সামাজিক বিকাশ</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/5:label">
+            <value>নিজেকে গুটিয়ে নেয়</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/3:label">
+            <value>বন্ধুরা মারামারি করে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/5:label">
+            <value>খেলনা তৈরি</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/3:label">
+            <value>কিছুই করে না</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/do_creative_work/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/4:label">
+            <value>মোবাইলে গেমস খেলে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/1:label">
+            <value>ঝগড়া হয়</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/do_creative_work:label">
+            <value>শিশুটি তার বয়স অনুযায়ী সৃজনশীল কাজ (যথা : গল্প, গান, অঙ্কন, নাচ, খেলাধুলা ইত্যাদি) করতে পারে কি?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/ever_consumed_any_intoxicant/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_any_intoxicant/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type-other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/ever_consumed_any_intoxicant:label">
+            <value>শিশু কি কখনো সিগারেট/নেশাজাতীয় কিছু খেয়েছে/পান/সেবন করেছে?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success:label">
+            <value>তখন তারা কী করে?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/2:label">
+            <value>ঘুরতে যায়</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/assist_homework/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/go_to_see_ill_friend/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why:label">
+            <value>কেন করে না?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/assist_homework/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/social_worker_observation:hint">
+            <value>(সমাজকর্মী উপরোক্ত বিষয়ে প্রশ্ন করবেন, গভীরভাবে তার আচরণ ও মনসংযোগ পর্যবেক্ষণ করবেন এবং সারসংক্ষেপ লিখবেন):</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type:label">
+            <value>ধরন নির্দিষ্ট করুন (একাধিক উত্তর হতে পারে)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/feel_diffrent_than_other_child/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/1:label">
+            <value>গল্প</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/2:label">
+            <value>বন্ধুরা হিংসুটে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/1:label">
+            <value>ভালো লাগে না</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/feel_diffrent_than_other_child/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/4:label">
+            <value>ছড়া/কবিতা আবৃত্তি</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/5:label">
+            <value>যোগাযোগের সীমাবদ্ধতার কারণে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend:label">
+            <value>শিশু তার বন্ধুদের সাথে খেলতে গেলে কোনো কারণে বনিবনা না হলে কী করে?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/do_creative_work/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/2:label">
+            <value>বন্ধুদের সাথে আড্ডা /গল্প করে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/5:label">
+            <value>ইয়াবা</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/assist_homework:label">
+            <value>শিশু কি বাসা/বাড়ির কোনো কাজে বাবা- মা/অভিভাবককে সহায়তা করে?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/can_say_friends_name/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/4:label">
+            <value>ফেনসিডিল</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/happy_with_friend_success/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/can_say_friends_name:label">
+            <value>শিশুটি কি তার বন্ধুদের নাম বলতে পারে?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/3:label">
+            <value>টিভি দেখে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/6:label">
+            <value>কান্নাকাটি করে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/2:label">
+            <value>গান</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/can_say_friends_name/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)…</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/feel_diffrent_than_other_child:label">
+            <value>শিশুটি কি নিজেকে অন্য শিশুদের থেকে আলাদা মনে করে? (পযবেক্ষণপূর্বক মন্তব্য)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/1:label">
+            <value>খেলা করে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/note1:label">
+            <value>নির্দেশনা - [শিশু, ক্ষেত্রমত, তার মাতা-পিতা-অভিভাবক-পরিচর্যাকারীকে তার মতো করে প্রশ্নসমূহ করুন। উত্তরদাতার কথা মনযোগ সহকারে শুনুন, গোপনীয়তা রক্ষার আশ্বাস দিন, উত্তম যোগাযোগ দক্ষতা প্রদর্শন করুন এবং সামগ্রিক পরিস্থিতি গভীরভাবে পর্যবেক্ষণ করুন। সামগ্রিক পরিস্থিতি বিবেচনায় নিয়ে যথাযথ তথ্য লিখুন।]</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/6:label">
+            <value>একা থাকতে পছন্দ করে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/1:label">
+            <value>একসঙ্গে খেলতে যায়</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_any_intoxicant/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant:label">
+            <value>কী খায়/পান/সেবন করে?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/3:label">
+            <value>ছবি আঁকা</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/social_worker_observation:label">
+            <value>সমাজকর্মীর পর্যবেক্ষণ</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_year:label">
+            <value>কতদিন ধরে খায়/পান/সেবন করে?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time:label">
+            <value>অবসর সময়ে/বিকেলে শিশু কী করে?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/4:label">
+            <value>অভিমান করে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/happy_with_friend_success:label">
+            <value>শিশুটি কি তার বন্ধুর সাফল্যে খুশি হয়?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/ever_consumed_any_intoxicant/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/1:label">
+            <value>সিগারেট</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/go_to_see_ill_friend/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/4:label">
+            <value>ব্যঙ্গ করে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/go_to_see_ill_friend:label">
+            <value>শিশুর কোনো বন্ধু অসুস্থ হলে সে কি তাকে দেখতে যায়?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/3:label">
+            <value>মদ</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_any_intoxicant:label">
+            <value>শিশুর বন্ধুরা কি কেউ সিগারেট/নেশাজাতীয় কিছু খায়/পান/সেবন করে?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/3:label">
+            <value>সমঝোতা করে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/happy_with_friend_success/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/5:label">
+            <value>কিছুই করে না</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/2:label">
+            <value>মারামারি করে</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_month:label">
+            <value>কতদিন ধরে খায়/পান/সেবন করে?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/2:label">
+            <value>গাঁজা</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/5:label">
+            <value>Folds itself</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/3:label">
+            <value>Friends quarelled</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/5:label">
+            <value>Toys Making</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/3:label">
+            <value>Does nothing</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/do_creative_work/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/4:label">
+            <value>Playing games on mobile</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/1:label">
+            <value>Make quarrel</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/do_creative_work:label">
+            <value>Can a child do creative work (eg: story, song, drawing, dance, sports, etc.) according to his age?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/ever_consumed_any_intoxicant/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_any_intoxicant/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type-other:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/ever_consumed_any_intoxicant:label">
+            <value>Has the child ever eaten / drank / consumed cigarettes / intoxicants?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success:label">
+            <value>What do they do then?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/2:label">
+            <value>Go travelling</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/assist_homework/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/go_to_see_ill_friend/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why:label">
+            <value>Why No?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/assist_homework/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/social_worker_observation:hint">
+            <value>Social Worker will ask the above questions, observe his behavior and psychology deeply and write a summary</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type:label">
+            <value>Specify type (can have multiple answers)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/feel_diffrent_than_other_child/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/1:label">
+            <value>Stories</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/2:label">
+            <value>Friends are jealous</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/1:label">
+            <value>Not feeling well</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/feel_diffrent_than_other_child/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/4:label">
+            <value>Rhymes / Poems Recitation</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/5:label">
+            <value>Due to communication constraints</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend:label">
+            <value>What does the child do when it cannot agree with others during playing with his friends for some reason?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/do_creative_work/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/2:label">
+            <value>Sharing / talking with friends</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/5:label">
+            <value>Yaba</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/assist_homework:label">
+            <value>Does the child assist the parent / guardian in any home / home work?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/can_say_friends_name/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/4:label">
+            <value>Phensidyl</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/happy_with_friend_success/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/can_say_friends_name:label">
+            <value>Can a child say no to his friends?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/3:label">
+            <value>Watching TV</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/6:label">
+            <value>Cries</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/2:label">
+            <value>Songs</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/can_say_friends_name/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/feel_diffrent_than_other_child:label">
+            <value>Does the child feel different from other children? (Observation Comments)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/1:label">
+            <value>Playing</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time_other:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/note1:label">
+            <value>নির্দেশনা - [শিশু, ক্ষেত্রমত, তার মাতা-পিতা-অভিভাবক-পরিচর্যাকারীকে তার মতো করে প্রশ্নসমূহ করুন। উত্তরদাতার কথা মনযোগ সহকারে শুনুন, গোপনীয়তা রক্ষার আশ্বাস দিন, উত্তম যোগাযোগ দক্ষতা প্রদর্শন করুন এবং সামগ্রিক পরিস্থিতি গভীরভাবে পর্যবেক্ষণ করুন। সামগ্রিক পরিস্থিতি বিবেচনায় নিয়ে যথাযথ তথ্য লিখুন।]</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/6:label">
+            <value>Prefers to be alone</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/1:label">
+            <value>Goes to play together</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_any_intoxicant/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant:label">
+            <value>What does it eat / drink / consume?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/creative/creative_work_type/3:label">
+            <value>Drawing Pictures</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/social_worker_observation:label">
+            <value>Social Worker Observation</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_year:label">
+            <value>How long does it eat / drink / consume?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time:label">
+            <value>What does the child do at leisure / afternoon?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/4:label">
+            <value>Feel proud</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/happy_with_friend_success:label">
+            <value>Is the child happy with his friend's success?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/ever_consumed_any_intoxicant/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/1:label">
+            <value>Cigarette</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/go_to_see_ill_friend/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/4:label">
+            <value>Friends mocked</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/go_to_see_ill_friend:label">
+            <value>Does the child go to see his/her friend when he is ill?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/3:label">
+            <value>Liquor</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_any_intoxicant:label">
+            <value>Does any friend of the child eat / drink / consume/ cigarettes / intoxicants?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/3:label">
+            <value>Compromise</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/happy_with_friend_success/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/friendship/generally_do_leisure_time/5:label">
+            <value>Doing nothing</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/2:label">
+            <value>Fights</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_month:label">
+            <value>How long does it eat / drink / consume?</value>
+          </text>
+          <text id="/assess_emotional_soc_dev/intoxicant/consume_intoxicant/2:label">
+            <value>Cannabis</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <assess_emotional_soc_dev id="assess_emotional_soc_dev">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <date/>
+          <note1/>
+          <friendship>
+            <can_say_friends_name/>
+            <generally_do_leisure_time/>
+            <generally_do_leisure_time_other/>
+            <nothing_do_leisure_time_why/>
+          </friendship>
+          <socialisation>
+            <happy_with_friend_success/>
+            <generally_do_when_friend_success/>
+            <assist_homework/>
+            <go_to_see_ill_friend/>
+            <what_do_when_disagree_with_friend/>
+          </socialisation>
+          <intoxicant>
+            <consume_any_intoxicant/>
+            <ever_consumed_any_intoxicant/>
+            <consume_intoxicant/>
+            <consume_year/>
+            <consume_month/>
+          </intoxicant>
+          <creative>
+            <do_creative_work/>
+            <creative_work_type/>
+            <creative_work_type-other/>
+            <feel_diffrent_than_other_child/>
+          </creative>
+          <social_worker_observation/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </assess_emotional_soc_dev>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/assess_emotional_soc_dev/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/assess_emotional_soc_dev/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/assess_emotional_soc_dev/username" type="string"/>
+      <bind nodeset="/assess_emotional_soc_dev/reg_info/child_name_bn" required="true()" type="string"/>
+      <bind nodeset="/assess_emotional_soc_dev/reg_info/child_name_en" required="true()" type="string"/>
+      <bind nodeset="/assess_emotional_soc_dev/reg_info/reg_num" required="true()" type="string"/>
+      <bind calculate="date(format-date( /assess_emotional_soc_dev/start ,'%Y-%m-%d'))" nodeset="/assess_emotional_soc_dev/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/assess_emotional_soc_dev/note1" readonly="true()" type="string"/>
+      <bind nodeset="/assess_emotional_soc_dev/friendship/can_say_friends_name" required="true()" type="select1"/>
+      <bind nodeset="/assess_emotional_soc_dev/friendship/generally_do_leisure_time" required="true()" type="select"/>
+      <bind nodeset="/assess_emotional_soc_dev/friendship/generally_do_leisure_time_other" relevant="selected( /assess_emotional_soc_dev/friendship/generally_do_leisure_time ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why" relevant="selected( /assess_emotional_soc_dev/friendship/generally_do_leisure_time ,'5')" required="true()" type="select"/>
+      <bind nodeset="/assess_emotional_soc_dev/socialisation/happy_with_friend_success" required="true()" type="select1"/>
+      <bind nodeset="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success" relevant=" /assess_emotional_soc_dev/socialisation/happy_with_friend_success =1" required="true()" type="select"/>
+      <bind nodeset="/assess_emotional_soc_dev/socialisation/assist_homework" required="true()" type="select1"/>
+      <bind nodeset="/assess_emotional_soc_dev/socialisation/go_to_see_ill_friend" required="true()" type="select1"/>
+      <bind nodeset="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend" required="true()" type="select1"/>
+      <bind nodeset="/assess_emotional_soc_dev/intoxicant/consume_any_intoxicant" required="true()" type="select1"/>
+      <bind nodeset="/assess_emotional_soc_dev/intoxicant/ever_consumed_any_intoxicant" required="true()" type="select1"/>
+      <bind nodeset="/assess_emotional_soc_dev/intoxicant/consume_intoxicant" relevant=" /assess_emotional_soc_dev/intoxicant/consume_any_intoxicant =1" required="true()" type="select"/>
+      <bind nodeset="/assess_emotional_soc_dev/intoxicant/consume_year" relevant=" /assess_emotional_soc_dev/intoxicant/consume_any_intoxicant =1" required="true()" type="int"/>
+      <bind nodeset="/assess_emotional_soc_dev/intoxicant/consume_month" relevant=" /assess_emotional_soc_dev/intoxicant/consume_any_intoxicant =1" required="true()" type="int"/>
+      <bind nodeset="/assess_emotional_soc_dev/creative/do_creative_work" required="true()" type="select1"/>
+      <bind nodeset="/assess_emotional_soc_dev/creative/creative_work_type" relevant=" /assess_emotional_soc_dev/creative/do_creative_work =1" required="true()" type="select"/>
+      <bind nodeset="/assess_emotional_soc_dev/creative/creative_work_type-other" relevant="selected( /assess_emotional_soc_dev/creative/creative_work_type ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_emotional_soc_dev/creative/feel_diffrent_than_other_child" required="true()" type="select1"/>
+      <bind nodeset="/assess_emotional_soc_dev/social_worker_observation" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/assess_emotional_soc_dev/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'267906d1814642e5bc5b67d21af37b62'" nodeset="/assess_emotional_soc_dev/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/assess_emotional_soc_dev/reg_info">
+      <input appearance="db" ref="/assess_emotional_soc_dev/reg_info/child_name_bn">
+        <label ref="jr:itext('/assess_emotional_soc_dev/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_emotional_soc_dev/reg_info/child_name_en">
+        <label ref="jr:itext('/assess_emotional_soc_dev/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_emotional_soc_dev/reg_info/reg_num">
+        <label ref="jr:itext('/assess_emotional_soc_dev/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_emotional_soc_dev/date">
+      <label ref="jr:itext('/assess_emotional_soc_dev/date:label')"/>
+    </input>
+    <input ref="/assess_emotional_soc_dev/note1">
+      <label ref="jr:itext('/assess_emotional_soc_dev/note1:label')"/>
+    </input>
+    <group appearance="field-list" ref="/assess_emotional_soc_dev/friendship">
+      <select1 ref="/assess_emotional_soc_dev/friendship/can_say_friends_name">
+        <label ref="jr:itext('/assess_emotional_soc_dev/friendship/can_say_friends_name:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/can_say_friends_name/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/can_say_friends_name/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_emotional_soc_dev/friendship/generally_do_leisure_time">
+        <label ref="jr:itext('/assess_emotional_soc_dev/friendship/generally_do_leisure_time:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/generally_do_leisure_time/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/generally_do_leisure_time/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/generally_do_leisure_time/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/generally_do_leisure_time/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/generally_do_leisure_time/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/generally_do_leisure_time/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_emotional_soc_dev/friendship/generally_do_leisure_time_other">
+        <label ref="jr:itext('/assess_emotional_soc_dev/friendship/generally_do_leisure_time_other:label')"/>
+      </input>
+      <select ref="/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why">
+        <label ref="jr:itext('/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/6:label')"/>
+          <value>6</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/friendship/nothing_do_leisure_time_why/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+    </group>
+    <group appearance="field-list" ref="/assess_emotional_soc_dev/socialisation">
+      <select1 ref="/assess_emotional_soc_dev/socialisation/happy_with_friend_success">
+        <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/happy_with_friend_success:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/happy_with_friend_success/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/happy_with_friend_success/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success">
+        <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/generally_do_when_friend_success/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <select1 ref="/assess_emotional_soc_dev/socialisation/assist_homework">
+        <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/assist_homework:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/assist_homework/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/assist_homework/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 ref="/assess_emotional_soc_dev/socialisation/go_to_see_ill_friend">
+        <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/go_to_see_ill_friend:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/go_to_see_ill_friend/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/go_to_see_ill_friend/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 ref="/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend">
+        <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/6:label')"/>
+          <value>6</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/socialisation/what_do_when_disagree_with_friend/99:label')"/>
+          <value>99</value>
+        </item>
+      </select1>
+    </group>
+    <group appearance="field-list" ref="/assess_emotional_soc_dev/intoxicant">
+      <select1 ref="/assess_emotional_soc_dev/intoxicant/consume_any_intoxicant">
+        <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_any_intoxicant:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_any_intoxicant/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_any_intoxicant/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 ref="/assess_emotional_soc_dev/intoxicant/ever_consumed_any_intoxicant">
+        <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/ever_consumed_any_intoxicant:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/ever_consumed_any_intoxicant/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/ever_consumed_any_intoxicant/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_emotional_soc_dev/intoxicant/consume_intoxicant">
+        <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_intoxicant:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_intoxicant/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_intoxicant/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_intoxicant/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_intoxicant/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_intoxicant/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_intoxicant/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_emotional_soc_dev/intoxicant/consume_year">
+        <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_year:label')"/>
+      </input>
+      <input ref="/assess_emotional_soc_dev/intoxicant/consume_month">
+        <label ref="jr:itext('/assess_emotional_soc_dev/intoxicant/consume_month:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/assess_emotional_soc_dev/creative">
+      <select1 ref="/assess_emotional_soc_dev/creative/do_creative_work">
+        <label ref="jr:itext('/assess_emotional_soc_dev/creative/do_creative_work:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/creative/do_creative_work/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/creative/do_creative_work/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_emotional_soc_dev/creative/creative_work_type">
+        <label ref="jr:itext('/assess_emotional_soc_dev/creative/creative_work_type:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/creative/creative_work_type/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/creative/creative_work_type/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/creative/creative_work_type/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/creative/creative_work_type/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/creative/creative_work_type/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/creative/creative_work_type/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_emotional_soc_dev/creative/creative_work_type-other">
+        <label ref="jr:itext('/assess_emotional_soc_dev/creative/creative_work_type-other:label')"/>
+      </input>
+      <select1 ref="/assess_emotional_soc_dev/creative/feel_diffrent_than_other_child">
+        <label ref="jr:itext('/assess_emotional_soc_dev/creative/feel_diffrent_than_other_child:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/creative/feel_diffrent_than_other_child/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_emotional_soc_dev/creative/feel_diffrent_than_other_child/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+    </group>
+    <input ref="/assess_emotional_soc_dev/social_worker_observation">
+      <label ref="jr:itext('/assess_emotional_soc_dev/social_worker_observation:label')"/>
+      <hint ref="jr:itext('/assess_emotional_soc_dev/social_worker_observation:hint')"/>
+    </input>
+  </h:body>
+</h:html>

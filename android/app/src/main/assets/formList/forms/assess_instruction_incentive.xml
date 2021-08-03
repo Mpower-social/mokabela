@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>প্রাপ্তি সংক্রান্ত তথ্য-নির্দেশনা, সীমা ও উদ্দীপনা</h:title>
+    <model>
+      <itext>
+        <translation lang="Bangla">
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason:label">
+            <value>কারণ কী?</value>
+          </text>
+          <text id="/assess_instruction_incentive/protective_measure:label">
+            <value>শিশুটির শৃঙ্খলা বিধানে তার মাতা-পিতা কি অতি সুরক্ষামূলক পদক্ষেপ নেয়?</value>
+          </text>
+          <text id="/assess_instruction_incentive/protective_measure/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/guidance_properly:label">
+            <value>শিশুকে তার পরিবার সঠিক নির্দেশনা দেয় কি?</value>
+          </text>
+          <text id="/assess_instruction_incentive/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/4:label">
+            <value>সৎ বাবা/মা</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/5:label">
+            <value>একসাথে বসবাস না করা</value>
+          </text>
+          <text id="/assess_instruction_incentive/protective_measure/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_instruction_incentive/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/assess_instruction_incentive/movement_limit:label">
+            <value>শিশুটিকে তার মাতা-পিতা কি তার চলাফেরায় কোনো সীমা নির্ধারণ করে দেয়?</value>
+          </text>
+          <text id="/assess_instruction_incentive/movement_limit/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/guidance_properly/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/99:label">
+            <value>অন্যান্য নির্দিষ্ট করুন</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/3:label">
+            <value>মাদকাসক্ত- পিতামাতা/ অভিভাবক/ শিশু</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/2:label">
+            <value>শিথিল পারিবারিক বন্ধন</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/1:label">
+            <value>পিতামাতা/অভিভাবকের দক্ষতার অভাব</value>
+          </text>
+          <text id="/assess_instruction_incentive/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/assess_instruction_incentive/note:label">
+            <value>২.৩। নির্দেশনা, সীমা ও উদ্দীপনা</value>
+          </text>
+          <text id="/assess_instruction_incentive/movement_limit/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_instruction_incentive/encourage/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_instruction_incentive/encourage:label">
+            <value>শিশুকে তার পরিবার প্রয়োজনীয় ইতিবাচক উৎসাহ দেয় কি?</value>
+          </text>
+          <text id="/assess_instruction_incentive/social_worker_observation:label">
+            <value>সমাজকর্মীর পর্যবেক্ষণ (সমাজকর্মী উপরোক্ত বিষয়ে প্রশ্ন করবেন, গভীরভাবে তার আচরণ ও মনসংযোগ পর্যবেক্ষণ করবেন এবং সারসংক্ষেপ লিখবেন):</value>
+          </text>
+          <text id="/assess_instruction_incentive/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/guidance_properly/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_instruction_incentive/encourage/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason:label">
+            <value>What is the reason?</value>
+          </text>
+          <text id="/assess_instruction_incentive/protective_measure:label">
+            <value>Does his parent take the most protective measures in disciplining a child?</value>
+          </text>
+          <text id="/assess_instruction_incentive/protective_measure/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/guidance_properly:label">
+            <value>Does the child's family give proper guidance?</value>
+          </text>
+          <text id="/assess_instruction_incentive/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/4:label">
+            <value>Step parents</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/5:label">
+            <value>Not living together</value>
+          </text>
+          <text id="/assess_instruction_incentive/protective_measure/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_instruction_incentive/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/assess_instruction_incentive/movement_limit:label">
+            <value>Does the child's family set any limits on his or her movement?</value>
+          </text>
+          <text id="/assess_instruction_incentive/movement_limit/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/guidance_properly/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/3:label">
+            <value>Drug addict - parents / guardians / child</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason_other:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/2:label">
+            <value>Loose family bonding</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/no_guidance_reason/1:label">
+            <value>Lack of parents' / guardian's skills</value>
+          </text>
+          <text id="/assess_instruction_incentive/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/assess_instruction_incentive/note:label">
+            <value>2.3। Instruction, Limitations and Incentives</value>
+          </text>
+          <text id="/assess_instruction_incentive/movement_limit/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_instruction_incentive/encourage/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_instruction_incentive/encourage:label">
+            <value>Does the family provide the positive encouragement to their child?</value>
+          </text>
+          <text id="/assess_instruction_incentive/social_worker_observation:label">
+            <value>Social Worker Observation (Social Worker will ask the above questions, observe his behavior and psychology deeply and write a summary):</value>
+          </text>
+          <text id="/assess_instruction_incentive/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/assess_instruction_incentive/guidance/guidance_properly/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_instruction_incentive/encourage/1:label">
+            <value>Yes</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <assess_instruction_incentive id="assess_instruction_incentive">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <note/>
+          <encourage/>
+          <guidance>
+            <guidance_properly/>
+            <no_guidance_reason/>
+            <no_guidance_reason_other/>
+          </guidance>
+          <movement_limit/>
+          <protective_measure/>
+          <social_worker_observation/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </assess_instruction_incentive>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/assess_instruction_incentive/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/assess_instruction_incentive/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/assess_instruction_incentive/username" type="string"/>
+      <bind calculate="date(format-date( /assess_instruction_incentive/start ,'%Y-%m-%d'))" nodeset="/assess_instruction_incentive/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/assess_instruction_incentive/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_instruction_incentive/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_instruction_incentive/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_instruction_incentive/note" readonly="true()" type="string"/>
+      <bind nodeset="/assess_instruction_incentive/encourage" required="true()" type="select1"/>
+      <bind nodeset="/assess_instruction_incentive/guidance/guidance_properly" required="true()" type="select1"/>
+      <bind nodeset="/assess_instruction_incentive/guidance/no_guidance_reason" relevant=" /assess_instruction_incentive/guidance/guidance_properly =0" required="true()" type="select"/>
+      <bind nodeset="/assess_instruction_incentive/guidance/no_guidance_reason_other" relevant="selected( /assess_instruction_incentive/guidance/no_guidance_reason ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_instruction_incentive/movement_limit" required="true()" type="select1"/>
+      <bind nodeset="/assess_instruction_incentive/protective_measure" required="true()" type="select1"/>
+      <bind nodeset="/assess_instruction_incentive/social_worker_observation" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/assess_instruction_incentive/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'799103db76c74f32a8b096c860afec5f'" nodeset="/assess_instruction_incentive/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/assess_instruction_incentive/reg_info">
+      <input ref="/assess_instruction_incentive/reg_info/date">
+        <label ref="jr:itext('/assess_instruction_incentive/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_instruction_incentive/reg_info/child_name_bn">
+        <label ref="jr:itext('/assess_instruction_incentive/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_instruction_incentive/reg_info/child_name_en">
+        <label ref="jr:itext('/assess_instruction_incentive/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_instruction_incentive/reg_info/reg_num">
+        <label ref="jr:itext('/assess_instruction_incentive/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_instruction_incentive/note">
+      <label ref="jr:itext('/assess_instruction_incentive/note:label')"/>
+    </input>
+    <select1 ref="/assess_instruction_incentive/encourage">
+      <label ref="jr:itext('/assess_instruction_incentive/encourage:label')"/>
+      <item>
+        <label ref="jr:itext('/assess_instruction_incentive/encourage/1:label')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/assess_instruction_incentive/encourage/0:label')"/>
+        <value>0</value>
+      </item>
+    </select1>
+    <group appearance="field-list" ref="/assess_instruction_incentive/guidance">
+      <select1 ref="/assess_instruction_incentive/guidance/guidance_properly">
+        <label ref="jr:itext('/assess_instruction_incentive/guidance/guidance_properly:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_instruction_incentive/guidance/guidance_properly/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_instruction_incentive/guidance/guidance_properly/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_instruction_incentive/guidance/no_guidance_reason">
+        <label ref="jr:itext('/assess_instruction_incentive/guidance/no_guidance_reason:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_instruction_incentive/guidance/no_guidance_reason/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_instruction_incentive/guidance/no_guidance_reason/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_instruction_incentive/guidance/no_guidance_reason/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_instruction_incentive/guidance/no_guidance_reason/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_instruction_incentive/guidance/no_guidance_reason/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_instruction_incentive/guidance/no_guidance_reason/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_instruction_incentive/guidance/no_guidance_reason_other">
+        <label ref="jr:itext('/assess_instruction_incentive/guidance/no_guidance_reason_other:label')"/>
+      </input>
+    </group>
+    <select1 ref="/assess_instruction_incentive/movement_limit">
+      <label ref="jr:itext('/assess_instruction_incentive/movement_limit:label')"/>
+      <item>
+        <label ref="jr:itext('/assess_instruction_incentive/movement_limit/1:label')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/assess_instruction_incentive/movement_limit/0:label')"/>
+        <value>0</value>
+      </item>
+    </select1>
+    <select1 ref="/assess_instruction_incentive/protective_measure">
+      <label ref="jr:itext('/assess_instruction_incentive/protective_measure:label')"/>
+      <item>
+        <label ref="jr:itext('/assess_instruction_incentive/protective_measure/1:label')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/assess_instruction_incentive/protective_measure/0:label')"/>
+        <value>0</value>
+      </item>
+    </select1>
+    <input ref="/assess_instruction_incentive/social_worker_observation">
+      <label ref="jr:itext('/assess_instruction_incentive/social_worker_observation:label')"/>
+    </input>
+  </h:body>
+</h:html>

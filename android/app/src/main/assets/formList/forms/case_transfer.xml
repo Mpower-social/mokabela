@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>কেস স্থানান্তর</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/case_transfer/office_name:label">
+            <value>Transfer Office Name</value>
+          </text>
+          <text id="/case_transfer/transfer_place/1:label">
+            <value>Instituition</value>
+          </text>
+          <text id="/case_transfer/office_type/1:label">
+            <value>1</value>
+          </text>
+          <text id="/case_transfer/transfer_date:label">
+            <value>Transfer Date</value>
+          </text>
+          <text id="/case_transfer/transfer_reason/99:label">
+            <value>Others</value>
+          </text>
+          <text id="/case_transfer/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/case_transfer/reg_info/case_type:label">
+            <value>Case Type</value>
+          </text>
+          <text id="/case_transfer/transfer_place:label">
+            <value>Transfer Place</value>
+          </text>
+          <text id="/case_transfer/transfer_reason/3:label">
+            <value>Bail</value>
+          </text>
+          <text id="/case_transfer/office_name/1:label">
+            <value>1</value>
+          </text>
+          <text id="/case_transfer/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/case_transfer/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/case_transfer/transfer_reason/1:label">
+            <value>Release</value>
+          </text>
+          <text id="/case_transfer/transfer_reason:label">
+            <value>Reason of Transfer</value>
+          </text>
+          <text id="/case_transfer/office_type:label">
+            <value>Transfer Office Type</value>
+          </text>
+          <text id="/case_transfer/transfer_reason_other:label">
+            <value>write down the other reason of transfer</value>
+          </text>
+          <text id="/case_transfer/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/case_transfer/transfer_reason/2:label">
+            <value>Diversion</value>
+          </text>
+          <text id="/case_transfer/Comments:label">
+            <value>Comments</value>
+          </text>
+          <text id="/case_transfer/transfer_place/2:label">
+            <value>Community</value>
+          </text>
+          <text id="/case_transfer/reg_info/case_id:label">
+            <value>কেস আই . ডি</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/case_transfer/office_name:label">
+            <value>প্রতিষ্ঠানের নাম</value>
+          </text>
+          <text id="/case_transfer/transfer_place/1:label">
+            <value>প্রতিষ্ঠান</value>
+          </text>
+          <text id="/case_transfer/office_type/1:label">
+            <value>1</value>
+          </text>
+          <text id="/case_transfer/transfer_date:label">
+            <value>ট্রান্সফারের তারিখ</value>
+          </text>
+          <text id="/case_transfer/transfer_reason/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/case_transfer/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/case_transfer/reg_info/case_type:label">
+            <value>Case Type</value>
+          </text>
+          <text id="/case_transfer/transfer_place:label">
+            <value>কোথায় ট্রান্সফার</value>
+          </text>
+          <text id="/case_transfer/transfer_reason/3:label">
+            <value>জামিন</value>
+          </text>
+          <text id="/case_transfer/office_name/1:label">
+            <value>1</value>
+          </text>
+          <text id="/case_transfer/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/case_transfer/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/case_transfer/transfer_reason/1:label">
+            <value>মুক্তি</value>
+          </text>
+          <text id="/case_transfer/transfer_reason:label">
+            <value>ট্রান্সফারের কারণ</value>
+          </text>
+          <text id="/case_transfer/office_type:label">
+            <value>প্রতিষ্ঠানের ধরণ</value>
+          </text>
+          <text id="/case_transfer/transfer_reason_other:label">
+            <value>ট্রান্সফারের অন্য কারণটি লিখুন</value>
+          </text>
+          <text id="/case_transfer/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/case_transfer/transfer_reason/2:label">
+            <value>বিকল্প পন্থা</value>
+          </text>
+          <text id="/case_transfer/Comments:label">
+            <value>মন্তব্য</value>
+          </text>
+          <text id="/case_transfer/transfer_place/2:label">
+            <value>কমিউনিটি</value>
+          </text>
+          <text id="/case_transfer/reg_info/case_id:label">
+            <value>Case ID</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <case_transfer id="case_transfer">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+            <case_type/>
+            <case_id/>
+          </reg_info>
+          <transfer_date/>
+          <transfer_reason/>
+          <transfer_reason_other/>
+          <transfer_place/>
+          <office_type/>
+          <office_name/>
+          <Comments/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </case_transfer>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/case_transfer/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/case_transfer/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/case_transfer/username" type="string"/>
+      <bind calculate="date(format-date( /case_transfer/start ,'%Y-%m-%d'))" nodeset="/case_transfer/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/case_transfer/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_transfer/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_transfer/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_transfer/reg_info/case_type" required="true()" type="string"/>
+      <bind nodeset="/case_transfer/reg_info/case_id" required="true()" type="string"/>
+      <bind nodeset="/case_transfer/transfer_date" required="true()" type="date"/>
+      <bind nodeset="/case_transfer/transfer_reason" required="true()" type="select1"/>
+      <bind nodeset="/case_transfer/transfer_reason_other" relevant="selected( /case_transfer/transfer_reason ,'99')" required="true()" type="string"/>
+      <bind nodeset="/case_transfer/transfer_place" required="true()" type="select1"/>
+      <bind nodeset="/case_transfer/office_type" required="true()" type="select1"/>
+      <bind nodeset="/case_transfer/office_name" required="true()" type="select1"/>
+      <bind nodeset="/case_transfer/Comments" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/case_transfer/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'3cfbdd8dd8344283b6daabbbb14a28eb'" nodeset="/case_transfer/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/case_transfer/reg_info">
+      <input ref="/case_transfer/reg_info/date">
+        <label ref="jr:itext('/case_transfer/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/case_transfer/reg_info/child_name_bn">
+        <label ref="jr:itext('/case_transfer/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/case_transfer/reg_info/child_name_en">
+        <label ref="jr:itext('/case_transfer/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/case_transfer/reg_info/reg_num">
+        <label ref="jr:itext('/case_transfer/reg_info/reg_num:label')"/>
+      </input>
+      <input ref="/case_transfer/reg_info/case_type">
+        <label ref="jr:itext('/case_transfer/reg_info/case_type:label')"/>
+      </input>
+      <input ref="/case_transfer/reg_info/case_id">
+        <label ref="jr:itext('/case_transfer/reg_info/case_id:label')"/>
+      </input>
+    </group>
+    <input ref="/case_transfer/transfer_date">
+      <label ref="jr:itext('/case_transfer/transfer_date:label')"/>
+    </input>
+    <select1 ref="/case_transfer/transfer_reason">
+      <label ref="jr:itext('/case_transfer/transfer_reason:label')"/>
+      <item>
+        <label ref="jr:itext('/case_transfer/transfer_reason/1:label')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/case_transfer/transfer_reason/2:label')"/>
+        <value>2</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/case_transfer/transfer_reason/3:label')"/>
+        <value>3</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/case_transfer/transfer_reason/99:label')"/>
+        <value>99</value>
+      </item>
+    </select1>
+    <input ref="/case_transfer/transfer_reason_other">
+      <label ref="jr:itext('/case_transfer/transfer_reason_other:label')"/>
+    </input>
+    <select1 ref="/case_transfer/transfer_place">
+      <label ref="jr:itext('/case_transfer/transfer_place:label')"/>
+      <item>
+        <label ref="jr:itext('/case_transfer/transfer_place/1:label')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/case_transfer/transfer_place/2:label')"/>
+        <value>2</value>
+      </item>
+    </select1>
+    <select1 ref="/case_transfer/office_type">
+      <label ref="jr:itext('/case_transfer/office_type:label')"/>
+      <item>
+        <label ref="jr:itext('/case_transfer/office_type/1:label')"/>
+        <value>1</value>
+      </item>
+    </select1>
+    <select1 ref="/case_transfer/office_name">
+      <label ref="jr:itext('/case_transfer/office_name:label')"/>
+      <item>
+        <label ref="jr:itext('/case_transfer/office_name/1:label')"/>
+        <value>1</value>
+      </item>
+    </select1>
+    <input ref="/case_transfer/Comments">
+      <label ref="jr:itext('/case_transfer/Comments:label')"/>
+    </input>
+  </h:body>
+</h:html>

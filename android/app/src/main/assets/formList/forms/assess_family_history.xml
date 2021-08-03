@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>প্রাপ্তি সংক্রান্ত তথ্য-পরিবার ও পারিপার্শ্বিক তথ্য</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/assess_family_history/parent_guardian_imprisoned/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/parent_live_with_child:label">
+            <value>শিশুর মাতা-পিতা কি একসঙ্গে জীবন যাপন করেন?</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_history:label">
+            <value>শিশুর মাতা-পিতা বা বর্ধিত পরিবারের কোনো সদস্যের অপরাধ প্রবণতা/প্রতিবন্ধিতার ইতিহাস আছে/ছিল কি?</value>
+          </text>
+          <text id="/assess_family_history/child_live/parent_live_elsewhere/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member/1:label">
+            <value>মা</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/1:label">
+            <value>মাদকাসক্ত</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/1:label">
+            <value>পিতা</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/4:label">
+            <value>জন্মগত হৃদরোগ</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/7:label">
+            <value>ডায়াবেটিস</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere/3:label">
+            <value>দরিদ্রতা</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member/2:label">
+            <value>বাবা</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor:label">
+            <value>শিশু কার তত্ত্বাবধানে ছিল/আছে?</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/6:label">
+            <value>প্রতিবন্ধিতা</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere/4:label">
+            <value>জীবিকার প্রয়োজনে</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_how_long/2:label">
+            <value>১০-১৫ বছর</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness:label">
+            <value>শিশুর পরিবারের কোনো সদস্য দীর্ঘমেয়াদী অসুস্থতায় ভুগছে কি?</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/7:label">
+            <value>দীর্ঘমেয়াদী মানসিক অসুস্থতা</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member/3:label">
+            <value>ভাই</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member_other:label">
+            <value>অন্য কোন পরিবারের কোনো সদস্য দীর্ঘমেয়াদী অসুস্থতায় ভুগছে?</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/parent_live_with_child/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type:label">
+            <value>নির্দিষ্ট ঘরে টিক চিহ্ন দিন (একাধিক উত্তর হতে পারে)</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_how_long_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_how_long/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/5:label">
+            <value>নিপীড়নমূলক কর্মকাণ্ড</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate/1:label">
+            <value>১-৫ বছর</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere:label">
+            <value>কেন অন্যত্র বসবাস করে?</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/3:label">
+            <value>লিভার সিরোসিস</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/2:label">
+            <value>মাতা</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/2:label">
+            <value>কিডনী</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate/2:label">
+            <value>৫-১০ বছর</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type:label">
+            <value>রোগের নাম কী?</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate:label">
+            <value>কতবছর ধরে তারা পৃথকভাবে বসবাস করছেন?</value>
+          </text>
+          <text id="/assess_family_history/child_live/parent_live_elsewhere:label">
+            <value>শিশুর মাতা-পিতা নিজ বাসভূমি ছেড়ে অন্যত্র বসবাস করে কি?</value>
+          </text>
+          <text id="/assess_family_history/parent_guardian_imprisoned/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere/2:label">
+            <value>প্রাকৃতিক দুযোগ</value>
+          </text>
+          <text id="/assess_family_history/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type_other:label">
+            <value>অন্যান্য রোগের নাম (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere/1:label">
+            <value>সমাজচ্যুত</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/6:label">
+            <value>থ্যালাসেমিয়া</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member/4:label">
+            <value>বোন</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/1:label">
+            <value>ক্যান্সার</value>
+          </text>
+          <text id="/assess_family_history/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/3:label">
+            <value>সহিংস কর্মকাণ্ড</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/4:label">
+            <value>জঙ্গি/ সন্ত্রাসী কর্মকাণ্ড</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_history/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member:label">
+            <value>কে ভুগছে?</value>
+          </text>
+          <text id="/assess_family_history/note:label">
+            <value>3.1পরিবার ও পারিপার্শ্বিক তথ্য</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/3:label">
+            <value>বর্ধিত পরিবারের সদস্য</value>
+          </text>
+          <text id="/assess_family_history/social_worker_observation:label">
+            <value>সমাজকর্মীর পর্যবেক্ষণ (সমাজকর্মী উপরোক্ত বিষয়ে প্রশ্ন করবেন, গভীরভাবে তার আচরণ ও মনসংযোগ পর্যবেক্ষণ করবেন এবং সারসংক্ষেপ লিখবেন):</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/5:label">
+            <value>প্রতিষ্ঠানে</value>
+          </text>
+          <text id="/assess_family_history/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate/3:label">
+            <value>১০-১৫ বছর</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_history/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/parent_live_with_child/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_family_history/child_live/parent_live_elsewhere/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_family_history/parent_guardian_imprisoned:label">
+            <value>শিশুর মাতা-পিতা-অভিভাবক কি কোনো মামলায় অভিযুক্ত হয়ে কারাগারে থাকে?</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/2:label">
+            <value>অপরাধ কর্মকাণ্ড</value>
+          </text>
+          <text id="/assess_family_history/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/5:label">
+            <value>স্ট্রোকে প্যারালাইজড</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_how_long/1:label">
+            <value>৫-১০ বছর</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/4:label">
+            <value>প্রতিবেশী</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_how_long:label">
+            <value>কতদিন ধরে ভুগছে?</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/assess_family_history/parent_guardian_imprisoned/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/parent_live_with_child:label">
+            <value>Do the parents of the child live together?</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_history:label">
+            <value>Did the child's parent or any member of the extended family have / had a history of delinquency / disability?</value>
+          </text>
+          <text id="/assess_family_history/child_live/parent_live_elsewhere/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member/1:label">
+            <value>Mother</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/1:label">
+            <value>Addictive</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/1:label">
+            <value>Father</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/4:label">
+            <value>Congenital heart disease</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/7:label">
+            <value>Diabetes</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere/3:label">
+            <value>Poverty</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member/2:label">
+            <value>Father</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor:label">
+            <value>The child was / is supervised by whom</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/6:label">
+            <value>Disabilities</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere/4:label">
+            <value>Need for livelihood</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_how_long/2:label">
+            <value>10-15 year</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/99:label">
+            <value>Other</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness:label">
+            <value>Is any member of the child's family suffering from chronic illness?</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/7:label">
+            <value>Long Term Mental Illness</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member/3:label">
+            <value>Brother</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member_other:label">
+            <value>Please Specify the other member</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/parent_live_with_child/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type:label">
+            <value>Put mark on the box (multiple answers can be)</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_how_long_other:label">
+            <value>Please specify other time period of the disease</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate/99:label">
+            <value>Other</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_how_long/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/5:label">
+            <value>Offensive Activities</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate/1:label">
+            <value>1-5 year</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere:label">
+            <value>Why live elsewhere?</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/3:label">
+            <value>Liver cirrhosis</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/2:label">
+            <value>Mother</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/2:label">
+            <value>Kidney</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate/2:label">
+            <value>5-10 year</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor_other:label">
+            <value>Please Specify others</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type:label">
+            <value>What is the name of disease?</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate:label">
+            <value>How long have they lived separately?</value>
+          </text>
+          <text id="/assess_family_history/child_live/parent_live_elsewhere:label">
+            <value>Does the child's parent live elsewhere?</value>
+          </text>
+          <text id="/assess_family_history/parent_guardian_imprisoned/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere/2:label">
+            <value>Natural disaster</value>
+          </text>
+          <text id="/assess_family_history/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type_other:label">
+            <value>Please specify other disease</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere/1:label">
+            <value>Displaced</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/6:label">
+            <value>Thalassemia</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member/4:label">
+            <value>Sister</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/1:label">
+            <value>Cancer</value>
+          </text>
+          <text id="/assess_family_history/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/3:label">
+            <value>Violent Activities</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/4:label">
+            <value>Militant / Terrorist Activities</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_history/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness_member:label">
+            <value>Who is suffering?</value>
+          </text>
+          <text id="/assess_family_history/note:label">
+            <value>3.1 Family history</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/3:label">
+            <value>Extended family member</value>
+          </text>
+          <text id="/assess_family_history/social_worker_observation:label">
+            <value>Social Worker Observation (Social Worker will ask the above questions, observe his behavior and psychology deeply and write a summary):</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/5:label">
+            <value>Institution</value>
+          </text>
+          <text id="/assess_family_history/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate/3:label">
+            <value>10-15 year</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/how_long_live_separate_other:label">
+            <value>Please Specify others</value>
+          </text>
+          <text id="/assess_family_history/illness/chronic_illness/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_history/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_family_history/child_live_with/parent_live_with_child/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_family_history/child_live/parent_live_elsewhere/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_family_history/parent_guardian_imprisoned:label">
+            <value>Is the child's parent or guardian imprisoned in any case?</value>
+          </text>
+          <text id="/assess_family_history/child_live/why_live_elsewhere_other:label">
+            <value>Please Specify others</value>
+          </text>
+          <text id="/assess_family_history/disability/disability_type/2:label">
+            <value>Offense</value>
+          </text>
+          <text id="/assess_family_history/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_type/5:label">
+            <value>Paralyzed after stroke</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_how_long/1:label">
+            <value>5-10 year</value>
+          </text>
+          <text id="/assess_family_history/supervisor/child_supervisor/4:label">
+            <value>Neighbor</value>
+          </text>
+          <text id="/assess_family_history/disease/disease_how_long:label">
+            <value>How long has he/she been suffering?</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <assess_family_history id="assess_family_history">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <note/>
+          <illness>
+            <chronic_illness/>
+            <chronic_illness_member/>
+            <chronic_illness_member_other/>
+          </illness>
+          <disease>
+            <disease_type/>
+            <disease_type_other/>
+            <disease_how_long/>
+            <disease_how_long_other/>
+          </disease>
+          <disability>
+            <disability_history/>
+            <disability_type/>
+          </disability>
+          <child_live_with>
+            <parent_live_with_child/>
+            <how_long_live_separate/>
+            <how_long_live_separate_other/>
+          </child_live_with>
+          <parent_guardian_imprisoned/>
+          <supervisor>
+            <child_supervisor/>
+            <child_supervisor_other/>
+          </supervisor>
+          <child_live>
+            <parent_live_elsewhere/>
+            <why_live_elsewhere/>
+            <why_live_elsewhere_other/>
+          </child_live>
+          <social_worker_observation/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </assess_family_history>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/assess_family_history/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/assess_family_history/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/assess_family_history/username" type="string"/>
+      <bind calculate="date(format-date( /assess_family_history/start ,'%Y-%m-%d'))" nodeset="/assess_family_history/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/assess_family_history/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_family_history/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_family_history/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_family_history/note" readonly="true()" type="string"/>
+      <bind nodeset="/assess_family_history/illness/chronic_illness" required="true()" type="select1"/>
+      <bind nodeset="/assess_family_history/illness/chronic_illness_member" relevant=" /assess_family_history/illness/chronic_illness =1" required="true()" type="select"/>
+      <bind nodeset="/assess_family_history/illness/chronic_illness_member_other" relevant="selected( /assess_family_history/illness/chronic_illness_member ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_family_history/disease/disease_type" relevant=" /assess_family_history/illness/chronic_illness =1" required="true()" type="select"/>
+      <bind nodeset="/assess_family_history/disease/disease_type_other" relevant="selected( /assess_family_history/disease/disease_type ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_family_history/disease/disease_how_long" relevant=" /assess_family_history/illness/chronic_illness =1" required="true()" type="select1"/>
+      <bind nodeset="/assess_family_history/disease/disease_how_long_other" relevant="selected( /assess_family_history/disease/disease_how_long ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_family_history/disability/disability_history" required="true()" type="select1"/>
+      <bind nodeset="/assess_family_history/disability/disability_type" relevant=" /assess_family_history/disability/disability_history =1" required="true()" type="select"/>
+      <bind nodeset="/assess_family_history/child_live_with/parent_live_with_child" required="true()" type="select1"/>
+      <bind nodeset="/assess_family_history/child_live_with/how_long_live_separate" relevant=" /assess_family_history/child_live_with/parent_live_with_child =1" required="true()" type="select1"/>
+      <bind nodeset="/assess_family_history/child_live_with/how_long_live_separate_other" relevant="selected( /assess_family_history/child_live_with/how_long_live_separate ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_family_history/parent_guardian_imprisoned" required="true()" type="select1"/>
+      <bind nodeset="/assess_family_history/supervisor/child_supervisor" required="true()" type="select1"/>
+      <bind nodeset="/assess_family_history/supervisor/child_supervisor_other" relevant="selected( /assess_family_history/supervisor/child_supervisor ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_family_history/child_live/parent_live_elsewhere" required="true()" type="select1"/>
+      <bind nodeset="/assess_family_history/child_live/why_live_elsewhere" relevant="selected( /assess_family_history/child_live/parent_live_elsewhere ,'1')" required="true()" type="select"/>
+      <bind nodeset="/assess_family_history/child_live/why_live_elsewhere_other" relevant="selected( /assess_family_history/child_live/why_live_elsewhere ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_family_history/social_worker_observation" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/assess_family_history/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'47546d06f636489ca62f19e6338ba61e'" nodeset="/assess_family_history/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/assess_family_history/reg_info">
+      <input ref="/assess_family_history/reg_info/date">
+        <label ref="jr:itext('/assess_family_history/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_family_history/reg_info/child_name_bn">
+        <label ref="jr:itext('/assess_family_history/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_family_history/reg_info/child_name_en">
+        <label ref="jr:itext('/assess_family_history/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_family_history/reg_info/reg_num">
+        <label ref="jr:itext('/assess_family_history/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_family_history/note">
+      <label ref="jr:itext('/assess_family_history/note:label')"/>
+    </input>
+    <group appearance="field-list" ref="/assess_family_history/illness">
+      <select1 ref="/assess_family_history/illness/chronic_illness">
+        <label ref="jr:itext('/assess_family_history/illness/chronic_illness:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_family_history/illness/chronic_illness/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/illness/chronic_illness/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_family_history/illness/chronic_illness_member">
+        <label ref="jr:itext('/assess_family_history/illness/chronic_illness_member:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_family_history/illness/chronic_illness_member/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/illness/chronic_illness_member/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/illness/chronic_illness_member/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/illness/chronic_illness_member/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/illness/chronic_illness_member/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_family_history/illness/chronic_illness_member_other">
+        <label ref="jr:itext('/assess_family_history/illness/chronic_illness_member_other:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/assess_family_history/disease">
+      <select ref="/assess_family_history/disease/disease_type">
+        <label ref="jr:itext('/assess_family_history/disease/disease_type:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disease/disease_type/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disease/disease_type/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disease/disease_type/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disease/disease_type/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disease/disease_type/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disease/disease_type/6:label')"/>
+          <value>6</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disease/disease_type/7:label')"/>
+          <value>7</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disease/disease_type/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_family_history/disease/disease_type_other">
+        <label ref="jr:itext('/assess_family_history/disease/disease_type_other:label')"/>
+      </input>
+      <select1 ref="/assess_family_history/disease/disease_how_long">
+        <label ref="jr:itext('/assess_family_history/disease/disease_how_long:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disease/disease_how_long/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disease/disease_how_long/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disease/disease_how_long/99:label')"/>
+          <value>99</value>
+        </item>
+      </select1>
+      <input ref="/assess_family_history/disease/disease_how_long_other">
+        <label ref="jr:itext('/assess_family_history/disease/disease_how_long_other:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/assess_family_history/disability">
+      <select1 ref="/assess_family_history/disability/disability_history">
+        <label ref="jr:itext('/assess_family_history/disability/disability_history:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disability/disability_history/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disability/disability_history/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_family_history/disability/disability_type">
+        <label ref="jr:itext('/assess_family_history/disability/disability_type:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disability/disability_type/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disability/disability_type/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disability/disability_type/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disability/disability_type/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disability/disability_type/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disability/disability_type/6:label')"/>
+          <value>6</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/disability/disability_type/7:label')"/>
+          <value>7</value>
+        </item>
+      </select>
+    </group>
+    <group appearance="field-list" ref="/assess_family_history/child_live_with">
+      <select1 ref="/assess_family_history/child_live_with/parent_live_with_child">
+        <label ref="jr:itext('/assess_family_history/child_live_with/parent_live_with_child:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live_with/parent_live_with_child/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live_with/parent_live_with_child/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 ref="/assess_family_history/child_live_with/how_long_live_separate">
+        <label ref="jr:itext('/assess_family_history/child_live_with/how_long_live_separate:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live_with/how_long_live_separate/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live_with/how_long_live_separate/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live_with/how_long_live_separate/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live_with/how_long_live_separate/99:label')"/>
+          <value>99</value>
+        </item>
+      </select1>
+      <input ref="/assess_family_history/child_live_with/how_long_live_separate_other">
+        <label ref="jr:itext('/assess_family_history/child_live_with/how_long_live_separate_other:label')"/>
+      </input>
+    </group>
+    <select1 ref="/assess_family_history/parent_guardian_imprisoned">
+      <label ref="jr:itext('/assess_family_history/parent_guardian_imprisoned:label')"/>
+      <item>
+        <label ref="jr:itext('/assess_family_history/parent_guardian_imprisoned/1:label')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/assess_family_history/parent_guardian_imprisoned/0:label')"/>
+        <value>0</value>
+      </item>
+    </select1>
+    <group appearance="field-list" ref="/assess_family_history/supervisor">
+      <select1 ref="/assess_family_history/supervisor/child_supervisor">
+        <label ref="jr:itext('/assess_family_history/supervisor/child_supervisor:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_family_history/supervisor/child_supervisor/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/supervisor/child_supervisor/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/supervisor/child_supervisor/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/supervisor/child_supervisor/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/supervisor/child_supervisor/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/supervisor/child_supervisor/99:label')"/>
+          <value>99</value>
+        </item>
+      </select1>
+      <input ref="/assess_family_history/supervisor/child_supervisor_other">
+        <label ref="jr:itext('/assess_family_history/supervisor/child_supervisor_other:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/assess_family_history/child_live">
+      <select1 ref="/assess_family_history/child_live/parent_live_elsewhere">
+        <label ref="jr:itext('/assess_family_history/child_live/parent_live_elsewhere:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live/parent_live_elsewhere/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live/parent_live_elsewhere/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_family_history/child_live/why_live_elsewhere">
+        <label ref="jr:itext('/assess_family_history/child_live/why_live_elsewhere:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live/why_live_elsewhere/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live/why_live_elsewhere/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live/why_live_elsewhere/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live/why_live_elsewhere/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_family_history/child_live/why_live_elsewhere/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_family_history/child_live/why_live_elsewhere_other">
+        <label ref="jr:itext('/assess_family_history/child_live/why_live_elsewhere_other:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_family_history/social_worker_observation">
+      <label ref="jr:itext('/assess_family_history/social_worker_observation:label')"/>
+    </input>
+  </h:body>
+</h:html>

@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>প্রাপ্তি সংক্রান্ত তথ্য-সাধারণ স্বাস্থ্য</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/assess_general_health/social_worker_observation:label">
+            <value>সমাজকর্মীর পর্যবেক্ষণ</value>
+          </text>
+          <text id="/assess_general_health/treatment/chronic_illness/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_general_health/note1:label">
+            <value>নির্দেশনা - [শিশু, ক্ষেত্রমত, তার মাতা-পিতা-অভিভাবক-পরিচর্যাকারীকে তার মতো করে প্রশ্নসমূহ করুন। উত্তরদাতার কথা মনযোগ সহকারে শুনুন, গোপনীয়তা রক্ষার আশ্বাস দিন, উত্তম যোগাযোগ দক্ষতা প্রদর্শন করুন এবং সামগ্রিক পরিস্থিতি গভীরভাবে পর্যবেক্ষণ করুন। সামগ্রিক পরিস্থিতি বিবেচনায় নিয়ে যথাযথ তথ্য লিখুন।]</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine:label">
+            <value>বর্তমান বয়স অনুযায়ী প্রযোজ্য টীকার নাম নির্দিষ্ট করুন?</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/7:label">
+            <value>ডিপথেরিয়া</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason/1:label">
+            <value>অর্থের অভাব</value>
+          </text>
+          <text id="/assess_general_health/treatment/child_visits_doctor_lasty_one_year:label">
+            <value>গত এক বছরে শিশুকে ডাক্তার দেখানো হয়েছে কি?</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason:label">
+            <value>কারণ কী?</value>
+          </text>
+          <text id="/assess_general_health/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/4:label">
+            <value>রুবেলা</value>
+          </text>
+          <text id="/assess_general_health/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_general_health/vaccine/vaccination/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason/99:label">
+            <value>অন্যান্য কারণ</value>
+          </text>
+          <text id="/assess_general_health/vaccine/vaccination_provided_other:label">
+            <value>অন্যান্য টীকার নাম (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_general_health/treatment/child_visits_doctor_lasty_one_year/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/4:label">
+            <value>নিউমোনিয়া</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/3:label">
+            <value>টাইফয়েড</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/1:label">
+            <value>টাইফয়েড</value>
+          </text>
+          <text id="/assess_general_health/vaccine/vaccination:label">
+            <value>শিশুর জন্য প্রয়োজনীয় সব টীকা দেয়া হয়েছে কি?</value>
+          </text>
+          <text id="/assess_general_health/treatment/chronic_illness:label">
+            <value>শিশুটির দীর্ঘমেয়াদী কোনো অসুস্থতা আছে কি?</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/5:label">
+            <value>যক্ষ্মা</value>
+          </text>
+          <text id="/assess_general_health/treatment/teatment:label">
+            <value>কোনো চিকিৎসা নিয়েছে কি?</value>
+          </text>
+          <text id="/assess_general_health/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/assess_general_health/vaccine/vaccination/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_general_health/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/1:label">
+            <value>দুর্ঘটনা</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/2:label">
+            <value>চিকেন পক্স</value>
+          </text>
+          <text id="/assess_general_health/treatment/chronic_illness/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason/3:label">
+            <value>হাসপাতাল দূরে</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/2:label">
+            <value>হাপানী</value>
+          </text>
+          <text id="/assess_general_health/treatment/teatment/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/5:label">
+            <value>টিটেনাস</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason_other:label">
+            <value>চিকিৎসা না নেবার অন্যান্য কারণ (নির্দিষ্ট করুন</value>
+          </text>
+          <text id="/assess_general_health/treatment/child_visits_doctor_lasty_one_year/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/6:label">
+            <value>পোলিও</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness:label">
+            <value>কী রোগ/অসুস্থতা?(একাধিক উত্তর হতে পারে)</value>
+          </text>
+          <text id="/assess_general_health/social_worker_observation:hint">
+            <value>(সমাজকর্মী উপরোক্ত বিষয়ে প্রশ্ন করবেন, গভীরভাবে তার আচরণ ও মনসংযোগ পর্যবেক্ষণ করবেন এবং সারসংক্ষেপ লিখবেন):</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/3:label">
+            <value>হেপাটাইটিস বি</value>
+          </text>
+          <text id="/assess_general_health/treatment/teatment/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason/2:label">
+            <value>অভিভাবকের সচেতনতার অভাব</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/assess_general_health/social_worker_observation:label">
+            <value>Social Worker Observation</value>
+          </text>
+          <text id="/assess_general_health/treatment/chronic_illness/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_general_health/note1:label">
+            <value>নির্দেশনা - [শিশু, ক্ষেত্রমত, তার মাতা-পিতা-অভিভাবক-পরিচর্যাকারীকে তার মতো করে প্রশ্নসমূহ করুন। উত্তরদাতার কথা মনযোগ সহকারে শুনুন, গোপনীয়তা রক্ষার আশ্বাস দিন, উত্তম যোগাযোগ দক্ষতা প্রদর্শন করুন এবং সামগ্রিক পরিস্থিতি গভীরভাবে পর্যবেক্ষণ করুন। সামগ্রিক পরিস্থিতি বিবেচনায় নিয়ে যথাযথ তথ্য লিখুন।]</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine:label">
+            <value>Specify the name of the applicable vaccines as per current age?</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/7:label">
+            <value>Diphtheria</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason/1:label">
+            <value>Lack of money</value>
+          </text>
+          <text id="/assess_general_health/treatment/child_visits_doctor_lasty_one_year:label">
+            <value>Has the child been shown a doctor in the last one year?</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason:label">
+            <value>What is the reason?</value>
+          </text>
+          <text id="/assess_general_health/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/4:label">
+            <value>Rubella</value>
+          </text>
+          <text id="/assess_general_health/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_general_health/vaccine/vaccination/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_general_health/vaccine/vaccination_provided_other:label">
+            <value>Name of other vaccinations (Specify)</value>
+          </text>
+          <text id="/assess_general_health/treatment/child_visits_doctor_lasty_one_year/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/4:label">
+            <value>Pneumonia</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/3:label">
+            <value>Typhoid</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/1:label">
+            <value>Typhoid</value>
+          </text>
+          <text id="/assess_general_health/vaccine/vaccination:label">
+            <value>Have all the necessary vaccines been provided for the baby?</value>
+          </text>
+          <text id="/assess_general_health/treatment/chronic_illness:label">
+            <value>Does the child have any chronic illness?</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/5:label">
+            <value>Tuberculosis</value>
+          </text>
+          <text id="/assess_general_health/treatment/teatment:label">
+            <value>Has the child received any treatment?</value>
+          </text>
+          <text id="/assess_general_health/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/assess_general_health/vaccine/vaccination/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_general_health/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/1:label">
+            <value>No Accident</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/2:label">
+            <value>Chicken pox</value>
+          </text>
+          <text id="/assess_general_health/treatment/chronic_illness/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason/3:label">
+            <value>Hospital is far away</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness/2:label">
+            <value>Ashma</value>
+          </text>
+          <text id="/assess_general_health/treatment/teatment/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/5:label">
+            <value>Tetanus</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason_other:label">
+            <value>Other reson to not receive treatment (Specify)</value>
+          </text>
+          <text id="/assess_general_health/treatment/child_visits_doctor_lasty_one_year/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/6:label">
+            <value>Polio</value>
+          </text>
+          <text id="/assess_general_health/treatment/illness:label">
+            <value>What disease / illness? (There can be multiple answers)</value>
+          </text>
+          <text id="/assess_general_health/social_worker_observation:hint">
+            <value>Social Worker will ask the above questions, observe his behavior and psychology deeply and write a summary</value>
+          </text>
+          <text id="/assess_general_health/vaccine/current_age_vaccine/3:label">
+            <value>Hepatitis B</value>
+          </text>
+          <text id="/assess_general_health/treatment/teatment/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_general_health/treatment/no_treatment_reason/2:label">
+            <value>Lack of guardian's consciousness</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <assess_general_health id="assess_general_health">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <date/>
+          <note1/>
+          <treatment>
+            <child_visits_doctor_lasty_one_year/>
+            <chronic_illness/>
+            <illness/>
+            <teatment/>
+            <no_treatment_reason/>
+            <no_treatment_reason_other/>
+          </treatment>
+          <vaccine>
+            <vaccination/>
+            <current_age_vaccine/>
+            <vaccination_provided_other/>
+          </vaccine>
+          <social_worker_observation/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </assess_general_health>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/assess_general_health/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/assess_general_health/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/assess_general_health/username" type="string"/>
+      <bind nodeset="/assess_general_health/reg_info/child_name_bn" required="true()" type="string"/>
+      <bind nodeset="/assess_general_health/reg_info/child_name_en" required="true()" type="string"/>
+      <bind nodeset="/assess_general_health/reg_info/reg_num" required="true()" type="string"/>
+      <bind calculate="date(format-date( /assess_general_health/start ,'%Y-%m-%d'))" nodeset="/assess_general_health/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/assess_general_health/note1" readonly="true()" type="string"/>
+      <bind nodeset="/assess_general_health/treatment/child_visits_doctor_lasty_one_year" required="true()" type="select1"/>
+      <bind nodeset="/assess_general_health/treatment/chronic_illness" required="true()" type="select1"/>
+      <bind nodeset="/assess_general_health/treatment/illness" relevant=" /assess_general_health/treatment/chronic_illness =1" required="true()" type="select"/>
+      <bind nodeset="/assess_general_health/treatment/teatment" relevant=" /assess_general_health/treatment/chronic_illness =1" required="true()" type="select1"/>
+      <bind nodeset="/assess_general_health/treatment/no_treatment_reason" relevant=" /assess_general_health/treatment/chronic_illness =0 or  /assess_general_health/treatment/teatment =2" required="true()" type="select"/>
+      <bind nodeset="/assess_general_health/treatment/no_treatment_reason_other" relevant="selected( /assess_general_health/treatment/no_treatment_reason ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_general_health/vaccine/vaccination" required="true()" type="select1"/>
+      <bind nodeset="/assess_general_health/vaccine/current_age_vaccine" relevant=" /assess_general_health/vaccine/vaccination =0" required="true()" type="select"/>
+      <bind nodeset="/assess_general_health/vaccine/vaccination_provided_other" relevant="selected( /assess_general_health/vaccine/current_age_vaccine ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_general_health/social_worker_observation" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/assess_general_health/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'ee8ab08e38a7433a8623399cf017989d'" nodeset="/assess_general_health/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/assess_general_health/reg_info">
+      <input appearance="db" ref="/assess_general_health/reg_info/child_name_bn">
+        <label ref="jr:itext('/assess_general_health/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_general_health/reg_info/child_name_en">
+        <label ref="jr:itext('/assess_general_health/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_general_health/reg_info/reg_num">
+        <label ref="jr:itext('/assess_general_health/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_general_health/date">
+      <label ref="jr:itext('/assess_general_health/date:label')"/>
+    </input>
+    <input ref="/assess_general_health/note1">
+      <label ref="jr:itext('/assess_general_health/note1:label')"/>
+    </input>
+    <group appearance="field-list" ref="/assess_general_health/treatment">
+      <select1 ref="/assess_general_health/treatment/child_visits_doctor_lasty_one_year">
+        <label ref="jr:itext('/assess_general_health/treatment/child_visits_doctor_lasty_one_year:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/child_visits_doctor_lasty_one_year/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/child_visits_doctor_lasty_one_year/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 ref="/assess_general_health/treatment/chronic_illness">
+        <label ref="jr:itext('/assess_general_health/treatment/chronic_illness:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/chronic_illness/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/chronic_illness/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_general_health/treatment/illness">
+        <label ref="jr:itext('/assess_general_health/treatment/illness:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/illness/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/illness/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/illness/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/illness/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/illness/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/illness/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <select1 ref="/assess_general_health/treatment/teatment">
+        <label ref="jr:itext('/assess_general_health/treatment/teatment:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/teatment/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/teatment/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_general_health/treatment/no_treatment_reason">
+        <label ref="jr:itext('/assess_general_health/treatment/no_treatment_reason:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/no_treatment_reason/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/no_treatment_reason/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/no_treatment_reason/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/treatment/no_treatment_reason/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_general_health/treatment/no_treatment_reason_other">
+        <label ref="jr:itext('/assess_general_health/treatment/no_treatment_reason_other:label')"/>
+      </input>
+    </group>
+    <group ref="/assess_general_health/vaccine">
+      <select1 ref="/assess_general_health/vaccine/vaccination">
+        <label ref="jr:itext('/assess_general_health/vaccine/vaccination:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_general_health/vaccine/vaccination/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/vaccine/vaccination/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_general_health/vaccine/current_age_vaccine">
+        <label ref="jr:itext('/assess_general_health/vaccine/current_age_vaccine:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_general_health/vaccine/current_age_vaccine/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/vaccine/current_age_vaccine/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/vaccine/current_age_vaccine/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/vaccine/current_age_vaccine/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/vaccine/current_age_vaccine/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/vaccine/current_age_vaccine/6:label')"/>
+          <value>6</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/vaccine/current_age_vaccine/7:label')"/>
+          <value>7</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_general_health/vaccine/current_age_vaccine/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_general_health/vaccine/vaccination_provided_other">
+        <label ref="jr:itext('/assess_general_health/vaccine/vaccination_provided_other:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_general_health/social_worker_observation">
+      <label ref="jr:itext('/assess_general_health/social_worker_observation:label')"/>
+      <hint ref="jr:itext('/assess_general_health/social_worker_observation:hint')"/>
+    </input>
+  </h:body>
+</h:html>

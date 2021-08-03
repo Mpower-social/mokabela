@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>ইন্টারভেনশন প্ল্যান</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/intervention_plan/plan/6:label">
+            <value>Temporary accomodation arrangement</value>
+          </text>
+          <text id="/intervention_plan/plan/19:label">
+            <value>Informal education system</value>
+          </text>
+          <text id="/intervention_plan/plan/23:label">
+            <value>Connect to the entertainment system</value>
+          </text>
+          <text id="/intervention_plan/plan/21:label">
+            <value>Family History</value>
+          </text>
+          <text id="/intervention_plan/plan/1:label">
+            <value form="audio">jr://audio/Yes</value>
+            <value>Birth Registration</value>
+          </text>
+          <text id="/intervention_plan/plan/5:label">
+            <value>Rescuing from Child Labour</value>
+          </text>
+          <text id="/intervention_plan/plan/20:label">
+            <value>Visitting Family</value>
+          </text>
+          <text id="/intervention_plan/plan/11:label">
+            <value>Admission to technical education institutions</value>
+          </text>
+          <text id="/intervention_plan/plan/18:label">
+            <value>Scholarship</value>
+          </text>
+          <text id="/intervention_plan/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/intervention_plan/office_type/1:label">
+            <value>1</value>
+          </text>
+          <text id="/intervention_plan/plan_other:label">
+            <value>অন্যান্য পরিকল্পিত কার্যক্রমটি লিখুন</value>
+          </text>
+          <text id="/intervention_plan/plan/28:label">
+            <value>Diversion</value>
+          </text>
+          <text id="/intervention_plan/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/intervention_plan/plan/2:label">
+            <value>Councelling</value>
+          </text>
+          <text id="/intervention_plan/office_name:label">
+            <value>বাস্তবায়নকাল</value>
+          </text>
+          <text id="/intervention_plan/plan/13:label">
+            <value>Humanitarian aid</value>
+          </text>
+          <text id="/intervention_plan/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/intervention_plan/comments:label">
+            <value>মন্তব্য</value>
+          </text>
+          <text id="/intervention_plan/office_type:label">
+            <value>পরিকল্পিত বাস্তবায়নকারী</value>
+          </text>
+          <text id="/intervention_plan/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/intervention_plan/plan/9:label">
+            <value>Transfer to family</value>
+          </text>
+          <text id="/intervention_plan/plan/25:label">
+            <value>Discuss with community members for social awareness</value>
+          </text>
+          <text id="/intervention_plan/plan/99:label">
+            <value>Others</value>
+          </text>
+          <text id="/intervention_plan/plan/14:label">
+            <value>Arranging job</value>
+          </text>
+          <text id="/intervention_plan/office_name/1:label">
+            <value>1</value>
+          </text>
+          <text id="/intervention_plan/plan/10:label">
+            <value>Admission to school</value>
+          </text>
+          <text id="/intervention_plan/plan:label">
+            <value>পরিকল্পিত কার্যক্রম</value>
+          </text>
+          <text id="/intervention_plan/plan/26:label">
+            <value>Coaching</value>
+          </text>
+          <text id="/intervention_plan/plan/8:label">
+            <value>Family Reunification</value>
+          </text>
+          <text id="/intervention_plan/plan/17:label">
+            <value>Legal aid</value>
+          </text>
+          <text id="/intervention_plan/plan/27:label">
+            <value>Provide information or advice on adolescent problems</value>
+          </text>
+          <text id="/intervention_plan/plan/15:label">
+            <value>Family Counceling</value>
+          </text>
+          <text id="/intervention_plan/plan/22:label">
+            <value>Advising on life skills</value>
+          </text>
+          <text id="/intervention_plan/plan/16:label">
+            <value>Linking to the Social Care Protection Committee</value>
+          </text>
+          <text id="/intervention_plan/plan/12:label">
+            <value>Linked to financial aid</value>
+          </text>
+          <text id="/intervention_plan/plan/3:label">
+            <value>Rescuing from risky situation</value>
+          </text>
+          <text id="/intervention_plan/plan/7:label">
+            <value>Advice on Parenting or Baby Care</value>
+          </text>
+          <text id="/intervention_plan/plan/4:label">
+            <value>Rescuing from Child Marriage</value>
+          </text>
+          <text id="/intervention_plan/plan/24:label">
+            <value>Councelling with parents</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/intervention_plan/plan/6:label">
+            <value>সাময়িক আবাসন বা আশ্রয় এর ব্যবস্থা</value>
+          </text>
+          <text id="/intervention_plan/plan/19:label">
+            <value>অপ্রাতিষ্ঠানিক শিক্ষা ব্যবস্থা</value>
+          </text>
+          <text id="/intervention_plan/plan/23:label">
+            <value>বিনোদন ব্যাবস্থার সাথে সংযুক্ত করে দেয়া</value>
+          </text>
+          <text id="/intervention_plan/plan/21:label">
+            <value>পারিবারিক ইতিহাস</value>
+          </text>
+          <text id="/intervention_plan/plan/1:label">
+            <value form="audio">jr://audio/-</value>
+            <value>জন্ম নিবন্ধন</value>
+          </text>
+          <text id="/intervention_plan/plan/5:label">
+            <value>ঝুঁকিপূর্ণ শিশুশ্রম থেকে উদ্ধার</value>
+          </text>
+          <text id="/intervention_plan/plan/20:label">
+            <value>পারিবারিক ভ্রমণ</value>
+          </text>
+          <text id="/intervention_plan/plan/11:label">
+            <value>কারিগরি শিক্ষা প্রতিষ্ঠানে ভর্তি</value>
+          </text>
+          <text id="/intervention_plan/plan/18:label">
+            <value>বৃত্তি</value>
+          </text>
+          <text id="/intervention_plan/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/intervention_plan/office_type/1:label">
+            <value>1</value>
+          </text>
+          <text id="/intervention_plan/plan_other:label">
+            <value>Please write down the other Interventiona plan name</value>
+          </text>
+          <text id="/intervention_plan/plan/28:label">
+            <value>বিকল্প পন্থা</value>
+          </text>
+          <text id="/intervention_plan/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/intervention_plan/plan/2:label">
+            <value>কাউন্সেলিং</value>
+          </text>
+          <text id="/intervention_plan/office_name:label">
+            <value>Implementation Plan Date</value>
+          </text>
+          <text id="/intervention_plan/plan/13:label">
+            <value>মানবিক সাহায্য</value>
+          </text>
+          <text id="/intervention_plan/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/intervention_plan/comments:label">
+            <value>Comments</value>
+          </text>
+          <text id="/intervention_plan/office_type:label">
+            <value>Implementer</value>
+          </text>
+          <text id="/intervention_plan/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/intervention_plan/plan/9:label">
+            <value>পরিবারে হস্তান্তর</value>
+          </text>
+          <text id="/intervention_plan/plan/25:label">
+            <value>সামাজিক সচেতনতার জন্য সমাজের সদ্স্যদের সাথে আলোচনা</value>
+          </text>
+          <text id="/intervention_plan/plan/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/intervention_plan/plan/14:label">
+            <value>চাকুরীর ব্যবস্থা করে দেয়া</value>
+          </text>
+          <text id="/intervention_plan/office_name/1:label">
+            <value>1</value>
+          </text>
+          <text id="/intervention_plan/plan/10:label">
+            <value>বিদ্যালয়ে ভর্তি বা প্রাতিষ্ঠানিক শিক্ষা</value>
+          </text>
+          <text id="/intervention_plan/plan:label">
+            <value>Intervention Plan</value>
+          </text>
+          <text id="/intervention_plan/plan/26:label">
+            <value>কোচিং</value>
+          </text>
+          <text id="/intervention_plan/plan/8:label">
+            <value>পরিবারে পুনঃএকত্রি করণ</value>
+          </text>
+          <text id="/intervention_plan/plan/17:label">
+            <value>আইনগত সাহায্য</value>
+          </text>
+          <text id="/intervention_plan/plan/27:label">
+            <value>কৈশোরকালীন সমস্যা নিয়ে তথ্য বা পরামর্শ প্রদান</value>
+          </text>
+          <text id="/intervention_plan/plan/15:label">
+            <value>পারিবারিক কাউন্সেলিং</value>
+          </text>
+          <text id="/intervention_plan/plan/22:label">
+            <value>জীবন দক্ষতা বিষয়ে পরামর্শ দেয়া</value>
+          </text>
+          <text id="/intervention_plan/plan/16:label">
+            <value>সামাজিক সুরক্ষা কমিটির সাথে সংযুক্ত করে দেয়া</value>
+          </text>
+          <text id="/intervention_plan/plan/12:label">
+            <value>আর্থিক সাহায্যের সাথে সংযুক্ত করে দেয়া</value>
+          </text>
+          <text id="/intervention_plan/plan/3:label">
+            <value>ঝুঁকিপূর্ণ অবস্থা থেকে উদ্ধার</value>
+          </text>
+          <text id="/intervention_plan/plan/7:label">
+            <value>পেরেন্টিং বা শিশুর পরিচর্যা বিষয়ে পরামর্শ দেয়া</value>
+          </text>
+          <text id="/intervention_plan/plan/4:label">
+            <value>শিশু বিবাহ থেকে উদ্ধার</value>
+          </text>
+          <text id="/intervention_plan/plan/24:label">
+            <value>পিতামাতার সাথে কাউন্সেলিং</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <intervention_plan id="intervention_plan">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <plan/>
+          <plan_other/>
+          <office_type/>
+          <office_name/>
+          <comments/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </intervention_plan>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/intervention_plan/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/intervention_plan/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/intervention_plan/username" type="string"/>
+      <bind calculate="date(format-date( /intervention_plan/start ,'%Y-%m-%d'))" nodeset="/intervention_plan/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/intervention_plan/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/intervention_plan/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/intervention_plan/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/intervention_plan/plan" required="true()" type="select"/>
+      <bind nodeset="/intervention_plan/plan_other" relevant="selected( /intervention_plan/plan ,'99')" required="true()" type="string"/>
+      <bind nodeset="/intervention_plan/office_type" required="true()" type="select1"/>
+      <bind nodeset="/intervention_plan/office_name" required="true()" type="select1"/>
+      <bind nodeset="/intervention_plan/comments" required="false()" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/intervention_plan/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'8e3c98385efd455890f84770bf099c4a'" nodeset="/intervention/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/intervention_plan/reg_info">
+      <input ref="/intervention_plan/reg_info/date">
+        <label ref="jr:itext('/intervention_plan/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/intervention_plan/reg_info/child_name_bn">
+        <label ref="jr:itext('/intervention_plan/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/intervention_plan/reg_info/child_name_en">
+        <label ref="jr:itext('/intervention_plan/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/intervention_plan/reg_info/reg_num">
+        <label ref="jr:itext('/intervention_plan/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <select ref="/intervention_plan/plan">
+      <label ref="jr:itext('/intervention_plan/plan:label')"/>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/1:label')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/2:label')"/>
+        <value>2</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/3:label')"/>
+        <value>3</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/4:label')"/>
+        <value>4</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/5:label')"/>
+        <value>5</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/6:label')"/>
+        <value>6</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/7:label')"/>
+        <value>7</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/8:label')"/>
+        <value>8</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/9:label')"/>
+        <value>9</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/10:label')"/>
+        <value>10</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/11:label')"/>
+        <value>11</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/12:label')"/>
+        <value>12</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/13:label')"/>
+        <value>13</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/14:label')"/>
+        <value>14</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/15:label')"/>
+        <value>15</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/16:label')"/>
+        <value>16</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/17:label')"/>
+        <value>17</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/18:label')"/>
+        <value>18</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/19:label')"/>
+        <value>19</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/20:label')"/>
+        <value>20</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/21:label')"/>
+        <value>21</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/22:label')"/>
+        <value>22</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/23:label')"/>
+        <value>23</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/24:label')"/>
+        <value>24</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/25:label')"/>
+        <value>25</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/26:label')"/>
+        <value>26</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/27:label')"/>
+        <value>27</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/28:label')"/>
+        <value>28</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/intervention_plan/plan/99:label')"/>
+        <value>99</value>
+      </item>
+    </select>
+    <input ref="/intervention_plan/plan_other">
+      <label ref="jr:itext('/intervention_plan/plan_other:label')"/>
+    </input>
+    <select1 ref="/intervention_plan/office_type">
+      <label ref="jr:itext('/intervention_plan/office_type:label')"/>
+      <item>
+        <label ref="jr:itext('/intervention_plan/office_type/1:label')"/>
+        <value>1</value>
+      </item>
+    </select1>
+    <select1 ref="/intervention_plan/office_name">
+      <label ref="jr:itext('/intervention_plan/office_name:label')"/>
+      <item>
+        <label ref="jr:itext('/intervention_plan/office_name/1:label')"/>
+        <value>1</value>
+      </item>
+    </select1>
+    <input ref="/intervention_plan/comments">
+      <label ref="jr:itext('/intervention_plan/comments:label')"/>
+    </input>
+  </h:body>
+</h:html>

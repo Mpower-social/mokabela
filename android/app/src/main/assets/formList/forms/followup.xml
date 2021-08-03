@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>ফলো আপ</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/followup/measures_taken/26:label">
+            <value>Coaching</value>
+          </text>
+          <text id="/followup/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/followup/measures_taken/22:label">
+            <value>Advising on life skills</value>
+          </text>
+          <text id="/followup/measures_taken/17:label">
+            <value>Legal aid</value>
+          </text>
+          <text id="/followup/measures_taken/25:label">
+            <value>Discuss with community members for social awareness</value>
+          </text>
+          <text id="/followup/score:label">
+            <value>ঝুঁকি যাচাই নম্বর</value>
+          </text>
+          <text id="/followup/support_info/support_authorities:label">
+            <value>সহায়তা প্রদানকারী কর্তৃপক্ষ</value>
+          </text>
+          <text id="/followup/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/followup/measures_taken/4:label">
+            <value>Rescuing from Child Marriage</value>
+          </text>
+          <text id="/followup/child_sign:label">
+            <value>শিশুর স্বাক্ষর</value>
+          </text>
+          <text id="/followup/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/followup/measures_taken_other:label">
+            <value>অন্যান্য গৃহীত ইন্টারভেনশনটি লিখুন</value>
+          </text>
+          <text id="/followup/measures_taken/19:label">
+            <value>Informal education system</value>
+          </text>
+          <text id="/followup/measures_taken/3:label">
+            <value>Rescuing from risky situation</value>
+          </text>
+          <text id="/followup/support_info/support:label">
+            <value>সহায়তার বিবরণ
+(ক্ষেত্রমত)</value>
+          </text>
+          <text id="/followup/measures_taken/99:label">
+            <value>Others</value>
+          </text>
+          <text id="/followup/po_sign:label">
+            <value>প্রবেশন কর্মকর্তার স্বাক্ষর</value>
+          </text>
+          <text id="/followup/measures_taken/1:label">
+            <value>Birth Registration</value>
+          </text>
+          <text id="/followup/measures_taken:label">
+            <value>জন্ম নিবন্ধন</value>
+          </text>
+          <text id="/followup/measures_taken/13:label">
+            <value>Humanitarian aid</value>
+          </text>
+          <text id="/followup/measures_taken/2:label">
+            <value>Councelling</value>
+          </text>
+          <text id="/followup/measures_taken/9:label">
+            <value>Transfer to family</value>
+          </text>
+          <text id="/followup/measures_taken/6:label">
+            <value>Temporary accomodation arrangement</value>
+          </text>
+          <text id="/followup/guardian_sign:label">
+            <value>অভিভাবক/যত্নপ্রদানকারীর স্বাক্ষর</value>
+          </text>
+          <text id="/followup/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/followup/measures_taken/8:label">
+            <value>Family Reunification</value>
+          </text>
+          <text id="/followup/guardian_comment:label">
+            <value>অগ্রগতি/বর্তমান অবস্থা সম্পর্কে শিশুর অভিভাবক/যত্নপ্রদানকারীর মতামত</value>
+          </text>
+          <text id="/followup/recommendation:label">
+            <value>শিশুর বিষয়ে সুপারিশ</value>
+          </text>
+          <text id="/followup/baby_progress:label">
+            <value>ফলোআপ চলাকালীন শিশুর অগ্রগতি বা বর্তমান অবস্থা</value>
+          </text>
+          <text id="/followup/measures_taken/11:label">
+            <value>Admission to technical education institutions</value>
+          </text>
+          <text id="/followup/measures_taken/10:label">
+            <value>Admission to school</value>
+          </text>
+          <text id="/followup/measures_taken/23:label">
+            <value>Connect to the entertainment system</value>
+          </text>
+          <text id="/followup/measures_taken/21:label">
+            <value>Family History</value>
+          </text>
+          <text id="/followup/measures_taken/18:label">
+            <value>Scholarship</value>
+          </text>
+          <text id="/followup/measures_taken/27:label">
+            <value>Provide information or advice on adolescent problems</value>
+          </text>
+          <text id="/followup/support_info/support/1:label">
+            <value>1</value>
+          </text>
+          <text id="/followup/measures_taken/5:label">
+            <value>Rescuing from Child Labour</value>
+          </text>
+          <text id="/followup/measures_taken/24:label">
+            <value>Councelling with parents</value>
+          </text>
+          <text id="/followup/measures_taken/12:label">
+            <value>Linked to financial aid</value>
+          </text>
+          <text id="/followup/next_followup_date:label">
+            <value>পরবর্তী অনুসরণের তারিখ (প্রযোজ্যক্ষেত্রে)</value>
+          </text>
+          <text id="/followup/measures_taken/20:label">
+            <value>Visitting Family</value>
+          </text>
+          <text id="/followup/support_info/support_date:label">
+            <value>সহায়তা প্রদানের তারিখ</value>
+          </text>
+          <text id="/followup/measures_taken/15:label">
+            <value>Family Counceling</value>
+          </text>
+          <text id="/followup/measures_taken/14:label">
+            <value>Arranging job</value>
+          </text>
+          <text id="/followup/measures_taken/28:label">
+            <value>Diversion</value>
+          </text>
+          <text id="/followup/po_comment:label">
+            <value>অগ্রগতি/বর্তমান অবস্থা সম্পর্কে প্রবেশন কর্মকর্তার মন্তব্য</value>
+          </text>
+          <text id="/followup/measures_taken/16:label">
+            <value>Linking to the Social Care Protection Committee</value>
+          </text>
+          <text id="/followup/measures_taken/7:label">
+            <value>Advice on Parenting or Baby Care</value>
+          </text>
+          <text id="/followup/other_information:label">
+            <value>অন্যকোনো প্রাসঙ্গিক তথ্য
+(যদি থাকে)</value>
+          </text>
+          <text id="/followup/child_view:label">
+            <value>অগ্রগতি/বর্তমান অবস্থা সম্পর্কে শিশুর মতামত</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/followup/measures_taken/26:label">
+            <value>কোচিং</value>
+          </text>
+          <text id="/followup/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/followup/measures_taken/22:label">
+            <value>জীবন দক্ষতা বিষয়ে পরামর্শ দেয়া</value>
+          </text>
+          <text id="/followup/measures_taken/17:label">
+            <value>আইনগত সাহায্য</value>
+          </text>
+          <text id="/followup/measures_taken/25:label">
+            <value>সামাজিক সচেতনতার জন্য সমাজের সদ্স্যদের সাথে আলোচনা</value>
+          </text>
+          <text id="/followup/score:label">
+            <value>Current Risk Score</value>
+          </text>
+          <text id="/followup/support_info/support_authorities:label">
+            <value>Supporting Authorities</value>
+          </text>
+          <text id="/followup/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/followup/measures_taken/4:label">
+            <value>শিশু বিবাহ থেকে উদ্ধার</value>
+          </text>
+          <text id="/followup/child_sign:label">
+            <value>Child's signature</value>
+          </text>
+          <text id="/followup/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/followup/measures_taken_other:label">
+            <value>Please write down the other name</value>
+          </text>
+          <text id="/followup/measures_taken/19:label">
+            <value>অপ্রাতিষ্ঠানিক শিক্ষা ব্যবস্থা</value>
+          </text>
+          <text id="/followup/measures_taken/3:label">
+            <value>ঝুঁকিপূর্ণ অবস্থা থেকে উদ্ধার</value>
+          </text>
+          <text id="/followup/support_info/support:label">
+            <value>Followed On (In case of)</value>
+          </text>
+          <text id="/followup/measures_taken/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/followup/po_sign:label">
+            <value>Signature of probation officer</value>
+          </text>
+          <text id="/followup/measures_taken/1:label">
+            <value>জন্ম নিবন্ধন</value>
+          </text>
+          <text id="/followup/measures_taken:label">
+            <value>Measures taken 
+(As per plan / contract, where applicable)</value>
+          </text>
+          <text id="/followup/measures_taken/13:label">
+            <value>মানবিক সাহায্য</value>
+          </text>
+          <text id="/followup/measures_taken/2:label">
+            <value>কাউন্সেলিং</value>
+          </text>
+          <text id="/followup/measures_taken/9:label">
+            <value>পরিবারে হস্তান্তর</value>
+          </text>
+          <text id="/followup/measures_taken/6:label">
+            <value>সাময়িক আবাসন বা আশ্রয় এর ব্যবস্থা</value>
+          </text>
+          <text id="/followup/guardian_sign:label">
+            <value>Guardian Caregiver's signature</value>
+          </text>
+          <text id="/followup/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/followup/measures_taken/8:label">
+            <value>পরিবারে পুনঃএকত্রি করণ</value>
+          </text>
+          <text id="/followup/guardian_comment:label">
+            <value>Child's Parents / Care Provider's Opinion on Progress / Current Status</value>
+          </text>
+          <text id="/followup/recommendation:label">
+            <value>Recommendations regarding child</value>
+          </text>
+          <text id="/followup/baby_progress:label">
+            <value>The baby's progress or current status during follow-up</value>
+          </text>
+          <text id="/followup/measures_taken/11:label">
+            <value>কারিগরি শিক্ষা প্রতিষ্ঠানে ভর্তি</value>
+          </text>
+          <text id="/followup/measures_taken/10:label">
+            <value>বিদ্যালয়ে ভর্তি বা প্রাতিষ্ঠানিক শিক্ষা</value>
+          </text>
+          <text id="/followup/measures_taken/23:label">
+            <value>বিনোদন ব্যাবস্থার সাথে সংযুক্ত করে দেয়া</value>
+          </text>
+          <text id="/followup/measures_taken/21:label">
+            <value>পারিবারিক ইতিহাস</value>
+          </text>
+          <text id="/followup/measures_taken/18:label">
+            <value>বৃত্তি</value>
+          </text>
+          <text id="/followup/measures_taken/27:label">
+            <value>কৈশোরকালীন সমস্যা নিয়ে তথ্য বা পরামর্শ প্রদান</value>
+          </text>
+          <text id="/followup/support_info/support/1:label">
+            <value>1</value>
+          </text>
+          <text id="/followup/measures_taken/5:label">
+            <value>ঝুঁকিপূর্ণ শিশুশ্রম থেকে উদ্ধার</value>
+          </text>
+          <text id="/followup/measures_taken/24:label">
+            <value>পিতামাতার সাথে কাউন্সেলিং</value>
+          </text>
+          <text id="/followup/measures_taken/12:label">
+            <value>আর্থিক সাহায্যের সাথে সংযুক্ত করে দেয়া</value>
+          </text>
+          <text id="/followup/next_followup_date:label">
+            <value>Next follow up date (if applicable)</value>
+          </text>
+          <text id="/followup/measures_taken/20:label">
+            <value>পারিবারিক ভ্রমণ</value>
+          </text>
+          <text id="/followup/support_info/support_date:label">
+            <value>Support Date</value>
+          </text>
+          <text id="/followup/measures_taken/15:label">
+            <value>পারিবারিক কাউন্সেলিং</value>
+          </text>
+          <text id="/followup/measures_taken/14:label">
+            <value>চাকুরীর ব্যবস্থা করে দেয়া</value>
+          </text>
+          <text id="/followup/measures_taken/28:label">
+            <value>বিকল্প পন্থা</value>
+          </text>
+          <text id="/followup/po_comment:label">
+            <value>Probation Officer's comment on progress / current status</value>
+          </text>
+          <text id="/followup/measures_taken/16:label">
+            <value>সামাজিক সুরক্ষা কমিটির সাথে সংযুক্ত করে দেয়া</value>
+          </text>
+          <text id="/followup/measures_taken/7:label">
+            <value>পেরেন্টিং বা শিশুর পরিচর্যা বিষয়ে পরামর্শ দেয়া</value>
+          </text>
+          <text id="/followup/other_information:label">
+            <value>Any other relevant information
+(If any)</value>
+          </text>
+          <text id="/followup/child_view:label">
+            <value>Child's views on progress / current status</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <followup id="followup">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <support_info>
+            <support/>
+            <support_date/>
+            <support_authorities/>
+          </support_info>
+          <measures_taken/>
+          <measures_taken_other/>
+          <baby_progress/>
+          <other_information/>
+          <child_view/>
+          <guardian_comment/>
+          <score/>
+          <po_comment/>
+          <recommendation/>
+          <child_sign/>
+          <guardian_sign/>
+          <next_followup_date/>
+          <po_sign/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </followup>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/followup/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/followup/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/followup/username" type="string"/>
+      <bind calculate="date(format-date( /followup/start ,'%Y-%m-%d'))" nodeset="/followup/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/followup/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/followup/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/followup/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/followup/support_info" required="true()"/>
+      <bind nodeset="/followup/support_info/support" required="false()" type="select1"/>
+      <bind nodeset="/followup/support_info/support_date" required="false()" type="date"/>
+      <bind nodeset="/followup/support_info/support_authorities" required="false()" type="string"/>
+      <bind nodeset="/followup/measures_taken" required="true()" type="select1"/>
+      <bind nodeset="/followup/measures_taken_other" relevant="selected( /followup/measures_taken ,'99')" type="string"/>
+      <bind nodeset="/followup/baby_progress" required="true()" type="string"/>
+      <bind nodeset="/followup/other_information" required="false()" type="string"/>
+      <bind nodeset="/followup/child_view" required="true()" type="string"/>
+      <bind nodeset="/followup/guardian_comment" required="true()" type="string"/>
+      <bind nodeset="/followup/score" required="false()" type="int"/>
+      <bind nodeset="/followup/po_comment" required="true()" type="string"/>
+      <bind nodeset="/followup/recommendation" required="true()" type="string"/>
+      <bind nodeset="/followup/child_sign" required="false()" type="binary"/>
+      <bind nodeset="/followup/guardian_sign" required="false()" type="binary"/>
+      <bind nodeset="/followup/next_followup_date" required="false()" type="date"/>
+      <bind nodeset="/followup/po_sign" required="false()" type="binary"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/followup/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'df136ed0129d46609530ec5b3c4e716e'" nodeset="/followup/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/followup/reg_info">
+      <input ref="/followup/reg_info/date">
+        <label ref="jr:itext('/followup/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/followup/reg_info/child_name_bn">
+        <label ref="jr:itext('/followup/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/followup/reg_info/child_name_en">
+        <label ref="jr:itext('/followup/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/followup/reg_info/reg_num">
+        <label ref="jr:itext('/followup/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <group ref="/followup/support_info">
+      <select1 ref="/followup/support_info/support">
+        <label ref="jr:itext('/followup/support_info/support:label')"/>
+        <item>
+          <label ref="jr:itext('/followup/support_info/support/1:label')"/>
+          <value>1</value>
+        </item>
+      </select1>
+      <input ref="/followup/support_info/support_date">
+        <label ref="jr:itext('/followup/support_info/support_date:label')"/>
+      </input>
+      <input ref="/followup/support_info/support_authorities">
+        <label ref="jr:itext('/followup/support_info/support_authorities:label')"/>
+      </input>
+    </group>
+    <select1 ref="/followup/measures_taken">
+      <label ref="jr:itext('/followup/measures_taken:label')"/>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/1:label')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/2:label')"/>
+        <value>2</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/3:label')"/>
+        <value>3</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/4:label')"/>
+        <value>4</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/5:label')"/>
+        <value>5</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/6:label')"/>
+        <value>6</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/7:label')"/>
+        <value>7</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/8:label')"/>
+        <value>8</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/9:label')"/>
+        <value>9</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/10:label')"/>
+        <value>10</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/11:label')"/>
+        <value>11</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/12:label')"/>
+        <value>12</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/13:label')"/>
+        <value>13</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/14:label')"/>
+        <value>14</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/15:label')"/>
+        <value>15</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/16:label')"/>
+        <value>16</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/17:label')"/>
+        <value>17</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/18:label')"/>
+        <value>18</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/19:label')"/>
+        <value>19</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/20:label')"/>
+        <value>20</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/21:label')"/>
+        <value>21</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/22:label')"/>
+        <value>22</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/23:label')"/>
+        <value>23</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/24:label')"/>
+        <value>24</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/25:label')"/>
+        <value>25</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/26:label')"/>
+        <value>26</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/27:label')"/>
+        <value>27</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/28:label')"/>
+        <value>28</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/followup/measures_taken/99:label')"/>
+        <value>99</value>
+      </item>
+    </select1>
+    <input ref="/followup/measures_taken_other">
+      <label ref="jr:itext('/followup/measures_taken_other:label')"/>
+    </input>
+    <input ref="/followup/baby_progress">
+      <label ref="jr:itext('/followup/baby_progress:label')"/>
+    </input>
+    <input ref="/followup/other_information">
+      <label ref="jr:itext('/followup/other_information:label')"/>
+    </input>
+    <input ref="/followup/child_view">
+      <label ref="jr:itext('/followup/child_view:label')"/>
+    </input>
+    <input ref="/followup/guardian_comment">
+      <label ref="jr:itext('/followup/guardian_comment:label')"/>
+    </input>
+    <input ref="/followup/score">
+      <label ref="jr:itext('/followup/score:label')"/>
+    </input>
+    <input ref="/followup/po_comment">
+      <label ref="jr:itext('/followup/po_comment:label')"/>
+    </input>
+    <input ref="/followup/recommendation">
+      <label ref="jr:itext('/followup/recommendation:label')"/>
+    </input>
+    <upload appearance="signature" mediatype="image/*" ref="/followup/child_sign">
+      <label ref="jr:itext('/followup/child_sign:label')"/>
+    </upload>
+    <upload appearance="signature" mediatype="image/*" ref="/followup/guardian_sign">
+      <label ref="jr:itext('/followup/guardian_sign:label')"/>
+    </upload>
+    <input ref="/followup/next_followup_date">
+      <label ref="jr:itext('/followup/next_followup_date:label')"/>
+    </input>
+    <upload appearance="signature" mediatype="image/*" ref="/followup/po_sign">
+      <label ref="jr:itext('/followup/po_sign:label')"/>
+    </upload>
+  </h:body>
+</h:html>

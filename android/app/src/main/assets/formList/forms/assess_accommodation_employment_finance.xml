@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>প্রাপ্তি সংক্রান্ত তথ্য-বাসস্থান, কর্মসংস্থান, আর্থিক বিষয়াদি</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/assess_accommodation_employment_finance/note1:label">
+            <value>৩.৩। বাসস্থান, কর্মসংস্থান, আর্থিক বিষয়াদি</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/1:label">
+            <value>চাকরি</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/separate_room/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/3:label">
+            <value>৪৮০০০-৭২০০০</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner/1:label">
+            <value>মা</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income:label">
+            <value>শিশুর পরিবারের সদস্যদের বার্ষিক আয় কত?</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/5:label">
+            <value>সরকারি দান/অনুদান/ভাতা</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/2:label">
+            <value>ব্যবসা</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/6:label">
+            <value>দিনমজুর</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/5:label">
+            <value>১০৮০০০+</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/4:label">
+            <value>৭২০০০-১০৮০০০</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner/2:label">
+            <value>বাবা</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/clean_light_air_toilet/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/member_involved_occupation/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/member_involved_occupation/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/separate_room/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/3:label">
+            <value>সঞ্চয়/সম্পদ থেকে লভ্যাংশ</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/clean_light_air_toilet:label">
+            <value>শিশুর পরিবারের বাসস্থান পরিচ্ছন্ন, আলো বাতাসের ব্যবস্থাসহ পয়ঃপ্রণালীর সুবিধাদি রয়েছে কি?</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source:label">
+            <value>শিশুর পরিবারের সদস্যদের আয়ের উৎস কী?</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/4:label">
+            <value>ভিক্ষাবৃত্তি</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/social_worker_observation:label">
+            <value>সমাজকর্মীর পর্যবেক্ষণ (সমাজকর্মী উপরোক্ত বিষয়ে প্রশ্ন করবেন, গভীরভাবে তার আচরণ ও মনসংযোগ পর্যবেক্ষণ করবেন এবং সারসংক্ষেপ লিখবেন):</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/1:label">
+            <value>২৪০০০ টাকার নিচে</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/2:label">
+            <value>২৪০০০-৪৮০০০</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner/3:label">
+            <value>ভাই</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/7:label">
+            <value>কৃষি</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/clean_light_air_toilet/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/separate_room:label">
+            <value>শিশুর পরিবারের সসদ্যগণের জন্য পৃথক কক্ষে ঘুমানোর ব্যবস্থা রয়েছে কি?</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)…….</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/member_involved_occupation:label">
+            <value>শিশুর পরিবারের কর্মক্ষম সদস্যগণ চাকুরি/কাজ করে কি?</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner:label">
+            <value>শিশুর পরিবারে আয়-উপার্জনকারী কে? (একাধিক উত্তর হতে পারে)</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner/4:label">
+            <value>বোন</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/assess_accommodation_employment_finance/note1:label">
+            <value>3.3 Accommodation, Employment, Financial Issues</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/1:label">
+            <value>Job</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/separate_room/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/3:label">
+            <value>48000-72000</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner/1:label">
+            <value>Mother</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income:label">
+            <value>What is the annual income of the family members of the child?</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/5:label">
+            <value>Government donations / grants / allowances</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/2:label">
+            <value>Business</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/99:label">
+            <value>Others</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/6:label">
+            <value>Day labor</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/5:label">
+            <value>108000+</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/4:label">
+            <value>72000-108000</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner/2:label">
+            <value>Father</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/clean_light_air_toilet/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income_other:label">
+            <value>Other amount in BDT</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/member_involved_occupation/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/member_involved_occupation/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/separate_room/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/3:label">
+            <value>Dividends from savings / resources</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/clean_light_air_toilet:label">
+            <value>Does the child's household have clean, light, air-toilet facilities?</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source:label">
+            <value>What is the source of income for the family members of the child?</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/4:label">
+            <value>Begging</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/social_worker_observation:label">
+            <value>Social Worker Observation (Social Worker will ask the above questions, observe his behavior and psychology deeply and write a summary):</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/1:label">
+            <value>Below Tk 24,000</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/yearly_income/annual_income/2:label">
+            <value>24000-48000</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner/3:label">
+            <value>Brother</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner_other:label">
+            <value>Other (Specify)</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner/99:label">
+            <value>Other</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source/7:label">
+            <value>Agriculture</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/clean_light_air_toilet/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/accommodation/separate_room:label">
+            <value>Is there a separate room for the child's family members to sleep in?</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/income_source_other:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/income/member_involved_occupation:label">
+            <value>Do the abled members of the child's family the job / work?</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner:label">
+            <value>Who is the income earner in the family of the child? (There can be multiple answers)</value>
+          </text>
+          <text id="/assess_accommodation_employment_finance/earning/earner/4:label">
+            <value>Sister</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <assess_accommodation_employment_finance id="assess_accommodation_employment_finance">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <note1/>
+          <accommodation>
+            <clean_light_air_toilet/>
+            <separate_room/>
+          </accommodation>
+          <earning>
+            <earner/>
+            <earner_other/>
+          </earning>
+          <income>
+            <member_involved_occupation/>
+            <income_source/>
+            <income_source_other/>
+          </income>
+          <yearly_income>
+            <annual_income/>
+            <annual_income_other/>
+          </yearly_income>
+          <social_worker_observation/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </assess_accommodation_employment_finance>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/assess_accommodation_employment_finance/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/assess_accommodation_employment_finance/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/assess_accommodation_employment_finance/username" type="string"/>
+      <bind calculate="date(format-date( /assess_accommodation_employment_finance/start ,'%Y-%m-%d'))" nodeset="/assess_accommodation_employment_finance/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/assess_accommodation_employment_finance/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_accommodation_employment_finance/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_accommodation_employment_finance/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_accommodation_employment_finance/note1" readonly="true()" type="string"/>
+      <bind nodeset="/assess_accommodation_employment_finance/accommodation/clean_light_air_toilet" required="true()" type="select1"/>
+      <bind nodeset="/assess_accommodation_employment_finance/accommodation/separate_room" required="true()" type="select1"/>
+      <bind nodeset="/assess_accommodation_employment_finance/earning/earner" required="true()" type="select"/>
+      <bind nodeset="/assess_accommodation_employment_finance/earning/earner_other" relevant="selected( /assess_accommodation_employment_finance/earning/earner ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_accommodation_employment_finance/income/member_involved_occupation" required="true()" type="select1"/>
+      <bind nodeset="/assess_accommodation_employment_finance/income/income_source" required="true()" type="select"/>
+      <bind nodeset="/assess_accommodation_employment_finance/income/income_source_other" relevant="selected( /assess_accommodation_employment_finance/income/income_source ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_accommodation_employment_finance/yearly_income/annual_income" required="true()" type="select1"/>
+      <bind nodeset="/assess_accommodation_employment_finance/yearly_income/annual_income_other" relevant="selected( /assess_accommodation_employment_finance/yearly_income/annual_income ,'99')" required="true()" type="int"/>
+      <bind nodeset="/assess_accommodation_employment_finance/social_worker_observation" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/assess_accommodation_employment_finance/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'bcc2eb62554c495da5e9f456dd32375f'" nodeset="/assess_accommodation_employment_finance/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/assess_accommodation_employment_finance/reg_info">
+      <input ref="/assess_accommodation_employment_finance/reg_info/date">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_accommodation_employment_finance/reg_info/child_name_bn">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_accommodation_employment_finance/reg_info/child_name_en">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_accommodation_employment_finance/reg_info/reg_num">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_accommodation_employment_finance/note1">
+      <label ref="jr:itext('/assess_accommodation_employment_finance/note1:label')"/>
+    </input>
+    <group appearance="field-list" ref="/assess_accommodation_employment_finance/accommodation">
+      <select1 ref="/assess_accommodation_employment_finance/accommodation/clean_light_air_toilet">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/accommodation/clean_light_air_toilet:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/accommodation/clean_light_air_toilet/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/accommodation/clean_light_air_toilet/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 ref="/assess_accommodation_employment_finance/accommodation/separate_room">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/accommodation/separate_room:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/accommodation/separate_room/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/accommodation/separate_room/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+    </group>
+    <group appearance="field-list" ref="/assess_accommodation_employment_finance/earning">
+      <select ref="/assess_accommodation_employment_finance/earning/earner">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/earning/earner:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/earning/earner/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/earning/earner/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/earning/earner/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/earning/earner/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/earning/earner/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_accommodation_employment_finance/earning/earner_other">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/earning/earner_other:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/assess_accommodation_employment_finance/income">
+      <select1 ref="/assess_accommodation_employment_finance/income/member_involved_occupation">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/income/member_involved_occupation:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/income/member_involved_occupation/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/income/member_involved_occupation/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_accommodation_employment_finance/income/income_source">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/income/income_source:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/income/income_source/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/income/income_source/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/income/income_source/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/income/income_source/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/income/income_source/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/income/income_source/6:label')"/>
+          <value>6</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/income/income_source/7:label')"/>
+          <value>7</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/income/income_source/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_accommodation_employment_finance/income/income_source_other">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/income/income_source_other:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/assess_accommodation_employment_finance/yearly_income">
+      <select1 ref="/assess_accommodation_employment_finance/yearly_income/annual_income">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/yearly_income/annual_income:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/yearly_income/annual_income/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/yearly_income/annual_income/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/yearly_income/annual_income/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/yearly_income/annual_income/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/yearly_income/annual_income/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_accommodation_employment_finance/yearly_income/annual_income/99:label')"/>
+          <value>99</value>
+        </item>
+      </select1>
+      <input ref="/assess_accommodation_employment_finance/yearly_income/annual_income_other">
+        <label ref="jr:itext('/assess_accommodation_employment_finance/yearly_income/annual_income_other:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_accommodation_employment_finance/social_worker_observation">
+      <label ref="jr:itext('/assess_accommodation_employment_finance/social_worker_observation:label')"/>
+    </input>
+  </h:body>
+</h:html>

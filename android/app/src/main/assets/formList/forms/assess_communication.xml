@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>প্রাপ্তি সংক্রান্ত তথ্য-যোগাযোগ</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/assess_communication/communication/hesitate_seek_help/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_communication/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/assess_communication/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason:label">
+            <value>সংকোচবোধ কেন করে?</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason_other:label">
+            <value>অন্যান্য কারণ লিখুন</value>
+          </text>
+          <text id="/assess_communication/communication/understand_gesture/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_communication/communication/understand_gesture:label">
+            <value>ইশারায় বা অন্যকোনোভাবে বললে শিশুটি কি বুঝতে পারে?</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason/2:label">
+            <value>লজ্জাবোধ</value>
+          </text>
+          <text id="/assess_communication/communication:label">
+            <value>যোগাযোগ</value>
+          </text>
+          <text id="/assess_communication/note1:label">
+            <value>নির্দেশনা - [শিশু, ক্ষেত্রমত, তার মাতা-পিতা-অভিভাবক-পরিচর্যাকারীকে তার মতো করে প্রশ্নসমূহ করুন। উত্তরদাতার কথা মনযোগ সহকারে শুনুন, গোপনীয়তা রক্ষার আশ্বাস দিন, উত্তম যোগাযোগ দক্ষতা প্রদর্শন করুন এবং সামগ্রিক পরিস্থিতি গভীরভাবে পর্যবেক্ষণ করুন। সামগ্রিক পরিস্থিতি বিবেচনায় নিয়ে যথাযথ তথ্য লিখুন।]</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_seek_help:label">
+            <value>শিশু অন্যের সহায়তা চাইতে সংকোচবোধ করে কি?</value>
+          </text>
+          <text id="/assess_communication/communication/listen_with_attention/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason/3:label">
+            <value>সহযোগিতা না পাবার আশঙ্কা</value>
+          </text>
+          <text id="/assess_communication/social_worker_observation:label">
+            <value>সমাজকর্মীর পর্যবেক্ষণ</value>
+          </text>
+          <text id="/assess_communication/social_worker_observation:hint">
+            <value>(সমাজকর্মী উপরোক্ত বিষয়ে প্রশ্ন করবেন, গভীরভাবে তার আচরণ ও মনসংযোগ পর্যবেক্ষণ করবেন এবং সারসংক্ষেপ লিখবেন):</value>
+          </text>
+          <text id="/assess_communication/communication/respond_enthusiastically/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason/1:label">
+            <value>আত্নকেন্দ্রিক</value>
+          </text>
+          <text id="/assess_communication/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_seek_help/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_communication/communication/understand_gesture/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_communication/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/assess_communication/communication/express_emotion_in_face/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_communication/communication/listen_with_attention:label">
+            <value>শিশুটি কি মনযোগ সহকারে শোনে?</value>
+          </text>
+          <text id="/assess_communication/communication/express_emotion_in_face/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_communication/communication/express_emotion_in_face:label">
+            <value>শিশুটি কি মুখে/ ইশারায় মনের ভাব প্রকাশ করতে পারে?</value>
+          </text>
+          <text id="/assess_communication/communication/listen_with_attention/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_communication/communication/respond_enthusiastically:label">
+            <value>শিশুটি কি উৎসাহের সাথে সাড়া দেয়?</value>
+          </text>
+          <text id="/assess_communication/communication/respond_enthusiastically/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason/4:label">
+            <value>ভীতি</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/assess_communication/communication/hesitate_seek_help/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_communication/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/assess_communication/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason:label">
+            <value>Why does the child hesitate?</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason_other:label">
+            <value>Write other reason</value>
+          </text>
+          <text id="/assess_communication/communication/understand_gesture/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_communication/communication/understand_gesture:label">
+            <value>Does the child understand with gestures or otherwise?</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason/2:label">
+            <value>Shame</value>
+          </text>
+          <text id="/assess_communication/communication:label">
+            <value>Communication</value>
+          </text>
+          <text id="/assess_communication/note1:label">
+            <value>নির্দেশনা - [শিশু, ক্ষেত্রমত, তার মাতা-পিতা-অভিভাবক-পরিচর্যাকারীকে তার মতো করে প্রশ্নসমূহ করুন। উত্তরদাতার কথা মনযোগ সহকারে শুনুন, গোপনীয়তা রক্ষার আশ্বাস দিন, উত্তম যোগাযোগ দক্ষতা প্রদর্শন করুন এবং সামগ্রিক পরিস্থিতি গভীরভাবে পর্যবেক্ষণ করুন। সামগ্রিক পরিস্থিতি বিবেচনায় নিয়ে যথাযথ তথ্য লিখুন।]</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_seek_help:label">
+            <value>Does the child hesitate to seek the help of others?</value>
+          </text>
+          <text id="/assess_communication/communication/listen_with_attention/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason/99:label">
+            <value>Others (Specify)</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason/3:label">
+            <value>Apprehension of not getting assistance</value>
+          </text>
+          <text id="/assess_communication/social_worker_observation:label">
+            <value>Social Worker Observation</value>
+          </text>
+          <text id="/assess_communication/social_worker_observation:hint">
+            <value>Social Worker will ask the above questions, observe his behavior and psychology deeply and write a summary</value>
+          </text>
+          <text id="/assess_communication/communication/respond_enthusiastically/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason/1:label">
+            <value>Self-centric</value>
+          </text>
+          <text id="/assess_communication/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_seek_help/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_communication/communication/understand_gesture/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_communication/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/assess_communication/communication/express_emotion_in_face/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_communication/communication/listen_with_attention:label">
+            <value>Does the child listen with attention?</value>
+          </text>
+          <text id="/assess_communication/communication/express_emotion_in_face/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_communication/communication/express_emotion_in_face:label">
+            <value>Can the child express emotions in the face / gestures?</value>
+          </text>
+          <text id="/assess_communication/communication/listen_with_attention/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_communication/communication/respond_enthusiastically:label">
+            <value>Does the child respond enthusiastically?</value>
+          </text>
+          <text id="/assess_communication/communication/respond_enthusiastically/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_communication/communication/hesitate_reason/4:label">
+            <value>Fear</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <assess_communication id="assess_communication">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <date/>
+          <note1/>
+          <communication>
+            <express_emotion_in_face/>
+            <understand_gesture/>
+            <listen_with_attention/>
+            <respond_enthusiastically/>
+            <hesitate_seek_help/>
+            <hesitate_reason/>
+            <hesitate_reason_other/>
+          </communication>
+          <social_worker_observation/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </assess_communication>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/assess_communication/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/assess_communication/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/assess_communication/username" type="string"/>
+      <bind nodeset="/assess_communication/reg_info/child_name_bn" required="true()" type="string"/>
+      <bind nodeset="/assess_communication/reg_info/child_name_en" required="true()" type="string"/>
+      <bind nodeset="/assess_communication/reg_info/reg_num" required="true()" type="string"/>
+      <bind calculate="date(format-date( /assess_communication/start ,'%Y-%m-%d'))" nodeset="/assess_communication/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/assess_communication/note1" readonly="true()" type="string"/>
+      <bind nodeset="/assess_communication/communication/express_emotion_in_face" required="true()" type="select1"/>
+      <bind nodeset="/assess_communication/communication/understand_gesture" required="true()" type="select1"/>
+      <bind nodeset="/assess_communication/communication/listen_with_attention" required="true()" type="select1"/>
+      <bind nodeset="/assess_communication/communication/respond_enthusiastically" required="true()" type="select1"/>
+      <bind nodeset="/assess_communication/communication/hesitate_seek_help" required="true()" type="select1"/>
+      <bind nodeset="/assess_communication/communication/hesitate_reason" relevant=" /assess_communication/communication/hesitate_seek_help =1" required="true()" type="select"/>
+      <bind nodeset="/assess_communication/communication/hesitate_reason_other" relevant="selected( /assess_communication/communication/hesitate_reason ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_communication/social_worker_observation" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/assess_communication/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'3181d068eb2142c0a6a3cb7e9d33236b'" nodeset="/assess_communication/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/assess_communication/reg_info">
+      <input appearance="db" ref="/assess_communication/reg_info/child_name_bn">
+        <label ref="jr:itext('/assess_communication/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_communication/reg_info/child_name_en">
+        <label ref="jr:itext('/assess_communication/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_communication/reg_info/reg_num">
+        <label ref="jr:itext('/assess_communication/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_communication/date">
+      <label ref="jr:itext('/assess_communication/date:label')"/>
+    </input>
+    <input ref="/assess_communication/note1">
+      <label ref="jr:itext('/assess_communication/note1:label')"/>
+    </input>
+    <group appearance="field-list" ref="/assess_communication/communication">
+      <label ref="jr:itext('/assess_communication/communication:label')"/>
+      <select1 ref="/assess_communication/communication/express_emotion_in_face">
+        <label ref="jr:itext('/assess_communication/communication/express_emotion_in_face:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/express_emotion_in_face/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/express_emotion_in_face/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 ref="/assess_communication/communication/understand_gesture">
+        <label ref="jr:itext('/assess_communication/communication/understand_gesture:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/understand_gesture/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/understand_gesture/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 ref="/assess_communication/communication/listen_with_attention">
+        <label ref="jr:itext('/assess_communication/communication/listen_with_attention:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/listen_with_attention/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/listen_with_attention/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 ref="/assess_communication/communication/respond_enthusiastically">
+        <label ref="jr:itext('/assess_communication/communication/respond_enthusiastically:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/respond_enthusiastically/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/respond_enthusiastically/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 ref="/assess_communication/communication/hesitate_seek_help">
+        <label ref="jr:itext('/assess_communication/communication/hesitate_seek_help:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/hesitate_seek_help/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/hesitate_seek_help/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_communication/communication/hesitate_reason">
+        <label ref="jr:itext('/assess_communication/communication/hesitate_reason:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/hesitate_reason/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/hesitate_reason/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/hesitate_reason/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/hesitate_reason/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_communication/communication/hesitate_reason/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_communication/communication/hesitate_reason_other">
+        <label ref="jr:itext('/assess_communication/communication/hesitate_reason_other:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_communication/social_worker_observation">
+      <label ref="jr:itext('/assess_communication/social_worker_observation:label')"/>
+      <hint ref="jr:itext('/assess_communication/social_worker_observation:hint')"/>
+    </input>
+  </h:body>
+</h:html>

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>প্রাপ্তি সংক্রান্ত তথ্য ফরম-মৌলিক যত্ন, নিরাপত্তা ও সুরক্ষা</h:title>
+    <model>
+      <itext>
+        <translation lang="Bangla">
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason/2:label">
+            <value>অস্বাস্থ্যকর পরিবেশ বসবাস</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/standard_accommodation/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/standard_accommodation:label">
+            <value>শিশুর আবাসস্থলের অবস্থা মান সম্মত কি?</value>
+          </text>
+          <text id="/assess_care_protection/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason:label">
+            <value>কারণ কী?</value>
+          </text>
+          <text id="/assess_care_protection/social_worker_observation:label">
+            <value>সমাজকর্মীর পর্যবেক্ষণ (সমাজকর্মী উপরোক্ত বিষয়ে প্রশ্ন করবেন, গভীরভাবে তার আচরণ ও মনসংযোগ পর্যবেক্ষণ করবেন এবং সারসংক্ষেপ লিখবেন):</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason/1:label">
+            <value>দারিদ্রতা</value>
+          </text>
+          <text id="/assess_care_protection/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/assess_care_protection/diet/balanced_diet/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason/3:label">
+            <value>বস্তিঘর</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason_other:label">
+            <value>অন্যান্য (নিদিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason:label">
+            <value>কারণ কী?</value>
+          </text>
+          <text id="/assess_care_protection/diet/balanced_diet:label">
+            <value>শিশুর জন্য পরিচর্যাকারী সুষম খাদ্যের ব্যবস্থা করে/করতো কি?</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason/3:label">
+            <value>অসুস্থতা</value>
+          </text>
+          <text id="/assess_care_protection/note1:label">
+            <value>২.১। মৌলিক যত্ন, নিরাপত্তা ও সুরক্ষা</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason/2:label">
+            <value>বেকারত্ব</value>
+          </text>
+          <text id="/assess_care_protection/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/assess_care_protection/clean_cloth/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_care_protection/clean_cloth:label">
+            <value>প্রয়োজনীয় পরিস্কার পরিছন্ন পোষাক পেতো কি?</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason/1:label">
+            <value>গৃহহীন</value>
+          </text>
+          <text id="/assess_care_protection/clean_cloth/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_care_protection/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/assess_care_protection/diet/balanced_diet/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/standard_accommodation/0:label">
+            <value>না</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason_other:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason/2:label">
+            <value>Living in lunhealthy environment</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/standard_accommodation/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason/99:label">
+            <value>Other</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason/99:label">
+            <value>Other</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/standard_accommodation:label">
+            <value>Does the child's accommodation standard?</value>
+          </text>
+          <text id="/assess_care_protection/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason:label">
+            <value>What is the reason?</value>
+          </text>
+          <text id="/assess_care_protection/social_worker_observation:label">
+            <value>Social Worker Observation (Social Worker will ask the above questions, observe his behavior and psychology deeply and write a summary):</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason/1:label">
+            <value>Poverty</value>
+          </text>
+          <text id="/assess_care_protection/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/assess_care_protection/diet/balanced_diet/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason/3:label">
+            <value>Slum</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason_other:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason:label">
+            <value>What is the reason?</value>
+          </text>
+          <text id="/assess_care_protection/diet/balanced_diet:label">
+            <value>Does the caregiver provide balanced diet for the baby?</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason/3:label">
+            <value>Sickness</value>
+          </text>
+          <text id="/assess_care_protection/note1:label">
+            <value>2.1 Basic care, safety and protection</value>
+          </text>
+          <text id="/assess_care_protection/diet/no_balanced_diet_reason/2:label">
+            <value>Unemployment</value>
+          </text>
+          <text id="/assess_care_protection/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/assess_care_protection/clean_cloth/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_care_protection/clean_cloth:label">
+            <value>Did the child get the cleanest clothes it needed?</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/no_standard_accommodation_reason/1:label">
+            <value>Homeless</value>
+          </text>
+          <text id="/assess_care_protection/clean_cloth/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_care_protection/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/assess_care_protection/diet/balanced_diet/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_care_protection/accomodation/standard_accommodation/0:label">
+            <value>No</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <assess_care_protection id="assess_care_protection">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <note1/>
+          <diet>
+            <balanced_diet/>
+            <no_balanced_diet_reason/>
+            <no_balanced_diet_reason_other/>
+          </diet>
+          <accomodation>
+            <standard_accommodation/>
+            <no_standard_accommodation_reason/>
+            <no_standard_accommodation_reason_other/>
+          </accomodation>
+          <clean_cloth/>
+          <social_worker_observation/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </assess_care_protection>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/assess_care_protection/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/assess_care_protection/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/assess_care_protection/username" type="string"/>
+      <bind calculate="date(format-date( /assess_care_protection/start ,'%Y-%m-%d'))" nodeset="/assess_care_protection/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/assess_care_protection/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_care_protection/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_care_protection/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/assess_care_protection/note1" readonly="true()" type="string"/>
+      <bind nodeset="/assess_care_protection/diet/balanced_diet" required="true()" type="select1"/>
+      <bind nodeset="/assess_care_protection/diet/no_balanced_diet_reason" relevant=" /assess_care_protection/diet/balanced_diet =0" required="true()" type="select"/>
+      <bind nodeset="/assess_care_protection/diet/no_balanced_diet_reason_other" relevant="selected( /assess_care_protection/diet/no_balanced_diet_reason ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_care_protection/accomodation/standard_accommodation" required="true()" type="select1"/>
+      <bind nodeset="/assess_care_protection/accomodation/no_standard_accommodation_reason" relevant="selected( /assess_care_protection/accomodation/standard_accommodation ,'0')" required="true()" type="select"/>
+      <bind nodeset="/assess_care_protection/accomodation/no_standard_accommodation_reason_other" relevant="selected( /assess_care_protection/accomodation/no_standard_accommodation_reason ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_care_protection/clean_cloth" required="true()" type="select1"/>
+      <bind nodeset="/assess_care_protection/social_worker_observation" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/assess_care_protection/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'2eeb765e487c41ffa2c13b311952bb54'" nodeset="/assess_care_protection/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/assess_care_protection/reg_info">
+      <input ref="/assess_care_protection/reg_info/date">
+        <label ref="jr:itext('/assess_care_protection/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_care_protection/reg_info/child_name_bn">
+        <label ref="jr:itext('/assess_care_protection/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_care_protection/reg_info/child_name_en">
+        <label ref="jr:itext('/assess_care_protection/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_care_protection/reg_info/reg_num">
+        <label ref="jr:itext('/assess_care_protection/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_care_protection/note1">
+      <label ref="jr:itext('/assess_care_protection/note1:label')"/>
+    </input>
+    <group appearance="field-list" ref="/assess_care_protection/diet">
+      <select1 ref="/assess_care_protection/diet/balanced_diet">
+        <label ref="jr:itext('/assess_care_protection/diet/balanced_diet:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/diet/balanced_diet/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/diet/balanced_diet/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_care_protection/diet/no_balanced_diet_reason">
+        <label ref="jr:itext('/assess_care_protection/diet/no_balanced_diet_reason:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/diet/no_balanced_diet_reason/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/diet/no_balanced_diet_reason/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/diet/no_balanced_diet_reason/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/diet/no_balanced_diet_reason/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_care_protection/diet/no_balanced_diet_reason_other">
+        <label ref="jr:itext('/assess_care_protection/diet/no_balanced_diet_reason_other:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/assess_care_protection/accomodation">
+      <select1 ref="/assess_care_protection/accomodation/standard_accommodation">
+        <label ref="jr:itext('/assess_care_protection/accomodation/standard_accommodation:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/accomodation/standard_accommodation/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/accomodation/standard_accommodation/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_care_protection/accomodation/no_standard_accommodation_reason">
+        <label ref="jr:itext('/assess_care_protection/accomodation/no_standard_accommodation_reason:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/accomodation/no_standard_accommodation_reason/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/accomodation/no_standard_accommodation_reason/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/accomodation/no_standard_accommodation_reason/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_care_protection/accomodation/no_standard_accommodation_reason/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_care_protection/accomodation/no_standard_accommodation_reason_other">
+        <label ref="jr:itext('/assess_care_protection/accomodation/no_standard_accommodation_reason_other:label')"/>
+      </input>
+    </group>
+    <select1 ref="/assess_care_protection/clean_cloth">
+      <label ref="jr:itext('/assess_care_protection/clean_cloth:label')"/>
+      <item>
+        <label ref="jr:itext('/assess_care_protection/clean_cloth/1:label')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/assess_care_protection/clean_cloth/0:label')"/>
+        <value>0</value>
+      </item>
+    </select1>
+    <input ref="/assess_care_protection/social_worker_observation">
+      <label ref="jr:itext('/assess_care_protection/social_worker_observation:label')"/>
+    </input>
+  </h:body>
+</h:html>

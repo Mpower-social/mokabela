@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>কেস ক্লোজার</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/case_closer/need_assessment:label">
+            <value>মূল্যায়নের প্রয়োজন আছে কি না?</value>
+          </text>
+          <text id="/case_closer/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/case_closer/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/case_closer/need_assessment/0:label">
+            <value>না</value>
+          </text>
+          <text id="/case_closer/case_closer_date:label">
+            <value>কেস ক্লোজারের তারিখ</value>
+          </text>
+          <text id="/case_closer/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/case_closer/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/case_closer/reg_info/case_id:label">
+            <value>Case ID</value>
+          </text>
+          <text id="/case_closer/need_assessment/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/case_closer/case_closer_reason:label">
+            <value>কেস ক্লোজারের কারণ:</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/case_closer/need_assessment:label">
+            <value>Further Assesment Needed?</value>
+          </text>
+          <text id="/case_closer/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/case_closer/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/case_closer/need_assessment/0:label">
+            <value>No</value>
+          </text>
+          <text id="/case_closer/case_closer_date:label">
+            <value>Case Closure Date</value>
+          </text>
+          <text id="/case_closer/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/case_closer/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/case_closer/reg_info/case_id:label">
+            <value>Case ID</value>
+          </text>
+          <text id="/case_closer/need_assessment/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/case_closer/case_closer_reason:label">
+            <value>Reason for Case Close</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <case_closer id="case_closer">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+            <case_id/>
+          </reg_info>
+          <case_closer_date/>
+          <case_closer_reason/>
+          <need_assessment/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </case_closer>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/case_closer/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/case_closer/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/case_closer/username" type="string"/>
+      <bind calculate="date(format-date( /case_closer/start ,'%Y-%m-%d'))" nodeset="/case_closer/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/case_closer/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_closer/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_closer/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_closer/reg_info/case_id" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/case_closer/case_closer_date" required="true()" type="date"/>
+      <bind nodeset="/case_closer/case_closer_reason" required="true()" type="string"/>
+      <bind nodeset="/case_closer/need_assessment" required="true()" type="select1"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/case_closer/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'0dd8061da9034d8eb98b2b8477a4af18'" nodeset="/case_closer/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/case_closer/reg_info">
+      <input ref="/case_closer/reg_info/date">
+        <label ref="jr:itext('/case_closer/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/case_closer/reg_info/child_name_bn">
+        <label ref="jr:itext('/case_closer/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/case_closer/reg_info/child_name_en">
+        <label ref="jr:itext('/case_closer/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/case_closer/reg_info/reg_num">
+        <label ref="jr:itext('/case_closer/reg_info/reg_num:label')"/>
+      </input>
+      <input appearance="db" ref="/case_closer/reg_info/case_id">
+        <label ref="jr:itext('/case_closer/reg_info/case_id:label')"/>
+      </input>
+    </group>
+    <input ref="/case_closer/case_closer_date">
+      <label ref="jr:itext('/case_closer/case_closer_date:label')"/>
+    </input>
+    <input ref="/case_closer/case_closer_reason">
+      <label ref="jr:itext('/case_closer/case_closer_reason:label')"/>
+    </input>
+    <select1 ref="/case_closer/need_assessment">
+      <label ref="jr:itext('/case_closer/need_assessment:label')"/>
+      <item>
+        <label ref="jr:itext('/case_closer/need_assessment/1:label')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/case_closer/need_assessment/0:label')"/>
+        <value>0</value>
+      </item>
+    </select1>
+  </h:body>
+</h:html>

@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>প্রাপ্তি সংক্রান্ত তথ্য- সহিংসতা</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/assess_violence/reaction/report_person/2:label">
+            <value>মা</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/5:label">
+            <value>নিজকে আঘাত করতে ইচ্ছে করে</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/7:label">
+            <value>সহিংস আচরণ করে</value>
+          </text>
+          <text id="/assess_violence/abuse/abuse_happen_often/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/5:label">
+            <value>শিক্ষক</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/6:label">
+            <value>অন্যকে মারতে ইচ্ছে করে</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/3:label">
+            <value>লজ্জা হয়</value>
+          </text>
+          <text id="/assess_violence/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person:label">
+            <value>কাকে জানিয়েছে?</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/2:label">
+            <value>ভয় হয়</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/4:label">
+            <value>ঘর থেকে বের হয়ে যায়</value>
+          </text>
+          <text id="/assess_violence/upset/feel_upset/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_violence/social_worker_observation:label">
+            <value>সমাজকর্মীর পর্যবেক্ষণ</value>
+          </text>
+          <text id="/assess_violence/reaction/report_to_anyone/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/4:label">
+            <value>অভিভাবক</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/8:label">
+            <value>চুপচাপ থাকে</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/1:label">
+            <value>রাগ হয়</value>
+          </text>
+          <text id="/assess_violence/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন</value>
+          </text>
+          <text id="/assess_violence/abuse/abuse_happen_often/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/6:label">
+            <value>পরিচর্যাকারী</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন</value>
+          </text>
+          <text id="/assess_violence/abuse/abuse_happen_often:label">
+            <value>এ বর্ণিত নির্যাতন কি প্রায়ই হয়?</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/4:label">
+            <value>রাগারাগি করে/করলে</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)…….</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse:label">
+            <value>তখন তার অনুভূতি/প্রতিক্রিয়া কেমন হয়/কী করে? (একাধিক উত্তর হতে পারে)</value>
+          </text>
+          <text id="/assess_violence/upset/feel_upset:label">
+            <value>শিশুটি কি মন খারাপ/মন মরা হয়ে থাকে?</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_violence/abuse/abused/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/3:label">
+            <value>বর্ধিত পরিবারের সদস্য</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/4:label">
+            <value>অভিভাবক</value>
+          </text>
+          <text id="/assess_violence/upset:label">
+            <value>সহিংসতা</value>
+          </text>
+          <text id="/assess_violence/reaction/got_any_remedy:label">
+            <value>কোনো প্রতিকার পেয়েছে কি?</value>
+          </text>
+          <text id="/assess_violence/social_worker_observation:hint">
+            <value>(সমাজকর্মী উপরোক্ত বিষয়ে প্রশ্ন করবেন, গভীরভাবে তার আচরণ ও মনসংযোগ পর্যবেক্ষণ করবেন এবং সারসংক্ষেপ লিখবেন)</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type:label">
+            <value>কী ধরনের নির্যাতনের শিকার হয়েছে/হয়?</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/2:label">
+            <value>মা</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/7:label">
+            <value>জনপ্রতিনিধি</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/1:label">
+            <value>শারীরিক</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason:label">
+            <value>কেন মন খারাপ/মন মরা হয়ে থাকে?</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/1:label">
+            <value>বাবা</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/3:label">
+            <value>বর্ধিত পরিবারের সদস্য</value>
+          </text>
+          <text id="/assess_violence/note1:label">
+            <value>নির্দেশনা - [শিশু, ক্ষেত্রমত, তার মাতা-পিতা-অভিভাবক-পরিচর্যাকারীকে তার মতো করে প্রশ্নসমূহ করুন। উত্তরদাতার কথা মনযোগ সহকারে শুনুন, গোপনীয়তা রক্ষার আশ্বাস দিন, উত্তম যোগাযোগ দক্ষতা প্রদর্শন করুন এবং সামগ্রিক পরিস্থিতি গভীরভাবে পর্যবেক্ষণ করুন। সামগ্রিক পরিস্থিতি বিবেচনায় নিয়ে যথাযথ তথ্য লিখুন।]</value>
+          </text>
+          <text id="/assess_violence/abuse/abused/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_violence/reaction/report_to_anyone/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/3:label">
+            <value>গালি দেয়/দিলে</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by_other:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)…….</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/99:label">
+            <value>অন্যান্য</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/1:label">
+            <value>বকা দিলে/দেয়</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/5:label">
+            <value>পারিবারিক অশান্তি</value>
+          </text>
+          <text id="/assess_violence/reaction/got_any_remedy/0:label">
+            <value>না</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by:label">
+            <value>কার কর্তৃক নির্যাতনের শিকার হয়েছে/হয়?</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/4:label">
+            <value>আবেগীয়</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/2:label">
+            <value>মানসিক</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/2:label">
+            <value>মারে/মারলে</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/1:label">
+            <value>বাবা</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/5:label">
+            <value>অবহেলা</value>
+          </text>
+          <text id="/assess_violence/reaction/report_to_anyone:label">
+            <value>শিশু কি কাউকে জানিয়েছে?</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/5:label">
+            <value>শিক্ষক</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/6:label">
+            <value>পরিচর্যাকারী</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/99:label">
+            <value>অন্যান্য (নির্দিষ্ট করুন)</value>
+          </text>
+          <text id="/assess_violence/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/7:label">
+            <value>জনপ্রতিনিধি</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/3:label">
+            <value>যৌন</value>
+          </text>
+          <text id="/assess_violence/upset/feel_upset/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_violence/reaction/got_any_remedy/1:label">
+            <value>হ্যাঁ</value>
+          </text>
+          <text id="/assess_violence/abuse/abused:label">
+            <value>শিশুটি কি নির্যাতনের শিকার হয়েছে/হয়?</value>
+          </text>
+          <text id="/assess_violence/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/assess_violence/reaction/report_person/2:label">
+            <value>Mother</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/5:label">
+            <value>Want to hurt ownself</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/7:label">
+            <value>Behave violently</value>
+          </text>
+          <text id="/assess_violence/abuse/abuse_happen_often/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/5:label">
+            <value>Teacher</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/6:label">
+            <value>Want to kill others</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/3:label">
+            <value>Shame</value>
+          </text>
+          <text id="/assess_violence/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person:label">
+            <value>Who is informed?</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/2:label">
+            <value>Fear</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/4:label">
+            <value>Get out of the house</value>
+          </text>
+          <text id="/assess_violence/upset/feel_upset/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_violence/social_worker_observation:label">
+            <value>Social Worker Observation</value>
+          </text>
+          <text id="/assess_violence/reaction/report_to_anyone/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/4:label">
+            <value>Guardian</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/8:label">
+            <value>Keep quiet</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/1:label">
+            <value>Anger</value>
+          </text>
+          <text id="/assess_violence/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse_other:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_violence/abuse/abuse_happen_often/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/6:label">
+            <value>Caretaker</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_violence/abuse/abuse_happen_often:label">
+            <value>Are these types of tortures happen often?</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/4:label">
+            <value>Expresses unpleasantness when it is done</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person_other:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_violence/reaction/reaction_to_abuse:label">
+            <value>How is his / her feelings / reactions then? (There can be multiple answers)</value>
+          </text>
+          <text id="/assess_violence/upset/feel_upset:label">
+            <value>If the child feel upset?</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_violence/abuse/abused/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/3:label">
+            <value>Extended family Member</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/4:label">
+            <value>Guardian</value>
+          </text>
+          <text id="/assess_violence/upset:label">
+            <value>Violence / torture</value>
+          </text>
+          <text id="/assess_violence/reaction/got_any_remedy:label">
+            <value>Has the child got any remedy?</value>
+          </text>
+          <text id="/assess_violence/social_worker_observation:hint">
+            <value>Social Worker will ask the above questions, observe his behavior and psychology deeply and write a summary</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type:label">
+            <value>What kind of torture has been done? or What kind of torture is done?</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/2:label">
+            <value>Mother</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/7:label">
+            <value>Public Representative</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/1:label">
+            <value>Physical</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason:label">
+            <value>Why the child become upset?</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/1:label">
+            <value>Father</value>
+          </text>
+          <text id="/assess_violence/reaction/report_person/3:label">
+            <value>Extended family Member</value>
+          </text>
+          <text id="/assess_violence/note1:label">
+            <value>নির্দেশনা - [শিশু, ক্ষেত্রমত, তার মাতা-পিতা-অভিভাবক-পরিচর্যাকারীকে তার মতো করে প্রশ্নসমূহ করুন। উত্তরদাতার কথা মনযোগ সহকারে শুনুন, গোপনীয়তা রক্ষার আশ্বাস দিন, উত্তম যোগাযোগ দক্ষতা প্রদর্শন করুন এবং সামগ্রিক পরিস্থিতি গভীরভাবে পর্যবেক্ষণ করুন। সামগ্রিক পরিস্থিতি বিবেচনায় নিয়ে যথাযথ তথ্য লিখুন।]</value>
+          </text>
+          <text id="/assess_violence/abuse/abused/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_violence/reaction/report_to_anyone/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/3:label">
+            <value>Use bad language if it is done</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by_other:label">
+            <value>Other (Specify)</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/99:label">
+            <value>Other</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/1:label">
+            <value>The child scolds if anyone does</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/5:label">
+            <value>Family trouble</value>
+          </text>
+          <text id="/assess_violence/reaction/got_any_remedy/0:label">
+            <value>No</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by:label">
+            <value>Has been tortured by whom? or It is tortured by whom?</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/4:label">
+            <value>Emotional</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/2:label">
+            <value>Mental</value>
+          </text>
+          <text id="/assess_violence/upset/upset_reason/2:label">
+            <value>Fights if it is done</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/1:label">
+            <value>Father</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/5:label">
+            <value>Neglect</value>
+          </text>
+          <text id="/assess_violence/reaction/report_to_anyone:label">
+            <value>Did the child report to anyone?</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/5:label">
+            <value>Teacher</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/6:label">
+            <value>Caretaker</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/99:label">
+            <value>Other (specify)</value>
+          </text>
+          <text id="/assess_violence/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_by/7:label">
+            <value>Public Representative</value>
+          </text>
+          <text id="/assess_violence/abuse/abused_type/3:label">
+            <value>Sexual</value>
+          </text>
+          <text id="/assess_violence/upset/feel_upset/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_violence/reaction/got_any_remedy/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/assess_violence/abuse/abused:label">
+            <value>Has the child been abused? or Does the child become abused?</value>
+          </text>
+          <text id="/assess_violence/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <assess_violence id="assess_violence">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+          </reg_info>
+          <date/>
+          <note1/>
+          <upset>
+            <feel_upset/>
+            <upset_reason/>
+          </upset>
+          <abuse>
+            <abused/>
+            <abused_by/>
+            <abused_by_other/>
+            <abused_type/>
+            <abuse_happen_often/>
+          </abuse>
+          <reaction>
+            <reaction_to_abuse/>
+            <reaction_to_abuse_other/>
+            <report_to_anyone/>
+            <report_person/>
+            <report_person_other/>
+            <got_any_remedy/>
+          </reaction>
+          <social_worker_observation/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </assess_violence>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/assess_violence/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/assess_violence/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/assess_violence/username" type="string"/>
+      <bind nodeset="/assess_violence/reg_info/child_name_bn" required="true()" type="string"/>
+      <bind nodeset="/assess_violence/reg_info/child_name_en" required="true()" type="string"/>
+      <bind nodeset="/assess_violence/reg_info/reg_num" required="true()" type="string"/>
+      <bind calculate="date(format-date( /assess_violence/start ,'%Y-%m-%d'))" nodeset="/assess_violence/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/assess_violence/note1" readonly="true()" type="string"/>
+      <bind nodeset="/assess_violence/upset/feel_upset" required="true()" type="select1"/>
+      <bind nodeset="/assess_violence/upset/upset_reason" relevant=" /assess_violence/upset/feel_upset =1" required="true()" type="select"/>
+      <bind nodeset="/assess_violence/abuse/abused" required="true()" type="select1"/>
+      <bind nodeset="/assess_violence/abuse/abused_by" relevant=" /assess_violence/abuse/abused =1" required="true()" type="select"/>
+      <bind nodeset="/assess_violence/abuse/abused_by_other" relevant="selected( /assess_violence/abuse/abused_by ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_violence/abuse/abused_type" relevant=" /assess_violence/abuse/abused =1" required="true()" type="select"/>
+      <bind nodeset="/assess_violence/abuse/abuse_happen_often" relevant=" /assess_violence/abuse/abused =1" required="true()" type="select1"/>
+      <bind nodeset="/assess_violence/reaction/reaction_to_abuse" required="true()" type="select1"/>
+      <bind nodeset="/assess_violence/reaction/reaction_to_abuse_other" relevant=" /assess_violence/reaction/reaction_to_abuse =99" required="true()" type="string"/>
+      <bind nodeset="/assess_violence/reaction/report_to_anyone" required="true()" type="select1"/>
+      <bind nodeset="/assess_violence/reaction/report_person" relevant=" /assess_violence/reaction/report_to_anyone =1" required="true()" type="select"/>
+      <bind nodeset="/assess_violence/reaction/report_person_other" relevant="selected( /assess_violence/reaction/report_person ,'99')" required="true()" type="string"/>
+      <bind nodeset="/assess_violence/reaction/got_any_remedy" relevant=" /assess_violence/reaction/report_to_anyone =1" required="true()" type="select1"/>
+      <bind nodeset="/assess_violence/social_worker_observation" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/assess_violence/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'e351576959ce496e8fa97e40d69bd7dc'" nodeset="/assess_violence/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/assess_violence/reg_info">
+      <input appearance="db" ref="/assess_violence/reg_info/child_name_bn">
+        <label ref="jr:itext('/assess_violence/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_violence/reg_info/child_name_en">
+        <label ref="jr:itext('/assess_violence/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/assess_violence/reg_info/reg_num">
+        <label ref="jr:itext('/assess_violence/reg_info/reg_num:label')"/>
+      </input>
+    </group>
+    <input ref="/assess_violence/date">
+      <label ref="jr:itext('/assess_violence/date:label')"/>
+    </input>
+    <input ref="/assess_violence/note1">
+      <label ref="jr:itext('/assess_violence/note1:label')"/>
+    </input>
+    <group appearance="field-list" ref="/assess_violence/upset">
+      <label ref="jr:itext('/assess_violence/upset:label')"/>
+      <select1 ref="/assess_violence/upset/feel_upset">
+        <label ref="jr:itext('/assess_violence/upset/feel_upset:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_violence/upset/feel_upset/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/upset/feel_upset/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_violence/upset/upset_reason">
+        <label ref="jr:itext('/assess_violence/upset/upset_reason:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_violence/upset/upset_reason/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/upset/upset_reason/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/upset/upset_reason/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/upset/upset_reason/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/upset/upset_reason/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/upset/upset_reason/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+    </group>
+    <group appearance="field-list" ref="/assess_violence/abuse">
+      <select1 ref="/assess_violence/abuse/abused">
+        <label ref="jr:itext('/assess_violence/abuse/abused:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_violence/abuse/abused_by">
+        <label ref="jr:itext('/assess_violence/abuse/abused_by:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_by/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_by/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_by/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_by/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_by/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_by/6:label')"/>
+          <value>6</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_by/7:label')"/>
+          <value>7</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_by/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_violence/abuse/abused_by_other">
+        <label ref="jr:itext('/assess_violence/abuse/abused_by_other:label')"/>
+      </input>
+      <select ref="/assess_violence/abuse/abused_type">
+        <label ref="jr:itext('/assess_violence/abuse/abused_type:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_type/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_type/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_type/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_type/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_type/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abused_type/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <select1 ref="/assess_violence/abuse/abuse_happen_often">
+        <label ref="jr:itext('/assess_violence/abuse/abuse_happen_often:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abuse_happen_often/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/abuse/abuse_happen_often/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+    </group>
+    <group appearance="field-list" ref="/assess_violence/reaction">
+      <select1 ref="/assess_violence/reaction/reaction_to_abuse">
+        <label ref="jr:itext('/assess_violence/reaction/reaction_to_abuse:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/reaction_to_abuse/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/reaction_to_abuse/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/reaction_to_abuse/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/reaction_to_abuse/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/reaction_to_abuse/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/reaction_to_abuse/6:label')"/>
+          <value>6</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/reaction_to_abuse/7:label')"/>
+          <value>7</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/reaction_to_abuse/8:label')"/>
+          <value>8</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/reaction_to_abuse/99:label')"/>
+          <value>99</value>
+        </item>
+      </select1>
+      <input ref="/assess_violence/reaction/reaction_to_abuse_other">
+        <label ref="jr:itext('/assess_violence/reaction/reaction_to_abuse_other:label')"/>
+      </input>
+      <select1 ref="/assess_violence/reaction/report_to_anyone">
+        <label ref="jr:itext('/assess_violence/reaction/report_to_anyone:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/report_to_anyone/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/report_to_anyone/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select ref="/assess_violence/reaction/report_person">
+        <label ref="jr:itext('/assess_violence/reaction/report_person:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/report_person/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/report_person/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/report_person/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/report_person/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/report_person/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/report_person/6:label')"/>
+          <value>6</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/report_person/7:label')"/>
+          <value>7</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/report_person/99:label')"/>
+          <value>99</value>
+        </item>
+      </select>
+      <input ref="/assess_violence/reaction/report_person_other">
+        <label ref="jr:itext('/assess_violence/reaction/report_person_other:label')"/>
+      </input>
+      <select1 ref="/assess_violence/reaction/got_any_remedy">
+        <label ref="jr:itext('/assess_violence/reaction/got_any_remedy:label')"/>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/got_any_remedy/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/assess_violence/reaction/got_any_remedy/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+    </group>
+    <input ref="/assess_violence/social_worker_observation">
+      <label ref="jr:itext('/assess_violence/social_worker_observation:label')"/>
+      <hint ref="jr:itext('/assess_violence/social_worker_observation:hint')"/>
+    </input>
+  </h:body>
+</h:html>

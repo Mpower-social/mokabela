@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>রিইন্ট্রিগেশন</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Bangla">
+          <text id="/reintegration/reg_info/reg_num:label">
+            <value>নিবন্ধন নম্বর</value>
+          </text>
+          <text id="/reintegration/reg_info/child_name_bn:label">
+            <value>শিশুর নাম বাংলায়</value>
+          </text>
+          <text id="/reintegration/comment:label">
+            <value>মন্তব্য</value>
+          </text>
+          <text id="/reintegration/reg_info/case_id:label">
+            <value>Case ID</value>
+          </text>
+          <text id="/reintegration/address:label">
+            <value>ঠিকানা</value>
+          </text>
+          <text id="/reintegration/reg_info/child_name_en:label">
+            <value>শিশুর নাম ইংরেজিতে</value>
+          </text>
+          <text id="/reintegration/file_no:label">
+            <value>অন্যান্য নথি / সাধারণ ডায়েরী নং 
+ (যদি থাকে)</value>
+          </text>
+          <text id="/reintegration/reg_info/date:label">
+            <value>তারিখ</value>
+          </text>
+          <text id="/reintegration/reintegration_date:label">
+            <value>রিইউনিফিকেশন এর তারিখ</value>
+          </text>
+        </translation>
+        <translation lang="English">
+          <text id="/reintegration/reg_info/reg_num:label">
+            <value>Registration Number</value>
+          </text>
+          <text id="/reintegration/reg_info/child_name_bn:label">
+            <value>Child's Name In Bengal</value>
+          </text>
+          <text id="/reintegration/comment:label">
+            <value>Comments</value>
+          </text>
+          <text id="/reintegration/reg_info/case_id:label">
+            <value>Case ID</value>
+          </text>
+          <text id="/reintegration/address:label">
+            <value>Address</value>
+          </text>
+          <text id="/reintegration/reg_info/child_name_en:label">
+            <value>Child's Name In English</value>
+          </text>
+          <text id="/reintegration/file_no:label">
+            <value>Other File/ General Diary No</value>
+          </text>
+          <text id="/reintegration/reg_info/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/reintegration/reintegration_date:label">
+            <value>Reintegration Date</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <reintegration id="reintegration">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <reg_info>
+            <date/>
+            <child_name_bn/>
+            <child_name_en/>
+            <reg_num/>
+            <case_id/>
+          </reg_info>
+          <reintegration_date/>
+          <address/>
+          <file_no/>
+          <comment/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </reintegration>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/reintegration/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/reintegration/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/reintegration/username" type="string"/>
+      <bind calculate="date(format-date( /reintegration/start ,'%Y-%m-%d'))" nodeset="/reintegration/reg_info/date" readonly="true()" required="true()" type="date"/>
+      <bind nodeset="/reintegration/reg_info/child_name_bn" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/reintegration/reg_info/child_name_en" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/reintegration/reg_info/reg_num" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/reintegration/reg_info/case_id" readonly="true()" required="true()" type="string"/>
+      <bind nodeset="/reintegration/reintegration_date" required="true()" type="date"/>
+      <bind nodeset="/reintegration/address" required="true()" type="string"/>
+      <bind nodeset="/reintegration/file_no" type="string"/>
+      <bind nodeset="/reintegration/comment" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/reintegration/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'0b0a2fbddbd5479282b10e2f37e4f4f8'" nodeset="/reintegration/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/reintegration/reg_info">
+      <input ref="/reintegration/reg_info/date">
+        <label ref="jr:itext('/reintegration/reg_info/date:label')"/>
+      </input>
+      <input appearance="db" ref="/reintegration/reg_info/child_name_bn">
+        <label ref="jr:itext('/reintegration/reg_info/child_name_bn:label')"/>
+      </input>
+      <input appearance="db" ref="/reintegration/reg_info/child_name_en">
+        <label ref="jr:itext('/reintegration/reg_info/child_name_en:label')"/>
+      </input>
+      <input appearance="db" ref="/reintegration/reg_info/reg_num">
+        <label ref="jr:itext('/reintegration/reg_info/reg_num:label')"/>
+      </input>
+      <input appearance="db" ref="/reintegration/reg_info/case_id">
+        <label ref="jr:itext('/reintegration/reg_info/case_id:label')"/>
+      </input>
+    </group>
+    <input ref="/reintegration/reintegration_date">
+      <label ref="jr:itext('/reintegration/reintegration_date:label')"/>
+    </input>
+    <input ref="/reintegration/address">
+      <label ref="jr:itext('/reintegration/address:label')"/>
+    </input>
+    <input ref="/reintegration/file_no">
+      <label ref="jr:itext('/reintegration/file_no:label')"/>
+    </input>
+    <input ref="/reintegration/comment">
+      <label ref="jr:itext('/reintegration/comment:label')"/>
+    </input>
+  </h:body>
+</h:html>
