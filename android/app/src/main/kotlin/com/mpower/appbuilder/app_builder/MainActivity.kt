@@ -4,7 +4,6 @@ import android.content.ContentUris
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
-import android.util.Log
 import android.widget.Toast
 import org.odk.collect.android.activities.*
 import io.flutter.embedding.android.FlutterActivity
@@ -13,13 +12,12 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugins.GeneratedPluginRegistrant
 import org.odk.collect.android.application.Collect
 import org.odk.collect.android.dao.FormsDao
-import org.odk.collect.android.listeners.PermissionListener
+import org.odk.collect.android.preferences.GeneralKeys.KEY_USERNAME
 import org.odk.collect.android.provider.FormsProviderAPI
-import org.odk.collect.android.utilities.PermissionUtils
-import java.util.*
+import org.odk.collect.android.storage.StorageInitializer
 
 class MainActivity: FlutterActivity() {
-    private val CHANNEL = "flutter_to_odk_activity"
+    private val CHANNEL = "flutter_to_odk_communication"
     private lateinit var channelResult: MethodChannel.Result
     private lateinit var database: SQLiteDatabase
 
@@ -28,35 +26,31 @@ class MainActivity: FlutterActivity() {
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
             channelResult = result
 
-            PermissionUtils().requestStoragePermissions(this, object: PermissionListener {
-                override fun granted() {
-                    if(call.method.equals("goToHouseholdForms", true)) {
-                        var formId: String? = call.argument<String>("formId")
-                        Collect.getInstance().setValue("hh_id", UUID.randomUUID().toString())
-                        Collect.getInstance().setValue("member_id", UUID.randomUUID().toString())
-                        openOdkForm(formId)
-                    } else {
-                        startActivityFromFlutter(call.method)
+            when {
+                call.method.equals("openForms", true) -> {
+                    val formId = call.argument<String>("formId")
+                    val arguments = call.argument<Map<String, String>>("arguments")
+                    arguments?.entries?.forEach { entry ->
+                        Collect.getInstance().setValue(entry.key, entry.value)
                     }
 
-                    database = SQLiteDatabase.openDatabase(getDatabasePath("app_builder.db").absolutePath,null, SQLiteDatabase.OPEN_READWRITE);
+                    openOdkForm(formId)
                 }
+                call.method.equals("initializeOdk", true) -> {
+                    val username = call.argument<String>("username") ?: "bahis_ulo"
+                    initializeOdk(username)
+                }
+                else -> {
+                    startActivityFromFlutter(call.method)
+                }
+            }
 
-                override fun denied() {
-                    channelResult.error("Permission Required", "Failed", null)
-                }
-            })
+            database = SQLiteDatabase.openDatabase(getDatabasePath("app_builder.db").absolutePath,null, SQLiteDatabase.OPEN_READWRITE);
         }
     }
 
     private fun openOdkForm(formId: String?) {
-
-        /*val formMediaPath = "/storage/emulated/0/flutter_with_odk/forms/Household Registration-media" /*FormsDao().getFormMediaPath(formId, null)*/
-        val instancePath = "/storage/emulated/0/flutter_with_odk/instances/Household Registration_2021-01-25_17-02-30/Household Registration_2021-01-25_17-02-30.xml" /*InstancesDao().getInstancePathForInstanceId(instanceId)*/
-
-        val parseModels = parseXmlContent(formMediaPath, instancePath)*/
-
-        var formCursor = FormsDao().getFormsCursorForFormId(formId)
+        val formCursor = FormsDao().getFormsCursorForFormId(formId)
         if(formCursor != null && formCursor.count > 0) {
 
             formCursor.moveToFirst()
@@ -90,17 +84,20 @@ class MainActivity: FlutterActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode == 100 && data!=null) {
-            var value = data.getStringExtra("data");
-            Log.v("SSLComerz","main>>>"+value.toString())
+            var value = data.getStringExtra("data")
             if(channelResult!=null) channelResult.success(value)
         }
 
         if(requestCode == 101 && data!=null && data.data != null) {
             var value = data.data
-            //val data = getDataFromUri(value!!)
-            Log.v("SSLComerz","main>>>"+value.toString())
             if(channelResult!=null) channelResult.success("success")
         }
+    }
+
+    private fun initializeOdk(username: String) {
+        Collect.getInstance().setValue(KEY_USERNAME, username)
+        Collect.getInstance().initializeJavaRosa()
+        StorageInitializer().createOdkDirsOnStorage()
     }
 }
 

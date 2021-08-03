@@ -2,11 +2,13 @@ import 'dart:convert';
 import 'package:app_builder/database/database_helper.dart';
 import 'package:app_builder/service/remote_service.dart';
 import 'package:app_builder/user/model/catchment.dart';
+import 'package:app_builder/utils/constant_util.dart';
 import 'package:app_builder/utils/preference_util.dart';
 import 'package:app_builder/views/dashboard_page.dart';
 import 'package:app_builder/views/side_bar_layout.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -83,6 +85,8 @@ class LoginController extends GetxController {
         PreferenceUtil.setValue(
             PreferenceUtil.KEY_USER, json.encode(user.toJson()));
 
+        initializeOdkCollectThroughChannel(user.userName);
+
         Get.offAll(() => SideBarLayout(
               user: user,
             ));
@@ -106,5 +110,20 @@ class LoginController extends GetxController {
     }
 
     communicatingWithServer.value = false;
+  }
+
+  initializeOdkCollectThroughChannel(String username) async {
+    try {
+      ConstantUtil.PLATFORM
+          .invokeMethod('initializeOdk', {"username": username});
+    } on PlatformException catch (_) {
+      Get.snackbar(
+        'Warning!',
+        'Unable to initialize ODK',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+    }
   }
 }

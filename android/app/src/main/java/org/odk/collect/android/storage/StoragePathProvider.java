@@ -52,7 +52,7 @@ public class StoragePathProvider {
     }
 
     public String getUnscopedStorageRootDirPath() {
-        return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "flutter_with_odk";
+        return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "bahis_client";
     }
 
     public String getUnscopedStorageDirPath(StorageSubdirectory subdirectory) {

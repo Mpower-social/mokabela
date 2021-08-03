@@ -140,6 +140,8 @@ public final class GeneralKeys {
         hashMap.put(KEY_SPLASH_PATH,                Collect.getInstance().getString(R.string.default_splash_path));
         // map_preferences.xml
         hashMap.put(KEY_BASEMAP_SOURCE,             BASEMAP_SOURCE_GOOGLE);
+        // Scopped storage
+        hashMap.put(KEY_SCOPED_STORAGE_USED,        true);
         return hashMap;
     }
 
