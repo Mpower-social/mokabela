@@ -1,3 +1,4 @@
+import 'package:app_builder/controllers/module_controller.dart';
 import 'package:app_builder/module/model/dto/module_item.dart';
 import 'package:app_builder/utils/constant_util.dart';
 import 'package:app_builder/views/list_page.dart';
@@ -7,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ModulePage extends StatelessWidget {
+  final controller = ModuleController();
   final List<ModuleItem> moduleItems;
   final String title;
   final bool showAppBar;
@@ -72,13 +74,7 @@ class ModulePage extends StatelessWidget {
                           listId: moduleItems[index].listId!,
                         ));
                   } else if (moduleItems[index].xformId != null) {
-                    Get.snackbar(
-                      'Warning!',
-                      'Related form not found.',
-                      snackPosition: SnackPosition.BOTTOM,
-                      backgroundColor: Colors.red,
-                      colorText: Colors.white,
-                    );
+                    controller.openForm(moduleItems[index].xformId!);
                   } else {
                     Get.to(
                         () => ModulePage(
