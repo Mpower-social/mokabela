@@ -5,6 +5,7 @@ import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.widget.Toast
+import com.mpower.appbuilder.app_builder.utills.AssetFormDownloadUtil
 import org.odk.collect.android.activities.*
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
@@ -12,9 +13,11 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugins.GeneratedPluginRegistrant
 import org.odk.collect.android.application.Collect
 import org.odk.collect.android.dao.FormsDao
+import org.odk.collect.android.listeners.PermissionListener
 import org.odk.collect.android.preferences.GeneralKeys.KEY_USERNAME
 import org.odk.collect.android.provider.FormsProviderAPI
 import org.odk.collect.android.storage.StorageInitializer
+import org.odk.collect.android.utilities.PermissionUtils
 
 class MainActivity: FlutterActivity() {
     private val CHANNEL = "flutter_to_odk_communication"
@@ -26,26 +29,35 @@ class MainActivity: FlutterActivity() {
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
             channelResult = result
 
-            when {
-                call.method.equals("openForms", true) -> {
-                    val formId = call.argument<String>("formId")
-                    val arguments = call.argument<Map<String, String>>("arguments")
-                    arguments?.entries?.forEach { entry ->
-                        Collect.getInstance().setValue(entry.key, entry.value)
+            PermissionUtils().requestStoragePermissions(this, object: PermissionListener {
+                override fun granted() {
+                    when {
+                        call.method.equals("openForms", true) -> {
+                            val formId = call.argument<String>("formId")
+                            val arguments = call.argument<Map<String, String>>("arguments")
+                            arguments?.entries?.forEach { entry ->
+                                Collect.getInstance().setValue(entry.key, entry.value)
+                            }
+
+                            openOdkForm(formId)
+                        }
+                        call.method.equals("initializeOdk", true) -> {
+                            val username = call.argument<String>("username") ?: "bahis_ulo"
+                            initializeOdk(username)
+                            AssetFormDownloadUtil(this@MainActivity).getForms()
+                        }
+                        else -> {
+                            startActivityFromFlutter(call.method)
+                        }
                     }
 
-                    openOdkForm(formId)
+                    database = SQLiteDatabase.openDatabase(getDatabasePath("app_builder.db").absolutePath,null, SQLiteDatabase.OPEN_READWRITE)
                 }
-                call.method.equals("initializeOdk", true) -> {
-                    val username = call.argument<String>("username") ?: "bahis_ulo"
-                    initializeOdk(username)
-                }
-                else -> {
-                    startActivityFromFlutter(call.method)
-                }
-            }
 
-            database = SQLiteDatabase.openDatabase(getDatabasePath("app_builder.db").absolutePath,null, SQLiteDatabase.OPEN_READWRITE);
+                override fun denied() {
+                    channelResult.error("Permission Required", "Failed", null)
+                }
+            })
         }
     }
 

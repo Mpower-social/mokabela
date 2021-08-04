@@ -92,64 +92,64 @@
         </provider>
 
         <activity
-            android:name="org.odk.collect.android.activities.MainMenuActivity"
+            android:name=".activities.MainMenuActivity"
             android:configChanges="locale|orientation|screenSize" />
         <activity
-            android:name="org.odk.collect.android.activities.ScannerWithFlashlightActivity"
+            android:name=".activities.ScannerWithFlashlightActivity"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name="org.odk.collect.android.activities.ScanQRCodeActivity"
+        <activity android:name=".activities.ScanQRCodeActivity"
             android:screenOrientation="portrait"
             />
         <activity
-            android:name="org.odk.collect.android.activities.FormEntryActivity"
+            android:name=".activities.FormEntryActivity"
             android:configChanges="orientation"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="org.odk.collect.android.activities.NotificationActivity"
+            android:name=".activities.NotificationActivity"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
             android:taskAffinity=""
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
         <activity
-            android:name="org.odk.collect.android.activities.DrawActivity"
+            android:name=".activities.DrawActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name="org.odk.collect.android.activities.GoogleDriveActivity"
+            android:name=".activities.GoogleDriveActivity"
             android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name="org.odk.collect.android.activities.InstanceChooserList" />
-        <activity android:name="org.odk.collect.android.activities.FormChooserListActivity" />
-        <activity android:name="org.odk.collect.android.activities.FormDownloadList" />
+        <activity android:name=".activities.InstanceChooserList" />
+        <activity android:name=".activities.FormChooserListActivity" />
+        <activity android:name=".activities.FormDownloadList" />
         <activity
-            android:name="org.odk.collect.android.activities.FileManagerTabs"
+            android:name=".activities.FileManagerTabs"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name="org.odk.collect.android.activities.GoogleSheetsUploaderActivity"
+            android:name=".activities.GoogleSheetsUploaderActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name="org.odk.collect.android.activities.InstanceUploaderListActivity"
+            android:name=".activities.InstanceUploaderListActivity"
             android:configChanges="orientation|screenSize" />
-        <activity android:name="org.odk.collect.android.activities.InstanceUploaderActivity" />
-        <activity android:name="org.odk.collect.android.activities.AboutActivity" />
-        <activity android:name="org.odk.collect.android.preferences.PreferencesActivity" />
-        <activity android:name="org.odk.collect.android.preferences.AdminPreferencesActivity" />
-        <activity android:name="org.odk.collect.android.preferences.FormMetadataPreferencesActivity" />
-        <activity android:name="org.odk.collect.android.activities.FormHierarchyActivity" />
-        <activity android:name="org.odk.collect.android.activities.ViewOnlyFormHierarchyActivity" />
-        <activity android:name="org.odk.collect.android.activities.GeoPointActivity" />
+        <activity android:name=".activities.InstanceUploaderActivity" />
+        <activity android:name=".activities.AboutActivity" />
+        <activity android:name=".preferences.PreferencesActivity" />
+        <activity android:name=".preferences.AdminPreferencesActivity" />
+        <activity android:name=".preferences.FormMetadataPreferencesActivity" />
+        <activity android:name=".activities.FormHierarchyActivity" />
+        <activity android:name=".activities.ViewOnlyFormHierarchyActivity" />
+        <activity android:name=".activities.GeoPointActivity" />
         <activity
-            android:name="org.odk.collect.android.activities.GeoPointMapActivity"
+            android:name=".activities.GeoPointMapActivity"
             android:configChanges="orientation" />
         <activity
-            android:name="org.odk.collect.android.activities.GeoPolyActivity"
+            android:name=".activities.GeoPolyActivity"
             android:configChanges="orientation" />
-        <activity android:name="org.odk.collect.android.activities.FormMapActivity" />
-        <activity android:name="org.odk.collect.android.activities.BearingActivity" />
-        <activity android:name="org.odk.collect.android.activities.CaptureSelfieActivity" />
-        <activity android:name="org.odk.collect.android.activities.WebViewActivity" />
-        <activity android:name="org.odk.collect.android.activities.CaptureSelfieVideoActivity" />
+        <activity android:name=".activities.FormMapActivity" />
+        <activity android:name=".activities.BearingActivity" />
+        <activity android:name=".activities.CaptureSelfieActivity" />
+        <activity android:name=".activities.WebViewActivity" />
+        <activity android:name=".activities.CaptureSelfieVideoActivity" />
 
         <!-- Configure this key by setting GOOGLE_MAPS_API_KEY in collect_app/secrets.properties. -->
         <meta-data
@@ -179,17 +179,17 @@
          -->
 
         <provider
-            android:name="org.odk.collect.android.provider.FormsProvider"
+            android:name=".provider.FormsProvider"
             android:authorities="${applicationId}.provider.odk.forms"
             android:exported="true" />
         <provider
-            android:name="org.odk.collect.android.provider.InstanceProvider"
+            android:name=".provider.InstanceProvider"
             android:authorities="${applicationId}.provider.odk.instances"
             android:exported="true" />
 
         <activity-alias
-            android:name="org.odk.collect.android.activities.FormEntryActivity"
-            android:targetActivity="org.odk.collect.android.activities.FormEntryActivity"
+            android:name=".activities.FormEntryActivity"
+            android:targetActivity=".activities.FormEntryActivity"
             tools:ignore="AppLinkUrlError">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -203,8 +203,8 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.odk.collect.android.activities.InstanceChooserList"
-            android:targetActivity="org.odk.collect.android.activities.InstanceChooserList"
+            android:name=".activities.InstanceChooserList"
+            android:targetActivity=".activities.InstanceChooserList"
             tools:ignore="AppLinkUrlError">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -217,8 +217,8 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.odk.collect.android.activities.FormChooserList"
-            android:targetActivity="org.odk.collect.android.activities.FormChooserListActivity"
+            android:name=".activities.FormChooserList"
+            android:targetActivity=".activities.FormChooserListActivity"
             tools:ignore="AppLinkUrlError">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -232,8 +232,8 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.odk.collect.android.activities.FormDownloadList"
-            android:targetActivity="org.odk.collect.android.activities.FormDownloadList">
+            android:name=".activities.FormDownloadList"
+            android:targetActivity=".activities.FormDownloadList">
             <intent-filter>
                 <action android:name="${applicationId}.FORM_DOWNLOAD" />
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -242,8 +242,8 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.odk.collect.android.activities.InstanceUploaderList"
-            android:targetActivity="org.odk.collect.android.activities.InstanceUploaderListActivity" >
+            android:name=".activities.InstanceUploaderList"
+            android:targetActivity=".activities.InstanceUploaderListActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.EDIT" />
@@ -253,8 +253,8 @@
         </activity-alias>
 
         <activity-alias
-            android:name="org.odk.collect.android.activities.InstanceUploaderActivity"
-            android:targetActivity="org.odk.collect.android.activities.InstanceUploaderActivity">
+            android:name=".activities.InstanceUploaderActivity"
+            android:targetActivity=".activities.InstanceUploaderActivity">
             <intent-filter>
                 <action android:name="${applicationId}.INSTANCE_UPLOAD" />
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -264,7 +264,7 @@
 
         <!-- Enable Shortcuts for Command Actions -->
         <activity
-            android:name="org.odk.collect.android.activities.AndroidShortcuts"
+            android:name=".activities.AndroidShortcuts"
             android:label="ODK Form"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -275,7 +275,7 @@
         </activity>
 
         <service
-            android:name="org.odk.collect.android.storage.migration.StorageMigrationService"
+            android:name=".storage.migration.StorageMigrationService"
             android:exported="false" />
 
         <activity

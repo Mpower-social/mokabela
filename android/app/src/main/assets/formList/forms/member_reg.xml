@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Member Registration</h:title>
+    <model>
+      <itext>
+        <translation lang="Bangla">
+          <text id="/member_reg/expenditure:label">
+            <value>Expenditure</value>
+          </text>
+          <text id="/member_reg/occupation:label">
+            <value>Current occupation (if Applicable)</value>
+          </text>
+          <text id="/member_reg/member_name:label">
+            <value>Member Name</value>
+          </text>
+          <text id="/member_reg/nid:label">
+            <value>National ID</value>
+          </text>
+          <text id="/member_reg/hh_id:label">
+            <value>Household ID</value>
+          </text>
+          <text id="/member_reg/training_needed:label">
+            <value>Training Needed</value>
+          </text>
+          <text id="/member_reg/age:label">
+            <value>Age</value>
+          </text>
+          <text id="/member_reg/training_received:label">
+            <value>Training Received</value>
+          </text>
+          <text id="/member_reg/income:label">
+            <value>Income</value>
+          </text>
+        </translation>
+        <translation default="true()" lang="English">
+          <text id="/member_reg/expenditure:label">
+            <value>Expenditure</value>
+          </text>
+          <text id="/member_reg/occupation:label">
+            <value>Current occupation (if Applicable)</value>
+          </text>
+          <text id="/member_reg/member_name:label">
+            <value>Member Name</value>
+          </text>
+          <text id="/member_reg/nid:label">
+            <value>National ID</value>
+          </text>
+          <text id="/member_reg/hh_id:label">
+            <value>Household ID</value>
+          </text>
+          <text id="/member_reg/training_needed:label">
+            <value>Training Needed</value>
+          </text>
+          <text id="/member_reg/age:label">
+            <value>Age</value>
+          </text>
+          <text id="/member_reg/training_received:label">
+            <value>Training Received</value>
+          </text>
+          <text id="/member_reg/income:label">
+            <value>Income</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <member_reg id="member_reg">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <hh_id/>
+          <member_name/>
+          <age/>
+          <nid/>
+          <occupation/>
+          <income/>
+          <expenditure/>
+          <training_received/>
+          <training_needed/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </member_reg>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/member_reg/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/member_reg/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/member_reg/username" type="string"/>
+      <bind nodeset="/member_reg/hh_id" required="true()" type="string"/>
+      <bind nodeset="/member_reg/member_name" required="true()" type="string"/>
+      <bind nodeset="/member_reg/age" required="true()" type="string"/>
+      <bind nodeset="/member_reg/nid" required="true()" type="string"/>
+      <bind nodeset="/member_reg/occupation" type="string"/>
+      <bind nodeset="/member_reg/income" required="true()" type="int"/>
+      <bind nodeset="/member_reg/expenditure" required="true()" type="int"/>
+      <bind nodeset="/member_reg/training_received" required="true()" type="string"/>
+      <bind nodeset="/member_reg/training_needed" required="true()" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/member_reg/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'82b4cf1fd416460c8b9af97d5d683c8a'" nodeset="/member_reg/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/member_reg/hh_id">
+      <label ref="jr:itext('/member_reg/hh_id:label')"/>
+    </input>
+    <input ref="/member_reg/member_name">
+      <label ref="jr:itext('/member_reg/member_name:label')"/>
+    </input>
+    <input appearance="numbers" ref="/member_reg/age">
+      <label ref="jr:itext('/member_reg/age:label')"/>
+    </input>
+    <input appearance="numbers" ref="/member_reg/nid">
+      <label ref="jr:itext('/member_reg/nid:label')"/>
+    </input>
+    <input ref="/member_reg/occupation">
+      <label ref="jr:itext('/member_reg/occupation:label')"/>
+    </input>
+    <input ref="/member_reg/income">
+      <label ref="jr:itext('/member_reg/income:label')"/>
+    </input>
+    <input ref="/member_reg/expenditure">
+      <label ref="jr:itext('/member_reg/expenditure:label')"/>
+    </input>
+    <input ref="/member_reg/training_received">
+      <label ref="jr:itext('/member_reg/training_received:label')"/>
+    </input>
+    <input ref="/member_reg/training_needed">
+      <label ref="jr:itext('/member_reg/training_needed:label')"/>
+    </input>
+  </h:body>
+</h:html>
+

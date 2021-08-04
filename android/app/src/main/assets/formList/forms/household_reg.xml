@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Household Registration</h:title>
+    <model>
+      <itext>
+        <translation lang="Bangla">
+          <text id="/household_reg/hh_size:label">
+            <value>No. Of Family Members</value>
+          </text>
+          <text id="/household_reg/districts:label">
+            <value>-</value>
+          </text>
+          <text id="/household_reg/hh_serial:label">
+            <value>Household Serial</value>
+          </text>
+          <text id="/household_reg/upazila:label">
+            <value>-</value>
+          </text>
+          <text id="/household_reg/hh_main_name:label">
+            <value>Household Main's Name</value>
+          </text>
+          <text id="/household_reg/address:label">
+            <value>Address</value>
+          </text>
+          <text id="/household_reg/union_name:label">
+            <value>-</value>
+          </text>
+        </translation>
+        <translation default="true()" lang="English">
+          <text id="/household_reg/hh_size:label">
+            <value>No. Of Family Members</value>
+          </text>
+          <text id="/household_reg/districts:label">
+            <value>District</value>
+          </text>
+          <text id="/household_reg/hh_serial:label">
+            <value>Household Serial</value>
+          </text>
+          <text id="/household_reg/upazila:label">
+            <value>Upazila</value>
+          </text>
+          <text id="/household_reg/hh_main_name:label">
+            <value>Household Main's Name</value>
+          </text>
+          <text id="/household_reg/address:label">
+            <value>Address</value>
+          </text>
+          <text id="/household_reg/union_name:label">
+            <value>Union</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <household_reg id="household_reg">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <districts/>
+          <upazila/>
+          <union_name/>
+          <hh_serial/>
+          <hh_main_name/>
+          <address/>
+          <hh_size/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </household_reg>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/household_reg/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/household_reg/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/household_reg/username" type="string"/>
+      <bind nodeset="/household_reg/districts" required="true()" type="string"/>
+      <bind nodeset="/household_reg/upazila" required="true()" type="string"/>
+      <bind nodeset="/household_reg/union_name" required="true()" type="string"/>
+      <bind nodeset="/household_reg/hh_serial" required="true()" type="string"/>
+      <bind nodeset="/household_reg/hh_main_name" required="true()" type="string"/>
+      <bind nodeset="/household_reg/address" required="true()" type="string"/>
+      <bind nodeset="/household_reg/hh_size" required="true()" type="int"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/household_reg/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'b524867dbde84d08af6dc237ba2025ec'" nodeset="/hh_registration/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/household_reg/districts">
+      <label ref="jr:itext('/household_reg/districts:label')"/>
+    </input>
+    <input ref="/household_reg/upazila">
+      <label ref="jr:itext('/household_reg/upazila:label')"/>
+    </input>
+    <input ref="/household_reg/union_name">
+      <label ref="jr:itext('/household_reg/union_name:label')"/>
+    </input>
+    <input ref="/household_reg/hh_serial">
+      <label ref="jr:itext('/household_reg/hh_serial:label')"/>
+    </input>
+    <input ref="/household_reg/hh_main_name">
+      <label ref="jr:itext('/household_reg/hh_main_name:label')"/>
+    </input>
+    <input ref="/household_reg/address">
+      <label ref="jr:itext('/household_reg/address:label')"/>
+    </input>
+    <input appearance="numbers" ref="/household_reg/hh_size">
+      <label ref="jr:itext('/household_reg/hh_size:label')"/>
+    </input>
+  </h:body>
+</h:html>
+
