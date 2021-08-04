@@ -64,7 +64,7 @@ public abstract class AbstractSelectOneWidget extends SelectTextWidget implement
             } else { // Regular SelectOneWidget
                 selectedValue = ((Selection) questionDetails.getPrompt().getAnswerValue().getValue()).getValue();
             }
-        } else if(isDbAppearance()) {
+        } else {
             String reference = getQuestionReference();
             selectedValue = (String) Collect.getInstance().getPreferenceValue(reference, selectedValue);
         }

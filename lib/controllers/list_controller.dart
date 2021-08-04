@@ -1,8 +1,12 @@
+import 'dart:collection';
+
 import 'package:app_builder/database/database_helper.dart';
 import 'package:app_builder/list_definition/model/dto/list_definition.dart';
 import 'package:app_builder/list_definition/model/dto/list_item.dart';
 import 'package:app_builder/list_definition/model/dto/list_item_action.dart';
 import 'package:app_builder/list_definition/model/dto/list_item_content.dart';
+import 'package:app_builder/utils/constant_util.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ListController extends GetxController {
@@ -30,11 +34,17 @@ class ListController extends GetxController {
       listDefinition.columnDefinition.forEach((column) {
         if (column.dataType == "action") {
           column.actionDefinition.forEach((action) {
+            var mapping = HashMap();
+            action.dataMapping.forEach((element) {
+              mapping[element.formField] = element.column;
+            });
+
             listItem.actions.add(ListItemAction(
               formId: action.xformId,
               formName: action.formTitle,
               actionType: action.actionType,
               actionName: action.label?.english ?? "",
+              dataMapping: mapping,
             ));
           });
         } else if (column.label != null && column.label!.english != null) {
@@ -57,8 +67,17 @@ class ListController extends GetxController {
           content.value = listValue[content.key];
         });
 
+        var listActions =
+            listItemActionsFromJson(listItemActionToJson(listItem.actions));
+
+        listActions.forEach((action) {
+          action.dataMapping?.forEach((key, value) {
+            action.dataMapping?[key] = listValue[value];
+          });
+        });
+
         items.add(ListItem(
-          actions: listItem.actions,
+          actions: listActions,
           contents: listContents,
         ));
       });
@@ -77,6 +96,30 @@ class ListController extends GetxController {
       });
 
       listItems.assignAll(items);
+    }
+  }
+
+  openForm(ListItemAction? value) async {
+    var db = await DatabaseHelper.instance.database;
+    var dbForms = await db.rawQuery(
+        'SELECT * FROM $TABLE_NAME_FORM_ITEM WHERE id = ${value?.formId} LIMIT 1');
+
+    if (dbForms.isNotEmpty && dbForms.first['name'] != null) {
+      ConstantUtil.PLATFORM.invokeMethod(
+        'openForms',
+        {
+          "formId": dbForms.first['name'],
+          "arguments": value?.dataMapping,
+        },
+      );
+    } else {
+      Get.snackbar(
+        'Warning!',
+        'Related form not found.',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
     }
   }
 }

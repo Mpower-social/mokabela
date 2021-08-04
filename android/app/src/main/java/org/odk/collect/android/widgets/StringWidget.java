@@ -122,7 +122,7 @@ public class StringWidget extends QuestionWidget {
     public void setDisplayValueFromModel() {
         String currentAnswer = getFormEntryPrompt().getAnswerText();
 
-        if(currentAnswer == null && isDbAppearance()) {
+        if(currentAnswer == null) {
             String reference = getQuestionReference();
             currentAnswer = (String) Collect.getInstance().getPreferenceValue(reference, null);
         }

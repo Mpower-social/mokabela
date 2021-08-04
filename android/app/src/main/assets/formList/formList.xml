@@ -22,4 +22,15 @@
     <downloadUrl>formList/forms/member_reg.xml</downloadUrl>
     <manifestUrl>formList/xformsManifest/member_reg.xml</manifestUrl>
   </xform>
+
+  <xform>
+    <formID>avian_influenza_investigate</formID>
+    <name>AVIAN INFLUENZA INVESTIGATION</name>
+    <majorMinorVersion/>
+    <version/>
+    <hash>md5:8cb269f647a069e19470f74dcf49ab02</hash>
+    <descriptionText>avian_influenza_investigate</descriptionText>
+    <downloadUrl>formList/forms/avian_influenza_investigate.xml</downloadUrl>
+    <manifestUrl>formList/xformsManifest/avian_influenza_investigate.xml</manifestUrl>
+  </xform>
 </xforms>

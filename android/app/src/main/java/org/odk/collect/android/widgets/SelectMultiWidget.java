@@ -1,11 +1,11 @@
 /*
  * Copyright (C) 2009 University of Washington
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -48,22 +48,23 @@ public class SelectMultiWidget extends SelectTextWidget implements MultiChoiceWi
     public SelectMultiWidget(Context context, QuestionDetails prompt) {
         super(context, prompt);
 
-        if(getFormEntryPrompt().getAnswerValue() != null) {
+        if (getFormEntryPrompt().getAnswerValue() != null) {
             ve = (List<Selection>) getFormEntryPrompt().getAnswerValue().getValue();
-        } else if (isDbAppearance()) {
+        } else {
             String reference = getQuestionReference();
             String currentAnswer = (String) Collect.getInstance().getPreferenceValue(reference, null);
 
             List<Selection> selectItems = new ArrayList<>();
-            if(!TextUtils.isEmpty(currentAnswer)) {
-                for(String item: currentAnswer.split(" ")) {
+            if (!TextUtils.isEmpty(currentAnswer)) {
+                for (String item : currentAnswer.split(" ")) {
                     selectItems.add(new Selection(item));
                 }
             }
 
-            ve = selectItems;
-        } else {
-            ve = new ArrayList<>();
+            if (selectItems.isEmpty())
+                ve = new ArrayList<>();
+            else
+                ve = selectItems;
         }
 
         createLayout();

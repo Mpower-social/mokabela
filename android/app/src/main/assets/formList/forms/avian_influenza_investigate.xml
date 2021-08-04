@@ -1,0 +1,1918 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>AVIAN INFLUENZA INVESTIGATION</h:title>
+    <model>
+      <itext>
+        <translation lang="Bangla">
+          <text id="/avian_influenza_investigate/investigation/sonali_number:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/pcr_result/3:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/34:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_day3:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/5:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_other:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/mouza:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_day1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/date_bird_info:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/community_awareness/0:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/division:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/gender/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/4:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/16:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_night2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/others_affected:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/acknowledge:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_id_1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/date_vtm:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_id_4:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_result/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/pcr_result:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/14:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/deshi_total:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/15:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/white_total:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/sonali_dead:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_searched/0:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/duck_dead:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/approve:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_found/0:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/50:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/pcr_result/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/date:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/53:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/10:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/district:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/55:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/farm_assessed/0:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/additional_info:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/19:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/date_onset:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/54:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_found:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/29:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/12:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/deshi_dead:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test/99:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/37:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/51:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_collected/0:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/sonali_sick:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/village:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/42:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/39:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_result/2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/9:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/43:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/culling_type/2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/7:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/production_system/3:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/duck_sick:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/position:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/no_vtm_reason/2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2/staff_code:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_night1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/production_system/2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/farm_id:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/community_awareness/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/46:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_no:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/17:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_investigate/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/23:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/other_dead:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/upazila/upazila_code:label">
+            <value>upazila_name</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/white_dead:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/date_farm_assessed:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/brown_sick:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/deshi_sick:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/owner:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/white_sick:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/21:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/pcr_result/4:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/20:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_found/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/farm_assessed/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/11:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/upazila:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/56:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/culling_type:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/3:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/culling_type/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/duck_number:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/gender:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_day2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_collected/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/6:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/union:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_day3:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/acknowledge/staff_code:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/26:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/45:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/no_vtm_reason:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/birds_culled:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/48:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_night2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_result/3:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/31:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/farm_assessed:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_searched/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/affected_poultry:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/production_system/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/22:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/25:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/mobile:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/production_system:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/13:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/28:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/approve/staff_code:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/district/district_code:label">
+            <value>district_name</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_id_2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/other_number:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_bird:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/57:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_id_5:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/58:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/27:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_id_3:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/47:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_night1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/44:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/gender/2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/49:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/why_not_culled:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_searched:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/30:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/division/division_code:label">
+            <value>division_name</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/41:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_investigate/0:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/18:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_collected:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_investigate:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_night3:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/other_sick:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/gps:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/33:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/farmid:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/40:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/brown_number:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/59:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/24:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/community_awareness:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/no_vtm_reason/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_day1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/36:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/38:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1/staff_code:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/35:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_result:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/52:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/union/union_code:label">
+            <value>union_name</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/8:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/1:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_day2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_night3:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/32:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/mouza/mouza_code:label">
+            <value>mouza_name</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/pcr_result/2:label">
+            <value>-</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/brown_dead:label">
+            <value>-</value>
+          </text>
+        </translation>
+        <translation default="true()" lang="English">
+          <text id="/avian_influenza_investigate/investigation/sonali_number:label">
+            <value>Total population on farm (Sonali)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/pcr_result/3:label">
+            <value>Test not performed</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/34:label">
+            <value>pox lesion</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_day3:label">
+            <value>Working day 3</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign:label">
+            <value>21.What clinical signs were observed?</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/5:label">
+            <value>Ataxia</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_other:label">
+            <value>Other, specify</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/pcr_result/1:label">
+            <value>Positive</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/41:label">
+            <value>Reluctant to move</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_day1:label">
+            <value>Working day 1</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/date_bird_info:label">
+            <value>17. Date when your team received information on sick/dead birds (dd-mm-yyyy)</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/community_awareness/0:label">
+            <value>No</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/division:label">
+            <value>3. Division</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/gender/1:label">
+            <value>Male</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/4:label">
+            <value>Anemia</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/16:label">
+            <value>Diarrhea</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_night2:label">
+            <value>Overnight 2</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/others_affected:label">
+            <value>Other_specify</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/acknowledge:label">
+            <value>Acknowledged by:</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_id_1:label">
+            <value>Sample ID1:</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/date_vtm:label">
+            <value>Date samples collected (dd-mm-yyyy)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_id_4:label">
+            <value>Sample ID4:</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_result/1:label">
+            <value>Positive</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/pcr_result:label">
+            <value>PCR Result (check one)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/14:label">
+            <value>Depressed</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/deshi_total:label">
+            <value>Total population on farm (Deshi)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/15:label">
+            <value>Depression</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/white_total:label">
+            <value>Total population on farm (White)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/sonali_dead:label">
+            <value>Number of DEAD BIRDS (Sonali)</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_searched/0:label">
+            <value>No</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/duck_dead:label">
+            <value>Number of DEAD BIRDS (Duck)</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/approve:label">
+            <value>Approved by:</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_found/0:label">
+            <value>No</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/50:label">
+            <value>Swollen face</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/mouza:label">
+            <value>7. Mouza</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/date:label">
+            <value>2. Date completed</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/53:label">
+            <value>swollen joint</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1:label">
+            <value>Officer/Staff-1</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/10:label">
+            <value>Conjunctivity with closed eyes</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/district:label">
+            <value>4. District</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/55:label">
+            <value>torticolis</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test:label">
+            <value>23. What is the name of rapid test used?</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/21:label">
+            <value>Egg bound syndrome</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/farm_assessed/0:label">
+            <value>No</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/additional_info:label">
+            <value>30. Additional investigation information</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/19:label">
+            <value>Drowsiness</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/date_onset:label">
+            <value>18. Estimated date of onset (dd-mm-yyyy)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/54:label">
+            <value>torticolis</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_found:label">
+            <value>16. Were there any sick/dead birds found?</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/29:label">
+            <value>Mucoid discharge from eye</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/community_awareness:label">
+            <value>14. Did the investigators conduct a meeting to build network or to raise community awareness on avian influenza?</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/12:label">
+            <value>Decreased egg production</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/deshi_dead:label">
+            <value>Number of DEAD BIRDS (Deshi)</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting:label">
+            <value>Meeting Information</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test/99:label">
+            <value>Other</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/37:label">
+            <value>prostration</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/51:label">
+            <value>Swollen foot pad</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_collected/0:label">
+            <value>No</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/sonali_sick:label">
+            <value>Number of SICK BIRDS (Sonali)</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/village:label">
+            <value>8. Village</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/42:label">
+            <value>restlessness</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/39:label">
+            <value>rales</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/32:label">
+            <value>Open mouth breathing</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/9:label">
+            <value>Conjunctivitis</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/43:label">
+            <value>Retarded growth</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/culling_type/2:label">
+            <value>No culling performed</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/7:label">
+            <value>Breathing difficulty</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/production_system/3:label">
+            <value>Wild Bird</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/duck_sick:label">
+            <value>Number of SICK BIRDS (Duck)</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/position:label">
+            <value>10. Title/Position</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/no_vtm_reason/2:label">
+            <value>Not necessary</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2/staff_code:label">
+            <value>staff_label</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_night1:label">
+            <value>Overnight 1</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/production_system/2:label">
+            <value>Backyard</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/farm_id:label">
+            <value>Farm ID</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/community_awareness/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/46:label">
+            <value>Scabbing</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_result:label">
+            <value>24. Rapid test result</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/17:label">
+            <value>discharge from eye</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_investigate/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/other_dead:label">
+            <value>Number of DEAD BIRDS (<output value=" /avian_influenza_investigate/investigation/others_affected "/>)</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/upazila/upazila_code:label">
+            <value>upazila_name</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/white_dead:label">
+            <value>Number of DEAD BIRDS (White)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/date_farm_assessed:label">
+            <value>Approximate date</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/brown_sick:label">
+            <value>Number of SICK BIRDS (Brown)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/deshi_sick:label">
+            <value>Number of SICK BIRDS (Deshi)</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/owner:label">
+            <value>9. Name of contact person</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/white_sick:label">
+            <value>Number of SICK BIRDS (White)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/2:label">
+            <value>Accelerated breating</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/pcr_result/4:label">
+            <value>No lab report received</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/20:label">
+            <value>Dyspnea</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_found/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_bird:label">
+            <value>22. Number of sick/dead birds tested by the rapid test (number)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/farm_assessed/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/11:label">
+            <value>Decrease in egg production</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/upazila:label">
+            <value>5. Upazila</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/56:label">
+            <value>Wafery feces</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/culling_type:label">
+            <value>28. What type of culling was performed? (check one)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/3:label">
+            <value>Anaemia</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/culling_type/1:label">
+            <value>Focal culling ( culling of all birds in affected flock)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/duck_number:label">
+            <value>Total population on farm (Duck)</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/gender:label">
+            <value>12. Sex</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_day2:label">
+            <value>Working day 2</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_collected/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/6:label">
+            <value>Bloody diarrhea</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/union:label">
+            <value>6. Union</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_no:label">
+            <value>No. of VTMs</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_day3:label">
+            <value>Working day 3</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin:label">
+            <value>Administartion</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/27:label">
+            <value>Leg weakness</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/26:label">
+            <value>Incoordination of movement</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/45:label">
+            <value>S/C haemorrhage</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/no_vtm_reason:label">
+            <value>why?</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/birds_culled:label">
+            <value>Number of birds culled</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/48:label">
+            <value>shaking of head</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/acknowledge/staff_code:label">
+            <value>staff_label</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_night2:label">
+            <value>Overnight 2</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_result/3:label">
+            <value>Not performed</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/31:label">
+            <value>Nasal discharge</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/farm_assessed:label">
+            <value>Has a farm assessment been conducted previously?</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info:label">
+            <value>Farm Profile</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_searched/1:label">
+            <value>Yes</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/affected_poultry:label">
+            <value>21.Affected poultry</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/production_system/1:label">
+            <value>Farm</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/22:label">
+            <value>egg peritonitis</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/25:label">
+            <value>greenish feces</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/mobile:label">
+            <value>11. Phone number of the contact person</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/production_system:label">
+            <value>19. In what type of production system did the cases occur? (check one)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/13:label">
+            <value>Decreased growth</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test/1:label">
+            <value>Bionote Anigen AIV test</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/28:label">
+            <value>Mosit/ Moist rales</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/approve/staff_code:label">
+            <value>staff_label</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/district/district_code:label">
+            <value>district_name</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_id_2:label">
+            <value>Sample ID2:</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/other_number:label">
+            <value>Total population on farm (<output value=" /avian_influenza_investigate/investigation/others_affected "/>)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/57:label">
+            <value>Weight loss</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_id_5:label">
+            <value>Sample ID5:</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/58:label">
+            <value>wety skin</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation:label">
+            <value>Disease Investigation</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_id_3:label">
+            <value>Sample ID3:</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/47:label">
+            <value>Scaly leg</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/rapid_test_result/2:label">
+            <value>Negative</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_night1:label">
+            <value>Overnight 1</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/44:label">
+            <value>Ruffled feathers</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2:label">
+            <value>Officer/Staff-2</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/gender/2:label">
+            <value>Female</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/49:label">
+            <value>Sinusitis</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/why_not_culled:label">
+            <value>Why? (Explain reason)</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_searched:label">
+            <value>15. Did the investigators search for sick/dead birds?</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/30:label">
+            <value>Mucoid discharge from nose</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/division/division_code:label">
+            <value>division_name</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_investigate/0:label">
+            <value>No</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/18:label">
+            <value>discharge from nose</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/vtm_collected:label">
+            <value>25. VTM samples collected and sent to the lab? (check one)</value>
+          </text>
+          <text id="/avian_influenza_investigate/meeting/birds_investigate:label">
+            <value>13. Were the investigators called out to the community to investigate sick/dead birds?</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1_night3:label">
+            <value>Overnight 3</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/other_sick:label">
+            <value>Number of SICK BIRDS (<output value=" /avian_influenza_investigate/investigation/others_affected "/>)</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/gps:label">
+            <value>13. GPS</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/33:label">
+            <value>Poor feed conversion</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/farmid:label">
+            <value>1. Investigation ID</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/40:label">
+            <value>Reduced weight gain</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/brown_number:label">
+            <value>Total population on farm (Brown)</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/59:label">
+            <value>Whitish feces</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/24:label">
+            <value>Gasping</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/no_vtm_reason/1:label">
+            <value>No VTM</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_day1:label">
+            <value>Working day 1</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/36:label">
+            <value>prolapse</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/38:label">
+            <value>pruritus</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff1/staff_code:label">
+            <value>staff_label</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/35:label">
+            <value>Presence of lice on the skin</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/23:label">
+            <value>Fiel</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/52:label">
+            <value>Swollen infraorbital sinus</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/union/union_code:label">
+            <value>union_name</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/8:label">
+            <value>Clusters of eggs/feces glued to the feather</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/clinical_sign/1:label">
+            <value>Abnormal eggs</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_day2:label">
+            <value>Working day 2</value>
+          </text>
+          <text id="/avian_influenza_investigate/admin/staff2_night3:label">
+            <value>Overnight 3</value>
+          </text>
+          <text id="/avian_influenza_investigate/basic_info/mouza/mouza_code:label">
+            <value>mouza_name</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/pcr_result/2:label">
+            <value>Negative</value>
+          </text>
+          <text id="/avian_influenza_investigate/investigation/brown_dead:label">
+            <value>Number of DEAD BIRDS (Brown)</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <avian_influenza_investigate id="avian_influenza_investigate">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <basic_info>
+            <farmid/>
+            <date/>
+            <division/>
+            <district/>
+            <upazila/>
+            <union/>
+            <mouza/>
+            <village/>
+            <owner/>
+            <position/>
+            <mobile/>
+            <gender/>
+            <gps/>
+          </basic_info>
+          <meeting>
+            <birds_investigate/>
+            <community_awareness/>
+            <birds_searched/>
+            <birds_found/>
+          </meeting>
+          <investigation>
+            <date_bird_info/>
+            <date_onset/>
+            <production_system/>
+            <farm_assessed/>
+            <farm_id/>
+            <date_farm_assessed/>
+            <affected_poultry/>
+            <deshi_dead/>
+            <deshi_sick/>
+            <deshi_total/>
+            <sonali_dead/>
+            <sonali_sick/>
+            <sonali_number/>
+            <brown_dead/>
+            <brown_sick/>
+            <brown_number/>
+            <white_dead/>
+            <white_sick/>
+            <white_total/>
+            <duck_dead/>
+            <duck_sick/>
+            <duck_number/>
+            <others_affected/>
+            <other_dead/>
+            <other_sick/>
+            <other_number/>
+            <clinical_sign/>
+            <rapid_test_bird/>
+            <rapid_test/>
+            <rapid_test_other/>
+            <rapid_test_result/>
+            <vtm_collected/>
+            <vtm_no/>
+            <vtm_id_1/>
+            <vtm_id_2/>
+            <vtm_id_3/>
+            <vtm_id_4/>
+            <vtm_id_5/>
+            <date_vtm/>
+            <pcr_result/>
+            <no_vtm_reason/>
+            <culling_type/>
+            <birds_culled/>
+            <why_not_culled/>
+            <additional_info/>
+          </investigation>
+          <admin>
+            <staff1/>
+            <staff1_day1/>
+            <staff1_day2/>
+            <staff1_day3/>
+            <staff1_night1/>
+            <staff1_night2/>
+            <staff1_night3/>
+            <staff2/>
+            <staff2_day1/>
+            <staff2_day2/>
+            <staff2_day3/>
+            <staff2_night1/>
+            <staff2_night2/>
+            <staff2_night3/>
+            <acknowledge/>
+            <approve/>
+          </admin>
+          <meta>
+            <instanceID/>
+          </meta>
+        </avian_influenza_investigate>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/avian_influenza_investigate/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/avian_influenza_investigate/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/avian_influenza_investigate/username" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/farmid" required="true()" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/date" required="true()" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/division" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/district" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/upazila" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/union" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/mouza" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/village" required="true()" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/owner" required="true()" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/position" required="true()" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/mobile" required="true()" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/gender" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/basic_info/gps" type="geopoint"/>
+      <bind nodeset="/avian_influenza_investigate/meeting/birds_investigate" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/meeting/community_awareness" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/meeting/birds_searched" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/meeting/birds_found" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/investigation" relevant=" /avian_influenza_investigate/meeting/birds_found =1"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/date_bird_info" required="true()" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/date_onset" required="true()" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/production_system" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/farm_assessed" relevant=" /avian_influenza_investigate/investigation/production_system =1" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/farm_id" relevant=" /avian_influenza_investigate/investigation/farm_assessed =1" required="true()" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/date_farm_assessed" relevant=" /avian_influenza_investigate/investigation/farm_assessed =1" required="true()" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/affected_poultry" readonly="true()" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/deshi_dead" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/deshi_sick" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/deshi_total" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/sonali_dead" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/sonali_sick" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/sonali_number" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/brown_dead" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/brown_sick" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/brown_number" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/white_dead" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/white_sick" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/white_total" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/duck_dead" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/duck_sick" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/duck_number" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/others_affected" required="true()" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/other_dead" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/other_sick" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/other_number" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/clinical_sign" required="true()" type="select"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/rapid_test_bird" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/rapid_test" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/rapid_test_other" relevant=" /avian_influenza_investigate/investigation/rapid_test =99" required="true()" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/rapid_test_result" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/vtm_collected" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/vtm_no" relevant=" /avian_influenza_investigate/investigation/vtm_collected =1" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/vtm_id_1" relevant=" /avian_influenza_investigate/investigation/vtm_no &gt;0" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/vtm_id_2" relevant=" /avian_influenza_investigate/investigation/vtm_no &gt;1" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/vtm_id_3" relevant=" /avian_influenza_investigate/investigation/vtm_no &gt;2" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/vtm_id_4" relevant=" /avian_influenza_investigate/investigation/vtm_no &gt;3" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/vtm_id_5" relevant=" /avian_influenza_investigate/investigation/vtm_no &gt;4" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/date_vtm" relevant=" /avian_influenza_investigate/investigation/vtm_collected =1" required="true()" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/pcr_result" relevant=" /avian_influenza_investigate/investigation/vtm_collected =1" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/no_vtm_reason" relevant=" /avian_influenza_investigate/investigation/vtm_collected =0" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/culling_type" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/birds_culled" relevant=" /avian_influenza_investigate/investigation/culling_type =1" required="true()" type="int"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/why_not_culled" relevant=" /avian_influenza_investigate/investigation/culling_type =2" required="true()" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/investigation/additional_info" required="true()" type="string"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff1" required="true()" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff1_day1" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff1_day2" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff1_day3" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff1_night1" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff1_night2" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff1_night3" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff2" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff2_day1" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff2_day2" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff2_day3" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff2_night1" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff2_night2" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/staff2_night3" type="date"/>
+      <bind nodeset="/avian_influenza_investigate/admin/acknowledge" type="select1"/>
+      <bind nodeset="/avian_influenza_investigate/admin/approve" type="select1"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/avian_influenza_investigate/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'b18c15ec82194cdb9bcae73c4bf8a354'" nodeset="/avian_influenza_investigation/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body class="theme-grid">
+    <group appearance="w10" ref="/avian_influenza_investigate/basic_info">
+      <label ref="jr:itext('/avian_influenza_investigate/basic_info:label')"/>
+      <input appearance="W5" ref="/avian_influenza_investigate/basic_info/farmid">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/farmid:label')"/>
+      </input>
+      <input appearance="W5" ref="/avian_influenza_investigate/basic_info/date">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/date:label')"/>
+      </input>
+      <select1 appearance="W5 search('geo') minimal" ref="/avian_influenza_investigate/basic_info/division">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/division:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/basic_info/division/division_code:label')"/>
+          <value>division_code</value>
+        </item>
+      </select1>
+      <select1 appearance="W5 search('geo', 'matches', 'division_code',  /avian_influenza_investigate/basic_info/division ) minimal" ref="/avian_influenza_investigate/basic_info/district">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/district:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/basic_info/district/district_code:label')"/>
+          <value>district_code</value>
+        </item>
+      </select1>
+      <select1 appearance="W5 search('geo', 'matches', 'district_code',  /avian_influenza_investigate/basic_info/district ) minimal" ref="/avian_influenza_investigate/basic_info/upazila">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/upazila:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/basic_info/upazila/upazila_code:label')"/>
+          <value>upazila_code</value>
+        </item>
+      </select1>
+      <select1 appearance="W5 search('geo', 'matches', 'upazila_code',  /avian_influenza_investigate/basic_info/upazila ) minimal" ref="/avian_influenza_investigate/basic_info/union">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/union:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/basic_info/union/union_code:label')"/>
+          <value>union_code</value>
+        </item>
+      </select1>
+      <select1 appearance="w5 search('geo', 'matches', 'union_code',  /avian_influenza_investigate/basic_info/union ) minimal" ref="/avian_influenza_investigate/basic_info/mouza">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/mouza:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/basic_info/mouza/mouza_code:label')"/>
+          <value>mouza_code</value>
+        </item>
+      </select1>
+      <input appearance="W5 minimal" ref="/avian_influenza_investigate/basic_info/village">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/village:label')"/>
+      </input>
+      <input appearance="W5" ref="/avian_influenza_investigate/basic_info/owner">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/owner:label')"/>
+      </input>
+      <input appearance="W5" ref="/avian_influenza_investigate/basic_info/position">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/position:label')"/>
+      </input>
+      <input appearance="W5" ref="/avian_influenza_investigate/basic_info/mobile">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/mobile:label')"/>
+      </input>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/basic_info/gender">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/gender:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/basic_info/gender/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/basic_info/gender/2:label')"/>
+          <value>2</value>
+        </item>
+      </select1>
+      <input ref="/avian_influenza_investigate/basic_info/gps">
+        <label ref="jr:itext('/avian_influenza_investigate/basic_info/gps:label')"/>
+        <hint>GPS coordinates can only be collected when outside.</hint>
+      </input>
+    </group>
+    <group appearance="w10" ref="/avian_influenza_investigate/meeting">
+      <label ref="jr:itext('/avian_influenza_investigate/meeting:label')"/>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/meeting/birds_investigate">
+        <label ref="jr:itext('/avian_influenza_investigate/meeting/birds_investigate:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/meeting/birds_investigate/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/meeting/birds_investigate/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/meeting/community_awareness">
+        <label ref="jr:itext('/avian_influenza_investigate/meeting/community_awareness:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/meeting/community_awareness/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/meeting/community_awareness/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/meeting/birds_searched">
+        <label ref="jr:itext('/avian_influenza_investigate/meeting/birds_searched:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/meeting/birds_searched/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/meeting/birds_searched/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/meeting/birds_found">
+        <label ref="jr:itext('/avian_influenza_investigate/meeting/birds_found:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/meeting/birds_found/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/meeting/birds_found/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+    </group>
+    <group appearance="w10" ref="/avian_influenza_investigate/investigation">
+      <label ref="jr:itext('/avian_influenza_investigate/investigation:label')"/>
+      <input appearance="W5" ref="/avian_influenza_investigate/investigation/date_bird_info">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/date_bird_info:label')"/>
+      </input>
+      <input appearance="W5" ref="/avian_influenza_investigate/investigation/date_onset">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/date_onset:label')"/>
+      </input>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/investigation/production_system">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/production_system:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/production_system/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/production_system/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/production_system/3:label')"/>
+          <value>3</value>
+        </item>
+      </select1>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/investigation/farm_assessed">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/farm_assessed:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/farm_assessed/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/farm_assessed/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <input appearance="W5" ref="/avian_influenza_investigate/investigation/farm_id">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/farm_id:label')"/>
+      </input>
+      <input appearance="W5" ref="/avian_influenza_investigate/investigation/date_farm_assessed">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/date_farm_assessed:label')"/>
+      </input>
+      <input ref="/avian_influenza_investigate/investigation/affected_poultry">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/affected_poultry:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/deshi_dead">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/deshi_dead:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/deshi_sick">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/deshi_sick:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/deshi_total">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/deshi_total:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/sonali_dead">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/sonali_dead:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/sonali_sick">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/sonali_sick:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/sonali_number">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/sonali_number:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/brown_dead">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/brown_dead:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/brown_sick">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/brown_sick:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/brown_number">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/brown_number:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/white_dead">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/white_dead:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/white_sick">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/white_sick:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/white_total">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/white_total:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/duck_dead">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/duck_dead:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/duck_sick">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/duck_sick:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/investigation/duck_number">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/duck_number:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/investigation/others_affected">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/others_affected:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/investigation/other_dead">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/other_dead:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/investigation/other_sick">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/other_sick:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/investigation/other_number">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/other_number:label')"/>
+      </input>
+      <select appearance="minimal" ref="/avian_influenza_investigate/investigation/clinical_sign">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/4:label')"/>
+          <value>4</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/5:label')"/>
+          <value>5</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/6:label')"/>
+          <value>6</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/7:label')"/>
+          <value>7</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/8:label')"/>
+          <value>8</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/9:label')"/>
+          <value>9</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/10:label')"/>
+          <value>10</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/11:label')"/>
+          <value>11</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/12:label')"/>
+          <value>12</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/13:label')"/>
+          <value>13</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/14:label')"/>
+          <value>14</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/15:label')"/>
+          <value>15</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/16:label')"/>
+          <value>16</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/17:label')"/>
+          <value>17</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/18:label')"/>
+          <value>18</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/19:label')"/>
+          <value>19</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/20:label')"/>
+          <value>20</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/21:label')"/>
+          <value>21</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/22:label')"/>
+          <value>22</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/23:label')"/>
+          <value>23</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/24:label')"/>
+          <value>24</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/25:label')"/>
+          <value>25</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/26:label')"/>
+          <value>26</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/27:label')"/>
+          <value>27</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/28:label')"/>
+          <value>28</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/29:label')"/>
+          <value>29</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/30:label')"/>
+          <value>30</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/31:label')"/>
+          <value>31</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/32:label')"/>
+          <value>32</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/33:label')"/>
+          <value>33</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/34:label')"/>
+          <value>34</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/35:label')"/>
+          <value>35</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/36:label')"/>
+          <value>36</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/37:label')"/>
+          <value>37</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/38:label')"/>
+          <value>38</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/39:label')"/>
+          <value>39</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/40:label')"/>
+          <value>40</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/41:label')"/>
+          <value>41</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/42:label')"/>
+          <value>42</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/43:label')"/>
+          <value>43</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/44:label')"/>
+          <value>44</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/45:label')"/>
+          <value>45</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/46:label')"/>
+          <value>46</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/47:label')"/>
+          <value>47</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/48:label')"/>
+          <value>48</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/49:label')"/>
+          <value>49</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/50:label')"/>
+          <value>50</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/51:label')"/>
+          <value>51</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/52:label')"/>
+          <value>52</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/53:label')"/>
+          <value>53</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/54:label')"/>
+          <value>54</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/55:label')"/>
+          <value>55</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/56:label')"/>
+          <value>56</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/57:label')"/>
+          <value>57</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/58:label')"/>
+          <value>58</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/clinical_sign/59:label')"/>
+          <value>59</value>
+        </item>
+      </select>
+      <input appearance="W5" ref="/avian_influenza_investigate/investigation/rapid_test_bird">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/rapid_test_bird:label')"/>
+      </input>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/investigation/rapid_test">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/rapid_test:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/rapid_test/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/rapid_test/99:label')"/>
+          <value>99</value>
+        </item>
+      </select1>
+      <input appearance="W5" ref="/avian_influenza_investigate/investigation/rapid_test_other">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/rapid_test_other:label')"/>
+      </input>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/investigation/rapid_test_result">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/rapid_test_result:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/rapid_test_result/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/rapid_test_result/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/rapid_test_result/3:label')"/>
+          <value>3</value>
+        </item>
+      </select1>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/investigation/vtm_collected">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/vtm_collected:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/vtm_collected/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/vtm_collected/0:label')"/>
+          <value>0</value>
+        </item>
+      </select1>
+      <input appearance="W5" ref="/avian_influenza_investigate/investigation/vtm_no">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/vtm_no:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/investigation/vtm_id_1">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/vtm_id_1:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/investigation/vtm_id_2">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/vtm_id_2:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/investigation/vtm_id_3">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/vtm_id_3:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/investigation/vtm_id_4">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/vtm_id_4:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/investigation/vtm_id_5">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/vtm_id_5:label')"/>
+      </input>
+      <input appearance="w5" ref="/avian_influenza_investigate/investigation/date_vtm">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/date_vtm:label')"/>
+      </input>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/investigation/pcr_result">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/pcr_result:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/pcr_result/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/pcr_result/2:label')"/>
+          <value>2</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/pcr_result/3:label')"/>
+          <value>3</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/pcr_result/4:label')"/>
+          <value>4</value>
+        </item>
+      </select1>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/investigation/no_vtm_reason">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/no_vtm_reason:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/no_vtm_reason/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/no_vtm_reason/2:label')"/>
+          <value>2</value>
+        </item>
+      </select1>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/investigation/culling_type">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/culling_type:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/culling_type/1:label')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/investigation/culling_type/2:label')"/>
+          <value>2</value>
+        </item>
+      </select1>
+      <input appearance="W5" ref="/avian_influenza_investigate/investigation/birds_culled">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/birds_culled:label')"/>
+      </input>
+      <input appearance="W5" ref="/avian_influenza_investigate/investigation/why_not_culled">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/why_not_culled:label')"/>
+      </input>
+      <input appearance="W10" ref="/avian_influenza_investigate/investigation/additional_info">
+        <label ref="jr:itext('/avian_influenza_investigate/investigation/additional_info:label')"/>
+      </input>
+    </group>
+    <group appearance="W10" ref="/avian_influenza_investigate/admin">
+      <label ref="jr:itext('/avian_influenza_investigate/admin:label')"/>
+      <select1 appearance="w3 minimal" ref="/avian_influenza_investigate/admin/staff1">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff1:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/admin/staff1/staff_code:label')"/>
+          <value>staff_code</value>
+        </item>
+      </select1>
+      <input appearance="w2" ref="/avian_influenza_investigate/admin/staff1_day1">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff1_day1:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/admin/staff1_day2">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff1_day2:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/admin/staff1_day3">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff1_day3:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/admin/staff1_night1">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff1_night1:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/admin/staff1_night2">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff1_night2:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/admin/staff1_night3">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff1_night3:label')"/>
+      </input>
+      <select1 appearance="w3 minimal" ref="/avian_influenza_investigate/admin/staff2">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff2:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/admin/staff2/staff_code:label')"/>
+          <value>staff_code</value>
+        </item>
+      </select1>
+      <input appearance="w2" ref="/avian_influenza_investigate/admin/staff2_day1">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff2_day1:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/admin/staff2_day2">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff2_day2:label')"/>
+      </input>
+      <input appearance="w2" ref="/avian_influenza_investigate/admin/staff2_day3">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff2_day3:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/admin/staff2_night1">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff2_night1:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/admin/staff2_night2">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff2_night2:label')"/>
+      </input>
+      <input appearance="w3" ref="/avian_influenza_investigate/admin/staff2_night3">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/staff2_night3:label')"/>
+      </input>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/admin/acknowledge">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/acknowledge:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/admin/acknowledge/staff_code:label')"/>
+          <value>staff_code</value>
+        </item>
+      </select1>
+      <select1 appearance="W5 minimal" ref="/avian_influenza_investigate/admin/approve">
+        <label ref="jr:itext('/avian_influenza_investigate/admin/approve:label')"/>
+        <item>
+          <label ref="jr:itext('/avian_influenza_investigate/admin/approve/staff_code:label')"/>
+          <value>staff_code</value>
+        </item>
+      </select1>
+    </group>
+  </h:body>
+</h:html>

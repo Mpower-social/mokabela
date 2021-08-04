@@ -34,9 +34,9 @@ class MainActivity: FlutterActivity() {
                     when {
                         call.method.equals("openForms", true) -> {
                             val formId = call.argument<String>("formId")
-                            val arguments = call.argument<Map<String, String>>("arguments")
+                            val arguments = call.argument<Map<String, Any>>("arguments")
                             arguments?.entries?.forEach { entry ->
-                                Collect.getInstance().setValue(entry.key, entry.value)
+                                Collect.getInstance().setValue(entry.key, entry.value.toString())
                             }
 
                             openOdkForm(formId)

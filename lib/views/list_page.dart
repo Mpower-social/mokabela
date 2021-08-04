@@ -64,13 +64,7 @@ class ListPage extends StatelessWidget {
                         ),
                         SizedBox(width: 10),
                         PopupMenuButton(
-                          onSelected: (ListItemAction? value) {
-                            Get.snackbar(
-                              'Action',
-                              '${value?.formName}',
-                              snackPosition: SnackPosition.BOTTOM,
-                            );
-                          },
+                          onSelected: controller.openForm,
                           itemBuilder: (context) => List.generate(
                             controller.listItems[index].actions.length,
                             (actionIndex) => PopupMenuItem<ListItemAction>(
