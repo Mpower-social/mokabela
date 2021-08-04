@@ -1,10 +1,13 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:app_builder/database/database_helper.dart';
 import 'package:app_builder/form_definition/model/dto/form_item.dart';
+import 'package:app_builder/form_definition/model/dto/geo_definition.dart';
 import 'package:app_builder/module/model/dto/catchment_area.dart';
 import 'package:app_builder/module/model/dto/module_item.dart';
 import 'package:app_builder/service/remote_service.dart';
 import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 class SyncController extends GetxController {
@@ -20,6 +23,7 @@ class SyncController extends GetxController {
     try {
       await startAppSync();
       await startDataSync();
+      fetchFormItemsAndGenerateCsv();
     } catch (e) {
       print(e);
     }
@@ -271,5 +275,65 @@ class SyncController extends GetxController {
         print(e);
       }
     });
+  }
+
+  fetchFormItemsAndGenerateCsv() async {
+    var db = await DatabaseHelper.instance.database;
+    var dbForms =
+        await db.rawQuery('SELECT * FROM $TABLE_NAME_FORM_ITEM ORDER BY id');
+
+    if (dbForms.isNotEmpty) {
+      dbForms.forEach((dbForm) async {
+        var formItem = FormItem.fromLocalJson(dbForm);
+        await prepareAndGenerateCsv(db, formItem);
+      });
+    }
+  }
+
+  prepareAndGenerateCsv(Database db, FormItem formItem) async {
+    var directory = await getExternalStorageDirectory();
+
+    if (directory != null) {
+      var path =
+          '${directory.path}/forms/${formItem.formDefinition?.title}-media';
+      var rootDirectory = Directory(path);
+      if (!rootDirectory.existsSync()) rootDirectory.createSync();
+
+      if (formItem.choiceList?.division != null)
+        await createCsv(db, rootDirectory, formItem.choiceList!.division!);
+
+      if (formItem.choiceList?.geo != null)
+        await createCsv(db, rootDirectory, formItem.choiceList!.geo!);
+
+      if (formItem.choiceList?.geoDivision != null)
+        await createCsv(db, rootDirectory, formItem.choiceList!.geoDivision!);
+
+      if (formItem.choiceList?.geoDistrict != null)
+        await createCsv(db, rootDirectory, formItem.choiceList!.geoDistrict!);
+
+      if (formItem.choiceList?.staff != null)
+        await createCsv(db, rootDirectory, formItem.choiceList!.staff!);
+
+      if (formItem.choiceList?.medicine != null)
+        await createCsv(db, rootDirectory, formItem.choiceList!.medicine!);
+    }
+  }
+
+  createCsv(Database db, Directory rootDirectory, GeoDefinition geo) async {
+    var csvFile = File('${rootDirectory.path}/${geo.configJson!.csvName}.csv');
+
+    if (csvFile.existsSync()) csvFile.deleteSync();
+    csvFile.createSync();
+
+    var csvContents = await db.rawQuery(geo.query!);
+    if (csvContents.isNotEmpty) {
+      csvFile.writeAsStringSync('${csvContents.first.keys.join(",")}\n',
+          mode: FileMode.append);
+
+      csvContents.forEach((content) {
+        csvFile.writeAsStringSync('${content.values.join(",")}\n',
+            mode: FileMode.append);
+      });
+    }
   }
 }

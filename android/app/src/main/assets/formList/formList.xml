@@ -28,9 +28,75 @@
     <name>AVIAN INFLUENZA INVESTIGATION</name>
     <majorMinorVersion/>
     <version/>
-    <hash>md5:8cb269f647a069e19470f74dcf49ab02</hash>
+    <hash>md5:b18c15ec82194cdb9bcae73c4bf8a354</hash>
     <descriptionText>avian_influenza_investigate</descriptionText>
     <downloadUrl>formList/forms/avian_influenza_investigate.xml</downloadUrl>
     <manifestUrl>formList/xformsManifest/avian_influenza_investigate.xml</manifestUrl>
+  </xform>
+
+  <xform>
+    <formID>patient_registry</formID>
+    <name>Patient Registry</name>
+    <majorMinorVersion/>
+    <version/>
+    <hash>md5:b08c381521f14ebf9afb0719661274b9</hash>
+    <descriptionText>patient_registry</descriptionText>
+    <downloadUrl>formList/forms/patient_registry.xml</downloadUrl>
+    <manifestUrl>formList/xformsManifest/patient_registry.xml</manifestUrl>
+  </xform>
+
+  <xform>
+    <formID>division</formID>
+    <name>Division</name>
+    <majorMinorVersion/>
+    <version/>
+    <hash>md5:d38fa081eaa74ef4b41893d361ee142a</hash>
+    <descriptionText>division</descriptionText>
+    <downloadUrl>formList/forms/division.xml</downloadUrl>
+    <manifestUrl>formList/xformsManifest/division.xml</manifestUrl>
+  </xform>
+
+  <xform>
+    <formID>district</formID>
+    <name>District</name>
+    <majorMinorVersion/>
+    <version/>
+    <hash>md5:1f7ac41613044278bdec7362c4ad50e9</hash>
+    <descriptionText>district</descriptionText>
+    <downloadUrl>formList/forms/district.xml</downloadUrl>
+    <manifestUrl>formList/xformsManifest/district.xml</manifestUrl>
+  </xform>
+
+  <xform>
+    <formID>upazila</formID>
+    <name>Upazila</name>
+    <majorMinorVersion/>
+    <version/>
+    <hash>md5:7d14cb7393dd497c8446ed5fe5a81b14</hash>
+    <descriptionText>upazila</descriptionText>
+    <downloadUrl>formList/forms/upazila.xml</downloadUrl>
+    <manifestUrl>formList/xformsManifest/upazila.xml</manifestUrl>
+  </xform>
+
+  <xform>
+    <formID>hh_registration_geo</formID>
+    <name>HH Registration Geo</name>
+    <majorMinorVersion/>
+    <version/>
+    <hash>md5:e7d2da31a999435c8483abcf0aa1ec98</hash>
+    <descriptionText>hh_registration_geo</descriptionText>
+    <downloadUrl>formList/forms/hh_registration_geo.xml</downloadUrl>
+    <manifestUrl>formList/xformsManifest/hh_registration_geo.xml</manifestUrl>
+  </xform>
+
+  <xform>
+    <formID>farm_assessment</formID>
+    <name>FARM ASSESSMENT MONITORING</name>
+    <majorMinorVersion/>
+    <version/>
+    <hash>md5:a618ac35b7f946838024a336be31387f</hash>
+    <descriptionText>farm_assessment</descriptionText>
+    <downloadUrl>formList/forms/farm_assessment.xml</downloadUrl>
+    <manifestUrl>formList/xformsManifest/farm_assessment.xml</manifestUrl>
   </xform>
 </xforms>

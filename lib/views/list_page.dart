@@ -62,21 +62,26 @@ class ListPage extends StatelessWidget {
                                 : findListItem(context, controller, index, 3);
                           }),
                         ),
-                        SizedBox(width: 10),
-                        PopupMenuButton(
-                          onSelected: controller.openForm,
-                          itemBuilder: (context) => List.generate(
-                            controller.listItems[index].actions.length,
-                            (actionIndex) => PopupMenuItem<ListItemAction>(
-                              value: controller
-                                  .listItems[index].actions[actionIndex],
-                              child: Text(
-                                controller.listItems[index].actions[actionIndex]
-                                    .actionName!,
-                              ),
-                            ),
-                          ),
-                        ),
+                        controller.listItems[index].actions.length > 0
+                            ? Container(
+                                padding: EdgeInsets.only(left: 10),
+                                child: PopupMenuButton(
+                                  onSelected: controller.openForm,
+                                  itemBuilder: (context) => List.generate(
+                                    controller.listItems[index].actions.length,
+                                    (actionIndex) =>
+                                        PopupMenuItem<ListItemAction>(
+                                      value: controller.listItems[index]
+                                          .actions[actionIndex],
+                                      child: Text(
+                                        controller.listItems[index]
+                                            .actions[actionIndex].actionName!,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : SizedBox(),
                       ],
                     ),
                   ),

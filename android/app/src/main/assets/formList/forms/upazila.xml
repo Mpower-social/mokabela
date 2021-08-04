@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Upazila</h:title>
+    <model>
+      <instance>
+        <upazila id="upazila">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <district/>
+          <upazila_label/>
+          <upazila/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </upazila>
+      </instance>
+      <bind nodeset="/upazila/district" required="true()" type="select1"/>
+      <bind nodeset="/upazila/upazila_label" required="true()" type="string"/>
+      <bind nodeset="/upazila/upazila" required="true()" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/upazila/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'7d14cb7393dd497c8446ed5fe5a81b14'" nodeset="/upazila/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <select1 appearance="search('district')" ref="/upazila/district">
+      <label>District</label>
+      <item>
+        <label>district_label</label>
+        <value>district</value>
+      </item>
+    </select1>
+    <input ref="/upazila/upazila_label">
+      <label>Upazila Name</label>
+    </input>
+    <input appearance="numbers" ref="/upazila/upazila">
+      <label>Upazila Code</label>
+    </input>
+  </h:body>
+</h:html>

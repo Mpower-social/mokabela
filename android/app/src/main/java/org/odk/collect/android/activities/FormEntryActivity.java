@@ -636,6 +636,7 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
     private void initToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(getString(R.string.loading_form));
     }
 
@@ -1002,7 +1003,7 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
         useability = (boolean) AdminSharedPreferences.getInstance().get(AdminKeys.KEY_ACCESS_SETTINGS);
 
         menu.findItem(R.id.menu_preferences).setVisible(useability)
-                .setEnabled(useability);
+                .setEnabled(useability).setVisible(false);
 
         if (getFormController() != null && getFormController().currentFormCollectsBackgroundLocation()
                 && PlayServicesUtil.isGooglePlayServicesAvailable(this)) {
@@ -1020,6 +1021,9 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
     public boolean onOptionsItemSelected(MenuItem item) {
         FormController formController = getFormController();
         switch (item.getItemId()) {
+            case android.R.id.home:
+                createQuitDialog();
+                return true;
             case R.id.menu_languages:
                 createLanguageDialog();
                 return true;

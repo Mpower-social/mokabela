@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Division</h:title>
+    <model>
+      <itext>
+        <translation lang="Bangla">
+          <text id="/division/division:label">
+            <value>Division Code</value>
+          </text>
+          <text id="/division/division_name:label">
+            <value>Division Name</value>
+          </text>
+        </translation>
+        <translation default="true()" lang="English">
+          <text id="/division/division:label">
+            <value>Division Code</value>
+          </text>
+          <text id="/division/division_name:label">
+            <value>Division Name</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <division id="division">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <division_name/>
+          <division/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </division>
+      </instance>
+      <bind nodeset="/division/division_name" required="true()" type="string"/>
+      <bind nodeset="/division/division" required="true()" type="int"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/division/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'d38fa081eaa74ef4b41893d361ee142a'" nodeset="/division/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/division/division_name">
+      <label ref="jr:itext('/division/division_name:label')"/>
+    </input>
+    <input ref="/division/division">
+      <label ref="jr:itext('/division/division:label')"/>
+    </input>
+  </h:body>
+</h:html>

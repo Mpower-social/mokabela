@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>District</h:title>
+    <model>
+      <itext>
+        <translation lang="Bangla">
+          <text id="/district/division:label">
+            <value>Division</value>
+          </text>
+          <text id="/district/district:label">
+            <value>District Code</value>
+          </text>
+          <text id="/district/district_name:label">
+            <value>District Name</value>
+          </text>
+          <text id="/district/division/division_code:label">
+            <value>division_label</value>
+          </text>
+        </translation>
+        <translation default="true()" lang="English">
+          <text id="/district/division:label">
+            <value>Division</value>
+          </text>
+          <text id="/district/district:label">
+            <value>District Code</value>
+          </text>
+          <text id="/district/district_name:label">
+            <value>District Name</value>
+          </text>
+          <text id="/district/division/division_code:label">
+            <value>division_label</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <district id="district">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <division/>
+          <district_name/>
+          <district/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </district>
+      </instance>
+      <bind nodeset="/district/division" required="true()" type="select1"/>
+      <bind nodeset="/district/district_name" required="true()" type="string"/>
+      <bind nodeset="/district/district" required="true()" type="int"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/district/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'1f7ac41613044278bdec7362c4ad50e9'" nodeset="/district/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <select1 appearance="search('division')" ref="/district/division">
+      <label ref="jr:itext('/district/division:label')"/>
+      <item>
+        <label ref="jr:itext('/district/division/division_code:label')"/>
+        <value>division_code</value>
+      </item>
+    </select1>
+    <input ref="/district/district_name">
+      <label ref="jr:itext('/district/district_name:label')"/>
+    </input>
+    <input ref="/district/district">
+      <label ref="jr:itext('/district/district:label')"/>
+    </input>
+  </h:body>
+</h:html>

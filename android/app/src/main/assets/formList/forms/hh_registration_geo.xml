@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>HH Registration Geo</h:title>
+    <model>
+      <itext>
+        <translation lang="Bangla">
+          <text id="/hh_registration_geo/district/district_code:label">
+            <value>district_name</value>
+          </text>
+          <text id="/hh_registration_geo/hh_serial:label">
+            <value>HH Serial</value>
+          </text>
+          <text id="/hh_registration_geo/head_name:label">
+            <value>Household Head Name</value>
+          </text>
+          <text id="/hh_registration_geo/division/division_code:label">
+            <value>division_name</value>
+          </text>
+          <text id="/hh_registration_geo/district:label">
+            <value>District</value>
+          </text>
+          <text id="/hh_registration_geo/division:label">
+            <value>Division</value>
+          </text>
+        </translation>
+        <translation default="true()" lang="English">
+          <text id="/hh_registration_geo/district/district_code:label">
+            <value>district_name</value>
+          </text>
+          <text id="/hh_registration_geo/hh_serial:label">
+            <value>HH Serial</value>
+          </text>
+          <text id="/hh_registration_geo/head_name:label">
+            <value>Household Head Name</value>
+          </text>
+          <text id="/hh_registration_geo/division/division_code:label">
+            <value>division_name</value>
+          </text>
+          <text id="/hh_registration_geo/district:label">
+            <value>জেলার নাম</value>
+          </text>
+          <text id="/hh_registration_geo/division:label">
+            <value>বিভাগ</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <hh_registration_geo id="hh_registration_geo">
+          <formhub>
+            <uuid/>
+          </formhub>
+          <start/>
+          <end/>
+          <username/>
+          <division/>
+          <district/>
+          <head_name/>
+          <hh_serial/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </hh_registration_geo>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/hh_registration_geo/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/hh_registration_geo/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/hh_registration_geo/username" type="string"/>
+      <bind nodeset="/hh_registration_geo/division" required="true()" type="select1"/>
+      <bind nodeset="/hh_registration_geo/district" required="true()" type="select1"/>
+      <bind nodeset="/hh_registration_geo/head_name" required="true()" type="string"/>
+      <bind nodeset="/hh_registration_geo/hh_serial" required="true()" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/hh_registration_geo/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'e7d2da31a999435c8483abcf0aa1ec98'" nodeset="/hh_registration_geo/formhub/uuid" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <select1 appearance="search('geo_division')" ref="/hh_registration_geo/division">
+      <label ref="jr:itext('/hh_registration_geo/division:label')"/>
+      <item>
+        <label ref="jr:itext('/hh_registration_geo/division/division_code:label')"/>
+        <value>division_code</value>
+      </item>
+    </select1>
+    <select1 appearance="search('geo_district', 'matches', 'division_code',  /hh_registration_geo/division )" ref="/hh_registration_geo/district">
+      <label ref="jr:itext('/hh_registration_geo/district:label')"/>
+      <item>
+        <label ref="jr:itext('/hh_registration_geo/district/district_code:label')"/>
+        <value>district_code</value>
+      </item>
+    </select1>
+    <input ref="/hh_registration_geo/head_name">
+      <label ref="jr:itext('/hh_registration_geo/head_name:label')"/>
+    </input>
+    <input ref="/hh_registration_geo/hh_serial">
+      <label ref="jr:itext('/hh_registration_geo/hh_serial:label')"/>
+    </input>
+  </h:body>
+</h:html>
