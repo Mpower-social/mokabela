@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ModulePage extends StatelessWidget {
-  final controller = ModuleController();
+  final controller = Get.put(ModuleController());
   final List<ModuleItem> moduleItems;
   final String title;
   final bool showAppBar;
@@ -38,6 +38,23 @@ class ModulePage extends StatelessWidget {
                   color: Colors.black,
                 ),
               ),
+              actions: [
+                IconButton(
+                  onPressed: controller.fetchDataAndUpdate,
+                  icon: Obx(
+                    () {
+                      return controller.communicationWithServer.value
+                          ? SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(),
+                            )
+                          : Icon(Icons.sync);
+                    },
+                  ),
+                  color: Colors.black,
+                ),
+              ],
             )
           : PreferredSize(
               preferredSize: Size(MediaQuery.of(context).size.width, 400),

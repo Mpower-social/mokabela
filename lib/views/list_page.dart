@@ -15,8 +15,6 @@ class ListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -34,6 +32,53 @@ class ListPage extends StatelessWidget {
             color: Colors.black,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: listController.fetchDataAndUpdate,
+            icon: Obx(() {
+              return listController.communicationWithServer.value
+                  ? SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(),
+                    )
+                  : Icon(Icons.sync);
+            }),
+            color: Colors.black,
+          ),
+          /*Container(
+            child: Stack(
+              children: [
+                Icon(
+                  Icons.sync,
+                  color: Colors.black,
+                ),
+                Positioned(
+                  right: 0,
+                  child: Container(
+                    padding: EdgeInsets.all(1),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    constraints: BoxConstraints(
+                      minWidth: 12,
+                      minHeight: 12,
+                    ),
+                    child: Text(
+                      '0',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),*/
+        ],
       ),
       body: GetX<ListController>(
         init: listController,
