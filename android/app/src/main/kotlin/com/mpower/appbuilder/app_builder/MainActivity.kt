@@ -22,6 +22,7 @@ import org.odk.collect.android.utilities.PermissionUtils
 class MainActivity: FlutterActivity() {
     private val CHANNEL = "flutter_to_odk_communication"
     private lateinit var channelResult: MethodChannel.Result
+    private var formArguments: Map<String, Any>? = null
     private lateinit var database: SQLiteDatabase
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine){
@@ -34,8 +35,8 @@ class MainActivity: FlutterActivity() {
                     when {
                         call.method.equals("openForms", true) -> {
                             val formId = call.argument<String>("formId")
-                            val arguments = call.argument<Map<String, Any>>("arguments")
-                            arguments?.entries?.forEach { entry ->
+                            formArguments = call.argument<Map<String, Any>>("arguments")
+                            formArguments?.entries?.forEach { entry ->
                                 Collect.getInstance().setValue(entry.key, entry.value.toString())
                             }
 
@@ -103,6 +104,11 @@ class MainActivity: FlutterActivity() {
         if(requestCode == 101 && data!=null && data.data != null) {
             var value = data.data
             if(channelResult!=null) channelResult.success("success")
+        }
+
+        //Reset shared preference items to avoid duplicate data in case of missing arguments
+        formArguments?.entries?.forEach { entry ->
+            Collect.getInstance().setValue(entry.key, "")
         }
     }
 

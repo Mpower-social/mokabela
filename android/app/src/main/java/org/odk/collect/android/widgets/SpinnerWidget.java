@@ -27,6 +27,7 @@ import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.odk.collect.android.R;
 import org.odk.collect.android.adapters.SpinnerAdapter;
+import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.formentry.questions.QuestionDetails;
 import org.odk.collect.android.formentry.questions.WidgetViewUtils;
 import org.odk.collect.android.listeners.AdvanceToNextListener;
@@ -134,6 +135,9 @@ public class SpinnerWidget extends ItemsWidget implements MultiChoiceWidget {
         String selectedItemValue = null;
         if (prompt.getAnswerValue() != null) {
             selectedItemValue = ((Selection) prompt.getAnswerValue().getValue()).getValue();
+        } else {
+            String reference = getQuestionReference();
+            selectedItemValue = (String) Collect.getInstance().getPreferenceValue(reference, selectedItemValue);
         }
 
         boolean answerExists = false;

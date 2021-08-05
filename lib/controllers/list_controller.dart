@@ -43,7 +43,7 @@ class ListController extends GetxController {
           column.actionDefinition.forEach((action) {
             var mapping = HashMap();
             action.dataMapping.forEach((element) {
-              mapping[element.formField] = element.column;
+              mapping[element.formField?.split("/").last] = element.column;
             });
 
             listItem.actions.add(ListItemAction(
