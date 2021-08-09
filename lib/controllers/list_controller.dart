@@ -1,9 +1,12 @@
 import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
+import 'package:app_builder/list_definition/model/dto/filter_value.dart';
+import 'package:collection/collection.dart';
 import 'package:app_builder/database/database_helper.dart';
 import 'package:app_builder/form_definition/model/dto/form_item.dart';
 import 'package:app_builder/form_definition/model/dto/geo_definition.dart';
+import 'package:app_builder/list_definition/model/dto/filter_item.dart';
 import 'package:app_builder/list_definition/model/dto/list_definition.dart';
 import 'package:app_builder/list_definition/model/dto/list_item.dart';
 import 'package:app_builder/list_definition/model/dto/list_item_action.dart';
@@ -18,6 +21,8 @@ import 'package:sqflite/sqflite.dart';
 
 class ListController extends GetxController {
   var expandList = List<RxBool>.empty(growable: true);
+  var filterItems = List<FilterItem>.empty().obs;
+  var filteredListItems = List<ListItem>.empty().obs;
   var listItems = List<ListItem>.empty().obs;
   var communicationWithServer = false.obs;
   final int listId;
@@ -65,6 +70,16 @@ class ListController extends GetxController {
         }
       });
 
+      var filters = List<FilterItem>.empty(growable: true);
+      listDefinition.filterDefinition.forEach((filter) {
+        filters.add(FilterItem(
+            key: filter.name,
+            type: filter.type,
+            name: filter.label?.english,
+            values: [],
+            dependencies: filter.dependency));
+      });
+
       List<ListItem> items = [];
       var dbListValues = await db.rawQuery(listDefinition.datasource!.query!);
       dbListValues.forEach((listValue) {
@@ -88,6 +103,38 @@ class ListController extends GetxController {
           actions: listActions,
           contents: listContents,
         ));
+
+        filters.forEach((filter) {
+          if (filter.dependencies.isEmpty) {
+            var value = listValue[filter.key];
+            var item = filter.values.firstWhereOrNull((filterValue) =>
+                filterValue.name?.toLowerCase() ==
+                value.toString().toLowerCase());
+
+            if (item == null) {
+              filter.values.add(FilterValue(
+                name: value.toString(),
+              ));
+            }
+          } else {
+            filter.dependencies.forEach((dependency) {
+              var value = listValue[filter.key];
+              var parent = listValue[dependency];
+              var item = filter.values.firstWhereOrNull((filterValue) =>
+                  filterValue.name?.toLowerCase() ==
+                      value.toString().toLowerCase() &&
+                  filterValue.parent?.toLowerCase() ==
+                      parent.toString().toLowerCase());
+
+              if (item == null) {
+                filter.values.add(FilterValue(
+                  name: value.toString(),
+                  parent: parent.toString(),
+                ));
+              }
+            });
+          }
+        });
       });
 
       items.sort((itemA, itemB) {
@@ -95,6 +142,9 @@ class ListController extends GetxController {
           return int.parse(itemA.contents[0].value)
               .compareTo(int.parse(itemB.contents[0].value));
         } catch (e) {
+          if (itemA.contents[0].value == null ||
+              itemB.contents[0].value == null) return 0;
+
           return itemA.contents[0].value.compareTo(itemB.contents[0].value);
         }
       });
@@ -104,6 +154,8 @@ class ListController extends GetxController {
       });
 
       listItems.assignAll(items);
+      filteredListItems.assignAll(items);
+      filterItems.assignAll(filters);
     }
   }
 
@@ -350,5 +402,27 @@ class ListController extends GetxController {
             mode: FileMode.append);
       });
     }
+  }
+
+  void onFilterApply() {
+    List<ListItem> localItems = List.from(listItems);
+    filterItems.forEach((filterItem) {
+      if (filterItem.selectedValues.isEmpty) return;
+
+      localItems = localItems
+          .where((localItem) => localItem.contents
+              .where((localContent) =>
+                  localContent.key == filterItem.key &&
+                  filterItem.selectedValues.contains(localContent.value))
+              .isNotEmpty)
+          .toList();
+    });
+
+    expandList.clear();
+    localItems.forEach((_) {
+      expandList.add(RxBool(false));
+    });
+
+    filteredListItems.assignAll(localItems);
   }
 }

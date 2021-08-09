@@ -1,5 +1,6 @@
 import 'package:app_builder/controllers/list_controller.dart';
 import 'package:app_builder/list_definition/model/dto/list_item_action.dart';
+import 'package:app_builder/views/filter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -46,6 +47,21 @@ class ListPage extends StatelessWidget {
             }),
             color: Colors.black,
           ),
+          Obx(
+            () {
+              return listController.filterItems.isNotEmpty
+                  ? IconButton(
+                      onPressed: () async {
+                        await Get.to(
+                            () => FilterPage(listController.filterItems));
+                        listController.onFilterApply();
+                      },
+                      icon: Icon(Icons.filter_alt_outlined),
+                      color: Colors.black,
+                    )
+                  : SizedBox();
+            },
+          ),
           /*Container(
             child: Stack(
               children: [
@@ -84,7 +100,7 @@ class ListPage extends StatelessWidget {
         init: listController,
         builder: (controller) {
           return ListView.builder(
-            itemCount: controller.listItems.length,
+            itemCount: controller.filteredListItems.length,
             itemBuilder: (context, index) {
               return Card(
                 margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
@@ -102,24 +118,29 @@ class ListPage extends StatelessWidget {
                         Flexible(
                           child: Obx(() {
                             return controller.expandList[index].value
-                                ? findListItem(context, controller, index,
-                                    controller.listItems[index].contents.length)
+                                ? findListItem(
+                                    context,
+                                    controller,
+                                    index,
+                                    controller.filteredListItems[index].contents
+                                        .length)
                                 : findListItem(context, controller, index, 3);
                           }),
                         ),
-                        controller.listItems[index].actions.length > 0
+                        controller.filteredListItems[index].actions.length > 0
                             ? Container(
                                 padding: EdgeInsets.only(left: 10),
                                 child: PopupMenuButton(
                                   onSelected: controller.openForm,
                                   itemBuilder: (context) => List.generate(
-                                    controller.listItems[index].actions.length,
+                                    controller.filteredListItems[index].actions
+                                        .length,
                                     (actionIndex) =>
                                         PopupMenuItem<ListItemAction>(
-                                      value: controller.listItems[index]
+                                      value: controller.filteredListItems[index]
                                           .actions[actionIndex],
                                       child: Text(
-                                        controller.listItems[index]
+                                        controller.filteredListItems[index]
                                             .actions[actionIndex].actionName!,
                                       ),
                                     ),
@@ -152,13 +173,14 @@ class ListPage extends StatelessWidget {
             children: [
               TextSpan(
                 text:
-                    '${controller.listItems[index].contents[contentIndex].name}: ',
+                    '${controller.filteredListItems[index].contents[contentIndex].name}: ',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               TextSpan(
-                text: controller.listItems[index].contents[contentIndex].value,
+                text: controller
+                    .filteredListItems[index].contents[contentIndex].value,
               ),
             ],
           ),
