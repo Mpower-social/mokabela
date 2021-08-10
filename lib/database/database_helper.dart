@@ -70,7 +70,7 @@ class DatabaseHelper {
     );
 
     await db.execute(
-      'CREATE TABLE $TABLE_NAME_DATA_ITEM( id INTEGER PRIMARY KEY, xform_id INTEGER NOT NULL, json TEXT NOT NULL, status INTEGER, updated_at INTEGER)',
+      'CREATE TABLE $TABLE_NAME_DATA_ITEM( id INTEGER PRIMARY KEY, xform_id INTEGER NOT NULL, json TEXT NOT NULL, xml TEXT, status INTEGER, updated_at INTEGER)',
     );
   }
 }

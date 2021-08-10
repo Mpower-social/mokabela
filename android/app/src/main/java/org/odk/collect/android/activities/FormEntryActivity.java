@@ -983,7 +983,7 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
 
         useability = (boolean) AdminSharedPreferences.getInstance().get(AdminKeys.KEY_SAVE_MID);
 
-        menu.findItem(R.id.menu_save).setVisible(useability).setEnabled(useability);
+        menu.findItem(R.id.menu_save).setVisible(useability).setEnabled(useability).setVisible(false);
 
         useability = (boolean) AdminSharedPreferences.getInstance().get(AdminKeys.KEY_JUMP_TO);
 
@@ -1022,7 +1022,7 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
         FormController formController = getFormController();
         switch (item.getItemId()) {
             case android.R.id.home:
-                createQuitDialog();
+                createCustomQuitDialog();
                 return true;
             case R.id.menu_languages:
                 createLanguageDialog();
@@ -1402,9 +1402,8 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
                         if (saveAs.getText().length() < 1) {
                             showShortToast(R.string.save_as_error);
                         } else {
-                            saveForm(EXIT, instanceComplete
-                                    .isChecked(), saveAs.getText()
-                                    .toString());
+                            saveForm(EXIT, true, saveAs.getText()
+                                .toString());
                         }
                     }
                 });
@@ -1921,6 +1920,14 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
         }
     }
 
+    private void createCustomQuitDialog() {
+        new AlertDialog.Builder(this)
+            .setMessage("Do you want to exit?\n\nAll your changes will be discarded.")
+            .setPositiveButton("Yes", (dialog, which) -> finish())
+            .setNegativeButton("No", null)
+            .create().show();
+    }
+
     /**
      * Create a dialog with options to save and exit or quit without
      * saving
@@ -2224,7 +2231,7 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                createQuitDialog();
+                createCustomQuitDialog();
                 return true;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 if (event.isAltPressed() && !beenSwiped) {

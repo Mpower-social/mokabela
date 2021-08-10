@@ -87,7 +87,6 @@ class FormItem {
       switch (child.type) {
         case 'group':
         case 'repeat':
-          fieldNames.add(parentName + child.name);
           findPossibleFieldNames(
             '${parentName + child.name}/',
             fieldNames,

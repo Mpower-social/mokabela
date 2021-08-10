@@ -13,6 +13,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugins.GeneratedPluginRegistrant
 import org.odk.collect.android.application.Collect
 import org.odk.collect.android.dao.FormsDao
+import org.odk.collect.android.dao.InstancesDao
 import org.odk.collect.android.listeners.PermissionListener
 import org.odk.collect.android.preferences.GeneralKeys.KEY_USERNAME
 import org.odk.collect.android.provider.FormsProviderAPI
@@ -21,7 +22,7 @@ import org.odk.collect.android.utilities.PermissionUtils
 
 class MainActivity: FlutterActivity() {
     private val CHANNEL = "flutter_to_odk_communication"
-    private lateinit var channelResult: MethodChannel.Result
+    private var channelResult: MethodChannel.Result? = null
     private var formArguments: Map<String, Any>? = null
     private lateinit var database: SQLiteDatabase
 
@@ -56,7 +57,7 @@ class MainActivity: FlutterActivity() {
                 }
 
                 override fun denied() {
-                    channelResult.error("Permission Required", "Failed", null)
+                    channelResult?.error("Permission Required", "Failed", null)
                 }
             })
         }
@@ -71,7 +72,7 @@ class MainActivity: FlutterActivity() {
             val formUri = ContentUris.withAppendedId(FormsProviderAPI.FormsColumns.CONTENT_URI, idFormsTable)
             openOdkForm(formUri)
         } else {
-            channelResult.error("Related form not found", "failed", null)
+            channelResult?.error("Related form not found", "failed", null)
             Toast.makeText(this, "Related form not found", Toast.LENGTH_SHORT).show()
         }
     }
@@ -98,18 +99,24 @@ class MainActivity: FlutterActivity() {
 
         if(requestCode == 100 && data!=null) {
             var value = data.getStringExtra("data")
-            if(channelResult!=null) channelResult.success(value)
+            if(channelResult!=null) channelResult?.success(value)
         }
 
         if(requestCode == 101 && data!=null && data.data != null) {
             var value = data.data
-            if(channelResult!=null) channelResult.success("success")
+            val instancePath = getFormInstancePath(value!!)
+            if(channelResult!=null) channelResult?.success(instancePath)
         }
 
         //Reset shared preference items to avoid duplicate data in case of missing arguments
         formArguments?.entries?.forEach { entry ->
             Collect.getInstance().setValue(entry.key, "")
         }
+    }
+
+    private fun getFormInstancePath(instanceUri: Uri): String {
+        val instanceId = ContentUris.parseId(instanceUri).toString()
+        return InstancesDao().getInstancePathForInstanceId(instanceId);
     }
 
     private fun initializeOdk(username: String) {

@@ -81,6 +81,7 @@
   <string name="please_wait_long">দয়া করে অপেক্ষা করুন। এটি শেষ হতে কয়েক মিনিট সময় লাগতে পারে।</string>
   <string name="quit_application">%s প্রস্থান</string>
   <string name="quit_entry">ফরম সংরক্ষন করুন  এবং প্রস্থান করুন </string>
+  <string name="submit_quit_entry">ফর্ম জমা দিন এবং প্রস্থান করুন</string>
   <string name="refresh">সতেজ করা</string>
   <string name="replace_barcode">বারকোড প্রতিস্থাপন করুন</string>
   <string name="required_answer_error">দুঃখিত, এই উত্তরটি অপরিহার্য ।</string>
@@ -88,6 +89,7 @@
   <string name="review_data_button">সংরক্ষিত ফরম %s সম্পাদনা করুন </string>
   <string name="save_all_answers">সকল উত্তর সংরক্ষণ করুন </string>
   <string name="save_enter_data_description">আপনি %s ফরম শেষে দিকে রয়েছে </string>
+  <string name="submit_enter_data_description">আপনি সফলভাবে \'%s\' ফর্মটি পূরণ করেছেন</string>
   <string name="saving_form">ফরম সংরক্ষন করা হচ্ছে।</string>
   <string name="sending_items">%1$s এর %2$s ফরম/(ফরমগুলো) পাঠানো হচ্ছে</string>
   <string name="send_data">চূড়ান্ত ফরম পাঠান</string>
