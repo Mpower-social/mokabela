@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:app_builder/form_config/model/dto/form_config.dart';
 import 'package:app_builder/form_definition/model/dto/form_item.dart';
 import 'package:app_builder/list_definition/model/dto/list_definition.dart';
+import 'package:app_builder/models/general_response.dart';
 import 'package:app_builder/module/model/dto/module_item.dart';
 import 'package:app_builder/sync_data/model/data_item.dart';
 import 'package:app_builder/user/model/user.dart';
@@ -146,5 +147,34 @@ class RemoteService {
     }
 
     return catchmentFile;
+  }
+
+  Future<int?> submitFormToServer(String xml) async {
+    try {
+      var url = Uri.parse('$baseUrl/bhmodule/bahis_ulo/submission/');
+      final response = await client.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(
+          {
+            'xml_submission_file': xml,
+          },
+        ),
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var generalResponse =
+            generalResponseFromJson(utf8.decode(response.bodyBytes));
+        if (generalResponse.status == 200 || generalResponse.status == 201) {
+          return generalResponse.id;
+        }
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+
+    return null;
   }
 }

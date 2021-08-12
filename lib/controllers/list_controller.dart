@@ -196,6 +196,7 @@ class ListController extends GetxController {
     var formUtil = FormUtil();
     var connectivity = await Connectivity().checkConnectivity();
     if (connectivity != ConnectivityResult.none) {
+      await formUtil.sendDataToServer();
       await formUtil.fetchDataFromServer();
       await initializeListContent();
       await formUtil.fetchFormItemsAndGenerateCsv();

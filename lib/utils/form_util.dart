@@ -11,6 +11,34 @@ import 'package:sqflite/sqflite.dart';
 import 'package:xml/xml.dart';
 
 class FormUtil {
+  Future<void> sendDataToServer() async {
+    var db = await DatabaseHelper.instance.database;
+    var syncItems = await db.rawQuery(
+      'SELECT * FROM $TABLE_NAME_DATA_ITEM WHERE status = ? ORDER BY id',
+      [0],
+    );
+
+    if (syncItems.isNotEmpty) {
+      List<DataItem>.from(syncItems.map((x) => DataItem.fromJson(x)))
+          .forEach((dataItem) async {
+        var id = await RemoteService().submitFormToServer(dataItem.xml!);
+        if (id != null) {
+          //Should update form specific table item with id as instanceid
+          try {
+            await db.update(
+              TABLE_NAME_DATA_ITEM,
+              {
+                'status': 1,
+              },
+            );
+          } catch (e) {
+            print(e);
+          }
+        }
+      });
+    }
+  }
+
   Future<void> fetchDataFromServer() async {
     var db = await DatabaseHelper.instance.database;
     var appLogs = await db.rawQuery(
