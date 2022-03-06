@@ -90,18 +90,22 @@ class SyncController extends GetxController {
 
   Future<void> fetchListConfig() async {
     var db = await DatabaseHelper.instance.database;
-    var listDefinitions = await RemoteService().fetchListDefinitions();
-    listDefinitions.forEach((listDefinition) {
-      try {
-        db.insert(
-          TABLE_NAME_LIST_ITEM,
-          listDefinition.toJson(),
-          conflictAlgorithm: ConflictAlgorithm.replace,
-        );
-      } catch (e) {
-        print(e);
-      }
-    });
+    try {
+      var listDefinitions = await RemoteService().fetchListDefinitions();
+      listDefinitions.forEach((listDefinition) {
+        try {
+          db.insert(
+            TABLE_NAME_LIST_ITEM,
+            listDefinition.toJson(),
+            conflictAlgorithm: ConflictAlgorithm.replace,
+          );
+        } catch (e) {
+          print(e);
+        }
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future<void> fetchFormsList() async {

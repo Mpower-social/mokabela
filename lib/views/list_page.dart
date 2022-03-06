@@ -1,17 +1,17 @@
 import 'package:app_builder/controllers/list_controller.dart';
-import 'package:app_builder/list_definition/model/dto/list_item_action.dart';
 import 'package:app_builder/views/filter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'base_list_page.dart';
 
-class ListPage extends StatelessWidget {
+class ListPage extends BaseListPage {
   late final ListController listController;
   final String title;
   final int listId;
 
   ListPage({required this.title, required this.listId}) {
-    listController = ListController(listId: listId);
+    listController = Get.put(ListController(listId: listId));
   }
 
   @override
@@ -120,32 +120,23 @@ class ListPage extends StatelessWidget {
                             return controller.expandList[index].value
                                 ? findListItem(
                                     context,
-                                    controller,
-                                    index,
+                                    controller
+                                        .filteredListItems[index].contents,
                                     controller.filteredListItems[index].contents
                                         .length)
-                                : findListItem(context, controller, index, 3);
+                                : findListItem(
+                                    context,
+                                    controller
+                                        .filteredListItems[index].contents,
+                                    3);
                           }),
                         ),
                         controller.filteredListItems[index].actions.length > 0
-                            ? Container(
-                                padding: EdgeInsets.only(left: 10),
-                                child: PopupMenuButton(
-                                  onSelected: controller.openForm,
-                                  itemBuilder: (context) => List.generate(
-                                    controller.filteredListItems[index].actions
-                                        .length,
-                                    (actionIndex) =>
-                                        PopupMenuItem<ListItemAction>(
-                                      value: controller.filteredListItems[index]
-                                          .actions[actionIndex],
-                                      child: Text(
-                                        controller.filteredListItems[index]
-                                            .actions[actionIndex].actionName!,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                            ? InkWell(
+                                onTap: () => controller.moveToDetailPage(
+                                    title.split(' ').first,
+                                    controller.filteredListItems[index]),
+                                child: Icon(Icons.arrow_forward_ios),
                               )
                             : SizedBox(),
                       ],
@@ -156,35 +147,6 @@ class ListPage extends StatelessWidget {
             },
           );
         },
-      ),
-    );
-  }
-
-  Widget findListItem(
-      BuildContext context, ListController controller, int index, int length) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(
-        length,
-        (contentIndex) => RichText(
-          text: TextSpan(
-            style: DefaultTextStyle.of(context).style,
-            children: [
-              TextSpan(
-                text:
-                    '${controller.filteredListItems[index].contents[contentIndex].name}: ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              TextSpan(
-                text: controller
-                    .filteredListItems[index].contents[contentIndex].value,
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

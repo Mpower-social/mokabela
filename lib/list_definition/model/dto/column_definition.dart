@@ -37,7 +37,7 @@ class ColumnDefinition {
             ? []
             : List<ActionDefinition>.from(json["action_definition"]
                 .map((x) => ActionDefinition.fromJson(x))),
-        order: json["order"] == null ? null : json["order"],
+        order: json["order"] == null ? null : json["order"].toString(),
       );
 
   Map<String, dynamic> toJson() => {

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:app_builder/list_definition/model/dto/filter_value.dart';
 import 'package:app_builder/utils/form_util.dart';
+import 'package:app_builder/views/list_details_page.dart';
 import 'package:collection/collection.dart';
 import 'package:app_builder/database/database_helper.dart';
 import 'package:app_builder/form_definition/model/dto/form_item.dart';
@@ -233,5 +234,13 @@ class ListController extends GetxController {
     });
 
     filteredListItems.assignAll(localItems);
+  }
+
+  moveToDetailPage(String title, ListItem listItem) {
+    Get.to(ListDetailsPage(
+      title: title,
+      contents: listItem.contents,
+      actions: listItem.actions,
+    ));
   }
 }

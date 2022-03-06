@@ -29,7 +29,11 @@ class FilterDefinition {
         dependency: json["dependency"] == null
             ? []
             : List<String>.from(json["dependency"].map((x) => x)),
-        order: json["order"] == null ? null : json["order"],
+        order: json["order"] == null
+            ? null
+            : json["order"] is String
+                ? int.parse(json["order"])
+                : json["order"],
       );
 
   Map<String, dynamic> toJson() => {
