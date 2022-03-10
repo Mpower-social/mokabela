@@ -30,7 +30,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.multidex.MultiDex;
 
-import com.crashlytics.android.Crashlytics;
 import com.evernote.android.job.JobManager;
 import com.evernote.android.job.JobManagerCreateException;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -309,12 +308,6 @@ public class Collect extends FlutterApplication {
         protected void log(int priority, String tag, String message, Throwable t) {
             if (priority == Log.VERBOSE || priority == Log.DEBUG || priority == Log.INFO) {
                 return;
-            }
-
-            Crashlytics.log(priority, tag, message);
-
-            if (t != null && priority == Log.ERROR) {
-                Crashlytics.logException(t);
             }
         }
     }
