@@ -27,7 +27,7 @@ dependencies:
   path_provider: ^2.0.2
 
   #GetX
-  get: 4.5.1
+  get: ^4.6.5
 
   #HTTP
   http: ^0.13.1
@@ -39,7 +39,7 @@ dependencies:
   connectivity: ^3.0.3
 
   #Google font
-  google_fonts: 2.1.0
+  google_fonts: ^3.0.1
 
   #Cache image
   cached_network_image: ^3.0.0
@@ -54,7 +54,7 @@ dependencies:
   archive: ^3.1.2
 
   #XML Parser
-  xml: ^5.1.2
+  xml: ^6.1.0
 
 
   # The following adds the Cupertino Icons font to your application.

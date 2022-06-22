@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:app_builder/module/view/moduel_page.dart';
 import 'package:app_builder/views/dashboard_page.dart';
 import 'package:app_builder/views/side_bar_layout.dart';

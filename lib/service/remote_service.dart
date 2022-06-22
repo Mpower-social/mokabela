@@ -12,7 +12,7 @@ import 'package:archive/archive.dart';
 import 'package:http/http.dart' as http;
 
 class RemoteService {
-  final String baseUrl = 'http://dyn-bahis-dev.mpower-social.com';
+  final String baseUrl = 'http://bahisdev.mpower-social.com';
   var client = http.Client();
 
   Future<User?> handleLogin(
