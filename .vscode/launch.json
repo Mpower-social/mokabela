@@ -12,6 +12,18 @@
                 "--flavor",
                 "dev"
             ]
+        },
+        {
+            "name": "bahis_client (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "bahis_client (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
         }
     ]
 }

@@ -1,24 +1,33 @@
-import 'package:app_builder/database/database_helper.dart';
-import 'package:app_builder/module/model/dto/module_item.dart';
 import 'package:get/get.dart';
+import 'package:m_survey/models/local/project_list_data.dart';
+import 'package:m_survey/repository/dashboard_repository.dart';
+import 'package:m_survey/utils/shared_pref.dart';
+class DashboardController extends GetxController{
+  var name = ''.obs;
+  var designation = ''.obs;
+  var recentFormList = [
+    'Test 1','test 2','test 3','test 4','test 4','test 4','test 4''test 4''test 4''test 4'
+  ];
+  var projectList = <ProjectListFromLocalDb>[].obs;
+  var isLoadingProject = false.obs;
 
-class DashboardController extends GetxController {
-  final moduleItem = Rx<ModuleItem?>(null);
+  final DashboardRepository _dashboardRepository = DashboardRepository();
 
   @override
-  void onInit() async {
+  void onInit()async{
     super.onInit();
-
-    fetchModuleConfig();
+    getUserdata();
+    loadProjects(false);
   }
 
-  Future<void> fetchModuleConfig() async {
-    var db = await DatabaseHelper.instance.database;
-    var dbModules = await db.rawQuery(
-        'SELECT * FROM $TABLE_NAME_MODULE_ITEM WHERE app_id = 1 LIMIT 1');
-    if (dbModules.isNotEmpty && dbModules.first['definition'] != null) {
-      var module = moduleItemFromJson(dbModules.first['definition'] as String);
-      moduleItem.value = module;
-    }
+  void getUserdata()async{
+    name.value = await SharedPref.sharedPref.getString(SharedPref.NAME)??'';
+    designation.value = await SharedPref.sharedPref.getString(SharedPref.DESIGNATION)??'';
+  }
+
+  void loadProjects(forceLoad) async{
+    isLoadingProject.value = true;
+    projectList.value = await _dashboardRepository.getProjectListOperation(1, 10,forceLoad);
+    isLoadingProject.value = false;
   }
 }

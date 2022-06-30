@@ -1,34 +1,38 @@
-
-import 'package:app_builder/module/view/moduel_page.dart';
-import 'package:app_builder/views/dashboard_page.dart';
-import 'package:app_builder/views/side_bar_layout.dart';
-import 'package:app_builder/views/splash_page.dart';
 import 'package:flutter/material.dart';
+import 'package:m_survey/bindings/allbinding.dart';
+import 'package:m_survey/utils/shared_pref.dart';
+import 'package:m_survey/views/splash_screen.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(MyApp());
+
+import 'res/translation.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  /* SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);*/
+  await SharedPref.sharedPref.init();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'mSurvey',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
+       textTheme: GoogleFonts.robotoTextTheme()
       ),
-      home: SplashPage(),
+      initialBinding: AllBindings(),
+      translations: Translation(),
+      locale: const Locale('en','EN'),
+      defaultTransition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 500),
+      home: const SplashScreen(),
     );
   }
 }
