@@ -19,4 +19,16 @@ class DashboardService extends BaseApiProvider{
     }
     return null;
   }
+
+  Future<String?> getFormList() async{
+    try{
+      var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
+      dio.options.headers.addAll({'Authorization':'Bearer $token'});
+      var response = await dio.get(Apis.getFormList);
+      return response.data.toString();
+    }catch(error){
+      showToast(msg:DioException.getDioException(error),isError: true);
+    }
+    return null;
+  }
 }

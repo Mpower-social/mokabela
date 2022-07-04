@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:m_survey/app_icons_icons.dart';
+import 'package:m_survey/controllers/form_details_controller.dart';
 import 'package:m_survey/enum/form_status.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
@@ -14,6 +15,7 @@ class FormDetailsScreen extends StatelessWidget {
   Function? wp;
   Function? hp;
 
+  FormDetailsController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     wp = Screen(MediaQuery.of(context).size).wp;
@@ -24,58 +26,61 @@ class FormDetailsScreen extends StatelessWidget {
           context:context,
           title: 'Student Registration 2020',
         ),
-        body: Container(
-          height: hp!(100),
-          width: wp!(100),
-          child: Column(
-            children: [
-              Container(
-                height: .5,
-                width: wp!(100),
-                color: white,
+        body:Container(
+            height: hp!(100),
+            width: wp!(100),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    height: .5,
+                    width: wp!(100),
+                    color: white,
+                  ),
+                  _topPart(),
+                  SizedBox(
+                    height: hp!(4),
+                  ),
+                  _collectButton(),
+                  SizedBox(
+                    height: hp!(4),
+                  ),
+                  iconButton(
+                      icon: AppIcons.draft,
+                      title: 'Drafts(47)',
+                      bg: primaryColor,
+                      textColor: white,
+                      height: 45,
+                      width: wp!(85),
+                      onTap: () => Get.to(() => FormListScreen(FormStatus.draft))),
+                  SizedBox(
+                    height: hp!(1),
+                  ),
+                  iconButton(
+                      icon: CupertinoIcons.checkmark_square_fill,
+                      title: 'Ready to Sync(101)',
+                      bg: primaryColor,
+                      textColor: white,
+                      height: 45,
+                      width: wp!(85),
+                      onTap: () => Get.to(() => FormListScreen(FormStatus.readyToSync))),
+                  SizedBox(
+                    height: hp!(1),
+                  ),
+                  iconButton(
+                    icon: Icons.remove_red_eye,
+                    title: 'Submitted(512)',
+                    bg: primaryColor,
+                    textColor: white,
+                    height: 45,
+                    width: wp!(85),
+                    onTap: () => Get.to(() => FormListScreen(FormStatus.submitted)),
+                  )
+                ],
               ),
-              _topPart(),
-              SizedBox(
-                height: hp!(4),
-              ),
-              _collectButton(),
-              SizedBox(
-                height: hp!(4),
-              ),
-              iconButton(
-                  icon: AppIcons.draft,
-                  title: 'Drafts(47)',
-                  bg: primaryColor,
-                  textColor: white,
-                  height: 45,
-                  width: wp!(85),
-                  onTap: () => Get.to(() => FormListScreen(FormStatus.draft))),
-              SizedBox(
-                height: hp!(1),
-              ),
-              iconButton(
-                  icon: CupertinoIcons.checkmark_square_fill,
-                  title: 'Ready to Sync(101)',
-                  bg: primaryColor,
-                  textColor: white,
-                  height: 45,
-                  width: wp!(85),
-                  onTap: () => Get.to(() => FormListScreen(FormStatus.readyToSync))),
-              SizedBox(
-                height: hp!(1),
-              ),
-              iconButton(
-                icon: Icons.remove_red_eye,
-                title: 'Submitted(512)',
-                bg: primaryColor,
-                textColor: white,
-                height: 45,
-                width: wp!(85),
-                onTap: () => Get.to(() => FormListScreen(FormStatus.submitted)),
-              )
-            ],
+            ),
           ),
-        ),
+
       ),
     );
   }
@@ -134,7 +139,9 @@ class FormDetailsScreen extends StatelessWidget {
       ),
       color: white.withOpacity(.5),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          controller.openOdkForm();
+        },
         child: Container(
           padding: const EdgeInsets.all(10),
           height: 120,

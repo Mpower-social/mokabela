@@ -230,7 +230,7 @@ public class Collect extends FlutterApplication {
         }
 
         setupRemoteAnalytics();
-        setupLeakCanary();
+        //setupLeakCanary();
         setupOSMDroid();
 
         // Force inclusion of scoped storage strings so they can be translated

@@ -78,11 +78,11 @@ class FormListScreen extends StatelessWidget {
                 },
               ),
             ),
-            _datePickerUi('Start'),
+            _datePickerUi('Start',controller),
             const SizedBox(width: 5,),
             const Text('to'),
             const SizedBox(width: 5,),
-            _datePickerUi('End'),
+            _datePickerUi('End',controller),
           ],
         ),
 
@@ -199,22 +199,31 @@ class FormListScreen extends StatelessWidget {
     );
   }
 
-  Widget _datePickerUi(String s) {
-    return Container(
-      constraints: const BoxConstraints(
-        minHeight: 30
-      ),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        border: Border.all(color: grey),
-        borderRadius: BorderRadius.circular(8)
-      ),
-      child: Row(
-        children: [
-          Text(s,style: TextStyle(color: black.withOpacity(.6)),),
-          const SizedBox(width: 50,),
-          Icon(Icons.date_range,color: grey,size: 20,)
-        ],
+  Widget _datePickerUi(String s,FormListController? controller) {
+    var date = s;
+    if(s == 'Start') date = controller!.selectedStartDateStr.value;
+    else date = controller!.selectedEndDateStr.value;
+
+    return InkWell(
+      onTap: (){
+        controller.pickImage(s);
+      },
+      child: Container(
+        constraints: const BoxConstraints(
+          minHeight: 30
+        ),
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          border: Border.all(color: grey),
+          borderRadius: BorderRadius.circular(8)
+        ),
+        child: Row(
+          children: [
+            Text(date,style: TextStyle(color: black.withOpacity(.6)),),
+            const SizedBox(width: 50,),
+            Icon(Icons.date_range,color: grey,size: 20,)
+          ],
+        ),
       ),
     );
   }

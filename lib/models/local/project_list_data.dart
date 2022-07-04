@@ -33,6 +33,6 @@ class ProjectListFromLocalDb{
     PROJECT_NO_OF_FORMS:noOfForms??'0',
     PROJECT_START_DATE:startDate??'',
     PROJECT_END_DATE:endDate??'',
-    PROJECT_STATUS:''
+    PROJECT_STATUS:status??''
   };
 }

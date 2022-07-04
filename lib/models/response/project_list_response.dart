@@ -59,7 +59,7 @@ class Attributes {
   DateTime? startDate;
   DateTime? endDate;
   List<PartnerOrganization>? partnerOrganization;
-  dynamic projectStatus;
+  ProjectStatus? projectStatus;
 
   factory Attributes.fromJson(Map<String, dynamic> json) => Attributes(
     id: json["id"] ?? '',
@@ -68,7 +68,7 @@ class Attributes {
     startDate: json["startDate"] == null ? null : DateTime.parse(json["startDate"]),
     endDate: json["endDate"] == null ? null : DateTime.parse(json["endDate"]),
     partnerOrganization: json["partnerOrganization"] == null ? null : List<PartnerOrganization>.from(json["partnerOrganization"].map((x) => PartnerOrganization.fromJson(x))),
-    projectStatus: json["projectStatus"],
+    projectStatus: ProjectStatus.fromJson(json["projectStatus"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -79,6 +79,22 @@ class Attributes {
     "endDate": endDate == null ? null : "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
     "partnerOrganization": partnerOrganization == null ? null : List<dynamic>.from(partnerOrganization!.map((x) => x.toJson())),
     "projectStatus": projectStatus,
+  };
+}
+
+class ProjectStatus {
+  ProjectStatus({
+    this.id,
+  });
+
+  int? id;
+
+  factory ProjectStatus.fromJson(Map<String, dynamic> json) => ProjectStatus(
+    id: json["id"] ?? ''
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id ?? ''
   };
 }
 

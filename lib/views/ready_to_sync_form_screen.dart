@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:m_survey/app_icons_icons.dart';
 import 'package:m_survey/controllers/ready_to_sync_form_controller.dart';
+import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
 import 'package:m_survey/style/common_style.dart';
@@ -94,12 +95,11 @@ class ReadyToSyncFormScreen extends StatelessWidget {
                 flex: 5,
                 child: SizedBox(
                   height: 40,
-                  child: DropdownButtonFormField<String>(
+                  child: DropdownButtonFormField<ProjectListFromLocalDb>(
                       isExpanded: true,
-                      value: controller.selectedProject.value == ''?null:controller.selectedProject.value,
-                      items: controller.formList.map((e) => DropdownMenuItem<String>(value: e,child: Text(e),)).toList(),
+                      value: controller.selectedProject.value.id == 0? controller.projectList[0]:controller.selectedProject.value,
+                      items: controller.projectList.map((e) => DropdownMenuItem<ProjectListFromLocalDb>(value: e,child: Text(e.projectName!),)).toList(),
                       decoration: CommonStyle.textFieldStyle(
-                        hintTextStr: 'Projects',
                         verPadding: 8,
                         horPadding: 10,
                       ),
@@ -135,7 +135,7 @@ class ReadyToSyncFormScreen extends StatelessWidget {
       itemBuilder: (ctx, i) {
         return Container(
           width: wp!(100),
-          padding: EdgeInsets.only(left: 10,right: 10),
+          padding: const EdgeInsets.only(left: 10,right: 10),
           constraints: const BoxConstraints(minHeight: 50),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -187,8 +187,8 @@ class ReadyToSyncFormScreen extends StatelessWidget {
                 ],
               ),
               Row(
-                children: [
-                  const Icon(
+                children: const [
+                  Icon(
                     AppIcons.delete,
                     size: 22,
                   ),

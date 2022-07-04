@@ -33,7 +33,10 @@ class DashboardScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: baseAppBarWithDrawer(title: 'Home', context: context),
+        appBar: baseAppBarWithDrawer(
+          title: 'Home',
+          context: context
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,8 +99,9 @@ class DashboardScreen extends StatelessWidget {
                       children: [
                         title(title: 'recent_forms'.tr),
                         InkWell(
-                            onTap: () => Get.to(() => ActiveFormScreen()),
-                            child: title(title: 'all'.tr))
+                          onTap: () => Get.to(() => ActiveFormScreen()),
+                            child: title(title: 'all'.tr)
+                        )
                       ],
                     ),
                     const SizedBox(
@@ -185,20 +189,16 @@ class DashboardScreen extends StatelessWidget {
           ],
         ),*/
         drawer: Obx(() => drawer(
-            _controller.name.value, _controller.designation.value,
+            _controller.name.value,
+            _controller.designation.value,
             wp: wp!(30))),
+
+
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: () => _controller.loadProjects(true),
+            onPressed: ()=>_controller.loadProjects(true),
             backgroundColor: primaryColor,
-            label: Row(
-              children: [
-                const Icon(AppIcons.reload),
-                const SizedBox(
-                  width: 8,
-                ),
-                Text('load'.tr)
-              ],
-            )),
+            label: Row(children: [const Icon(AppIcons.reload),const SizedBox(width: 8,),Text('load'.tr)],)
+        ),
       ),
     );
   }
@@ -236,13 +236,9 @@ class DashboardScreen extends StatelessWidget {
                       onTap: () => Get.to(() => ProjectDetailsScreen()),
                       child: ongoingProjectCard(
                           title: _controller.projectList[i].projectName ?? '',
-                          formCount: int.tryParse(
-                                  _controller.projectList[i].noOfForms ??
-                                      '0') ??
-                              0,
-                          dateRange:
-                              '${"timeline".tr} ${Utils.dateFormat.format(DateTime.tryParse(_controller.projectList[i].startDate!)!)} - ${Utils.dateFormat.format(DateTime.tryParse(_controller.projectList[i].endDate!)!)}',
-                          status: true),
+                          formCount: int.tryParse(_controller.projectList[i].noOfForms ?? '0') ??0,
+                          dateRange: '${"timeline".tr} ${Utils.dateFormat.format(DateTime.tryParse(_controller.projectList[i].startDate!)!)} - ${Utils.dateFormat.format(DateTime.tryParse(_controller.projectList[i].endDate!)!)}',
+                          status: _controller.projectList[i].status == '1'?true:false),
                     );
                   },
                   separatorBuilder: (ctx, i) => const SizedBox(

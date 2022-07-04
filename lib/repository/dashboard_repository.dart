@@ -25,7 +25,7 @@ class DashboardRepository {
                 projectName: projectData.attributes?.name,
                 startDate: projectData.attributes?.startDate.toString(),
                 endDate: projectData.attributes?.endDate.toString(),
-                status: 'false'
+                status: projectData.attributes?.projectStatus?.id.toString()
             ));
           }
         }
@@ -33,6 +33,10 @@ class DashboardRepository {
       }
     }
     return projectList;
+  }
+
+  Future<String> getFormList() async{
+    return await _dashboardService.getFormList()??'';
   }
 
 

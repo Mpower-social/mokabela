@@ -29,9 +29,11 @@ class DioException {
                       return error.response?.data["data"]??error.response?.data["message"]??"";
                   }
                 case 401:
+                  //Utils.logoutOperation();
+                  return "Email or password wrong.Try again.";
+                case 403:
                   Utils.logoutOperation();
                   return "Token expired. Login Again.";
-                case 403:
                 case 404:
                 case 409:
                 case 408:

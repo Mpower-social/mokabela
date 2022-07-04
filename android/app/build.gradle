@@ -44,7 +44,7 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "org.odk.collect.android"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
@@ -95,13 +95,21 @@ android {
     flavorDimensions "flavor-type"
 
     productFlavors {
-        dev {
+       /* dev {
             applicationId 'com.mpower.appbuilder.app_builder'
             versionCode 1
             versionName "1.0.0"
             dimension "flavor-type"
             resValue "string", "app_name", "App Builder"
             resValue "string", "default_server_url", "http://clarissa.dev.mpower-social.com:9023/"
+        }*/
+        dev {
+            applicationId 'com.mpower.appbuilder.app_builder'
+            versionCode 1
+            versionName "1.0.0"
+            dimension "flavor-type"
+            resValue "string", "app_name", "App Builder"
+            resValue "string", "default_server_url", "http://192.168.22.59:3000"
         }
     }
 }

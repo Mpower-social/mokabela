@@ -34,14 +34,14 @@ class AssetFormDownloadUtil(val context: Context) {
     private val TEMP_DOWNLOAD_EXTENSION = ".tempDownload"
     var formsDao: FormsDao = FormsDao()
 
-    fun getForms(): Boolean {
+    fun getForms(formXml: String?): Boolean {
         if(formsDao.formsCursor.count > 0) {
             return true
         }
 
         try {
 
-            getFormList().forEach { selectedForm ->
+            getFormList(formXml).forEach { selectedForm ->
                 try {
                     deleteOldFormIfExist(selectedForm.formId)
                     val downloadFile = downloadForm(selectedForm.formName, selectedForm.downloadUrl)
@@ -72,8 +72,8 @@ class AssetFormDownloadUtil(val context: Context) {
         return false
     }
 
-    private fun getFormList() : List<FormDetails> {
-        val documentFetchResult = handleXmlDocument(getFormListUrl())
+    private fun getFormList(formXml: String?): List<FormDetails> {
+        val documentFetchResult = handleXmlDocument(/*getFormListUrl()*/formXml!!)
         if(documentFetchResult != null) {
             return getFormDetails(documentFetchResult)
         }
@@ -291,7 +291,12 @@ class AssetFormDownloadUtil(val context: Context) {
     }
 
     private fun getFormListUrl() : String {
-        return "${Collect.getInstance().getString(R.string.default_odk_formlist)}/formList.xml"
+        //Log.d("urllll",Collect.getInstance().getString(R.string.default_odk_formlist))
+        //return "${Collect.getInstance().getString(R.string.default_odk_formlist)}/formList.xml"
+        var server = Collect.getInstance().serverBaseAddress
+        if (!server.endsWith("/")) server+="/"
+        return server + Collect.getInstance().username + Collect.getInstance()
+            .getString(R.string.default_odk_formlist)
     }
 
     private fun isThisFormAlreadyDownloaded(formId: String): Boolean {

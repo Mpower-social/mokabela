@@ -44,9 +44,10 @@ class MainActivity: FlutterActivity() {
                             openOdkForm(formId)
                         }
                         call.method.equals("initializeOdk", true) -> {
+                            val formXml = call.argument<String>("xmlData")
                             val username = call.argument<String>("username") ?: "bahis_ulo"
                             initializeOdk(username)
-                            AssetFormDownloadUtil(this@MainActivity).getForms()
+                            AssetFormDownloadUtil(this@MainActivity).getForms(formXml)
                         }
                         else -> {
                             startActivityFromFlutter(call.method)
@@ -120,6 +121,7 @@ class MainActivity: FlutterActivity() {
     }
 
     private fun initializeOdk(username: String) {
+
         Collect.getInstance().setValue(KEY_USERNAME, username)
         Collect.getInstance().initializeJavaRosa()
         StorageInitializer().createOdkDirsOnStorage()

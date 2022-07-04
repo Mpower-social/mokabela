@@ -1,8 +1,10 @@
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/utils/shared_pref.dart';
 class DashboardController extends GetxController{
+  var methodChannel = MethodChannel('flutter_to_odk_communication');
   var name = ''.obs;
   var designation = ''.obs;
   var recentFormList = [
@@ -18,6 +20,10 @@ class DashboardController extends GetxController{
     super.onInit();
     getUserdata();
     loadProjects(false);
+    _dashboardRepository.getFormList()
+    .then((value){
+      downloadForm(value);
+    });
   }
 
   void getUserdata()async{
@@ -29,5 +35,13 @@ class DashboardController extends GetxController{
     isLoadingProject.value = true;
     projectList.value = await _dashboardRepository.getProjectListOperation(1, 10,forceLoad);
     isLoadingProject.value = false;
+  }
+
+  void downloadForm(String value) async {
+    final results = await methodChannel.invokeMethod<List>('initializeOdk', {'xmlData':value});
+    if (results != null && results.isNotEmpty) {
+      print('Success');
+    }
+    print('failed');
   }
 }
