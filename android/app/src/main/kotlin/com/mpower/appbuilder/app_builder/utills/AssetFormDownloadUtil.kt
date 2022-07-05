@@ -2,6 +2,7 @@ package com.mpower.appbuilder.app_builder.utills
 
 import android.content.ContentValues
 import android.content.Context
+import android.util.Log
 import org.javarosa.xform.parse.XFormParser
 import org.kxml2.io.KXmlParser
 import org.kxml2.kdom.Document
@@ -20,6 +21,9 @@ import org.odk.collect.android.utilities.FormDownloader
 import org.odk.collect.android.utilities.Validator
 import org.xmlpull.v1.XmlPullParser
 import java.io.*
+import java.net.HttpURLConnection
+import java.net.URL
+import java.util.zip.GZIPInputStream
 
 
 /**
@@ -82,7 +86,7 @@ class AssetFormDownloadUtil(val context: Context) {
     }
 
     private fun getMediaList(manifestUrl: String) : List<MediaFile> {
-        val documentFetchResult = handleXmlDocument(manifestUrl)
+        val documentFetchResult = handleXmlDocument(manifestUrl,"")
         if(documentFetchResult != null) {
             return getMediaFiles(documentFetchResult)
         }
@@ -153,6 +157,7 @@ class AssetFormDownloadUtil(val context: Context) {
                             downloadUrl = XFormParser.getXMLText(childElement, true)
                             if(downloadUrl.isNullOrEmpty())
                                 downloadUrl = null
+
                         }
                         "manifestUrl" -> {
                             manifestUrl = XFormParser.getXMLText(childElement, true)
@@ -212,7 +217,7 @@ class AssetFormDownloadUtil(val context: Context) {
                         formName = null
 
                     downloadUrl = childElement.getAttributeValue(null, "url")
-                    if(downloadUrl.isNullOrEmpty() || downloadUrl.trim().isNullOrEmpty())
+                    if(downloadUrl.isNullOrEmpty() || downloadUrl.trim().isEmpty())
                         downloadUrl = null
                 }
 
@@ -322,7 +327,7 @@ class AssetFormDownloadUtil(val context: Context) {
                         return true
                     }
                 }
-            } else if (!newMediaFiles.isEmpty()) {
+            } else if (newMediaFiles.isNotEmpty()) {
                 return true
             }
         }
@@ -346,13 +351,16 @@ class AssetFormDownloadUtil(val context: Context) {
         return false
     }
 
-    private fun handleXmlDocument(formListUrl: String): DocumentFetchResult? {
+    /**
+     * for handling existing xml data
+     */
+    private fun handleXmlDocument(formListXml: String): DocumentFetchResult? {
         var inputStreamReader: InputStreamReader? = null
         var inputStream: InputStream? = null
         var doc: Document? = null
 
         try {
-            inputStream = context.assets.open(formListUrl)
+            inputStream = /*context.assets.open(formListUrl)*/ByteArrayInputStream( formListXml.toByteArray());
             inputStreamReader = InputStreamReader(inputStream, "UTF-8")
             doc = Document()
             val parser = KXmlParser()
@@ -372,7 +380,55 @@ class AssetFormDownloadUtil(val context: Context) {
         return null
     }
 
-    private fun handleFormMedia(downloadUrl: String, tempMediaFile: File): Boolean {
+    /**
+     * for downloading xml data
+     */
+    private fun handleXmlDocument(formListUrl: String,dummy: String): DocumentFetchResult? {
+        var inputStreamReader: InputStreamReader? = null
+        var inputStream: InputStream? = null
+        var doc: Document? = null
+
+        try {
+            val serverUrl = URL(formListUrl)
+            val connection: HttpURLConnection = serverUrl.openConnection() as HttpURLConnection
+            connection.requestMethod = "GET"
+            connection.useCaches = false
+            connection.allowUserInteraction = false
+            connection.connectTimeout = 30000
+            connection.readTimeout = 30000
+            connection.connect()
+
+            val status: Int = connection.responseCode
+            when(status) {
+                200, 201-> {
+                    inputStream = connection.inputStream
+                    val contentEncoding = connection.contentEncoding
+                    if(contentEncoding != null && contentEncoding.equals("gzip", true)) {
+                        inputStream = GZIPInputStream(inputStream)
+                    }
+
+                    inputStreamReader = InputStreamReader(inputStream, "UTF-8")
+                    doc = Document()
+                    val parser = KXmlParser()
+                    parser.setInput(inputStreamReader)
+                    parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, true)
+                    doc.parse(parser)
+
+                    return DocumentFetchResult(doc, true, "")
+                }
+            }
+        } catch (ex: Exception) {
+            ex.stackTrace
+        } finally {
+            inputStream?.close()
+            inputStreamReader?.close()
+        }
+
+        return null
+    }
+
+
+/*    private fun handleFormMedia(downloadUrl: String, tempMediaFile: File): Boolean {
         var outputStream: OutputStream? = null
         var inputStream: InputStream? = null
 
@@ -405,6 +461,95 @@ class AssetFormDownloadUtil(val context: Context) {
         rootName = rootName.trim()
 
         var path = StoragePathProvider().getDirPath(StorageSubdirectory.FORMS) + File.separator + rootName + ".xml"
+        val file = File(path)
+        val tempFile = File.createTempFile(file.name, TEMP_DOWNLOAD_EXTENSION,
+            File(StoragePathProvider().getDirPath(StorageSubdirectory.CACHE)))
+
+        val isSuccess = handleFormMedia(downloadUrl, tempFile)
+        if(isSuccess) {
+            FileUtils.deleteAndReport(file)
+            FileUtils.copyFile(tempFile, file)
+            FileUtils.deleteAndReport(tempFile)
+        } else {
+            FileUtils.deleteAndReport(file)
+            FileUtils.deleteAndReport(tempFile)
+        }
+
+        return file
+    }
+
+    private fun downloadMedia(tempMediaDir: File, mediaFile: MediaFile) : Boolean {
+
+        val tempMediaFile = File(tempMediaDir, mediaFile.filename)
+
+        val tempFile = File.createTempFile(tempMediaFile.name, TEMP_DOWNLOAD_EXTENSION,
+            File(StoragePathProvider().getDirPath(StorageSubdirectory.CACHE)))
+
+        val isSuccess = handleFormMedia(mediaFile.downloadUrl, tempFile)
+        if(isSuccess) {
+            FileUtils.deleteAndReport(tempMediaFile)
+            FileUtils.copyFile(tempFile, tempMediaFile)
+            FileUtils.deleteAndReport(tempFile)
+
+            return true
+        } else {
+            FileUtils.deleteAndReport(tempMediaFile)
+            FileUtils.deleteAndReport(tempFile)
+        }
+
+        return false
+    }*/
+
+
+    private fun handleFormMedia(downloadUrl: String, tempMediaFile: File): Boolean {
+        var outputStream: OutputStream? = null
+        var inputStream: InputStream? = null
+
+        try {
+            val serverUrl = URL(downloadUrl)
+            val connection: HttpURLConnection = serverUrl.openConnection() as HttpURLConnection
+            connection.requestMethod = "GET"
+            connection.useCaches = false
+            connection.allowUserInteraction = false
+            connection.connectTimeout = 30000
+            connection.readTimeout = 30000
+            connection.connect()
+
+            when(connection.responseCode) {
+                200, 201-> {
+                    inputStream = connection.inputStream
+                    val contentEncoding = connection.contentEncoding
+                    if(contentEncoding != null && contentEncoding.equals("gzip", true)) {
+                        inputStream = GZIPInputStream(inputStream)
+                    }
+
+                    outputStream = FileOutputStream(tempMediaFile)
+                    inputStream.use { input ->
+                        outputStream.use { output ->
+                            input?.copyTo(output)
+                        }
+                    }
+
+                    return true
+                }
+            }
+        } catch (ex: Exception) {
+            ex.stackTrace
+        } finally {
+            inputStream?.close()
+            outputStream?.flush()
+            outputStream?.close()
+        }
+
+        return false
+    }
+
+    private fun downloadForm(formName: String, downloadUrl: String) : File {
+        var rootName = formName.replace("[^\\p{L}\\p{Digit}]".toRegex(), " ")
+        rootName = rootName.replace("\\p{javaWhitespace}+".toRegex(), " ")
+        rootName = rootName.trim()
+
+        val path = StoragePathProvider().getDirPath(StorageSubdirectory.FORMS) + File.separator + rootName + ".xml"
         val file = File(path)
         val tempFile = File.createTempFile(file.name, TEMP_DOWNLOAD_EXTENSION,
             File(StoragePathProvider().getDirPath(StorageSubdirectory.CACHE)))

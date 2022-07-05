@@ -20,10 +20,7 @@ class DashboardController extends GetxController{
     super.onInit();
     getUserdata();
     loadProjects(false);
-    _dashboardRepository.getFormList()
-    .then((value){
-      downloadForm(value);
-    });
+    downloadForm();
   }
 
   void getUserdata()async{
@@ -37,11 +34,14 @@ class DashboardController extends GetxController{
     isLoadingProject.value = false;
   }
 
-  void downloadForm(String value) async {
-    final results = await methodChannel.invokeMethod<List>('initializeOdk', {'xmlData':value});
-    if (results != null && results.isNotEmpty) {
-      print('Success');
-    }
-    print('failed');
+  void downloadForm() async {
+
+    _dashboardRepository.getFormList().then((value)async{
+      final results = await methodChannel.invokeMethod('initializeOdk', {'xmlData':value});
+      if (results != null && results.isNotEmpty) {
+        print('Success');
+      }
+      print('failed');
+    });
   }
 }

@@ -195,7 +195,7 @@ class DashboardScreen extends StatelessWidget {
 
 
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: ()=>_controller.loadProjects(true),
+            onPressed: ()=>/*_controller.loadProjects(true)*/_controller.downloadForm(),
             backgroundColor: primaryColor,
             label: Row(children: [const Icon(AppIcons.reload),const SizedBox(width: 8,),Text('load'.tr)],)
         ),

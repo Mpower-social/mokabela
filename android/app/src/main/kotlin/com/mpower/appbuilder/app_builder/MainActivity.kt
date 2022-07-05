@@ -4,6 +4,7 @@ import android.content.ContentUris
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import com.mpower.appbuilder.app_builder.utills.AssetFormDownloadUtil
 import org.odk.collect.android.activities.*
@@ -11,6 +12,9 @@ import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugins.GeneratedPluginRegistrant
+import io.reactivex.Observable
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import org.odk.collect.android.application.Collect
 import org.odk.collect.android.dao.FormsDao
 import org.odk.collect.android.dao.InstancesDao
@@ -25,6 +29,7 @@ class MainActivity: FlutterActivity() {
     private var channelResult: MethodChannel.Result? = null
     private var formArguments: Map<String, Any>? = null
     private lateinit var database: SQLiteDatabase
+    private var subscriptions: CompositeDisposable = CompositeDisposable()
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine){
         GeneratedPluginRegistrant.registerWith(flutterEngine);
@@ -47,7 +52,17 @@ class MainActivity: FlutterActivity() {
                             val formXml = call.argument<String>("xmlData")
                             val username = call.argument<String>("username") ?: "bahis_ulo"
                             initializeOdk(username)
-                            AssetFormDownloadUtil(this@MainActivity).getForms(formXml)
+
+                            subscriptions.add(Observable.fromCallable {AssetFormDownloadUtil(this@MainActivity).getForms(formXml)}
+                                .subscribeOn(Schedulers.io())
+                                .subscribe(
+                                    {
+                                       // fetchGeoCsvAndProcess()
+                                        Log.v("Form Download: ", "Success")
+                                    },
+                                    { Log.v("Form Download: ", "Failure") }
+                                )
+                            )
                         }
                         else -> {
                             startActivityFromFlutter(call.method)
@@ -67,7 +82,6 @@ class MainActivity: FlutterActivity() {
     private fun openOdkForm(formId: String?) {
         val formCursor = FormsDao().getFormsCursorForFormId(formId)
         if(formCursor != null && formCursor.count > 0) {
-
             formCursor.moveToFirst()
             val idFormsTable = formCursor.getLong(formCursor.getColumnIndex(FormsProviderAPI.FormsColumns._ID))
             val formUri = ContentUris.withAppendedId(FormsProviderAPI.FormsColumns.CONTENT_URI, idFormsTable)
@@ -99,12 +113,12 @@ class MainActivity: FlutterActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode == 100 && data!=null) {
-            var value = data.getStringExtra("data")
+            val value = data.getStringExtra("data")
             if(channelResult!=null) channelResult?.success(value)
         }
 
         if(requestCode == 101 && data!=null && data.data != null) {
-            var value = data.data
+            val value = data.data
             val instancePath = getFormInstancePath(value!!)
             if(channelResult!=null) channelResult?.success(instancePath)
         }
