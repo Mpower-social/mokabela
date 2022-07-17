@@ -5,6 +5,7 @@ import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
 import 'package:m_survey/style/common_style.dart';
+import 'package:m_survey/utils/utils.dart';
 import 'package:m_survey/widgets/app_bar.dart';
 import 'package:get/get.dart';
 
@@ -97,7 +98,7 @@ class DraftFormScreen extends StatelessWidget {
 
   Widget _formList([DraftFormController? controller]) {
     return ListView.separated(
-      itemCount: 10,
+      itemCount: controller?.formList.length??0,
       itemBuilder: (ctx, i) {
         return Container(
           width: wp!(100),
@@ -114,10 +115,10 @@ class DraftFormScreen extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Student Registration'),
+                      Text(controller?.formList[i].displayName??''),
                       const SizedBox(height: 5,),
                       Row(
-                        children: const [
+                        children:  [
                           Icon(
                             Icons.date_range,
                             size: 15,
@@ -125,7 +126,7 @@ class DraftFormScreen extends StatelessWidget {
                           SizedBox(
                             width: 2,
                           ),
-                          Text('21-05-2020'),
+                          Text(Utils.timeStampToDate(controller?.formList[i].lastChangeDate??0)),
                           SizedBox(
                             width: 5,
                           ),
@@ -136,7 +137,7 @@ class DraftFormScreen extends StatelessWidget {
                           SizedBox(
                             width: 2,
                           ),
-                          Text('09:15 am'),
+                          Text(Utils.timeStampToTime(controller?.formList[i].lastChangeDate??0)),
                         ],
                       )
                     ],

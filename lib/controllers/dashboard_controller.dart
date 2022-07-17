@@ -22,23 +22,21 @@ class DashboardController extends GetxController {
   final DashboardRepository _dashboardRepository = DashboardRepository();
 
   @override
-  void onInit() async {
+  void onInit()async{
     super.onInit();
     getUserdata();
     loadProjects(false);
     downloadForm();
   }
 
-  void getUserdata() async {
-    name.value = await SharedPref.sharedPref.getString(SharedPref.NAME) ?? '';
-    designation.value =
-        await SharedPref.sharedPref.getString(SharedPref.DESIGNATION) ?? '';
+  void getUserdata()async{
+    name.value = await SharedPref.sharedPref.getString(SharedPref.NAME)??'';
+    designation.value = await SharedPref.sharedPref.getString(SharedPref.DESIGNATION)??'';
   }
 
-  void loadProjects(forceLoad) async {
+  void loadProjects(forceLoad) async{
     isLoadingProject.value = true;
-    projectList.value =
-        await _dashboardRepository.getProjectListOperation(1, 10, forceLoad);
+    projectList.value = await _dashboardRepository.getProjectListOperation(1, 10,forceLoad);
     isLoadingProject.value = false;
   }
 
@@ -51,4 +49,5 @@ class DashboardController extends GetxController {
       print('failed');
     });
   }
+
 }

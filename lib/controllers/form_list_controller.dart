@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:m_survey/repository/form_repository.dart';
 
 class FormListController extends GetxController{
   var isCheckedAll = false.obs;
@@ -9,8 +10,10 @@ class FormListController extends GetxController{
 
   var selectedStartDateStr = 'Start'.obs;
   var selectedEndDateStr = 'End'.obs;
+  var _formRepository = FormRepository();
 
-  void pickImage(String s) async{
+  ///pick date from datepicker
+  void pickDate(String s) async{
     final DateTime? picked = await showDatePicker(
         context: Get.context!,
         initialDate: DateTime.now(),
@@ -29,5 +32,18 @@ class FormListController extends GetxController{
       }
     }
   }
+
+  ///sync selected form
+  void sync()async {
+    _formRepository.submitFormOperation(1);
+  }
+
+  ///sort (asc/desc) all forms by date
+  void sortList() {
+
+  }
+
+  ///send forms to draft
+  void sendBackToDraft() {}
 
 }

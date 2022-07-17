@@ -17,6 +17,7 @@ package org.odk.collect.android.upload;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+
 import androidx.annotation.NonNull;
 
 import org.odk.collect.android.R;
@@ -62,7 +63,7 @@ public class InstanceServerUploader extends InstanceUploader {
     /**
      * Uploads all files associated with an instance to the specified URL. Writes fail/success
      * status to database.
-     *
+     * <p>
      * Returns a custom success message if one is provided by the server.
      */
     @Override
@@ -258,7 +259,7 @@ public class InstanceServerUploader extends InstanceUploader {
 
     /**
      * Returns the URL this instance should be submitted to with appended deviceId.
-     *
+     * <p>
      * If the upload was triggered by an external app and specified an override URL, use that one.
      * Otherwise, use the submission URL configured in the form
      * (https://opendatakit.github.io/xforms-spec/#submission-attributes). Finally, default to the

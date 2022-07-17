@@ -105,7 +105,7 @@ class MainActivity: FlutterActivity() {
                         }
                     }
 
-                    database = SQLiteDatabase.openDatabase(getDatabasePath("app_builder.db").absolutePath,null, SQLiteDatabase.OPEN_READWRITE)
+                  //  database = SQLiteDatabase.openDatabase(getDatabasePath("app_builder.db").absolutePath,null, SQLiteDatabase.OPEN_READWRITE)
                 }
 
                 override fun denied() {
@@ -157,12 +157,14 @@ class MainActivity: FlutterActivity() {
         if(requestCode == 100 && data!=null) {
             val value = data.getStringExtra("data")
             if(channelResult!=null) channelResult?.success(value)
+            //if(channelResult!=null) channelResult?.success(value)
         }
 
         if(requestCode == 101 && data!=null && data.data != null) {
             val value = data.data
             val instancePath = getFormInstancePath(value!!)
             if(channelResult!=null) channelResult?.success(instancePath)
+           // if(channelResult!=null) channelResult?.success(instancePath)
         }
 
         //Reset shared preference items to avoid duplicate data in case of missing arguments
@@ -190,7 +192,7 @@ class MainActivity: FlutterActivity() {
         else {
             var selection = "${ InstanceColumns.JR_FORM_ID } IN("
             repeat(formIds.size) {
-                selection += "?, "
+                selection += "?"
             }
             selection = "${ selection.trimEnd(',') })"
 

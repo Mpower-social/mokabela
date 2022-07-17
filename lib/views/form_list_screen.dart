@@ -7,6 +7,8 @@ import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
 import 'package:m_survey/widgets/app_bar.dart';
 import 'package:get/get.dart';
+import 'package:m_survey/widgets/common_button.dart';
+import 'package:m_survey/widgets/dialog_info.dart';
 
 class FormListScreen extends StatelessWidget {
   FormStatus formStatus;
@@ -52,7 +54,30 @@ class FormListScreen extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  Expanded(child: _formList(controller))
+                  Expanded(child: _formList(controller)),
+
+                  formStatus == FormStatus.readyToSync?
+                  Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          commonButton(
+                              text: 'Send Back to draft',
+                              bg: primaryColor,
+                              tap: ()=>controller.sendBackToDraft(),
+                              width: wp!(40),
+                              height: 40),
+
+                          commonButton(
+                              text: 'Sync',
+                              bg: green,
+                              tap: ()=>controller.sync(),
+                              width: wp!(40),
+                              height: 40),
+                        ],
+                      )
+                  ):SizedBox()
                 ],
               ),
             );
@@ -95,7 +120,10 @@ class FormListScreen extends StatelessWidget {
               border: Border.all(color: grey),
               borderRadius: BorderRadius.circular(5)
           ),
-          child:const Icon(AppIcons.group_15 ,size: 25,),
+          child:IconButton(
+            onPressed: ()=>controller.sortList(),
+            icon: const Icon(AppIcons.group_15 ,size: 25,),
+          ),
         )
       ],
     );
@@ -180,9 +208,21 @@ class FormListScreen extends StatelessWidget {
                   ),
                   Visibility(
                     visible: formStatus == FormStatus.submitted?false:true,
-                    child: const Icon(
-                      AppIcons.delete,
-                      size: 22,
+                    child: IconButton(
+                      onPressed: (){
+                        infoDialog(
+                          title: 'Alert',
+                          msg: 'Are you sure to delete ?',
+                          confirmText: 'Yes',
+                          cancelText: 'No',
+                          onOkTap: (){},
+                          onCancelTap: ()=>Get.back()
+                        );
+                      },
+                      icon: const Icon(
+                        AppIcons.delete,
+                        size: 22,
+                      ),
                     ),
                   ),
                 ],
@@ -206,7 +246,7 @@ class FormListScreen extends StatelessWidget {
 
     return InkWell(
       onTap: (){
-        controller.pickImage(s);
+        controller.pickDate(s);
       },
       child: Container(
         constraints: const BoxConstraints(
@@ -220,7 +260,7 @@ class FormListScreen extends StatelessWidget {
         child: Row(
           children: [
             Text(date,style: TextStyle(color: black.withOpacity(.6)),),
-            const SizedBox(width: 50,),
+            const SizedBox(width: 5,),
             Icon(Icons.date_range,color: grey,size: 20,)
           ],
         ),

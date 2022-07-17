@@ -9,6 +9,8 @@ import 'package:intl/intl.dart';
 
 class Utils{
   static final dateFormat = DateFormat('dd-MM-yyyy');
+  static final timeFormat = DateFormat('HH:mm a');
+
   // compress file and get.
   static Future<Uint8List?> compressFile(File file) async {
     var result = await FlutterImageCompress.compressWithFile(
@@ -75,6 +77,16 @@ class Utils{
         return null;
       }*/
     return null;
+  }
+
+  static timeStampToDate(int timestamp){
+    var date = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+    return dateFormat.format(date);
+  }
+
+  static timeStampToTime(int timestamp){
+    var date = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+    return timeFormat.format(date);
   }
 
 
