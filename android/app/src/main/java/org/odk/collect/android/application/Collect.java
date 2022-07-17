@@ -33,6 +33,7 @@ import androidx.multidex.MultiDex;
 import com.evernote.android.job.JobManager;
 import com.evernote.android.job.JobManagerCreateException;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.mpower.appbuilder.app_builder.utills.FormUtil;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -408,5 +409,13 @@ public class Collect extends FlutterApplication {
 
     public void setValue(String key, String value) {
         PreferenceManager.getDefaultSharedPreferences(this).edit().putString(key, value).apply();
+    }
+
+    public Map<String, String> getInstanceContent(String instancePath) {
+        return FormUtil.INSTANCE.getInstanceContent(instancePath);
+    }
+
+    public Map<String, String> addMetaDataToSurveyForm(String instancePath, String formId) {
+        return FormUtil.INSTANCE.addMetaDataToSurveyForm(instancePath, formId);
     }
 }

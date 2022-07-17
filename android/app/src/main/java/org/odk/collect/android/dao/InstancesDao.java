@@ -30,6 +30,7 @@ import org.odk.collect.android.storage.StoragePathProvider;
 import org.odk.collect.android.utilities.ApplicationConstants;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -112,6 +113,23 @@ public class InstancesDao {
         return getInstancesCursor(null, selection, selectionArgs, sortOrder);
     }
 
+    public Cursor getDraftInstancesCursor() {
+        String selection = InstanceColumns.DELETED_DATE + " IS NULL AND " + InstanceColumns.STATUS + " !=? ";
+        String[] selectionArgs = {InstanceProviderAPI.STATUS_SUBMITTED};
+        String sortOrder = InstanceColumns.DISPLAY_NAME + " ASC";
+
+        return getInstancesCursor(null, selection, selectionArgs, sortOrder);
+    }
+
+    public Cursor getDraftInstancesCursor(String selection, List<String> selectionArgs) {
+        selection += " AND " + InstanceColumns.DELETED_DATE + " IS NULL AND " + InstanceColumns.STATUS + " !=? ";
+        selectionArgs.add(InstanceProviderAPI.STATUS_SUBMITTED);
+
+        String sortOrder = InstanceColumns.DISPLAY_NAME + " ASC";
+
+        return getInstancesCursor(null, selection, selectionArgs.toArray(new String[] {}), sortOrder);
+    }
+
     public CursorLoader getSavedInstancesCursorLoader(String sortOrder) {
         String selection = InstanceColumns.DELETED_DATE + " IS NULL AND " + InstanceColumns.STATUS + " !=? ";
         String[] selectionArgs = {InstanceProviderAPI.STATUS_SUBMITTED};
@@ -142,6 +160,16 @@ public class InstancesDao {
         String sortOrder = InstanceColumns.DISPLAY_NAME + " ASC";
 
         return getInstancesCursor(null, selection, selectionArgs, sortOrder);
+    }
+
+    public Cursor getFinalizedInstancesCursor(String selection, List<String> selectionArgs) {
+        selection += " AND " + InstanceColumns.STATUS + " IN( ?, ? )";
+        selectionArgs.add(InstanceProviderAPI.STATUS_COMPLETE);
+        selectionArgs.add(InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
+
+        String sortOrder = InstanceColumns.DISPLAY_NAME + " ASC";
+
+        return getInstancesCursor(null, selection, selectionArgs.toArray(new String[] {}), sortOrder);
     }
 
     public CursorLoader getFinalizedInstancesCursorLoader(String sortOrder) {
@@ -284,15 +312,16 @@ public class InstancesDao {
     }
 
     public Uri saveInstance(ContentValues values) {
-        /*if(!values.containsKey(InstanceProviderAPI.InstanceColumns.INSTANCE_ID)) {
+        if(!values.containsKey(InstanceProviderAPI.InstanceColumns.INSTANCE_ID)) {
             String instancePath = (String) values.get(InstanceProviderAPI.InstanceColumns.INSTANCE_FILE_PATH);
-            Map instanceMap = Collect.getInstance().getInstanceContent(instancePath);
+            String formId = (String) values.get(InstanceColumns.JR_FORM_ID);
+            Map instanceMap = Collect.getInstance().addMetaDataToSurveyForm(instancePath, formId);
 
             values.put(InstanceProviderAPI.InstanceColumns.MODULE_ID, (String) instanceMap.get("module_id"));
             values.put(InstanceProviderAPI.InstanceColumns.SUB_MODULE_ID, (String) instanceMap.get("sub_module_id"));
             values.put(InstanceProviderAPI.InstanceColumns.INSTANCE_ID, (String) instanceMap.get("instanceID"));
             values.put(InstanceProviderAPI.InstanceColumns.SUBMITTED_BY, Collect.getInstance().getUsername());
-        }*/
+        }
 
         return Collect.getInstance().getContentResolver().insert(InstanceColumns.CONTENT_URI, values);
     }
