@@ -80,12 +80,12 @@ class Utils{
   }
 
   static timeStampToDate(int timestamp){
-    var date = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+    var date = DateTime.fromMillisecondsSinceEpoch(timestamp);
     return dateFormat.format(date);
   }
 
   static timeStampToTime(int timestamp){
-    var date = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+    var date = DateTime.fromMillisecondsSinceEpoch(timestamp);
     return timeFormat.format(date);
   }
 

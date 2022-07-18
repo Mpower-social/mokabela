@@ -18,7 +18,7 @@ class OdkUtil {
         .invokeMethod('openForm', {'formId': formId, 'arguments': arguments});
   }
 
-  Future<dynamic> editForm(Long instanceId) async {
+  Future<dynamic> editForm(int instanceId) async {
     return await methodChannel
         .invokeMethod('editForm', {'instanceId': instanceId});
   }
@@ -32,13 +32,17 @@ class OdkUtil {
         .invokeMethod('finalizedForms', {'formIds': formIds});
   }
 
-  Future<dynamic> sendBackToDraft(Long instanceId) async {
+  Future<dynamic> sendBackToDraft(int instanceId) async {
     return await methodChannel
         .invokeMethod('sendBackToDraft', {'instanceId': instanceId});
   }
 
-  Future<dynamic> deleteDraftForm(Long instanceId) async {
+  Future<dynamic> deleteDraftForm(int instanceId) async {
     return await methodChannel
         .invokeMethod('deleteDraft', {'instanceId': instanceId});
+  }
+
+  Future<dynamic> getRecentForms(List<String> formIds) async {
+    return await methodChannel.invokeMethod('recentForms', {'formIds': formIds});
   }
 }

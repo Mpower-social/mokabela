@@ -56,7 +56,7 @@ class MainActivity: FlutterActivity() {
                             openOdkForm(formId)
                         }
                         call.method.equals("editForm", true) -> {
-                            val instanceId = call.argument<Long>("instanceId")
+                            val instanceId = call.argument<Int>("instanceId")
 
                             instanceId?.let {
                                 editOdkForm(it)
@@ -67,19 +67,26 @@ class MainActivity: FlutterActivity() {
                             val forms = getDraftForms(formIds ?: emptyList())
                             channelResult?.success(forms)
                         }
+                        call.method.equals("recentForms", true) -> {
+                            val formIds = call.argument<List<String>>("formIds")
+                            val forms = getRecentForms(formIds ?: emptyList())
+                            channelResult?.success(forms)
+                        }
                         call.method.equals("finalizedForms", true) -> {
                             val formIds = call.argument<List<String>>("formIds")
                             val forms = getFinalizedForms(formIds ?: emptyList())
                             channelResult?.success(forms)
                         }
                         call.method.equals("sendBackToDraft", true) -> {
-                            val instanceId = call.argument<Long>("instanceId")
+                            val instanceId = call.argument<Int>("instanceId")
                             instanceId?.let {
                                 sendBackToDraft(it)
                             }
+
+                            channelResult?.success("success")
                         }
                         call.method.equals("deleteDraft", true) -> {
-                            val instanceId = call.argument<Long>("instanceId")
+                            val instanceId = call.argument<Int>("instanceId")
                             instanceId?.let {
                                 deleteDraftForm(it)
                             }
@@ -129,8 +136,8 @@ class MainActivity: FlutterActivity() {
         }
     }
 
-    private fun editOdkForm(id: Long) {
-        val instanceUri = ContentUris.withAppendedId(InstanceColumns.CONTENT_URI, id)
+    private fun editOdkForm(id: Int) {
+        val instanceUri = ContentUris.withAppendedId(InstanceColumns.CONTENT_URI, id.toLong())
         openEditOdkForm(instanceUri)
     }
 
@@ -216,6 +223,38 @@ class MainActivity: FlutterActivity() {
         return Gson().toJson(formInstances)
     }
 
+
+    @SuppressLint("Range")
+    private fun getRecentForms(formIds: List<String>): String {
+        val cursor = if(formIds.isEmpty())
+            InstancesDao().recentInstancesCursor
+        else {
+            var selection = "${ InstanceColumns.JR_FORM_ID } IN("
+            repeat(formIds.size) {
+                selection += "?"
+            }
+            selection = "${ selection.trimEnd(',') })"
+
+            InstancesDao().getRecentInstancesCursor(selection, formIds)
+        }
+
+        val formInstances = generateSequence { if (cursor.moveToNext()) cursor else null }
+            .map {
+                FormInstance(
+                    id = it.getLong(it.getColumnIndex(InstanceColumns._ID)),
+                    formId = it.getString(it.getColumnIndex(InstanceColumns.JR_FORM_ID)),
+                    displayName = it.getString(it.getColumnIndex(InstanceColumns.DISPLAY_NAME)),
+                    projectId = it.getString(it.getColumnIndex(InstanceColumns.MODULE_ID)),
+                    instanceId = it.getString(it.getColumnIndex(InstanceColumns.INSTANCE_ID)),
+                    instanceFilePath = it.getString(it.getColumnIndex(InstanceColumns.INSTANCE_FILE_PATH)),
+                    lastChangeDate = it.getLong(it.getColumnIndex(InstanceColumns.LAST_STATUS_CHANGE_DATE))
+                )
+            }
+            .toList()
+
+        return Gson().toJson(formInstances)
+    }
+
     @SuppressLint("Range")
     private fun getFinalizedForms(formIds: List<String>): String {
         val cursor = if(formIds.isEmpty())
@@ -223,7 +262,7 @@ class MainActivity: FlutterActivity() {
         else {
             var selection = "${ InstanceColumns.JR_FORM_ID } IN("
             repeat(formIds.size) {
-                selection += "?, "
+                selection += "?"
             }
             selection = "${ selection.trimEnd(',') })"
 
@@ -247,7 +286,7 @@ class MainActivity: FlutterActivity() {
         return Gson().toJson(formInstances)
     }
 
-    private fun sendBackToDraft(id: Long) {
+    private fun sendBackToDraft(id: Int) {
         val instanceUri = Uri.withAppendedPath(InstanceColumns.CONTENT_URI, id.toString())
         val contentValues = ContentValues().apply {
             put(InstanceColumns.STATUS, InstanceProviderAPI.STATUS_INCOMPLETE)
@@ -256,7 +295,7 @@ class MainActivity: FlutterActivity() {
         Collect.getInstance().contentResolver.update(instanceUri, contentValues, null, null)
     }
 
-    private fun deleteDraftForm(id: Long) {
+    private fun deleteDraftForm(id: Int) {
         val instanceUri = Uri.withAppendedPath(InstanceColumns.CONTENT_URI, id.toString())
         Collect.getInstance().contentResolver.delete(instanceUri, null, null)
     }

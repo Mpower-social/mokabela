@@ -3,19 +3,14 @@ import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/utils/shared_pref.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:m_survey/models/form_data.dart' as formData;
+
 
 class DashboardController extends GetxController {
   var name = ''.obs;
   var designation = ''.obs;
-  var recentFormList = [
-    'Test 1',
-    'test 2',
-    'test 3',
-    'test 4',
-    'test 4',
-    'test 4',
-    'test 4' 'test 4' 'test 4' 'test 4'
-  ];
+  var recentFormList = <formData.FormData>[].obs;
   var projectList = <ProjectListFromLocalDb>[].obs;
   var isLoadingProject = false.obs;
 
@@ -24,9 +19,11 @@ class DashboardController extends GetxController {
   @override
   void onInit()async{
     super.onInit();
+    handlePermission();
     getUserdata();
     loadProjects(false);
     downloadForm();
+    await getRecentFormList();
   }
 
   void getUserdata()async{
@@ -40,6 +37,16 @@ class DashboardController extends GetxController {
     isLoadingProject.value = false;
   }
 
+  getRecentFormList() async{
+    final results = await OdkUtil.instance.getFinalizedForms(['member_register_test901']);
+    if (results != null && results.isNotEmpty) {
+      print('succcc $results');
+      recentFormList.value = formData.formDataFromJson(results);
+      return;
+    }
+    recentFormList.value = [];
+  }
+
   void downloadForm() async {
     _dashboardRepository.getFormList().then((value) async {
       final results = await OdkUtil.instance.initializeOdk(value);
@@ -49,5 +56,15 @@ class DashboardController extends GetxController {
       print('failed');
     });
   }
+
+  void handlePermission() async{
+    await [
+        Permission.storage,
+    ].request();
+    if (await Permission.storage.request().isGranted) {
+      print('granted');
+    }
+  }
+
 
 }

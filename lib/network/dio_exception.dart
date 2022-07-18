@@ -26,7 +26,7 @@ class DioException {
                     Utils.logoutOperation();
                     return "Token expired. Login Again.";
                   }else{
-                      return error.response?.data["data"]??error.response?.data["message"]??"";
+                      return error.response?.data["data"]??error.response?.data["message"]??error.response?.data["details"]??"";
                   }
                 case 401:
                   //Utils.logoutOperation();

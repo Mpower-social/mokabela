@@ -8,6 +8,9 @@ import 'package:m_survey/style/common_style.dart';
 import 'package:m_survey/utils/utils.dart';
 import 'package:m_survey/widgets/app_bar.dart';
 import 'package:get/get.dart';
+import 'package:m_survey/widgets/dialog_info.dart';
+import 'package:m_survey/widgets/no_data_found_msg.dart';
+import 'package:m_survey/widgets/progress_bar.dart';
 
 class DraftFormScreen extends StatelessWidget {
   Function? wp;
@@ -72,6 +75,7 @@ class DraftFormScreen extends StatelessWidget {
                       ),
                       onChanged: (v){
                         controller?.selectedProject.value = v!;
+                        controller?.filter(v?.id??0);
                       }),
                 ),
               ),
@@ -97,7 +101,11 @@ class DraftFormScreen extends StatelessWidget {
   }
 
   Widget _formList([DraftFormController? controller]) {
-    return ListView.separated(
+    return controller?.isLoadingDraftForm.value==true?
+    progressBar():
+    controller?.formList.length==0?
+    noDataFound():
+    ListView.separated(
       itemCount: controller?.formList.length??0,
       itemBuilder: (ctx, i) {
         return Container(
@@ -157,16 +165,30 @@ class DraftFormScreen extends StatelessWidget {
                   const SizedBox(
                     width: 20,
                   ),
-                  const Icon(
-                    AppIcons.edit,
-                    size: 22,
-                  ),
+                  IconButton(
+                      onPressed:()=>controller?.editDraftForm(controller.formList[i].id??0),
+                      icon: Icon(
+                        AppIcons.edit,
+                        size: 22,
+                      )),
                   const SizedBox(
                     width: 20,
                   ),
-                  const Icon(
-                    AppIcons.delete,
-                    size: 22,
+                  IconButton(
+                    onPressed: (){
+                      infoDialog(
+                          title: 'Alert',
+                          msg: 'Are you sure to delete ?',
+                          confirmText: 'Yes',
+                          cancelText: 'No',
+                          onOkTap: ()=>controller?.deleteForm(controller.formList[i].id??0),
+                          onCancelTap: ()=>Get.back()
+                      );
+                    },
+                    icon: Icon(
+                      AppIcons.delete,
+                      size: 22,
+                    ),
                   ),
                 ],
               ),

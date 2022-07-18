@@ -204,20 +204,21 @@ class DashboardScreen extends StatelessWidget {
   }
 
   Widget _recentFormHorizontalList() {
-    return ListView.separated(
-      itemCount: _controller.recentFormList.length,
-      scrollDirection: Axis.horizontal,
-      itemBuilder: (ctx, i) {
-        return InkWell(
-          onTap: () {
-            Get.to(() => FormDetailsScreen());
-          },
-          child: recentFormCard(
-              title: 'Student Registration 2020', subTitle: 'Brac-Edu'),
-        );
-      },
-      separatorBuilder: (ctx, i) => const SizedBox(
-        width: 8,
+    return Obx(()=>ListView.separated(
+        itemCount: _controller.recentFormList.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (ctx, i) {
+          return InkWell(
+            onTap: () {
+              Get.to(() => FormDetailsScreen());
+            },
+            child: recentFormCard(
+                title: _controller.recentFormList[i].displayName??'', subTitle: 'Brac-Edu'),
+          );
+        },
+        separatorBuilder: (ctx, i) => const SizedBox(
+          width: 8,
+        ),
       ),
     );
   }
