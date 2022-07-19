@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:get/get.dart';
 import 'package:m_survey/models/draft_checkbox_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
@@ -8,6 +6,7 @@ import 'package:m_survey/models/form_data.dart' as formData;
 import 'package:m_survey/repository/form_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/widgets/progress_dialog.dart';
+import 'package:m_survey/widgets/show_toast.dart';
 
 class ReadyToSyncFormFormController extends GetxController{
   var formList = <formData.FormData>[].obs;
@@ -23,6 +22,9 @@ class ReadyToSyncFormFormController extends GetxController{
 
   final DashboardRepository _dashboardRepository = DashboardRepository();
   final FormRepository _formRepository = FormRepository();
+
+  ///true=asc, false=desc
+  var ascOrDesc = false.obs;
 
   @override
   void onInit()async{
@@ -131,5 +133,17 @@ class ReadyToSyncFormFormController extends GetxController{
      }
     }
    }
+  }
+
+
+  ///sort list asc or desc
+  void sortByDate() async{
+    if(ascOrDesc.value){
+      formList.sort((a,b)=>a.lastChangeDate!.compareTo(b.lastChangeDate!));
+      showToast(msg: 'Sorted by ascending order.');
+    }else{
+      formList.sort((a,b)=>-a.lastChangeDate!.compareTo(b.lastChangeDate!));
+      showToast(msg: 'Sorted by descending order');
+    }
   }
 }

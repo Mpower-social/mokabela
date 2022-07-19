@@ -40,7 +40,6 @@ class DashboardController extends GetxController {
   getRecentFormList() async{
     final results = await OdkUtil.instance.getFinalizedForms(['member_register_test901']);
     if (results != null && results.isNotEmpty) {
-      print('succcc $results');
       recentFormList.value = formData.formDataFromJson(results);
       return;
     }

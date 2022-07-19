@@ -174,7 +174,7 @@ class SubmittedFormScreen extends StatelessWidget {
 
                 ],
               ),
-              Row(
+          /*    Row(
                 children: [
                   Container(
                     width: .5,
@@ -198,7 +198,7 @@ class SubmittedFormScreen extends StatelessWidget {
                     size: 22,
                   ),
                 ],
-              ),
+              ),*/
             ],
           ),
         );

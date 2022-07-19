@@ -84,16 +84,22 @@ class DraftFormScreen extends StatelessWidget {
         ),
         Flexible(
           flex: 3,
-          child: Container(
-            constraints: const BoxConstraints(
-                minHeight: 30
+          child: InkWell(
+            onTap: (){
+              controller?.ascOrDesc.value = !controller.ascOrDesc.value;
+              controller?.sortByDate();
+            },
+            child: Container(
+              constraints: const BoxConstraints(
+                  minHeight: 30
+              ),
+              padding: const EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                  border: Border.all(color: grey),
+                  borderRadius: BorderRadius.circular(10)
+              ),
+              child: const Icon(AppIcons.group_15 ,size: 35,),
             ),
-            padding: const EdgeInsets.all(2),
-            decoration: BoxDecoration(
-                border: Border.all(color: grey),
-                borderRadius: BorderRadius.circular(5)
-            ),
-            child:const Icon(AppIcons.group_15 ,size: 25,),
           ),
         )
       ],
