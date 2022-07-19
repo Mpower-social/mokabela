@@ -12,7 +12,8 @@ import 'package:get/get.dart';
 class ActiveFormScreen extends StatelessWidget {
   Function? wp;
   Function? hp;
-
+  var from = 'active';
+  ActiveFormScreen({this.from='active'});
   @override
   Widget build(BuildContext context) {
     wp = Screen(MediaQuery.of(context).size).wp;
@@ -21,7 +22,7 @@ class ActiveFormScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: baseAppBar(
-            title: 'All Active Forms'
+            title: from=='active'?'All Active Forms':'All Forms'
         ),
 
         body: GetX<ActiveFormController>(

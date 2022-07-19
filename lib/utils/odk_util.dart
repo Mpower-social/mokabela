@@ -37,6 +37,11 @@ class OdkUtil {
         .invokeMethod('sendBackToDraft', {'instanceId': instanceId});
   }
 
+  Future<dynamic> sendToSubmitted(int instanceId) async {
+    return await methodChannel
+        .invokeMethod('sendToSubmitted', {'instanceId': instanceId});
+  }
+
   Future<dynamic> deleteDraftForm(int instanceId) async {
     return await methodChannel
         .invokeMethod('deleteDraft', {'instanceId': instanceId});

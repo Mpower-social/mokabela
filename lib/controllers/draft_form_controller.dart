@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:m_survey/controllers/dashboard_controller.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
@@ -14,6 +15,8 @@ class DraftFormController extends GetxController{
   var projectList = <ProjectListFromLocalDb>[].obs;
 
   final DashboardRepository _dashboardRepository = DashboardRepository();
+
+  DashboardController _dashboardController = Get.find();
 
   ///true=asc, false=desc
   var ascOrDesc = false.obs;
@@ -52,6 +55,7 @@ class DraftFormController extends GetxController{
     if (results != null && results.isNotEmpty) {
       Get.back();
       await getDraftFormList();
+      await _dashboardController.getDraftFormCount();
       return;
     }
   }
@@ -72,12 +76,14 @@ class DraftFormController extends GetxController{
 
   ///sort list asc or desc
   void sortByDate() async{
-    if(ascOrDesc.value){
-      formList.sort((a,b)=>a.lastChangeDate!.compareTo(b.lastChangeDate!));
-      showToast(msg: 'Sorted by ascending order.');
-    }else{
-      formList.sort((a,b)=>-a.lastChangeDate!.compareTo(b.lastChangeDate!));
-      showToast(msg: 'Sorted by descending order');
+    if(formList.length>0){
+      if(ascOrDesc.value){
+        formList.sort((a,b)=>a.lastChangeDate!.compareTo(b.lastChangeDate!));
+        showToast(msg: 'Sorted by ascending order.');
+      }else{
+        formList.sort((a,b)=>-a.lastChangeDate!.compareTo(b.lastChangeDate!));
+        showToast(msg: 'Sorted by descending order');
+      }
     }
   }
 }

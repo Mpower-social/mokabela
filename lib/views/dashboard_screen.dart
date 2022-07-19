@@ -66,36 +66,36 @@ class DashboardScreen extends StatelessWidget {
             ),
             Row(
               children: [
-                InkWell(
-                  onTap: () => Get.to(() => DraftFormScreen()),
-                  child: statisticsCard(
-                      title: 'draft'.tr,
-                      data: '470',
-                      icon: AppIcons.draft,
-                      position: 3,
-                      wp: wp!(50)),
-                ),
+               InkWell(
+                    onTap: () => Get.to(() => DraftFormScreen()),
+                    child: Obx(()=>statisticsCard(
+                        title: 'draft'.tr,
+                        data: _controller.draftFormCount.value.toString(),
+                        icon: AppIcons.draft,
+                        position: 3,
+                        wp: wp!(50)),
+                ),),
                 InkWell(
                   onTap: () => Get.to(() => ReadyToSyncFormScreen()),
-                  child: statisticsCard(
-                      title: 'ready_to_sync'.tr,
-                      data: '02',
-                      icon: AppIcons.ready_sync,
-                      position: 4,
-                      wp: wp!(50)),
+                  child: Obx(()=>statisticsCard(
+                        title: 'ready_to_sync'.tr,
+                        data: _controller.completeFormCount.value.toString(),
+                        icon: AppIcons.ready_sync,
+                        position: 4,
+                        wp: wp!(50)),
+                  ),
                 )
               ],
             ),
 
-            Visibility(
-              child: Expanded(
-                child: Container(
-                  margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                     Visibility(
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                   Obx(()=>Visibility(
                        visible: _controller.recentFormList.length>0?true:false,
                        child:  Column(
                          children: [
@@ -104,7 +104,7 @@ class DashboardScreen extends StatelessWidget {
                              children: [
                                title(title: 'recent_forms'.tr),
                                InkWell(
-                                   onTap: () => Get.to(() => ActiveFormScreen()),
+                                   onTap: () => Get.to(() => ActiveFormScreen(from:'dashboard')),
                                    child: title(title: 'all'.tr)
                                )
                              ],
@@ -125,15 +125,15 @@ class DashboardScreen extends StatelessWidget {
                          ],
                        )
                      ),
+                   ),
 
-                      title(title: 'ongoing_project'.tr),
+                    title(title: 'ongoing_project'.tr),
 
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Expanded(child: _ongoingProjectList())
-                    ],
-                  ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Expanded(child: _ongoingProjectList())
+                  ],
                 ),
               ),
             )
@@ -205,7 +205,7 @@ class DashboardScreen extends StatelessWidget {
 
 
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: ()=>/*_controller.loadProjects(true)*/_controller.downloadForm(),
+            onPressed: ()=>_controller.loadProjects(true),
             backgroundColor: primaryColor,
             label: Row(children: [const Icon(AppIcons.reload),const SizedBox(width: 8,),Text('load'.tr)],)
         ),

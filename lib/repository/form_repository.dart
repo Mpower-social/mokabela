@@ -5,9 +5,9 @@ import 'package:sqflite/sqflite.dart';
 class FormRepository{
   final FormService _formService = FormService();
 
-  Future<String> submitFormOperation(projectId,formPath) async {
+  Future<String> submitFormOperation(projectId,formData) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
-    var res = await _formService.submitFormOperation(projectId,formPath);
+    var res = await _formService.submitFormOperation(projectId,formData);
 
     return res??'';
   }

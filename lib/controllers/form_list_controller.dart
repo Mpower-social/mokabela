@@ -35,7 +35,7 @@ class FormListController extends GetxController{
 
   ///sync selected form
   void sync()async {
-    _formRepository.submitFormOperation(1,null);
+    await _formRepository.submitFormOperation(1,null);
   }
 
   ///sort (asc/desc) all forms by date

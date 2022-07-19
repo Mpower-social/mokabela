@@ -68,8 +68,7 @@ class MainActivity: FlutterActivity() {
                             channelResult?.success(forms)
                         }
                         call.method.equals("recentForms", true) -> {
-                            val formIds = call.argument<List<String>>("formIds")
-                            val forms = getRecentForms(formIds ?: emptyList())
+                            val forms = getRecentForms()
                             channelResult?.success(forms)
                         }
                         call.method.equals("finalizedForms", true) -> {
@@ -85,11 +84,21 @@ class MainActivity: FlutterActivity() {
 
                             channelResult?.success("success")
                         }
+
+                        call.method.equals("sendToSubmitted", true) -> {
+                            val instanceId = call.argument<Int>("instanceId")
+                            instanceId?.let {
+                                sendToSubmitted(it)
+                            }
+
+                            channelResult?.success("success")
+                        }
                         call.method.equals("deleteDraft", true) -> {
                             val instanceId = call.argument<Int>("instanceId")
                             instanceId?.let {
                                 deleteDraftForm(it)
                             }
+                            channelResult?.success("success")
                         }
                         call.method.equals("initializeOdk", true) -> {
                             val formXml = call.argument<String>("xmlData")
@@ -225,7 +234,7 @@ class MainActivity: FlutterActivity() {
 
 
     @SuppressLint("Range")
-    private fun getRecentForms(formIds: List<String>): String {
+    private fun getRecentForms(): String {
         val cursor = InstancesDao().recentInstancesCursor
         val formInstances = generateSequence { if (cursor.moveToNext()) cursor else null }
             .map {
@@ -279,6 +288,15 @@ class MainActivity: FlutterActivity() {
         val instanceUri = Uri.withAppendedPath(InstanceColumns.CONTENT_URI, id.toString())
         val contentValues = ContentValues().apply {
             put(InstanceColumns.STATUS, InstanceProviderAPI.STATUS_INCOMPLETE)
+        }
+
+        Collect.getInstance().contentResolver.update(instanceUri, contentValues, null, null)
+    }
+
+    private fun sendToSubmitted(id: Int) {
+        val instanceUri = Uri.withAppendedPath(InstanceColumns.CONTENT_URI, id.toString())
+        val contentValues = ContentValues().apply {
+            put(InstanceColumns.STATUS, InstanceProviderAPI.STATUS_SUBMITTED)
         }
 
         Collect.getInstance().contentResolver.update(instanceUri, contentValues, null, null)

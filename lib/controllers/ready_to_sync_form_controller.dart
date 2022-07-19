@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:m_survey/controllers/dashboard_controller.dart';
 import 'package:m_survey/models/draft_checkbox_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
@@ -22,6 +23,8 @@ class ReadyToSyncFormFormController extends GetxController{
 
   final DashboardRepository _dashboardRepository = DashboardRepository();
   final FormRepository _formRepository = FormRepository();
+
+  DashboardController _dashboardController = Get.find();
 
   ///true=asc, false=desc
   var ascOrDesc = false.obs;
@@ -61,6 +64,7 @@ class ReadyToSyncFormFormController extends GetxController{
     if (results != null && results.isNotEmpty) {
       Get.back();
       await getCompleteFormList();
+      await _dashboardController.getDraftFormCount();
       return;
     }
   }
@@ -82,6 +86,9 @@ class ReadyToSyncFormFormController extends GetxController{
      }
    }
    await getCompleteFormList();
+   setupDefaultCheckBox();
+   await _dashboardController.getDraftFormCount();
+   await _dashboardController.getCompleteFormCount();
   }
   
   ///sync data
@@ -90,7 +97,7 @@ class ReadyToSyncFormFormController extends GetxController{
     try{
       for(var element in isCheckList){
         if(element.isChecked && element.formData != null){
-          final results = await _formRepository.submitFormOperation(1,element.formData?.instanceFilePath);
+          final results = await _formRepository.submitFormOperation(1,element.formData);
           if (results != null && results.isNotEmpty) {
             //succ
           }
@@ -99,12 +106,14 @@ class ReadyToSyncFormFormController extends GetxController{
     }catch(_){
 
     }finally{
+      await getCompleteFormList();
       Get.back();
     }
   }
 
   //initial defaults checkbox
   void setupDefaultCheckBox() {
+    isCheckList.clear();
     formList.forEach((element) {
       isCheckList.add(DraftCheckboxData(false, null));
     });
@@ -120,6 +129,7 @@ class ReadyToSyncFormFormController extends GetxController{
      isCheckList.forEach((element) {
        if(element.isChecked) trueCount++;
      });
+     print(trueCount);
 
      if(trueCount == formList.length) isCheckedAll.value = true;
      else  isCheckedAll.value = false;
@@ -138,12 +148,14 @@ class ReadyToSyncFormFormController extends GetxController{
 
   ///sort list asc or desc
   void sortByDate() async{
-    if(ascOrDesc.value){
-      formList.sort((a,b)=>a.lastChangeDate!.compareTo(b.lastChangeDate!));
-      showToast(msg: 'Sorted by ascending order.');
-    }else{
-      formList.sort((a,b)=>-a.lastChangeDate!.compareTo(b.lastChangeDate!));
-      showToast(msg: 'Sorted by descending order');
+    if(formList.value.length>0){
+      if(ascOrDesc.value){
+        formList.sort((a,b)=>a.lastChangeDate!.compareTo(b.lastChangeDate!));
+        showToast(msg: 'Sorted by ascending order.');
+      }else{
+        formList.sort((a,b)=>-a.lastChangeDate!.compareTo(b.lastChangeDate!));
+        showToast(msg: 'Sorted by descending order');
+      }
     }
   }
 }

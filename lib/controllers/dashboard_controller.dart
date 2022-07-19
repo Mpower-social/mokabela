@@ -14,11 +14,16 @@ class DashboardController extends GetxController {
   var projectList = <ProjectListFromLocalDb>[].obs;
   var isLoadingProject = false.obs;
 
+  var draftFormCount = 0.obs;
+  var completeFormCount = 0.obs;
+
   final DashboardRepository _dashboardRepository = DashboardRepository();
 
   @override
   void onInit()async{
     super.onInit();
+    await getDraftFormCount();
+    await getCompleteFormCount();
     handlePermission();
     getUserdata();
     loadProjects(false);
@@ -35,6 +40,22 @@ class DashboardController extends GetxController {
     isLoadingProject.value = true;
     projectList.value = await _dashboardRepository.getProjectListOperation(1, 10,forceLoad);
     isLoadingProject.value = false;
+  }
+
+  getDraftFormCount() async{
+    final results = await OdkUtil.instance.getDraftForms(['member_register_test901']);
+    if (results != null && results.isNotEmpty) {
+      draftFormCount.value = formData.formDataFromJson(results).length;
+      return;
+    }
+  }
+
+  getCompleteFormCount() async{
+    final results = await OdkUtil.instance.getFinalizedForms(['member_register_test901']);
+    if (results != null && results.isNotEmpty) {
+      completeFormCount.value = formData.formDataFromJson(results).length;
+      return;
+    }
   }
 
   getRecentFormList() async{
