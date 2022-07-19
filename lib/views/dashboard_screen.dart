@@ -87,43 +87,53 @@ class DashboardScreen extends StatelessWidget {
               ],
             ),
 
-            Expanded(
-              child: Container(
-                margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        title(title: 'recent_forms'.tr),
-                        InkWell(
-                          onTap: () => Get.to(() => ActiveFormScreen()),
-                            child: title(title: 'all'.tr)
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+            Visibility(
+              child: Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                     Visibility(
+                       visible: _controller.recentFormList.length>0?true:false,
+                       child:  Column(
+                         children: [
+                           Row(
+                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                             children: [
+                               title(title: 'recent_forms'.tr),
+                               InkWell(
+                                   onTap: () => Get.to(() => ActiveFormScreen()),
+                                   child: title(title: 'all'.tr)
+                               )
+                             ],
+                           ),
+                           SizedBox(
+                             height: 10,
+                           ),
 
-                    ///recent forms
-                    SizedBox(
-                      height: 110,
-                      child: _recentFormHorizontalList(),
-                    ),
+                           ///recent forms
+                           SizedBox(
+                             height: 110,
+                             child: _recentFormHorizontalList(),
+                           ),
 
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    title(title: 'ongoing_project'.tr),
+                           const SizedBox(
+                             height: 20,
+                           ),
+                         ],
+                       )
+                     ),
 
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Expanded(child: _ongoingProjectList())
-                  ],
+                      title(title: 'ongoing_project'.tr),
+
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Expanded(child: _ongoingProjectList())
+                    ],
+                  ),
                 ),
               ),
             )

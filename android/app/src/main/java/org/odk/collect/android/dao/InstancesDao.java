@@ -131,20 +131,8 @@ public class InstancesDao {
     }
 
     public Cursor getRecentInstancesCursor() {
-        String selection = InstanceColumns.DELETED_DATE + " IS NULL AND " + InstanceColumns.STATUS + " !=? ";
-        String[] selectionArgs = {InstanceProviderAPI.STATUS_COMPLETE};
-        String sortOrder = InstanceColumns.DISPLAY_NAME + " ASC";
-
-        return getInstancesCursor(null, selection, selectionArgs, sortOrder);
-    }
-
-    public Cursor getRecentInstancesCursor(String selection, List<String> selectionArgs) {
-        selection += " AND " + InstanceColumns.DELETED_DATE + " IS NULL AND " + InstanceColumns.STATUS + " =? ";
-        selectionArgs.add(InstanceProviderAPI.STATUS_COMPLETE);
-
-        String sortOrder = InstanceColumns.DISPLAY_NAME + " ASC";
-
-        return getInstancesCursor(null, selection, selectionArgs.toArray(new String[] {}), sortOrder);
+        String sortOrder = InstanceColumns.LAST_STATUS_CHANGE_DATE + " DESC LIMIT 5";
+        return getInstancesCursor(null, null, null, sortOrder);
     }
 
     public CursorLoader getSavedInstancesCursorLoader(String sortOrder) {

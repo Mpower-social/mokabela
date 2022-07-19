@@ -226,18 +226,7 @@ class MainActivity: FlutterActivity() {
 
     @SuppressLint("Range")
     private fun getRecentForms(formIds: List<String>): String {
-        val cursor = if(formIds.isEmpty())
-            InstancesDao().recentInstancesCursor
-        else {
-            var selection = "${ InstanceColumns.JR_FORM_ID } IN("
-            repeat(formIds.size) {
-                selection += "?"
-            }
-            selection = "${ selection.trimEnd(',') })"
-
-            InstancesDao().getRecentInstancesCursor(selection, formIds)
-        }
-
+        val cursor = InstancesDao().recentInstancesCursor
         val formInstances = generateSequence { if (cursor.moveToNext()) cursor else null }
             .map {
                 FormInstance(
