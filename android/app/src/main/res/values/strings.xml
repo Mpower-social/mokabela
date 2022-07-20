@@ -110,6 +110,8 @@
     <string name="quit_application">Exit %s</string>
     <string name="quit_entry">Save Form and Exit</string>
     <string name="submit_quit_entry">Submit Form and Exit</string>
+    <string name="save_as_draft_entry">Draft</string>
+    <string name="save_as_complete_entry">Completed</string>
     <string name="refresh">Refresh</string>
     <string name="group_label">Group</string>
     <string name="repeatable_group_label">Repeatable Group</string>
@@ -118,7 +120,7 @@
     <string name="review_data">Edit Saved Form</string>
     <string name="review_data_button">Edit Saved Form (%s)‎‎‎‎</string>
     <string name="save_all_answers">Save Form</string>
-    <string name="save_enter_data_description">You are at the end of %s.</string>
+    <string name="save_enter_data_description">You are at the end of form\n<i>%s</i></string>
     <string name="submit_enter_data_description">You have completed the form \'%s\' successfully.</string>
     <string name="saving_form">Saving Form</string>
     <string name="sending_items">Sending %1$s of %2$s form(s)</string>
@@ -146,7 +148,7 @@
     <string name="select_another_image">Select another image</string>
     <string name="use_odk_default">Use default image</string>
     <string name="change_splash_path">Change image</string>
-    <string name="keep_changes">Save Changes</string>
+    <string name="keep_changes">Save as Draft</string>
     <string name="change_formlist_url">Form list path (appended to URL)</string>
     <string name="change_protocol">Platform</string>
     <string name="change_submission_url">Submission path (appended to URL)</string>
@@ -172,7 +174,8 @@
     <string name="choose_image">Choose Image</string>
     <string name="selected">Selected: </string>
     <string name="select_answer">Select Answer</string>
-    <string name="save_form_as">Name this form</string>
+    <string name="save_form_as">Save Form as</string>
+    <string name="mandatory_warning">You won\'t be able to select Save as Completed if any of the required field is blank</string>
     <string name="save_as_error">Saved name must not be blank!</string>
     <string name="edit_prompt">Edit Prompt</string>
     <string name="selected_google_account_text">Google account</string>
@@ -219,7 +222,7 @@
     <string name="found_in_main">Uncheck to hide from Main Menu</string>
     <string name="found_in_settings">Uncheck to hide from General Settings</string>
     <string name="form_forward">Next</string>
-    <string name="form_backward">Back</string>
+    <string name="form_backward">Previous</string>
     <string name="navigation">Navigation</string>
     <string name="swipe_navigation">Use horizontal swipes</string>
     <string name="buttons_navigation">Use forward/backward buttons</string>

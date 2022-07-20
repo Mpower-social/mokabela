@@ -1022,7 +1022,7 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
         FormController formController = getFormController();
         switch (item.getItemId()) {
             case android.R.id.home:
-                createCustomQuitDialog();
+                createQuitDialog();
                 return true;
             case R.id.menu_languages:
                 createLanguageDialog();
@@ -1301,18 +1301,6 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
      */
     private View createViewForFormEnd(FormController formController) {
         View endView = View.inflate(this, R.layout.form_entry_end, null);
-        ((TextView) endView.findViewById(R.id.description))
-                .setText(getString(R.string.save_enter_data_description,
-                        formController.getFormTitle()));
-
-        // checkbox for if finished or ready to send
-        final CheckBox instanceComplete = endView
-                .findViewById(R.id.mark_finished);
-        instanceComplete.setChecked(InstancesDaoHelper.isInstanceComplete(true));
-
-        if (!(boolean) AdminSharedPreferences.getInstance().get(AdminKeys.KEY_MARK_AS_FINALIZED)) {
-            instanceComplete.setVisibility(View.GONE);
-        }
 
         // edittext to change the displayed name of the instance
         final EditText saveAs = endView.findViewById(R.id.save_name);
@@ -1358,7 +1346,7 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
             sa.setVisibility(View.VISIBLE);
             saveAs.setText(saveName);
             saveAs.setEnabled(true);
-            saveAs.setVisibility(View.VISIBLE);
+            saveAs.setVisibility(View.INVISIBLE);
             saveAs.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void afterTextChanged(Editable s) {
@@ -1379,34 +1367,31 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
             // display only the name, not the prompt, and disable edits
             saveName = formController.getSubmissionMetadata().instanceName;
             TextView sa = endView.findViewById(R.id.save_form_as);
-            sa.setVisibility(View.GONE);
+            sa.setVisibility(View.VISIBLE);
             saveAs.setText(saveName);
             saveAs.setEnabled(false);
-            saveAs.setVisibility(View.VISIBLE);
+            saveAs.setVisibility(View.INVISIBLE);
         }
 
-        // override the visibility settings based upon admin preferences
-        if (!(boolean) AdminSharedPreferences.getInstance().get(AdminKeys.KEY_SAVE_AS)) {
-            saveAs.setVisibility(View.GONE);
-            TextView sa = endView
-                    .findViewById(R.id.save_form_as);
-            sa.setVisibility(View.GONE);
-        }
-
-        // Create 'save' button
-        endView.findViewById(R.id.save_exit_button)
+        // Create 'save as draft' button
+        endView.findViewById(R.id.save_draft_button)
                 .setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Form is marked as 'saved' here.
-                        if (saveAs.getText().length() < 1) {
-                            showShortToast(R.string.save_as_error);
-                        } else {
-                            saveForm(EXIT, true, saveAs.getText()
-                                .toString());
-                        }
+                        saveForm(EXIT, false, saveAs.getText()
+                            .toString());
                     }
                 });
+
+        // Create 'save as completed' button
+        endView.findViewById(R.id.save_complete_button)
+            .setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                        saveForm(EXIT, true, saveAs.getText()
+                            .toString());
+                }
+            });
 
         if (showNavigationButtons) {
             updateNavigationButtonVisibility();
@@ -1936,7 +1921,7 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
         alertDialog = QuitFormDialog.show(this, getFormController(), new QuitFormDialog.Listener() {
             @Override
             public void onSaveChangedClicked() {
-                saveForm(EXIT, InstancesDaoHelper.isInstanceComplete(false), null);
+                saveForm(EXIT, false, null);
                 alertDialog.dismiss();
             }
 
@@ -2231,7 +2216,7 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                createCustomQuitDialog();
+                createQuitDialog();
                 return true;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 if (event.isAltPressed() && !beenSwiped) {
