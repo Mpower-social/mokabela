@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPref{
   static var userGetStmp = 'userGetTimeStmp';
   static var TOKEN = 'token';
+  static var REFRESH_TOKEN = 'refreshToken';
   static var USER_ID = 'userId';
   static var NAME = 'name';
   static var USER_NAME = 'preferred_username';

@@ -70,7 +70,7 @@ class DashboardScreen extends StatelessWidget {
                     onTap: () => Get.to(() => DraftFormScreen()),
                     child: Obx(()=>statisticsCard(
                         title: 'draft'.tr,
-                        data: _controller.draftFormCount.value.toString(),
+                        data: Utils.numberFormatter.format(_controller.draftFormCount.value),
                         icon: AppIcons.draft,
                         position: 3,
                         wp: wp!(50)),
@@ -79,7 +79,7 @@ class DashboardScreen extends StatelessWidget {
                   onTap: () => Get.to(() => ReadyToSyncFormScreen()),
                   child: Obx(()=>statisticsCard(
                         title: 'ready_to_sync'.tr,
-                        data: _controller.completeFormCount.value.toString(),
+                        data: Utils.numberFormatter.format(_controller.completeFormCount.value),
                         icon: AppIcons.ready_sync,
                         position: 4,
                         wp: wp!(50)),

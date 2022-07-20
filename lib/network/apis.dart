@@ -7,6 +7,7 @@ class Apis{
   static var baseUrl = '$url/msurvey/api';//dev
 
   static var login = '$baseUrl/auth/login';
+  static var refreshToken = '$baseUrl/auth/refresh-token';
   static getProjectList(orgId,currentPage,pageSize) => '$baseUrl/project/get-project-by-orgId?orgId=$orgId&currentPage=$currentPage&pageSize=$pageSize';
   static getUserByUserName(userName) => '$baseUrl/user/get-user-by-username?username=$userName';
   static var getFormList = '$baseUrl/project/forms/get-form-list-all';

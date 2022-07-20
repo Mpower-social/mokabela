@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:m_survey/network/interceptors/refresh_token_interceptor.dart';
 import 'dio_client.dart';
 
 class BaseApiProvider {
@@ -6,7 +7,7 @@ class BaseApiProvider {
 
   BaseApiProvider() {
     var dio = Dio();
-    _dioClient = DioClient(dio);
+    _dioClient = DioClient(dio,interceptors: [RefreshTokenInterceptor()]);
   }
 
   Dio get dio => _dioClient.clientDio!;
