@@ -10,3 +10,34 @@ const PROJECT_NO_OF_FORMS = "numberOfForms";
 const PROJECT_START_DATE = "startDate";
 const PROJECT_END_DATE = "endDate";
 const PROJECT_STATUS = "status";
+
+
+//submitted form table
+const TABLE_NAME_SUBMITTED_FORM = 'SubmittedForm';
+
+//project table field
+const SUBMITTED_ID = "id";
+const SUBMITTED_FORM_NAME = "form_name";
+const SUBMITTED_FORM_ID_STRING = "form_id_string";
+const SUBMITTED_PROJECT_ID = "project_id";
+const SUBMITTED_DATE_CREATED = "date_created";
+const SUBMITTED_BY_ID = "submitted_by_id";
+const SUBMITTED_BY_USERNAME = "submitted_by_username";
+const SUBMITTED_BY_FIRST_NAME = "submitted_by_f_name";
+const SUBMITTED_BY_LAST_NAME = "submitted_by_l_name";
+const SUBMITTED_XML = "xml";
+
+
+//submitted form table
+const TABLE_NAME_All_FORM = 'AllForm';
+
+//project table field
+const All_FORM_ID = "id";
+const All_FORM_X_FORM_ID = "xformId";
+const All_FORM_TITLE = "title";
+const All_FORM_ID_STRING = "idString";
+const All_FORM_PROJECT_ID = "projectId";
+const All_FORM_CREATED_AT = "createdAt";
+const All_FORM_TARGET = "target";
+const All_FORM_PROJECT_NAME = "projectName";
+const All_FORM_PROJECT_DES = "projectDes";

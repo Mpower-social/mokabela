@@ -1,7 +1,11 @@
 import 'package:m_survey/constans/table_column.dart';
 import 'package:m_survey/database/database_provider.dart';
+import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
+import 'package:m_survey/models/local/submitted_form_list_data.dart';
+import 'package:m_survey/models/response/all_form_list_response.dart';
 import 'package:m_survey/models/response/project_list_response.dart';
+import 'package:m_survey/models/response/submitted_form_list_response.dart';
 import 'package:m_survey/services/dashboard_service.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -39,6 +43,64 @@ class DashboardRepository {
     return await _dashboardService.getFormList()??'';
   }
 
+  Future<List<SubmittedFormListData?>> getSubmittedFormList() async{
+    final Database? db = await DatabaseProvider.dbProvider.database;
+
+    List<SubmittedFormListData> submittedFormList =  await getAllSubmittedFromLocal();
+
+    if(submittedFormList.isEmpty){
+      List<SubmittedFormListResponse?>? submittedFormListResponse = await _dashboardService.getSubmittedFormList();
+      if (submittedFormList != null) {
+          db!.delete(TABLE_NAME_SUBMITTED_FORM);
+          for(var formData in submittedFormListResponse!){
+
+            await insertSubmittedForms(SubmittedFormListData(
+              id: formData?.id,
+              formName: formData?.formName,
+              formIdString: formData?.formIdString,
+              projectId: formData?.projectId,
+              dateCreated: formData?.dateCreated.toString(),
+              submittedById: formData?.submittedBy?.id,
+                submittedByUsername: formData?.submittedBy?.username,
+                submittedByFirstLame: formData?.submittedBy?.firstName,
+                submittedByLastName: formData?.submittedBy?.lastName
+            ));
+          }
+        return  await getAllSubmittedFromLocal();
+      }
+    }
+    return submittedFormList;
+  }
+
+
+  Future<List<AllFormsData?>> getAllFormList() async{
+    final Database? db = await DatabaseProvider.dbProvider.database;
+
+    List<AllFormsData> allFormList =  await getAllFromLocal();
+    if(allFormList.isEmpty){
+      AllFormListResponse? allFormResponse = await _dashboardService.getAllFormList();
+
+      if (allFormResponse?.data != null) {
+          db!.delete(TABLE_NAME_All_FORM);
+          for(Data formData in allFormResponse?.data??[]){
+            insertAllForms(AllFormsData(
+                id: formData.id,
+                xFormId: formData.attributes?.xformId,
+                title: formData.attributes?.title,
+                idString: formData.attributes?.title,
+                createdAt: formData.attributes?.title,
+                target: formData.attributes?.target,
+                projectId: formData.attributes?.project?.id,
+                projectName: formData.attributes?.project?.name,
+                projectDes: formData.attributes?.project?.description,
+            ));
+          }
+        return  await getAllFromLocal();
+      }
+    }
+    return allFormList;
+  }
+
 
   ///////////local data/////////
   void insertProject(ProjectListFromLocalDb projectListFromLocalDb)async{
@@ -53,5 +115,33 @@ class DashboardRepository {
     return List<ProjectListFromLocalDb>.from(data.map((x) => ProjectListFromLocalDb.fromJson(x)));
   }
 
+
+
+
+   insertSubmittedForms(SubmittedFormListData submittedFormListResponse)async{
+    final Database? db = await DatabaseProvider.dbProvider.database;
+    await db!.insert(TABLE_NAME_SUBMITTED_FORM, submittedFormListResponse.toJson());
+  }
+
+
+  Future<List<SubmittedFormListData>> getAllSubmittedFromLocal()async{
+    final Database? db = await DatabaseProvider.dbProvider.database;
+    var data = await db!.rawQuery('select * from $TABLE_NAME_SUBMITTED_FORM');
+    return List<SubmittedFormListData>.from(data.map((x) => SubmittedFormListData.fromJson(x)));
+  }
+
+
+
+  void insertAllForms(AllFormsData allFormsData)async{
+    final Database? db = await DatabaseProvider.dbProvider.database;
+    await db!.insert(TABLE_NAME_All_FORM, allFormsData.toJson());
+  }
+
+
+  Future<List<AllFormsData>> getAllFromLocal()async{
+    final Database? db = await DatabaseProvider.dbProvider.database;
+    var data = await db!.rawQuery('select * from $TABLE_NAME_All_FORM');
+    return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
+  }
 
 }

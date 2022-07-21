@@ -46,21 +46,23 @@ class DashboardScreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () => Get.to(() => ActiveFormScreen()),
-                  child: statisticsCard(
-                      title: 'active_form'.tr,
-                      data: '09/13',
-                      icon: AppIcons.active,
-                      position: 1,
-                      wp: wp!(50)),
+                  child: Obx(()=>statisticsCard(
+                        title: 'active_form'.tr,
+                        data: '09/${_controller.allFormList.length}',
+                        icon: AppIcons.active,
+                        position: 1,
+                        wp: wp!(50)),
+                  ),
                 ),
                 InkWell(
                   onTap: () => Get.to(() => SubmittedFormScreen()),
-                  child: statisticsCard(
-                      title: 'submitted'.tr,
-                      data: '1817',
-                      icon: AppIcons.submitted,
-                      position: 2,
-                      wp: wp!(50)),
+                  child: Obx(()=>statisticsCard(
+                        title: 'submitted'.tr,
+                        data:  Utils.numberFormatter.format(_controller.submittedFormList.value.length),
+                        icon: AppIcons.submitted,
+                        position: 2,
+                        wp: wp!(50)),
+                  ),
                 )
               ],
             ),
@@ -205,7 +207,7 @@ class DashboardScreen extends StatelessWidget {
 
 
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: ()=>_controller.loadProjects(true),
+            onPressed: ()=>_controller.getAllData(true),
             backgroundColor: primaryColor,
             label: Row(children: [const Icon(AppIcons.reload),const SizedBox(width: 8,),Text('load'.tr)],)
         ),
@@ -223,7 +225,7 @@ class DashboardScreen extends StatelessWidget {
               Get.to(() => FormDetailsScreen());
             },
             child: recentFormCard(
-                title: _controller.recentFormList[i].displayName??'', subTitle: 'Brac-Edu'),
+                title: _controller.recentFormList[i].displayName??'', subTitle:  _controller.recentFormList[i].projectName??''),
           );
         },
         separatorBuilder: (ctx, i) => const SizedBox(

@@ -38,5 +38,32 @@ class DatabaseProvider{
             '$PROJECT_STATUS TEXT)',
     );
 
+    //submitted form table
+    await database.execute(
+      'CREATE TABLE IF NOT EXISTS $TABLE_NAME_SUBMITTED_FORM ($SUBMITTED_ID INTEGER PRIMARY KEY,'
+          '$SUBMITTED_FORM_NAME TEXT,'
+          '$SUBMITTED_FORM_ID_STRING TEXT,'
+          '$SUBMITTED_PROJECT_ID INTEGER,'
+          '$SUBMITTED_DATE_CREATED TEXT,'
+          '$SUBMITTED_BY_ID INTEGER,'
+          '$SUBMITTED_BY_USERNAME TEXT,'
+          '$SUBMITTED_BY_FIRST_NAME TEXT,'
+          '$SUBMITTED_BY_LAST_NAME TEXT,'
+          '$SUBMITTED_XML TEXT)',
+    );
+
+
+    //all form table
+    await database.execute(
+      'CREATE TABLE IF NOT EXISTS $TABLE_NAME_All_FORM ($All_FORM_ID INTEGER PRIMARY KEY,'
+          '$All_FORM_X_FORM_ID TEXT,'
+          '$All_FORM_TITLE TEXT,'
+          '$All_FORM_ID_STRING TEXT,'
+          '$All_FORM_CREATED_AT TEXT,'
+          '$All_FORM_TARGET INTEGER,'
+          '$All_FORM_PROJECT_ID INTEGER,'
+          '$All_FORM_PROJECT_NAME TEXT,'
+          '$All_FORM_PROJECT_DES TEXT)',
+    );
   }
 }

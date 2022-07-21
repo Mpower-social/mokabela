@@ -33,9 +33,10 @@ class AuthServices extends BaseApiProvider{
 
 
   ///refresh token operation
-  Future<AuthResponse?> refreshToken(refreshToken) async {
+  Future<AuthResponse?> refreshToken(refreshToken, String? token) async {
     try{
-      var response = await dio.post(Apis.refreshToken, data: ({"refreshToken":refreshToken}));
+      dio.options.headers.addAll({'Authorization':'Bearer $token'});
+      var response = await dio.post(Apis.refreshToken, data: jsonEncode({"refreshToken":refreshToken.toString()}));
       return AuthResponse.fromJson(response.data);
     }catch(error){
       showToast(msg:DioException.getDioException(error),isError: true);

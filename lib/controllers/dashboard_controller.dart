@@ -1,5 +1,9 @@
 import 'package:get/get.dart';
+import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
+import 'package:m_survey/models/local/submitted_form_list_data.dart';
+import 'package:m_survey/models/response/all_form_list_response.dart';
+import 'package:m_survey/models/response/submitted_form_list_response.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/utils/shared_pref.dart';
@@ -12,7 +16,12 @@ class DashboardController extends GetxController {
   var designation = ''.obs;
   var recentFormList = <formData.FormData>[].obs;
   var projectList = <ProjectListFromLocalDb>[].obs;
+  var submittedFormList = <SubmittedFormListData?>[].obs;
+  var allFormList = <AllFormsData?>[].obs;
   var isLoadingProject = false.obs;
+  var totalActiveForms = 0.obs;
+  var totalSubmittedForms = 0.obs;
+
 
   var draftFormCount = 0.obs;
   var completeFormCount = 0.obs;
@@ -26,7 +35,7 @@ class DashboardController extends GetxController {
     await getCompleteFormCount();
     handlePermission();
     getUserdata();
-    loadProjects(false);
+    getAllData(false);
     downloadForm();
     await getRecentFormList();
   }
@@ -36,11 +45,15 @@ class DashboardController extends GetxController {
     designation.value = await SharedPref.sharedPref.getString(SharedPref.DESIGNATION)??'';
   }
 
-  void loadProjects(forceLoad) async{
+  ///getting project list here
+  void getAllData(forceLoad) async{
     isLoadingProject.value = true;
-    projectList.value = await _dashboardRepository.getProjectListOperation(1, 10,forceLoad);
+    //projectList.value = await _dashboardRepository.getProjectListOperation(1, 10,forceLoad);
+    submittedFormList.value = await _dashboardRepository.getSubmittedFormList();
+    //allFormList.value = await _dashboardRepository.getAllFormList();
     isLoadingProject.value = false;
   }
+
 
   getDraftFormCount() async{
     final results = await OdkUtil.instance.getDraftForms(['member_register_test901']);
@@ -61,6 +74,9 @@ class DashboardController extends GetxController {
   getRecentFormList() async{
     final results = await OdkUtil.instance.getRecentForms(['member_register_test901']);
     if (results != null && results.isNotEmpty) {
+      formData.formDataFromJson(results).forEach((element) {
+        element.projectName = /*projectList.where((v) => v.id == element.id).first.projectName*/'test';
+      });
       recentFormList.value = formData.formDataFromJson(results);
       return;
     }
@@ -85,6 +101,4 @@ class DashboardController extends GetxController {
       print('granted');
     }
   }
-
-
 }

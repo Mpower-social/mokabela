@@ -6,6 +6,7 @@ String authResponseToJson(AuthResponse data) => json.encode(data.toJson());
 
 class AuthResponse {
   AuthResponse({
+    this.refreshToken,
     this.token,
     this.clientId,
     this.header,
@@ -13,7 +14,7 @@ class AuthResponse {
     this.signature,
     this.signed,
   });
-
+  RefreshToken? refreshToken;
   String? token;
   String? clientId;
   Header? header;
@@ -22,6 +23,7 @@ class AuthResponse {
   String? signed;
 
   factory AuthResponse.fromJson(Map<String, dynamic> json) => AuthResponse(
+    refreshToken: json["refresh_token"] == null ? null : RefreshToken.fromJson(json["refresh_token"]),
     token: json["token"] ?? '',
     clientId: json["clientId"]??'',
     header: json["header"] == null ? null : Header.fromJson(json["header"]),
@@ -161,6 +163,22 @@ class ResourceAccess {
 
   Map<String, dynamic> toJson() => {
     "account": account == null ? null : account!.toJson(),
+  };
+}
+
+class RefreshToken {
+  RefreshToken({
+    this.token,
+  });
+
+  String? token;
+
+  factory RefreshToken.fromJson(Map<String, dynamic> json) => RefreshToken(
+    token: json["token"] == null ? null : json["token"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "token": token == null ? null : token,
   };
 }
 

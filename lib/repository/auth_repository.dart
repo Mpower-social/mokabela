@@ -11,7 +11,7 @@ class AuthRepository{
       var userInfo = await _loginServices.getUserOperation(loginResponse.content?.preferredUsername.toString(),loginResponse.token);
       if(userInfo?.data?.attributes?.organization?.id!=null){
         SharedPref.sharedPref.setString(SharedPref.TOKEN, loginResponse.token);
-        SharedPref.sharedPref.setString(SharedPref.REFRESH_TOKEN, loginResponse.token);
+        SharedPref.sharedPref.setString(SharedPref.REFRESH_TOKEN, loginResponse.refreshToken?.token);
 
         SharedPref.sharedPref.setString(SharedPref.NAME, loginResponse.content?.name.toString());
         SharedPref.sharedPref.setString(SharedPref.USER_NAME, loginResponse.content?.preferredUsername.toString());
@@ -28,12 +28,13 @@ class AuthRepository{
   }
 
 
-  Future<String> refreshTokenOperation()async{
-      var refreshToken =  SharedPref.sharedPref.getString(SharedPref.REFRESH_TOKEN);
-      var refreshTokenResponse = await _loginServices.refreshToken(refreshToken);
+  Future<String?> refreshTokenOperation()async{
+      var refreshToken =  await SharedPref.sharedPref.getString(SharedPref.REFRESH_TOKEN);
+      var token =  await SharedPref.sharedPref.getString(SharedPref.TOKEN);
+      var refreshTokenResponse = await _loginServices.refreshToken(refreshToken,token);
 
-      SharedPref.sharedPref.setString(SharedPref.TOKEN, refreshTokenResponse?.token);
-      SharedPref.sharedPref.setString(SharedPref.REFRESH_TOKEN, refreshTokenResponse?.token);
+      await SharedPref.sharedPref.setString(SharedPref.TOKEN, refreshTokenResponse?.token);
+      await SharedPref.sharedPref.setString(SharedPref.REFRESH_TOKEN, refreshTokenResponse?.refreshToken?.token);
       return refreshTokenResponse?.token??'';
   }
 

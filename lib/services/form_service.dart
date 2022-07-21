@@ -12,6 +12,21 @@ import 'package:dio/dio.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
 
 class FormService extends BaseApiProvider{
+  ///get submitted form list
+  /*Future<ProjectListResponse?> getProjectListOperation(currentPage,pageSize) async {
+    try{
+      var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
+      var orgId = await SharedPref.sharedPref.getString(SharedPref.ORG_ID);
+      dio.options.headers.addAll({'Authorization':'Bearer $token'});
+      var response = await dio.get(Apis.getProjectList(orgId, currentPage, pageSize));
+      return ProjectListResponse.fromJson(response.data);
+    }catch(error){
+      showToast(msg:DioException.getDioException(error),isError: true);
+    }
+    return null;
+  }*/
+
+
   ///submit form data
   Future<String?> submitFormOperation(projectId, formData) async {
     try{
@@ -31,8 +46,6 @@ class FormService extends BaseApiProvider{
           }
         )
       );
-      print(response.statusCode);
-      print(formData.id);
       if(response.statusCode == 200 || response.statusCode == 201 || response.statusCode == 202){
         await OdkUtil.instance.sendToSubmitted(formData.id);
       }

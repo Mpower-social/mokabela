@@ -137,38 +137,38 @@ class FormDetailsScreen extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(200),
       ),
-      color: white.withOpacity(.5),
-      child: InkWell(
-        onTap: () {
-          controller.openOdkForm();
-        },
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          height: 120,
-          width: 120,
-          alignment: Alignment.center,
+      color: Colors.white.withOpacity(.5),
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: ClipOval(
           child: Container(
             height: 120,
             width: 120,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(200), color: green),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.add_circle,
-                  color: white,
-                  size: 30,
+            child: Material(
+              color: Colors.green,
+              child: InkWell(
+                onTap: () {
+                  controller.openOdkForm();
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.add_circle,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'Collect',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    )
+                  ],
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  'Collect',
-                  style: TextStyle(color: white, fontWeight: FontWeight.bold),
-                )
-              ],
+              ),
             ),
           ),
         ),

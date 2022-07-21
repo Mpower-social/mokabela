@@ -11,5 +11,7 @@ class Apis{
   static getProjectList(orgId,currentPage,pageSize) => '$baseUrl/project/get-project-by-orgId?orgId=$orgId&currentPage=$currentPage&pageSize=$pageSize';
   static getUserByUserName(userName) => '$baseUrl/user/get-user-by-username?username=$userName';
   static var getFormList = '$baseUrl/project/forms/get-form-list-all';
-  static var submitForm = 'http://192.168.22.59:8111/msurvey/forms/instance/submit/';
+  static var getAllFormList = '$baseUrl/project/forms/get-all-form-configuration';
+  static var getSubmittedFormList = 'http://192.168.19.16:9037/msurvey/forms/instance/list/';
+  static var submitForm = 'http://192.168.19.16:9037/msurvey/forms/instance/submit/';
 }
