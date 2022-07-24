@@ -246,7 +246,7 @@ class DashboardScreen extends StatelessWidget {
                   itemCount: _controller.projectList.length,
                   itemBuilder: (ctx, i) {
                     return InkWell(
-                      onTap: () => Get.to(() => ProjectDetailsScreen()),
+                      onTap: () => Get.to(() => ProjectDetailsScreen(_controller.projectList[i])),
                       child: ongoingProjectCard(
                           title: _controller.projectList[i].projectName ?? '',
                           formCount: int.tryParse(_controller.projectList[i].noOfForms ?? '0') ??0,

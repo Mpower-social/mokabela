@@ -46,7 +46,7 @@ class SubmittedFormScreen extends StatelessWidget {
                 child: commonButton(
                     text: 'Clear Sent Response',
                     bg: red,
-                    tap: () {},
+                    tap: () =>controller.deleteForm(),
                     width: wp!(50),
                     height: 40),
               )
@@ -136,12 +136,12 @@ class SubmittedFormScreen extends StatelessWidget {
     return Obx(
       () => controller.isLoadingForms.value
           ? progressBar()
-          : controller.submittedFormList.length == 0
+          : controller.isCheckList.length == 0
               ? noDataFound()
               : ListView.separated(
-                  itemCount:  controller.submittedFormList.length,
+                  itemCount:  controller.isCheckList.length,
                   itemBuilder: (ctx, i) {
-                    SubmittedFormListData data = controller.submittedFormList[i]!;
+                    SubmittedFormListData data = controller.isCheckList[i].submittedFormListData!;
                     return Container(
                       width: wp!(100),
                       padding: EdgeInsets.only(left: 10, right: 10),
@@ -158,7 +158,7 @@ class SubmittedFormScreen extends StatelessWidget {
                                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                   value: (controller.isCheckList.value[i].isChecked),
                                   onChanged: (v){
-                                    controller.addCheckBoxData(i,formData:controller.submittedFormList[i]);
+                                    controller.addCheckBoxData(i,formData:controller.isCheckList[i].submittedFormListData);
                                   }
                               ),
                               ),

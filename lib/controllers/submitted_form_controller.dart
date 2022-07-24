@@ -17,6 +17,7 @@ class SubmittedFormController extends GetxController{
 
   var isCheckedAll = false.obs;
   var isCheckList = <SubmittedCheckboxData>[].obs;
+  var isCheckListTemp = <SubmittedCheckboxData>[].obs;
 
   final DashboardRepository _dashboardRepository = DashboardRepository();
   final FormRepository _formRepository = FormRepository();
@@ -41,9 +42,7 @@ class SubmittedFormController extends GetxController{
   getData() async{
     isLoadingForms.value = true;
     await loadProjects();
-    submittedFormList.value = await _dashboardRepository.getSubmittedFormList();
-    print(submittedFormList.length);
-    submittedFormListTemp.value = submittedFormList.value;
+    submittedFormList.value = await _dashboardRepository.getAllSubmittedFromLocalByDelete();
     isLoadingForms.value = false;
   }
 
@@ -55,12 +54,12 @@ class SubmittedFormController extends GetxController{
 
   ///sort list asc or desc
   void sortByDate() async{
-    if(submittedFormList.length>0){
+    if(isCheckList.length>0){
       if(ascOrDesc.value){
-        submittedFormList.sort((a,b)=>a!.dateCreated!.compareTo(b!.dateCreated!));
+        isCheckList.sort((a,b)=>a.submittedFormListData!.dateCreated!.compareTo(b.submittedFormListData!.dateCreated!));
         showToast(msg: 'Sorted by ascending order.');
       }else{
-        submittedFormList.sort((a,b)=>-a!.dateCreated!.compareTo(b!.dateCreated!));
+        isCheckList.sort((a,b)=>-a.submittedFormListData!.dateCreated!.compareTo(b.submittedFormListData!.dateCreated!));
         showToast(msg: 'Sorted by descending order');
       }
     }
@@ -71,6 +70,7 @@ class SubmittedFormController extends GetxController{
   void deleteForm()async{
     try{
       for(var element in isCheckList){
+        print(element.isChecked);
         if(element.isChecked && element.submittedFormListData != null){
          _formRepository.deleteSubmittedForm(element.submittedFormListData!);
         }
@@ -79,7 +79,6 @@ class SubmittedFormController extends GetxController{
 
     }finally{
       await getData();
-      Get.back();
     }
   }
 
@@ -87,8 +86,9 @@ class SubmittedFormController extends GetxController{
   void setupDefaultCheckBox() {
     isCheckList.clear();
     submittedFormList.forEach((element) {
-      isCheckList.add(SubmittedCheckboxData(false, null));
+      isCheckList.add(SubmittedCheckboxData(false, element));
     });
+    isCheckListTemp = isCheckList;
   }
 
   ///handling checkbox

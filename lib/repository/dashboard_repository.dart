@@ -63,13 +63,14 @@ class DashboardRepository {
               submittedById: formData?.submittedBy?.id,
                 submittedByUsername: formData?.submittedBy?.username,
                 submittedByFirstLame: formData?.submittedBy?.firstName,
-                submittedByLastName: formData?.submittedBy?.lastName
+                submittedByLastName: formData?.submittedBy?.lastName,
+                xml: formData?.xml
             ));
           }
-        return  await getAllSubmittedFromLocal();
+        return  await getAllSubmittedFromLocalByDelete();
       }
     }
-    return submittedFormList;
+    return await getAllSubmittedFromLocalByDelete();
   }
 
 
@@ -124,11 +125,17 @@ class DashboardRepository {
   }
 
 
-  Future<List<SubmittedFormListData>> getAllSubmittedFromLocal()async{
+  Future<List<SubmittedFormListData>> getAllSubmittedFromLocalByDelete()async{
     final Database? db = await DatabaseProvider.dbProvider.database;
-    var data = await db!.rawQuery('select * from $TABLE_NAME_SUBMITTED_FORM as s left join $TABLE_NAME_DELETED_SUBMITTED_FORM as d on d.$DELETED_SUBMITTED_FORM_ID = s.$SUBMITTED_ID ORDER BY s.$SUBMITTED_DATE_CREATED DESC');
+    var data = await db!.rawQuery('select s.* from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_ID not in (select * from $TABLE_NAME_DELETED_SUBMITTED_FORM) ORDER BY s.$SUBMITTED_DATE_CREATED DESC');
     return List<SubmittedFormListData>.from(data.map((x) => SubmittedFormListData.fromJson(x)));
   }
+  Future<List<SubmittedFormListData>> getAllSubmittedFromLocal()async{
+    final Database? db = await DatabaseProvider.dbProvider.database;
+    var data = await db!.rawQuery('select * from $TABLE_NAME_SUBMITTED_FORM ORDER BY $SUBMITTED_DATE_CREATED DESC');
+    return List<SubmittedFormListData>.from(data.map((x) => SubmittedFormListData.fromJson(x)));
+  }
+
 
 
 
