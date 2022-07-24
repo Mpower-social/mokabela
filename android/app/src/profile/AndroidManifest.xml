@@ -190,6 +190,7 @@
         <activity-alias
             android:name=".activities.FormEntryActivity"
             android:targetActivity=".activities.FormEntryActivity"
+            android:exported="true"
             tools:ignore="AppLinkUrlError">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -205,6 +206,7 @@
         <activity-alias
             android:name=".activities.InstanceChooserList"
             android:targetActivity=".activities.InstanceChooserList"
+            android:exported="true"
             tools:ignore="AppLinkUrlError">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -219,6 +221,7 @@
         <activity-alias
             android:name=".activities.FormChooserList"
             android:targetActivity=".activities.FormChooserListActivity"
+            android:exported="true"
             tools:ignore="AppLinkUrlError">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -233,7 +236,8 @@
 
         <activity-alias
             android:name=".activities.FormDownloadList"
-            android:targetActivity=".activities.FormDownloadList">
+            android:targetActivity=".activities.FormDownloadList"
+            android:exported="true">
             <intent-filter>
                 <action android:name="${applicationId}.FORM_DOWNLOAD" />
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -243,7 +247,8 @@
 
         <activity-alias
             android:name=".activities.InstanceUploaderList"
-            android:targetActivity=".activities.InstanceUploaderListActivity" >
+            android:targetActivity=".activities.InstanceUploaderListActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.EDIT" />
@@ -254,7 +259,8 @@
 
         <activity-alias
             android:name=".activities.InstanceUploaderActivity"
-            android:targetActivity=".activities.InstanceUploaderActivity">
+            android:targetActivity=".activities.InstanceUploaderActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="${applicationId}.INSTANCE_UPLOAD" />
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -266,7 +272,8 @@
         <activity
             android:name=".activities.AndroidShortcuts"
             android:label="ODK Form"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.CREATE_SHORTCUT" />
 
@@ -283,6 +290,7 @@
             android:launchMode="singleTop"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
+            android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user

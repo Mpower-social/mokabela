@@ -104,8 +104,8 @@ public class PropertyManager implements IPropertyManager {
             IdAndPrefix idp = findDeviceId(context, deviceDetailsProvider);
             putProperty(PROPMGR_DEVICE_ID,     idp.prefix,          idp.id);
             putProperty(PROPMGR_PHONE_NUMBER,  SCHEME_TEL,          deviceDetailsProvider.getLine1Number());
-            putProperty(PROPMGR_SUBSCRIBER_ID, SCHEME_IMSI,         deviceDetailsProvider.getSubscriberId());
-            putProperty(PROPMGR_SIM_SERIAL,    SCHEME_SIMSERIAL,    deviceDetailsProvider.getSimSerialNumber());
+            //putProperty(PROPMGR_SUBSCRIBER_ID, SCHEME_IMSI,         deviceDetailsProvider.getSubscriberId());
+            //putProperty(PROPMGR_SIM_SERIAL,    SCHEME_SIMSERIAL,    deviceDetailsProvider.getSimSerialNumber());
         } catch (SecurityException e) {
             Timber.e(e);
         }
@@ -122,38 +122,10 @@ public class PropertyManager implements IPropertyManager {
     // telephonyManager.getDeviceId() requires permission READ_PHONE_STATE (ISSUE #2506). Permission should be handled or exception caught.
     private IdAndPrefix findDeviceId(Context context, DeviceDetailsProvider deviceDetailsProvider) throws SecurityException {
         final String androidIdName = Settings.Secure.ANDROID_ID;
-        String deviceId = deviceDetailsProvider.getDeviceId();
-        String scheme = null;
 
-        if (deviceId != null) {
-            if (deviceId.contains("*") || deviceId.contains("000000000000000")) {
-                deviceId = Settings.Secure.getString(context.getContentResolver(), androidIdName);
-                scheme = androidIdName;
-            } else {
-                scheme = SCHEME_IMEI;
-            }
-        }
+        String deviceId = Settings.Secure.getString(context.getContentResolver(), androidIdName);
 
-        if (deviceId == null) {
-            // no SIM -- WiFi only
-            // Retrieve WiFiManager
-            WifiManager wifi = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-
-            // Get WiFi status
-            WifiInfo info = wifi.getConnectionInfo();
-            if (info != null && !ANDROID6_FAKE_MAC.equals(info.getMacAddress())) {
-                deviceId = info.getMacAddress();
-                scheme = SCHEME_MAC;
-            }
-        }
-
-        // if it is still null, use ANDROID_ID
-        if (deviceId == null) {
-            deviceId = Settings.Secure.getString(context.getContentResolver(), androidIdName);
-            scheme = androidIdName;
-        }
-
-        return new IdAndPrefix(deviceId, scheme);
+        return new IdAndPrefix(deviceId, androidIdName);
     }
 
     /**

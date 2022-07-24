@@ -63,6 +63,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347834475766:android:3cd1b71dba83a4a2c3f8d7",
+        "android_client_info": {
+          "package_name": "com.mpower.hybrid.app.msurvey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347834475766-v6sq4d3g8kah3q890nmjk9m4spoh3h9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB68Vk9rCeWjSr25owNzuoqENuulHiUutQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "347834475766-v6sq4d3g8kah3q890nmjk9m4spoh3h9l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
