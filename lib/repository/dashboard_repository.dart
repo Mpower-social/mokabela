@@ -130,13 +130,12 @@ class DashboardRepository {
     var data = await db!.rawQuery('select s.* from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_ID not in (select * from $TABLE_NAME_DELETED_SUBMITTED_FORM) ORDER BY s.$SUBMITTED_DATE_CREATED DESC');
     return List<SubmittedFormListData>.from(data.map((x) => SubmittedFormListData.fromJson(x)));
   }
+
   Future<List<SubmittedFormListData>> getAllSubmittedFromLocal()async{
     final Database? db = await DatabaseProvider.dbProvider.database;
     var data = await db!.rawQuery('select * from $TABLE_NAME_SUBMITTED_FORM ORDER BY $SUBMITTED_DATE_CREATED DESC');
     return List<SubmittedFormListData>.from(data.map((x) => SubmittedFormListData.fromJson(x)));
   }
-
-
 
 
   void insertAllForms(AllFormsData allFormsData)async{

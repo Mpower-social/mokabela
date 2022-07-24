@@ -78,6 +78,7 @@ class SubmittedFormController extends GetxController{
     }catch(_){
 
     }finally{
+      setupDefaultCheckBox();
       await getData();
     }
   }
