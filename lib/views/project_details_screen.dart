@@ -9,7 +9,6 @@ import 'package:m_survey/style/common_style.dart';
 import 'package:m_survey/utils/utils.dart';
 import 'package:m_survey/views/active_form_screen.dart';
 import 'package:m_survey/views/draft_form_screen.dart';
-import 'package:m_survey/views/form_details_screen.dart';
 import 'package:m_survey/views/ready_to_sync_form_screen.dart';
 import 'package:m_survey/views/submitted_form_screen.dart';
 import 'package:m_survey/views/widgets/form_card.dart';
@@ -29,7 +28,6 @@ class ProjectDetailsScreen extends StatelessWidget {
   ProjectListFromLocalDb _projectListFromData;
   ProjectDetailsScreen(this._projectListFromData){
     _controller.getAllDataByProject(_projectListFromData.id);
-    print(_projectListFromData.id);
   }
 
   @override
@@ -55,41 +53,45 @@ class ProjectDetailsScreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: ()=>Get.to(()=>ActiveFormScreen()),
-                  child: statisticsCard(
-                      title: 'Active Forms',
-                      data: '09/13',
-                      icon: AppIcons.active,
-                      position: 1,wp: wp!(50)),
+                  child: Obx(()=>statisticsCard(
+                        title: 'Active Forms',
+                        data: '${Utils.numberFormatter.format(_controller.allFormList.length)}',
+                        icon: AppIcons.active,
+                        position: 1,wp: wp!(50)),
+                  ),
                 ),
 
                 InkWell(
                   onTap: ()=>Get.to(()=>DraftFormScreen()),
-                  child: statisticsCard(
-                      title: 'Draft',
-                      data: '470',
-                      icon: AppIcons.draft,
-                      position: 2,wp: wp!(50)),
+                  child: Obx(()=>statisticsCard(
+                        title: 'Draft',
+                        data: '${Utils.numberFormatter.format(_controller.draftFormCount.value)}',
+                        icon: AppIcons.draft,
+                        position: 2,wp: wp!(50)),
+                  ),
                 ),
               ],
             ),
             Row(
               children: [
-                Obx(()=>InkWell(
+                InkWell(
                     onTap: ()=>Get.to(()=>SubmittedFormScreen()),
-                    child: statisticsCard(
-                        title: 'Submitted',
-                        data: '1817',
-                        icon: AppIcons.submitted,
-                        position: 3,wp: wp!(50)),
+                    child: Obx(()=>statisticsCard(
+                          title: 'Submitted',
+                          data: '${Utils.numberFormatter.format(_controller.submittedFormList.length)}',
+                          icon: AppIcons.submitted,
+                          position: 3,wp: wp!(50)),
+                    ),
                   ),
-                ),
+
                 InkWell(
                   onTap: ()=>Get.to(()=>ReadyToSyncFormScreen()),
-                  child: statisticsCard(
-                      title: 'Ready to Sync',
-                      data: '02',
-                      icon: AppIcons.ready_sync,
-                      position: 4,wp: wp!(50)),
+                  child: Obx(()=>statisticsCard(
+                        title: 'Ready to Sync',
+                        data: '${Utils.numberFormatter.format(_controller.completeFormCount.value)}',
+                        icon: AppIcons.ready_sync,
+                        position: 4,wp: wp!(50)),
+                  ),
                 )
               ],
             ),

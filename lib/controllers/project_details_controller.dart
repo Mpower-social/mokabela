@@ -4,6 +4,8 @@ import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/models/local/submitted_form_list_data.dart';
 import 'package:m_survey/repository/project_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
+import 'package:m_survey/models/form_data.dart' as formData;
+
 class ProjectDetailsController extends GetxController{
   var projectList = <ProjectListFromLocalDb>[].obs;
   var submittedFormList = <SubmittedFormListData?>[].obs;
@@ -15,9 +17,14 @@ class ProjectDetailsController extends GetxController{
   ProjectRepository _projectRepository = ProjectRepository();
 
 
+  var draftFormCount = 0.obs;
+  var completeFormCount = 0.obs;
+
   @override
   void onInit()async{
     super.onInit();
+    await getDraftFormCount();
+    await getCompleteFormCount();
   }
 
   ///search operation
@@ -37,7 +44,7 @@ class ProjectDetailsController extends GetxController{
   getDraftFormCount() async{
     final results = await OdkUtil.instance.getDraftForms(['member_register_test901']);
     if (results != null && results.isNotEmpty) {
-      //draftFormCount.value = formData.formDataFromJson(results).length;
+      draftFormCount.value = formData.formDataFromJson(results).length;
       return;
     }
   }
@@ -45,7 +52,7 @@ class ProjectDetailsController extends GetxController{
   getCompleteFormCount() async{
     final results = await OdkUtil.instance.getFinalizedForms(['member_register_test901']);
     if (results != null && results.isNotEmpty) {
-     // completeFormCount.value = formData.formDataFromJson(results).length;
+      completeFormCount.value = formData.formDataFromJson(results).length;
       return;
     }
   }
