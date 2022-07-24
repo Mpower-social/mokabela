@@ -40,7 +40,6 @@ class ActiveFormController extends GetxController{
 
   ///filter draft project list
   void filter(int projectId){
-    print(projectId);
     if(projectId == 0) allFormList.value = allFormListTemp;
     else allFormList.value = allFormListTemp.where((v) => (v?.projectId??0) == projectId).toList();
   }
