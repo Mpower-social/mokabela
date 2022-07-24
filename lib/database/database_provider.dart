@@ -65,5 +65,10 @@ class DatabaseProvider{
           '$All_FORM_PROJECT_NAME TEXT,'
           '$All_FORM_PROJECT_DES TEXT)',
     );
+
+    //deleted submitted form table
+    await database.execute(
+      'CREATE TABLE IF NOT EXISTS $TABLE_NAME_DELETED_SUBMITTED_FORM ($DELETED_SUBMITTED_FORM_ID INTEGER PRIMARY KEY)',
+    );
   }
 }

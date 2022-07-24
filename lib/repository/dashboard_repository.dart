@@ -88,7 +88,7 @@ class DashboardRepository {
                 xFormId: formData.attributes?.xformId,
                 title: formData.attributes?.title,
                 idString: formData.attributes?.title,
-                createdAt: formData.attributes?.title,
+                createdAt: formData.attributes?.createdAt,
                 target: formData.attributes?.target,
                 projectId: formData.attributes?.project?.id,
                 projectName: formData.attributes?.project?.name,
@@ -126,7 +126,7 @@ class DashboardRepository {
 
   Future<List<SubmittedFormListData>> getAllSubmittedFromLocal()async{
     final Database? db = await DatabaseProvider.dbProvider.database;
-    var data = await db!.rawQuery('select * from $TABLE_NAME_SUBMITTED_FORM');
+    var data = await db!.rawQuery('select * from $TABLE_NAME_SUBMITTED_FORM as s left join $TABLE_NAME_DELETED_SUBMITTED_FORM as d on d.$DELETED_SUBMITTED_FORM_ID = s.$SUBMITTED_ID ORDER BY s.$SUBMITTED_DATE_CREATED DESC');
     return List<SubmittedFormListData>.from(data.map((x) => SubmittedFormListData.fromJson(x)));
   }
 
@@ -140,7 +140,7 @@ class DashboardRepository {
 
   Future<List<AllFormsData>> getAllFromLocal()async{
     final Database? db = await DatabaseProvider.dbProvider.database;
-    var data = await db!.rawQuery('select * from $TABLE_NAME_All_FORM');
+    var data = await db!.rawQuery('select * from $TABLE_NAME_All_FORM ORDER BY $All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 

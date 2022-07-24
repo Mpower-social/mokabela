@@ -3,6 +3,7 @@ class Apis{
 
 
   static var url = 'http://192.168.19.19:3008';//live
+  static var odkRelatedUrl = 'http://192.168.19.16:9037';
   //static var url = 'http://192.168.22.59:3000';//local
   static var baseUrl = '$url/msurvey/api';//dev
 
@@ -12,6 +13,6 @@ class Apis{
   static getUserByUserName(userName) => '$baseUrl/user/get-user-by-username?username=$userName';
   static var getFormList = '$baseUrl/project/forms/get-form-list-all';
   static var getAllFormList = '$baseUrl/project/forms/get-all-form-configuration';
-  static var getSubmittedFormList = 'http://192.168.19.16:9037/msurvey/forms/instance/list/';
-  static var submitForm = 'http://192.168.19.16:9037/msurvey/forms/instance/submit/';
+  static var getSubmittedFormList = '$odkRelatedUrl/msurvey/forms/instance/list/';
+  static var submitForm = '$odkRelatedUrl/msurvey/forms/instance/submit/';
 }

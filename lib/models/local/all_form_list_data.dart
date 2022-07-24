@@ -5,9 +5,11 @@ class AllFormsData {
   String? idString;
   String? createdAt;
   int? target;
+  int? totalSubmission;
   int? projectId;
   String? projectName;
   String? projectDes;
+  int? status;
 
 
   AllFormsData(

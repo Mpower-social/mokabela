@@ -48,9 +48,9 @@ class DashboardController extends GetxController {
   ///getting project list here
   void getAllData(forceLoad) async{
     isLoadingProject.value = true;
-    //projectList.value = await _dashboardRepository.getProjectListOperation(1, 10,forceLoad);
+    projectList.value = await _dashboardRepository.getProjectListOperation(1, 10,forceLoad);
     submittedFormList.value = await _dashboardRepository.getSubmittedFormList();
-    //allFormList.value = await _dashboardRepository.getAllFormList();
+    allFormList.value = await _dashboardRepository.getAllFormList();
     isLoadingProject.value = false;
   }
 
@@ -72,12 +72,14 @@ class DashboardController extends GetxController {
   }
 
   getRecentFormList() async{
+    recentFormList.clear();
     final results = await OdkUtil.instance.getRecentForms(['member_register_test901']);
     if (results != null && results.isNotEmpty) {
       formData.formDataFromJson(results).forEach((element) {
-        element.projectName = /*projectList.where((v) => v.id == element.id).first.projectName*/'test';
+        var searchedProjectList = projectList.where((v) => v.id == element.id);
+        element.projectName = searchedProjectList.isEmpty?'N/A':searchedProjectList.first.projectName;
+        recentFormList.add(element);
       });
-      recentFormList.value = formData.formDataFromJson(results);
       return;
     }
     recentFormList.value = [];

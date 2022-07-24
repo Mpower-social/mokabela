@@ -15,7 +15,7 @@ const PROJECT_STATUS = "status";
 //submitted form table
 const TABLE_NAME_SUBMITTED_FORM = 'SubmittedForm';
 
-//project table field
+//submitted form table field
 const SUBMITTED_ID = "id";
 const SUBMITTED_FORM_NAME = "form_name";
 const SUBMITTED_FORM_ID_STRING = "form_id_string";
@@ -31,7 +31,7 @@ const SUBMITTED_XML = "xml";
 //submitted form table
 const TABLE_NAME_All_FORM = 'AllForm';
 
-//project table field
+//submitted form table field
 const All_FORM_ID = "id";
 const All_FORM_X_FORM_ID = "xformId";
 const All_FORM_TITLE = "title";
@@ -41,3 +41,9 @@ const All_FORM_CREATED_AT = "createdAt";
 const All_FORM_TARGET = "target";
 const All_FORM_PROJECT_NAME = "projectName";
 const All_FORM_PROJECT_DES = "projectDes";
+
+//deleted submitted form table
+const TABLE_NAME_DELETED_SUBMITTED_FORM = 'DeletedSubmittedForm';
+
+//deleted submitted form field
+const DELETED_SUBMITTED_FORM_ID = "id";
