@@ -20,55 +20,54 @@ import 'package:get/get.dart';
 import 'package:m_survey/widgets/no_data_found_msg.dart';
 import 'package:m_survey/widgets/progress_bar.dart';
 
-
 class ProjectDetailsScreen extends StatelessWidget {
   Function? wp;
   Function? hp;
 
   ProjectDetailsController _controller = Get.find();
   ProjectListFromLocalDb _projectListFromData;
-  ProjectDetailsScreen(this._projectListFromData){
+  ProjectDetailsScreen(this._projectListFromData) {
     _controller.getAllDataByProject(_projectListFromData.id);
   }
 
   @override
   Widget build(BuildContext context) {
-    wp = Screen(MediaQuery
-        .of(context)
-        .size).wp;
-    hp = Screen(MediaQuery
-        .of(context)
-        .size).hp;
+    wp = Screen(MediaQuery.of(context).size).wp;
+    hp = Screen(MediaQuery.of(context).size).hp;
     return SafeArea(
       child: Scaffold(
         appBar: baseAppBarWithDrawer(
-          title: '${_projectListFromData.projectName}',onLeadingTap: ()=>Get.back()
-        ),
-        body:Column(
+            title: '${_projectListFromData.projectName}',
+            onLeadingTap: () => Get.back()),
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             ///top statistics
             Row(
               children: [
                 InkWell(
-                  onTap: ()=>Get.to(()=>ActiveFormScreen()),
-                  child: Obx(()=>statisticsCard(
+                  onTap: () => Get.to(() => ActiveFormScreen()),
+                  child: Obx(
+                    () => statisticsCard(
                         title: 'Active Forms',
-                        data: '${Utils.numberFormatter.format(_controller.allFormList.length)}',
+                        data:
+                            '${Utils.numberFormatter.format(_controller.allFormList.length)}',
                         icon: AppIcons.active,
-                        position: 1,wp: wp!(50)),
+                        position: 1,
+                        wp: wp!(50)),
                   ),
                 ),
-
                 InkWell(
-                  onTap: ()=>Get.to(()=>DraftFormScreen()),
-                  child: Obx(()=>statisticsCard(
+                  onTap: () => Get.to(() => DraftFormScreen()),
+                  child: Obx(
+                    () => statisticsCard(
                         title: 'Draft',
-                        data: '${Utils.numberFormatter.format(_controller.draftFormCount.value)}',
+                        data:
+                            '${Utils.numberFormatter.format(_controller.draftFormCount.value)}',
                         icon: AppIcons.draft,
-                        position: 2,wp: wp!(50)),
+                        position: 2,
+                        wp: wp!(50)),
                   ),
                 ),
               ],
@@ -76,43 +75,51 @@ class ProjectDetailsScreen extends StatelessWidget {
             Row(
               children: [
                 InkWell(
-                    onTap: ()=>Get.to(()=>SubmittedFormScreen()),
-                    child: Obx(()=>statisticsCard(
-                          title: 'Submitted',
-                          data: '${Utils.numberFormatter.format(_controller.submittedFormList.length)}',
-                          icon: AppIcons.submitted,
-                          position: 3,wp: wp!(50)),
-                    ),
+                  onTap: () => Get.to(() => SubmittedFormScreen(
+                        project: _projectListFromData,
+                      )),
+                  child: Obx(
+                    () => statisticsCard(
+                        title: 'Submitted',
+                        data:
+                            '${Utils.numberFormatter.format(_controller.submittedFormList.length)}',
+                        icon: AppIcons.submitted,
+                        position: 3,
+                        wp: wp!(50)),
                   ),
-
+                ),
                 InkWell(
-                  onTap: ()=>Get.to(()=>ReadyToSyncFormScreen()),
-                  child: Obx(()=>statisticsCard(
+                  onTap: () => Get.to(() => ReadyToSyncFormScreen()),
+                  child: Obx(
+                    () => statisticsCard(
                         title: 'Ready to Sync',
-                        data: '${Utils.numberFormatter.format(_controller.completeFormCount.value)}',
+                        data:
+                            '${Utils.numberFormatter.format(_controller.completeFormCount.value)}',
                         icon: AppIcons.ready_sync,
-                        position: 4,wp: wp!(50)),
+                        position: 4,
+                        wp: wp!(50)),
                   ),
                 )
               ],
             ),
 
-
             Expanded(
               child: Container(
-                margin: const EdgeInsets.only(left: 20,right: 20,top: 20),
+                margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ///search and title
                     _search(),
-                    const SizedBox(height: 10,),
-                    ///recent forms
-                    Expanded(
-                      child:  _formList(),
+                    const SizedBox(
+                      height: 10,
                     ),
 
+                    ///recent forms
+                    Expanded(
+                      child: _formList(),
+                    ),
                   ],
                 ),
               ),
@@ -123,34 +130,40 @@ class ProjectDetailsScreen extends StatelessWidget {
     );
   }
 
-
   Widget _formList() {
-    return Obx(()=>_controller.isLoadingProject.value?progressBar():
-    _controller.allFormList.length==0?noDataFound():
-    ListView.builder(
-      itemCount: _controller.allFormList.length,
-      itemBuilder: (ctx,i){
-        AllFormsData data = _controller.allFormList[i]!;
-        return InkWell(
-          onTap: ()=>Get.to(()=>FormDetailsScreen(projectListFromData: _projectListFromData,allFormsData: data,)),
-          child: formCard(
-              title: data.title??'',
-              subTittle: data.projectName??'',
-              date: Utils.dateFormat.format(DateTime.parse(data.createdAt!)),
-              totalSubmission: data.totalSubmission??0,
-              totalForm: data.target??0,
-              submittedForm: data.totalSubmission??0
-          ),
-        );
-      },
-    ),);
+    return Obx(
+      () => _controller.isLoadingProject.value
+          ? progressBar()
+          : _controller.allFormList.length == 0
+              ? noDataFound()
+              : ListView.builder(
+                  itemCount: _controller.allFormList.length,
+                  itemBuilder: (ctx, i) {
+                    AllFormsData data = _controller.allFormList[i]!;
+                    return InkWell(
+                      onTap: () => Get.to(() => FormDetailsScreen(
+                            projectListFromData: _projectListFromData,
+                            allFormsData: data,
+                          )),
+                      child: formCard(
+                          title: data.title ?? '',
+                          subTittle: data.projectName ?? '',
+                          date: Utils.dateFormat
+                              .format(DateTime.parse(data.createdAt!)),
+                          totalSubmission: data.totalSubmission ?? 0,
+                          totalForm: data.target ?? 0,
+                          submittedForm: data.totalSubmission ?? 0),
+                    );
+                  },
+                ),
+    );
   }
 
   Widget _search() {
-    return  Row(
-      mainAxisAlignment:MainAxisAlignment.spaceBetween,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        title(title: 'All Forms',wp: wp!(40)),
+        title(title: 'All Forms', wp: wp!(40)),
         SizedBox(
           height: 35,
           width: wp!(40),
@@ -158,30 +171,33 @@ class ProjectDetailsScreen extends StatelessWidget {
             autofocus: false,
             style: const TextStyle(color: Colors.black),
             decoration: CommonStyle.textFieldStyle(
-                verPadding:10,
+                verPadding: 10,
                 horPadding: 12,
                 fillColor: primaryColor,
                 borderColor: grey,
-                hintTextStr: 'Search'
-            ),
+                hintTextStr: 'Search'),
           ),
         ),
-        const SizedBox(width: 5,),
+        const SizedBox(
+          width: 5,
+        ),
         Container(
           height: 35,
           width: 35,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: primaryColor
-          ),
+              borderRadius: BorderRadius.circular(5), color: primaryColor),
           child: IconButton(
-            onPressed: (){
+            onPressed: () {
               _controller.searchOperation();
             },
-            icon: Icon(Icons.search,color: white,),
+            icon: Icon(
+              Icons.search,
+              color: white,
+            ),
           ),
         )
-      ],);
+      ],
+    );
   }
 }

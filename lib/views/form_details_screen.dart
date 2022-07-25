@@ -156,7 +156,7 @@ class FormDetailsScreen extends StatelessWidget {
               color: Colors.green,
               child: InkWell(
                 onTap: () {
-                  controller.openOdkForm();
+                  controller.openOdkForm(projectListFromData?.id);
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

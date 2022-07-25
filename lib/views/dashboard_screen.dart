@@ -8,7 +8,6 @@ import 'package:m_survey/utils/utils.dart';
 import 'package:m_survey/views/active_form_screen.dart';
 import 'package:m_survey/views/draft_form_screen.dart';
 import 'package:m_survey/views/form_details_screen.dart';
-import 'package:m_survey/views/project_details_screen.dart';
 import 'package:m_survey/views/ready_to_sync_form_screen.dart';
 import 'package:m_survey/views/submitted_form_screen.dart';
 import 'package:m_survey/views/widgets/drawer.dart';
@@ -33,10 +32,7 @@ class DashboardScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: baseAppBarWithDrawer(
-          title: 'Home',
-          context: context
-        ),
+        appBar: baseAppBarWithDrawer(title: 'Home', context: context),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +42,8 @@ class DashboardScreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () => Get.to(() => ActiveFormScreen()),
-                  child: Obx(()=>statisticsCard(
+                  child: Obx(
+                    () => statisticsCard(
                         title: 'active_form'.tr,
                         data: '09/${_controller.allFormList.length}',
                         icon: AppIcons.active,
@@ -56,9 +53,11 @@ class DashboardScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () => Get.to(() => SubmittedFormScreen()),
-                  child: Obx(()=>statisticsCard(
+                  child: Obx(
+                    () => statisticsCard(
                         title: 'submitted'.tr,
-                        data:  Utils.numberFormatter.format(_controller.submittedFormList.value.length),
+                        data: Utils.numberFormatter
+                            .format(_controller.submittedFormList.value.length),
                         icon: AppIcons.submitted,
                         position: 2,
                         wp: wp!(50)),
@@ -68,20 +67,25 @@ class DashboardScreen extends StatelessWidget {
             ),
             Row(
               children: [
-               InkWell(
-                    onTap: () => Get.to(() => DraftFormScreen()),
-                    child: Obx(()=>statisticsCard(
+                InkWell(
+                  onTap: () => Get.to(() => DraftFormScreen()),
+                  child: Obx(
+                    () => statisticsCard(
                         title: 'draft'.tr,
-                        data: Utils.numberFormatter.format(_controller.draftFormCount.value),
+                        data: Utils.numberFormatter
+                            .format(_controller.draftFormCount.value),
                         icon: AppIcons.draft,
                         position: 3,
                         wp: wp!(50)),
-                ),),
+                  ),
+                ),
                 InkWell(
                   onTap: () => Get.to(() => ReadyToSyncFormScreen()),
-                  child: Obx(()=>statisticsCard(
+                  child: Obx(
+                    () => statisticsCard(
                         title: 'ready_to_sync'.tr,
-                        data: Utils.numberFormatter.format(_controller.completeFormCount.value),
+                        data: Utils.numberFormatter
+                            .format(_controller.completeFormCount.value),
                         icon: AppIcons.ready_sync,
                         position: 4,
                         wp: wp!(50)),
@@ -97,40 +101,41 @@ class DashboardScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                   Obx(()=>Visibility(
-                       visible: _controller.recentFormList.length>0?true:false,
-                       child:  Column(
-                         children: [
-                           Row(
-                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                             children: [
-                               title(title: 'recent_forms'.tr),
-                               InkWell(
-                                   onTap: () => Get.to(() => ActiveFormScreen(from:'dashboard')),
-                                   child: title(title: 'all'.tr)
-                               )
-                             ],
-                           ),
-                           SizedBox(
-                             height: 10,
-                           ),
+                    Obx(
+                      () => Visibility(
+                          visible: _controller.recentFormList.length > 0
+                              ? true
+                              : false,
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  title(title: 'recent_forms'.tr),
+                                  InkWell(
+                                      onTap: () => Get.to(() =>
+                                          ActiveFormScreen(from: 'dashboard')),
+                                      child: title(title: 'all'.tr))
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
 
-                           ///recent forms
-                           SizedBox(
-                             height: 110,
-                             child: _recentFormHorizontalList(),
-                           ),
+                              ///recent forms
+                              SizedBox(
+                                height: 110,
+                                child: _recentFormHorizontalList(),
+                              ),
 
-                           const SizedBox(
-                             height: 20,
-                           ),
-                         ],
-                       )
-                     ),
-                   ),
-
+                              const SizedBox(
+                                height: 20,
+                              ),
+                            ],
+                          )),
+                    ),
                     title(title: 'ongoing_project'.tr),
-
                     const SizedBox(
                       height: 10,
                     ),
@@ -201,22 +206,27 @@ class DashboardScreen extends StatelessWidget {
           ],
         ),*/
         drawer: Obx(() => drawer(
-            _controller.name.value,
-            _controller.designation.value,
+            _controller.name.value, _controller.designation.value,
             wp: wp!(30))),
-
-
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: ()=>_controller.getAllData(true),
+            onPressed: () => _controller.getAllData(true),
             backgroundColor: primaryColor,
-            label: Row(children: [const Icon(AppIcons.reload),const SizedBox(width: 8,),Text('load'.tr)],)
-        ),
+            label: Row(
+              children: [
+                const Icon(AppIcons.reload),
+                const SizedBox(
+                  width: 8,
+                ),
+                Text('load'.tr)
+              ],
+            )),
       ),
     );
   }
 
   Widget _recentFormHorizontalList() {
-    return Obx(()=>ListView.separated(
+    return Obx(
+      () => ListView.separated(
         itemCount: _controller.recentFormList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (ctx, i) {
@@ -225,7 +235,8 @@ class DashboardScreen extends StatelessWidget {
               Get.to(() => FormDetailsScreen());
             },
             child: recentFormCard(
-                title: _controller.recentFormList[i].displayName??'', subTitle:  _controller.recentFormList[i].projectName??''),
+                title: _controller.recentFormList[i].displayName ?? '',
+                subTitle: _controller.recentFormList[i].projectName ?? ''),
           );
         },
         separatorBuilder: (ctx, i) => const SizedBox(
@@ -245,14 +256,7 @@ class DashboardScreen extends StatelessWidget {
               : ListView.separated(
                   itemCount: _controller.projectList.length,
                   itemBuilder: (ctx, i) {
-                    return InkWell(
-                      onTap: () => Get.to(() => ProjectDetailsScreen(_controller.projectList[i])),
-                      child: ongoingProjectCard(
-                          title: _controller.projectList[i].projectName ?? '',
-                          formCount: int.tryParse(_controller.projectList[i].noOfForms ?? '0') ??0,
-                          dateRange: '${"timeline".tr} ${Utils.dateFormat.format(DateTime.tryParse(_controller.projectList[i].startDate!)!)} - ${Utils.dateFormat.format(DateTime.tryParse(_controller.projectList[i].endDate!)!)}',
-                          status: _controller.projectList[i].status == '1'?true:false),
-                    );
+                    return ongoingProjectCard(_controller.projectList[i]);
                   },
                   separatorBuilder: (ctx, i) => const SizedBox(
                     width: 8,

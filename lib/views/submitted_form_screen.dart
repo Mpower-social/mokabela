@@ -14,10 +14,15 @@ import 'package:m_survey/widgets/no_data_found_msg.dart';
 import 'package:m_survey/widgets/progress_bar.dart';
 
 class SubmittedFormScreen extends StatelessWidget {
-  Function? wp;
-  Function? hp;
-
+  late final Function? wp;
+  late final Function? hp;
+  final ProjectListFromLocalDb? project;
   SubmittedFormController controller = Get.find();
+
+  SubmittedFormScreen({this.project}) {
+    controller.currentProject = project;
+    controller.getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +51,7 @@ class SubmittedFormScreen extends StatelessWidget {
                 child: commonButton(
                     text: 'Clear Sent Response',
                     bg: red,
-                    tap: () =>controller.deleteForm(),
+                    tap: () => controller.deleteForm(),
                     width: wp!(50),
                     height: 40),
               )
@@ -67,14 +72,16 @@ class SubmittedFormScreen extends StatelessWidget {
             children: [
               Flexible(
                 flex: 2,
-                child: Obx(()=>Checkbox(
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  value: controller.isCheckedAll.value,
-                  onChanged: (v){
-                    controller.isCheckedAll.value = !controller.isCheckedAll.value;
-                    controller.addCheckBoxData(0,from: 'all');
-                  },
-                ),
+                child: Obx(
+                  () => Checkbox(
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    value: controller.isCheckedAll.value,
+                    onChanged: (v) {
+                      controller.isCheckedAll.value =
+                          !controller.isCheckedAll.value;
+                      controller.addCheckBoxData(0, from: 'all');
+                    },
+                  ),
                 ),
               ),
               Flexible(
@@ -84,9 +91,7 @@ class SubmittedFormScreen extends StatelessWidget {
                   child: Obx(
                     () => DropdownButtonFormField<ProjectListFromLocalDb>(
                         isExpanded: true,
-                        value: controller.selectedProject.value.id == 0
-                            ? controller.projectList[0]
-                            : controller.selectedProject.value,
+                        value: controller.selectedProject,
                         items: controller.projectList
                             .map(
                                 (e) => DropdownMenuItem<ProjectListFromLocalDb>(
@@ -99,8 +104,7 @@ class SubmittedFormScreen extends StatelessWidget {
                           horPadding: 10,
                         ),
                         onChanged: (v) {
-                          controller.selectedProject.value = v!;
-                          controller.filter(v.id??0);
+                          controller.filter(v?.id ?? 0);
                         }),
                   ),
                 ),
@@ -111,20 +115,20 @@ class SubmittedFormScreen extends StatelessWidget {
         Flexible(
           flex: 3,
           child: InkWell(
-            onTap: (){
+            onTap: () {
               controller.ascOrDesc.value = !controller.ascOrDesc.value;
               controller.sortByDate();
             },
             child: Container(
-              constraints: const BoxConstraints(
-                  minHeight: 30
-              ),
+              constraints: const BoxConstraints(minHeight: 30),
               padding: const EdgeInsets.all(2),
               decoration: BoxDecoration(
                   border: Border.all(color: grey),
-                  borderRadius: BorderRadius.circular(10)
+                  borderRadius: BorderRadius.circular(10)),
+              child: const Icon(
+                AppIcons.group_15,
+                size: 35,
               ),
-              child: const Icon(AppIcons.group_15 ,size: 35,),
             ),
           ),
         )
@@ -139,9 +143,10 @@ class SubmittedFormScreen extends StatelessWidget {
           : controller.isCheckList.length == 0
               ? noDataFound()
               : ListView.separated(
-                  itemCount:  controller.isCheckList.length,
+                  itemCount: controller.isCheckList.length,
                   itemBuilder: (ctx, i) {
-                    SubmittedFormListData data = controller.isCheckList[i].submittedFormListData!;
+                    SubmittedFormListData data =
+                        controller.submittedFormList[i]!;
                     return Container(
                       width: wp!(100),
                       padding: EdgeInsets.only(left: 10, right: 10),
@@ -154,18 +159,22 @@ class SubmittedFormScreen extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Obx(()=>Checkbox(
-                                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                  value: (controller.isCheckList.value[i].isChecked),
-                                  onChanged: (v){
-                                    controller.addCheckBoxData(i,formData:controller.isCheckList[i].submittedFormListData);
-                                  }
-                              ),
+                              Obx(
+                                () => Checkbox(
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    value: (controller
+                                        .isCheckList.value[i].isChecked),
+                                    onChanged: (v) {
+                                      controller.addCheckBoxData(i,
+                                          formData:
+                                              controller.submittedFormList[i]);
+                                    }),
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(data.formName??''),
+                                  Text(data.formName ?? ''),
                                   const SizedBox(
                                     height: 5,
                                   ),
@@ -178,7 +187,8 @@ class SubmittedFormScreen extends StatelessWidget {
                                       SizedBox(
                                         width: 2,
                                       ),
-                                      Text(Utils.dateFormat.format(DateTime.parse(data.dateCreated!))),
+                                      Text(Utils.dateFormat.format(
+                                          DateTime.parse(data.dateCreated!))),
                                       SizedBox(
                                         width: 5,
                                       ),
@@ -189,7 +199,8 @@ class SubmittedFormScreen extends StatelessWidget {
                                       SizedBox(
                                         width: 2,
                                       ),
-                                      Text(Utils.timeFormat.format(DateTime.parse(data.dateCreated!))),
+                                      Text(Utils.timeFormat.format(
+                                          DateTime.parse(data.dateCreated!))),
                                     ],
                                   )
                                 ],
