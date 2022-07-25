@@ -98,6 +98,12 @@ class SubmittedFormController extends GetxController {
 
   ///delete data
   void deleteForm() async {
+    var anySelected = isCheckList.any((element) => element.isChecked == true);
+    if (!anySelected) {
+      showToast(msg: 'You didn\'t select any form to delete');
+      return;
+    }
+
     try {
       for (var element in isCheckList) {
         print(element.isChecked);

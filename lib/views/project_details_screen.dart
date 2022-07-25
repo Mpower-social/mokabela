@@ -105,7 +105,7 @@ class ProjectDetailsScreen extends StatelessWidget {
 
             Expanded(
               child: Container(
-                margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                margin: const EdgeInsets.only(left: 15, right: 15, top: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,19 +140,20 @@ class ProjectDetailsScreen extends StatelessWidget {
                   itemCount: _controller.allFormList.length,
                   itemBuilder: (ctx, i) {
                     AllFormsData data = _controller.allFormList[i]!;
-                    return InkWell(
-                      onTap: () => Get.to(() => FormDetailsScreen(
-                            projectListFromData: _projectListFromData,
-                            allFormsData: data,
-                          )),
-                      child: formCard(
-                          title: data.title ?? '',
-                          subTittle: data.projectName ?? '',
-                          date: Utils.dateFormat
-                              .format(DateTime.parse(data.createdAt!)),
-                          totalSubmission: data.totalSubmission ?? 0,
-                          totalForm: data.target ?? 0,
-                          submittedForm: data.totalSubmission ?? 0),
+                    return formCard(
+                      title: data.title ?? '',
+                      subTittle: data.projectName ?? '',
+                      date: Utils.dateFormat
+                          .format(DateTime.parse(data.createdAt!)),
+                      totalSubmission: data.totalSubmission ?? 0,
+                      totalForm: data.target ?? 0,
+                      submittedForm: data.totalSubmission ?? 0,
+                      onTap: () => Get.to(
+                        () => FormDetailsScreen(
+                          projectListFromData: _projectListFromData,
+                          allFormsData: data,
+                        ),
+                      ),
                     );
                   },
                 ),
@@ -161,21 +162,25 @@ class ProjectDetailsScreen extends StatelessWidget {
 
   Widget _search() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        title(title: 'All Forms', wp: wp!(40)),
-        SizedBox(
-          height: 35,
-          width: wp!(40),
-          child: TextFormField(
-            autofocus: false,
-            style: const TextStyle(color: Colors.black),
-            decoration: CommonStyle.textFieldStyle(
-                verPadding: 10,
-                horPadding: 12,
-                fillColor: primaryColor,
-                borderColor: grey,
-                hintTextStr: 'Search'),
+        Expanded(
+          flex: 4,
+          child: title(title: 'All Forms'),
+        ),
+        Expanded(
+          flex: 6,
+          child: SizedBox(
+            height: 35,
+            child: TextFormField(
+              autofocus: false,
+              style: const TextStyle(color: Colors.black),
+              decoration: CommonStyle.textFieldStyle(
+                  horPadding: 12,
+                  fillColor: primaryColor,
+                  borderColor: grey,
+                  hintTextStr: 'Search'),
+            ),
           ),
         ),
         const SizedBox(
