@@ -156,7 +156,6 @@ class ProjectDetailsScreen extends StatelessWidget {
           width: wp!(40),
           child: TextFormField(
             autofocus: false,
-            controller: _controller.searchEditingController,
             style: const TextStyle(color: Colors.black),
             decoration: CommonStyle.textFieldStyle(
                 verPadding:10,

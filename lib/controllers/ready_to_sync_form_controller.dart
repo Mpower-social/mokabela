@@ -98,7 +98,7 @@ class ReadyToSyncFormFormController extends GetxController{
       for(var element in isCheckList){
         if(element.isChecked && element.formData != null){
           final results = await _formRepository.submitFormOperation(1,element.formData);
-          if (results != null && results.isNotEmpty) {
+          if (results.isNotEmpty) {
             //succ
           }
         }
