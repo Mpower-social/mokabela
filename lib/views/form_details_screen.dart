@@ -20,8 +20,8 @@ class FormDetailsScreen extends StatelessWidget {
   AllFormsData? allFormsData;
   FormDetailsController controller = Get.find();
 
-  FormDetailsScreen({this.projectListFromData,this.allFormsData}){
-    controller.getTotalSubmittedForm(allFormsData?.idString??'');
+  FormDetailsScreen({this.projectListFromData, this.allFormsData}) {
+    controller.getTotalSubmittedForm(allFormsData?.idString ?? '');
   }
   @override
   Widget build(BuildContext context) {
@@ -30,64 +30,66 @@ class FormDetailsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: baseAppBarWithDrawer(
-          context:context,
-          title: '${allFormsData?.title??''}',
+          context: context,
+          title: '${allFormsData?.title ?? ''}',
         ),
-        body:Container(
-            height: hp!(100),
-            width: wp!(100),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    height: .5,
-                    width: wp!(100),
-                    color: white,
-                  ),
-                  _topPart(),
-                  SizedBox(
-                    height: hp!(4),
-                  ),
-                  _collectButton(),
-                  SizedBox(
-                    height: hp!(4),
-                  ),
-                  iconButton(
-                      icon: AppIcons.draft,
-                      title: 'Drafts(47)',
-                      bg: primaryColor,
-                      textColor: white,
-                      height: 45,
-                      width: wp!(85),
-                      onTap: () => Get.to(() => FormListScreen(FormStatus.draft))),
-                  SizedBox(
-                    height: hp!(1),
-                  ),
-                  iconButton(
-                      icon: CupertinoIcons.checkmark_square_fill,
-                      title: 'Ready to Sync(101)',
-                      bg: primaryColor,
-                      textColor: white,
-                      height: 45,
-                      width: wp!(85),
-                      onTap: () => Get.to(() => FormListScreen(FormStatus.readyToSync))),
-                  SizedBox(
-                    height: hp!(1),
-                  ),
-                  iconButton(
-                    icon: Icons.remove_red_eye,
-                    title: 'Submitted(512)',
+        body: Container(
+          height: hp!(100),
+          width: wp!(100),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  height: .5,
+                  width: wp!(100),
+                  color: white,
+                ),
+                _topPart(),
+                SizedBox(
+                  height: hp!(4),
+                ),
+                _collectButton(),
+                SizedBox(
+                  height: hp!(4),
+                ),
+                iconButton(
+                    icon: AppIcons.draft,
+                    title: 'Drafts(47)',
                     bg: primaryColor,
                     textColor: white,
                     height: 45,
                     width: wp!(85),
-                    onTap: () => Get.to(() => FormListScreen(FormStatus.submitted)),
-                  )
-                ],
-              ),
+                    onTap: () =>
+                        Get.to(() => FormListScreen(FormStatus.draft))),
+                SizedBox(
+                  height: hp!(1),
+                ),
+                iconButton(
+                    icon: CupertinoIcons.checkmark_square_fill,
+                    title: 'Ready to Sync(101)',
+                    bg: primaryColor,
+                    textColor: white,
+                    height: 45,
+                    width: wp!(85),
+                    onTap: () =>
+                        Get.to(() => FormListScreen(FormStatus.readyToSync))),
+                SizedBox(
+                  height: hp!(1),
+                ),
+                iconButton(
+                  icon: Icons.remove_red_eye,
+                  title: 'Submitted(512)',
+                  bg: primaryColor,
+                  textColor: white,
+                  height: 45,
+                  width: wp!(85),
+                  onTap: () =>
+                      Get.to(() => FormListScreen(FormStatus.submitted)),
+                )
+              ],
             ),
           ),
-
+        ),
       ),
     );
   }
@@ -106,12 +108,13 @@ class FormDetailsScreen extends StatelessWidget {
               text: TextSpan(children: [
                 TextSpan(text: 'Project: '),
                 TextSpan(
-                    text: '${projectListFromData?.projectName??''}',
+                    text: '${projectListFromData?.projectName ?? ''}',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ]),
             ),
             SizedBox(height: hp!(5)),
-            Obx(()=>Text(
+            Obx(
+              () => Text(
                 'Total(${controller.submittedFormList.length})',
                 style: TextStyle(color: white),
               ),
@@ -126,16 +129,16 @@ class FormDetailsScreen extends StatelessWidget {
             ),
             SizedBox(height: hp!(1.5)),
             Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    '${allFormsData?.totalSubmission??'0'}',
-                    style: TextStyle(color: white),
-                  ),
-                  Text('${allFormsData?.target??'0'}', style: TextStyle(color: white))
-                ],
-              ),
-
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  '${allFormsData?.totalSubmission ?? '0'}',
+                  style: TextStyle(color: white),
+                ),
+                Text('${allFormsData?.target ?? '0'}',
+                    style: TextStyle(color: white))
+              ],
+            ),
           ],
         ));
   }
@@ -157,7 +160,7 @@ class FormDetailsScreen extends StatelessWidget {
               color: Colors.green,
               child: InkWell(
                 onTap: () {
-                  controller.openOdkForm();
+                  controller.openOdkForm(projectListFromData?.id);
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
