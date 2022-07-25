@@ -73,7 +73,6 @@ class DashboardRepository {
     return await getAllSubmittedFromLocalByDelete();
   }
 
-
   Future<List<AllFormsData?>> getAllFormList() async{
     final Database? db = await DatabaseProvider.dbProvider.database;
 
@@ -88,7 +87,7 @@ class DashboardRepository {
                 id: formData.id,
                 xFormId: formData.attributes?.xformId,
                 title: formData.attributes?.title,
-                idString: formData.attributes?.title,
+                idString: formData.attributes?.idString,
                 createdAt: formData.attributes?.createdAt,
                 target: formData.attributes?.target,
                 projectId: formData.attributes?.project?.id,

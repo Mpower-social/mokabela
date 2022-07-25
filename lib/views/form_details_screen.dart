@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:m_survey/app_icons_icons.dart';
 import 'package:m_survey/controllers/form_details_controller.dart';
 import 'package:m_survey/enum/form_status.dart';
+import 'package:m_survey/models/local/all_form_list_data.dart';
+import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
 import 'package:m_survey/views/form_list_screen.dart';
@@ -14,8 +16,13 @@ import 'package:get/get.dart';
 class FormDetailsScreen extends StatelessWidget {
   Function? wp;
   Function? hp;
-
+  ProjectListFromLocalDb? projectListFromData;
+  AllFormsData? allFormsData;
   FormDetailsController controller = Get.find();
+
+  FormDetailsScreen({this.projectListFromData,this.allFormsData}){
+    controller.getTotalSubmittedForm(allFormsData?.idString??'');
+  }
   @override
   Widget build(BuildContext context) {
     wp = Screen(MediaQuery.of(context).size).wp;
@@ -24,7 +31,7 @@ class FormDetailsScreen extends StatelessWidget {
       child: Scaffold(
         appBar: baseAppBarWithDrawer(
           context:context,
-          title: 'Student Registration 2020',
+          title: '${allFormsData?.title??''}',
         ),
         body:Container(
             height: hp!(100),
@@ -99,14 +106,15 @@ class FormDetailsScreen extends StatelessWidget {
               text: TextSpan(children: [
                 TextSpan(text: 'Project: '),
                 TextSpan(
-                    text: 'BRAC-Edu:',
+                    text: '${projectListFromData?.projectName??''}',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ]),
             ),
             SizedBox(height: hp!(5)),
-            Text(
-              'Total(700)',
-              style: TextStyle(color: white),
+            Obx(()=>Text(
+                'Total(${controller.submittedFormList.length})',
+                style: TextStyle(color: white),
+              ),
             ),
             SizedBox(height: hp!(1.5)),
             LinearPercentIndicator(
@@ -118,15 +126,16 @@ class FormDetailsScreen extends StatelessWidget {
             ),
             SizedBox(height: hp!(1.5)),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  '170',
-                  style: TextStyle(color: white),
-                ),
-                Text('530', style: TextStyle(color: white))
-              ],
-            )
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    '${allFormsData?.totalSubmission??'0'}',
+                    style: TextStyle(color: white),
+                  ),
+                  Text('${allFormsData?.target??'0'}', style: TextStyle(color: white))
+                ],
+              ),
+
           ],
         ));
   }

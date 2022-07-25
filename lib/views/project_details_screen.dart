@@ -9,6 +9,7 @@ import 'package:m_survey/style/common_style.dart';
 import 'package:m_survey/utils/utils.dart';
 import 'package:m_survey/views/active_form_screen.dart';
 import 'package:m_survey/views/draft_form_screen.dart';
+import 'package:m_survey/views/form_details_screen.dart';
 import 'package:m_survey/views/ready_to_sync_form_screen.dart';
 import 'package:m_survey/views/submitted_form_screen.dart';
 import 'package:m_survey/views/widgets/form_card.dart';
@@ -131,7 +132,7 @@ class ProjectDetailsScreen extends StatelessWidget {
       itemBuilder: (ctx,i){
         AllFormsData data = _controller.allFormList[i]!;
         return InkWell(
-          onTap: (){},
+          onTap: ()=>Get.to(()=>FormDetailsScreen(projectListFromData: _projectListFromData,allFormsData: data,)),
           child: formCard(
               title: data.title??'',
               subTittle: data.projectName??'',
