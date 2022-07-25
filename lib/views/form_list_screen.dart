@@ -22,6 +22,8 @@ class FormListScreen extends StatelessWidget {
   FormListScreen(this.formStatus, this.allFormsData) {
     if (formStatus == FormStatus.draft) {
       controller.getDraftFormByFormId(allFormsData?.idString??'');
+    }else if(formStatus == FormStatus.readyToSync){
+      controller.getCompleteFormList(allFormsData?.idString??'');
     }
   }
 
@@ -71,13 +73,13 @@ class FormListScreen extends StatelessWidget {
                           commonButton(
                               text: 'Send Back to draft',
                               bg: primaryColor,
-                              tap: () => controller.sendBackToDraft(),
+                              tap: () => controller.sendBackToDraft(allFormsData?.idString??''),
                               width: wp!(40),
                               height: 40),
                           commonButton(
                               text: 'Sync',
                               bg: green,
-                              tap: () => controller.sync(),
+                              tap: () => controller.sync(allFormsData?.id??''),
                               width: wp!(40),
                               height: 40),
                         ],
@@ -98,13 +100,14 @@ class FormListScreen extends StatelessWidget {
           children: [
             Visibility(
               visible: formStatus == FormStatus.draft ? false : true,
-              child: Checkbox(
+              child:  Obx(()=>Checkbox(
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 value: controller!.isCheckedAll.value,
-                onChanged: (v) {
-                  controller.isCheckedAll.value =
-                      !controller.isCheckedAll.value;
+                onChanged: (v){
+                  controller.isCheckedAll.value = !controller.isCheckedAll.value;
+                  controller.addCheckBoxData(0,from: 'all');
                 },
+              ),
               ),
             ),
             _datePickerUi('Start', controller),
@@ -122,8 +125,8 @@ class FormListScreen extends StatelessWidget {
           flex: 3,
           child: InkWell(
             onTap: (){
-              controller.ascOrDesc.value = !controller.ascOrDesc.value;
-              controller.sortByDate();
+              controller?.ascOrDesc.value = !controller.ascOrDesc.value;
+              controller?.sortByDate();
             },
             child: Container(
               constraints: const BoxConstraints(
@@ -169,15 +172,14 @@ class FormListScreen extends StatelessWidget {
                                 visible: formStatus == FormStatus.draft
                                     ? false
                                     : true,
-                                child: Checkbox(
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  value: controller.isCheckedAll.value,
-                                  onChanged: (v) {
-                                    controller.isCheckedAll.value =
-                                        !controller.isCheckedAll.value;
-                                  },
-                                ),
+                                child: formStatus == FormStatus.draft?Container():Obx(()=>Checkbox(
+                                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                      value: controller.isCheckList.value[i].isChecked,
+                                      onChanged: (v){
+                                        controller.addCheckBoxData(i,formData:controller.formList[i]);
+                                      }
+                                  ),
+                                )
                               ),
                               const Icon(
                                 Icons.date_range,

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:m_survey/models/draft_checkbox_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/repository/form_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
+import 'package:m_survey/widgets/progress_dialog.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 
 class FormListController extends GetxController{
@@ -17,6 +19,7 @@ class FormListController extends GetxController{
   var _formRepository = FormRepository();
   var formList = <formData.FormData>[].obs;
   var formListTemp = <formData.FormData>[].obs;
+  var isCheckList = <DraftCheckboxData>[].obs;
 
 
   var selectedProject = ProjectListFromLocalDb(id: 0,projectName: 'Select project').obs;
@@ -53,8 +56,23 @@ class FormListController extends GetxController{
   }
 
   ///sync selected form
-  void sync()async {
-    await _formRepository.submitFormOperation(1,null);
+  void sync(String? formId)async{
+    progressDialog();
+    try{
+      for(var element in isCheckList){
+        if(element.isChecked && element.formData != null){
+          final results = await _formRepository.submitFormOperation(1,element.formData);
+          if (results.isNotEmpty) {
+            //succ
+          }
+        }
+      }
+    }catch(_){
+
+    }finally{
+      await getCompleteFormList(formId);
+      Get.back();
+    }
   }
 
   ///sort (asc/desc) all forms by date
@@ -73,9 +91,6 @@ class FormListController extends GetxController{
       }).toList();
     }
   }
-
-  ///send forms to draft
-  void sendBackToDraft() {}
 
   void getDraftFormByFormId(String? formId) async{
     isLoadingForm.value = true;
@@ -98,6 +113,7 @@ class FormListController extends GetxController{
       formList.value = formData.formDataFromJson(results);
       formListTemp.value = formList.value;
       isLoadingForm.value = false;
+      setupDefaultCheckBox();
       return;
     }
     formList.value = [];
@@ -132,6 +148,74 @@ class FormListController extends GetxController{
       Get.back();
        getDraftFormByFormId(formId);
       return;
+    }
+  }
+
+  ///sending complete list to draft
+  void sendBackToDraft(String? formId) async{
+    for(var element in isCheckList){
+      if(element.isChecked && element.formData != null){
+        final results = await OdkUtil.instance.sendBackToDraft(element.formData?.id??0);
+        if (results != null && results.isNotEmpty) {
+          //succ
+        }
+      }
+    }
+    await getCompleteFormList(formId);
+    setupDefaultCheckBox();
+  }
+
+  ///sync data
+  void syncCompleteForm(String? formId)async{
+    progressDialog();
+    try{
+      for(var element in isCheckList){
+        if(element.isChecked && element.formData != null){
+          final results = await _formRepository.submitFormOperation(1,element.formData);
+          if (results.isNotEmpty) {
+            //succ
+          }
+        }
+      }
+    }catch(_){
+
+    }finally{
+      await getCompleteFormList(formId);
+      Get.back();
+    }
+  }
+
+  //initial defaults checkbox
+  void setupDefaultCheckBox() {
+    isCheckList.clear();
+    formList.forEach((element) {
+      isCheckList.add(DraftCheckboxData(false, null));
+    });
+  }
+
+  ///handling checkbox
+  void addCheckBoxData(var pos, {from = 'each',formData.FormData? formData}) {
+
+    if(from == 'each'){
+      var trueCount = 0;
+      isCheckList[pos] = DraftCheckboxData(!isCheckList[pos].isChecked,formData);
+
+      isCheckList.forEach((element) {
+        if(element.isChecked) trueCount++;
+      });
+      print(trueCount);
+
+      if(trueCount == formList.length) isCheckedAll.value = true;
+      else  isCheckedAll.value = false;
+
+    }else{
+      for(int i=0;i<formList.length;i++){
+        if(isCheckedAll.value){
+          isCheckList[i] = DraftCheckboxData(true,formList[i]);
+        }else{
+          isCheckList[i] = DraftCheckboxData(false,formList[i]);
+        }
+      }
     }
   }
 
