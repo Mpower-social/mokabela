@@ -68,6 +68,8 @@ class SubmittedFormController extends GetxController {
 
   ///filter submitted project list
   void filter(int projectId) {
+    if (projectId == selectedProject.id) return;
+
     selectedProject =
         projectList.firstWhere((element) => element.id == projectId);
 
@@ -124,6 +126,7 @@ class SubmittedFormController extends GetxController {
     submittedFormList.forEach((element) {
       isCheckList.add(SubmittedCheckboxData(false, element));
     });
+
     isCheckListTemp = isCheckList;
   }
 

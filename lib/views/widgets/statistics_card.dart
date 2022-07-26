@@ -13,7 +13,7 @@ Widget statisticsCard(
     decoration: BoxDecoration(
         color: primaryColor,
         border: Border(
-          bottom: BorderSide(width: .25, color: white),
+          top: BorderSide(width: .25, color: white),
           left: BorderSide(
               width: .25, color: position == 1 | 3 ? primaryColor : white),
           right: BorderSide(

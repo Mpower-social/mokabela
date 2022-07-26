@@ -75,9 +75,11 @@ class ProjectDetailsScreen extends StatelessWidget {
             Row(
               children: [
                 InkWell(
-                  onTap: () => Get.to(() => SubmittedFormScreen(
-                        project: _projectListFromData,
-                      )),
+                  onTap: () => Get.to(
+                    () => SubmittedFormScreen(
+                      project: _projectListFromData,
+                    ),
+                  ),
                   child: Obx(
                     () => statisticsCard(
                         title: 'Submitted',
@@ -89,7 +91,11 @@ class ProjectDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () => Get.to(() => ReadyToSyncFormScreen()),
+                  onTap: () => Get.to(
+                    () => ReadyToSyncFormScreen(
+                      project: _projectListFromData,
+                    ),
+                  ),
                   child: Obx(
                     () => statisticsCard(
                         title: 'Ready to Sync',

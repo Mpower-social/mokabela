@@ -31,7 +31,7 @@ class SubmittedFormScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: baseAppBar(title: 'App Submission Response'),
+        appBar: baseAppBar(title: 'Submitted Forms'),
         body: Container(
           height: hp!(100),
           width: wp!(100),
@@ -93,6 +93,15 @@ class SubmittedFormScreen extends StatelessWidget {
                     child: Obx(
                       () => DropdownButtonFormField<ProjectListFromLocalDb>(
                           isExpanded: true,
+                          selectedItemBuilder: (_) {
+                            return controller.projectList
+                                .map((ProjectListFromLocalDb item) {
+                              return Text(
+                                item.projectName!,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              );
+                            }).toList();
+                          },
                           value: controller.selectedProject,
                           items: controller.projectList
                               .map((e) =>
@@ -172,8 +181,8 @@ class SubmittedFormScreen extends StatelessWidget {
                                     ),
                                     materialTapTargetSize:
                                         MaterialTapTargetSize.shrinkWrap,
-                                    value: (controller
-                                        .isCheckList.value[i].isChecked),
+                                    value:
+                                        (controller.isCheckList[i].isChecked),
                                     onChanged: (v) {
                                       controller.addCheckBoxData(i,
                                           formData:
@@ -184,31 +193,27 @@ class SubmittedFormScreen extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(data.formName ?? ''),
-                                  const SizedBox(
-                                    height: 5,
+                                  Text(
+                                    data.formName ?? '',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
                                   ),
+                                  const SizedBox(height: 5),
                                   Row(
                                     children: [
                                       Icon(
                                         Icons.date_range,
                                         size: 15,
                                       ),
-                                      SizedBox(
-                                        width: 2,
-                                      ),
+                                      SizedBox(width: 2),
                                       Text(Utils.dateFormat.format(
                                           DateTime.parse(data.dateCreated!))),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
+                                      SizedBox(width: 5),
                                       Icon(
                                         Icons.access_time,
                                         size: 15,
                                       ),
-                                      SizedBox(
-                                        width: 2,
-                                      ),
+                                      SizedBox(width: 2),
                                       Text(Utils.timeFormat.format(
                                           DateTime.parse(data.dateCreated!))),
                                     ],

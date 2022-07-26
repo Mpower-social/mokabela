@@ -9,12 +9,12 @@ import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/widgets/progress_dialog.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 
-class ReadyToSyncFormFormController extends GetxController{
+class ReadyToSyncFormController extends GetxController {
   var formList = <formData.FormData>[].obs;
   var formListTemp = <formData.FormData>[].obs;
   var selectedFormList = <formData.FormData>[].obs;
 
-  var selectedProject = ProjectListFromLocalDb(id: 0,projectName: 'Select project').obs;
+  var selectedProject;
   var isLoadingForm = false.obs;
   var isCheckedAll = false.obs;
   var isCheckList = <DraftCheckboxData>[].obs;
@@ -28,86 +28,126 @@ class ReadyToSyncFormFormController extends GetxController{
 
   ///true=asc, false=desc
   var ascOrDesc = false.obs;
+  ProjectListFromLocalDb? currentProject;
 
-  @override
-  void onInit()async{
-    super.onInit();
-    await loadProjects();
-    await getCompleteFormList();
-    setupDefaultCheckBox();
-  }
-
-  loadProjects() async{
+  loadProjects() async {
     projectList.clear();
-    projectList.add(ProjectListFromLocalDb(id: 0,projectName: 'Select project'));
+    selectedProject =
+        ProjectListFromLocalDb(id: 0, projectName: 'Select project');
+
+    projectList.add(selectedProject);
     projectList.addAll(await _dashboardRepository.getAllProjectFromLocal());
   }
 
-
-  ///getting all complete form here
-  getCompleteFormList() async{
+  getAllData() async {
     isLoadingForm.value = true;
-    final results = await OdkUtil.instance.getFinalizedForms(['member_register_test901']);
+    await loadProjects();
+    final results = await OdkUtil.instance.getFinalizedForms([]);
     if (results != null && results.isNotEmpty) {
       formList.value = formData.formDataFromJson(results);
-      formListTemp.value = formList.value;
-      isLoadingForm.value = false;
-      return;
+      formListTemp.value = List.from(formList);
     }
-    formList.value = [];
+
     isLoadingForm.value = false;
   }
 
+  getProjectData() async {
+    isLoadingForm.value = true;
+    projectList.clear();
+    selectedProject = currentProject;
+    projectList.add(selectedProject);
+
+    var formIds = ['member_register_test901'];
+    var results = await OdkUtil.instance.getFinalizedForms(formIds);
+    if (results != null && results.isNotEmpty) {
+      formList.value = formData.formDataFromJson(results);
+      formListTemp.value = List.from(formList);
+    }
+
+    isLoadingForm.value = false;
+  }
+
+  getData() async {
+    if (currentProject == null)
+      await getAllData();
+    else
+      await getProjectData();
+
+    setupDefaultCheckBox();
+  }
+
   ///delete specific form
-  void deleteForm(int id) async{
+  void deleteForm(int id) async {
     final results = await OdkUtil.instance.deleteDraftForm(id);
     if (results != null && results.isNotEmpty) {
       Get.back();
-      await getCompleteFormList();
+      await getData();
       await _dashboardController.getDraftFormCount();
       return;
     }
   }
 
   ///filter draft project list
-  void filter(int projectId){
-    if(projectId == 0) formList.value = formListTemp.value;
-    else formList.value = formListTemp.where((v) => v.projectId == projectId).toList();
+  void filter(int projectId) {
+    if (projectId == selectedProject.id) return;
+
+    selectedProject =
+        projectList.firstWhere((element) => element.id == projectId);
+
+    if (projectId == 0)
+      formList.value = formListTemp;
+    else
+      formList.value =
+          formListTemp.where((v) => (v.projectId ?? 0) == projectId).toList();
+
     setupDefaultCheckBox();
   }
 
   ///sending complete list to draft
-  void sendBackToDraft() async{
-   for(var element in isCheckList){
-     if(element.isChecked && element.formData != null){
-       final results = await OdkUtil.instance.sendBackToDraft(element.formData?.id??0);
-       if (results != null && results.isNotEmpty) {
-         //succ
-       }
-     }
-   }
-   await getCompleteFormList();
-   setupDefaultCheckBox();
-   await _dashboardController.getDraftFormCount();
-   await _dashboardController.getCompleteFormCount();
+  void sendBackToDraft() async {
+    var anySelected = isCheckList.any((element) => element.isChecked == true);
+    if (!anySelected) {
+      showToast(msg: 'You didn\'t select any form');
+      return;
+    }
+
+    for (var element in isCheckList) {
+      if (element.isChecked && element.formData != null) {
+        final results =
+            await OdkUtil.instance.sendBackToDraft(element.formData?.id ?? 0);
+        if (results != null && results.isNotEmpty) {
+          //succ
+        }
+      }
+    }
+    isCheckedAll.value = false;
+    await getData();
+
+    await _dashboardController.getDraftFormCount();
+    await _dashboardController.getCompleteFormCount();
   }
-  
+
   ///sync data
-  void syncCompleteForm()async{
+  void syncCompleteForm() async {
+    var anySelected = isCheckList.any((element) => element.isChecked == true);
+    if (!anySelected) {
+      showToast(msg: 'You didn\'t select any form');
+      return;
+    }
+
     progressDialog();
-    try{
-      for(var element in isCheckList){
-        if(element.isChecked && element.formData != null){
+    try {
+      for (var element in isCheckList) {
+        if (element.isChecked && element.formData != null) {
           final results = await _formRepository.submitFormOperation(element.formData);
           if (results.isNotEmpty) {
             //succ
           }
         }
       }
-    }catch(_){
-
-    }finally{
-      await getCompleteFormList();
+    } catch (_) {
+    } finally {
+      await getData();
       Get.back();
     }
   }
@@ -116,45 +156,47 @@ class ReadyToSyncFormFormController extends GetxController{
   void setupDefaultCheckBox() {
     isCheckList.clear();
     formList.forEach((element) {
-      isCheckList.add(DraftCheckboxData(false, null));
+      isCheckList.add(DraftCheckboxData(false, element));
     });
   }
 
   ///handling checkbox
-  void addCheckBoxData(var pos, {from = 'each',formData.FormData? formData}) {
+  void addCheckBoxData(var pos, {from = 'each', formData.FormData? formData}) {
+    if (from == 'each') {
+      var trueCount = 0;
+      isCheckList[pos] =
+          DraftCheckboxData(!isCheckList[pos].isChecked, formData);
 
-   if(from == 'each'){
-     var trueCount = 0;
-     isCheckList[pos] = DraftCheckboxData(!isCheckList[pos].isChecked,formData);
+      isCheckList.forEach((element) {
+        if (element.isChecked) trueCount++;
+      });
+      print(trueCount);
 
-     isCheckList.forEach((element) {
-       if(element.isChecked) trueCount++;
-     });
-     print(trueCount);
-
-     if(trueCount == formList.length) isCheckedAll.value = true;
-     else  isCheckedAll.value = false;
-
-   }else{
-    for(int i=0;i<formList.length;i++){
-     if(isCheckedAll.value){
-       isCheckList[i] = DraftCheckboxData(true,formList[i]);
-     }else{
-       isCheckList[i] = DraftCheckboxData(false,formList[i]);
-     }
+      if (trueCount == formList.length)
+        isCheckedAll.value = true;
+      else
+        isCheckedAll.value = false;
+    } else {
+      for (int i = 0; i < formList.length; i++) {
+        if (isCheckedAll.value) {
+          isCheckList[i] = DraftCheckboxData(true, formList[i]);
+        } else {
+          isCheckList[i] = DraftCheckboxData(false, formList[i]);
+        }
+      }
     }
-   }
   }
 
-
   ///sort list asc or desc
-  void sortByDate() async{
-    if(formList.value.length>0){
-      if(ascOrDesc.value){
-        formList.sort((a,b)=>a.lastChangeDate!.compareTo(b.lastChangeDate!));
+  void sortByDate() async {
+    if (isCheckList.length > 0) {
+      if (ascOrDesc.value) {
+        isCheckList.sort((a, b) =>
+            a.formData!.lastChangeDate!.compareTo(b.formData!.lastChangeDate!));
         showToast(msg: 'Sorted by ascending order.');
-      }else{
-        formList.sort((a,b)=>-a.lastChangeDate!.compareTo(b.lastChangeDate!));
+      } else {
+        isCheckList.sort((a, b) => -a.formData!.lastChangeDate!
+            .compareTo(b.formData!.lastChangeDate!));
         showToast(msg: 'Sorted by descending order');
       }
     }
