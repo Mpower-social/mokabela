@@ -18,12 +18,14 @@ class FormDetailsScreen extends StatelessWidget {
   Function? hp;
   ProjectListFromLocalDb? projectListFromData;
   AllFormsData? allFormsData;
+  String? formId;
   FormDetailsController controller = Get.find();
 
-  FormDetailsScreen({this.projectListFromData,this.allFormsData}){
-    controller.getTotalSubmittedForm(allFormsData?.idString??'');
-    controller.getDraftFormCount(allFormsData?.idString??'');
-    controller.getCompleteFormCount(allFormsData?.idString??'');
+  FormDetailsScreen({this.projectListFromData,this.allFormsData,this.formId='',}){
+    formId = this.formId!.isEmpty?allFormsData?.idString??'':this.formId;
+    controller.getTotalSubmittedForm(formId);
+    controller.getDraftFormCount(formId);
+    controller.getCompleteFormCount(formId);
   }
   @override
   Widget build(BuildContext context) {
@@ -95,7 +97,7 @@ class FormDetailsScreen extends StatelessWidget {
   }
 
   Widget _topPart() {
-    var progress = (((controller.submittedFormList.length/allFormsData!.target!)*100.0)/100.0);
+    var progress = (((controller.submittedFormList.length/(allFormsData?.target??0))*100.0)/100.0);
     return Container(
         padding: EdgeInsets.all(20),
         constraints: BoxConstraints(minHeight: hp!(25)),

@@ -24,6 +24,8 @@ class FormListScreen extends StatelessWidget {
       controller.getDraftFormByFormId(allFormsData?.idString??'');
     }else if(formStatus == FormStatus.readyToSync){
       controller.getCompleteFormList(allFormsData?.idString??'');
+    }else{
+      controller.getSubmittedFormList(allFormsData?.idString??'');
     }
   }
 
@@ -149,10 +151,10 @@ class FormListScreen extends StatelessWidget {
     return Obx(
       () => controller.isLoadingForm.value == true
           ? progressBar()
-          : controller.formList.length == 0
+          : controller.isCheckList.length == 0
               ? noDataFound()
               : ListView.separated(
-                  itemCount: controller.formList.length,
+                  itemCount: controller.isCheckList.length,
                   itemBuilder: (ctx, i) {
                     return Container(
                       width: wp!(100),
@@ -176,7 +178,7 @@ class FormListScreen extends StatelessWidget {
                                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                       value: controller.isCheckList.value[i].isChecked,
                                       onChanged: (v){
-                                        controller.addCheckBoxData(i,formData:controller.formList[i]);
+                                        controller.addCheckBoxData(i,formData:controller.isCheckList[i].formData);
                                       }
                                   ),
                                 )
@@ -188,7 +190,7 @@ class FormListScreen extends StatelessWidget {
                               const SizedBox(
                                 width: 2,
                               ),
-                              Text(Utils.timeStampToDate(controller.formList[i].lastChangeDate??0)),
+                              Text(Utils.timeStampToDate(controller.isCheckList[i].formData!.lastChangeDate??0)),
                               const SizedBox(
                                 width: 5,
                               ),
@@ -199,7 +201,7 @@ class FormListScreen extends StatelessWidget {
                               const SizedBox(
                                 width: 2,
                               ),
-                              Text(Utils.timeStampToTime(controller.formList[i].lastChangeDate??0)),
+                              Text(Utils.timeStampToTime(controller.isCheckList[i].formData!.lastChangeDate??0)),
                             ],
                           ),
                           Row(
@@ -222,7 +224,7 @@ class FormListScreen extends StatelessWidget {
                                     ? true
                                     : false,
                                 child: IconButton(
-                                  onPressed: ()=>controller.editDraftForm(controller.formList[i].id??0),
+                                  onPressed: ()=>controller.editDraftForm(controller.isCheckList[i].formData!.id??0),
                                   icon: Icon(
                                     AppIcons.edit,
                                     size: 22,
@@ -248,7 +250,7 @@ class FormListScreen extends StatelessWidget {
                                         msg: 'Are you sure to delete ?',
                                         confirmText: 'Yes',
                                         cancelText: 'No',
-                                        onOkTap: ()=>controller.deleteForm( controller.formList[i].id!, allFormsData!.idString!),
+                                        onOkTap: ()=>controller.deleteForm( controller.isCheckList[i].formData!.id!, allFormsData!.idString!),
                                         onCancelTap: ()=>Get.back()
                                     );
                                   },

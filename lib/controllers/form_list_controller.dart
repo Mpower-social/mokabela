@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:m_survey/models/draft_checkbox_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
+import 'package:m_survey/models/local/submitted_form_list_data.dart';
 import 'package:m_survey/repository/form_repository.dart';
+import 'package:m_survey/repository/project_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
 import 'package:m_survey/widgets/progress_dialog.dart';
@@ -20,13 +22,19 @@ class FormListController extends GetxController{
   var formList = <formData.FormData>[].obs;
   var formListTemp = <formData.FormData>[].obs;
   var isCheckList = <DraftCheckboxData>[].obs;
+  var isCheckListTemp = <DraftCheckboxData>[].obs;
 
+
+  var submittedFormList = <SubmittedFormListData?>[].obs;
+  var submittedFormListTemp = <SubmittedFormListData?>[].obs;
 
   var selectedProject = ProjectListFromLocalDb(id: 0,projectName: 'Select project').obs;
   var isLoadingForm = false.obs;
 
   ///true=asc, false=desc
   var ascOrDesc = false.obs;
+
+  ProjectRepository _projectRepository = ProjectRepository();
 
   ///pick date from datepicker
   void pickDate(String s) async{
@@ -61,7 +69,7 @@ class FormListController extends GetxController{
     try{
       for(var element in isCheckList){
         if(element.isChecked && element.formData != null){
-          final results = await _formRepository.submitFormOperation(1,element.formData);
+          final results = await _formRepository.submitFormOperation(element.formData);
           if (results.isNotEmpty) {
             //succ
           }
@@ -81,14 +89,17 @@ class FormListController extends GetxController{
   }
 
   void filter(){
-    print('called');
-    if(selectedStartDate.value==null && selectedEndDate.value==null) formList.value = formListTemp.value;
+    print(selectedStartDate);
+    if(selectedStartDate.value==null && selectedEndDate.value==null) isCheckList.value = isCheckListTemp.value;
     else {
+      print(selectedStartDate);
+
       formList.value = formListTemp.where((v){
         var d = DateTime.fromMillisecondsSinceEpoch(v.lastChangeDate!);
         var datetime = DateTime(d.year,d.month,d.day);
         return (datetime.compareTo(selectedStartDate.value)>=0 && datetime.compareTo(selectedEndDate.value)<=0);
       }).toList();
+      setupDefaultCheckBox();
     }
   }
 
@@ -98,6 +109,7 @@ class FormListController extends GetxController{
     if (results != null && results.isNotEmpty) {
       formList.value = formData.formDataFromJson(results);
       formListTemp.value = formList.value;
+      setupDefaultCheckBox();
       isLoadingForm.value = false;
       return;
     }
@@ -112,22 +124,42 @@ class FormListController extends GetxController{
     if (results != null && results.isNotEmpty) {
       formList.value = formData.formDataFromJson(results);
       formListTemp.value = formList.value;
-      isLoadingForm.value = false;
       setupDefaultCheckBox();
+      isLoadingForm.value = false;
       return;
     }
     formList.value = [];
     isLoadingForm.value = false;
   }
 
+  ///getting submitted forms here
+  void getSubmittedFormList(String formId) async{
+    isLoadingForm.value = true;
+    var submittedList = await _projectRepository.getAllSubmittedFromLocalByForm(formId);
+    submittedList.forEach((element) {
+      formList.add(formData.FormData(
+        id: element.id??0,
+        projectId: element.projectId.toString(),
+        displayName: element.formName??'',
+        formId: element.formIdString??'',
+        lastChangeDate: DateTime.parse(element.dateCreated!).millisecondsSinceEpoch
+      ));
+    });
+    formListTemp.value = formList.value;
+    setupDefaultCheckBox();
+    isLoadingForm.value = false;
+  }
+
   ///sort list asc or desc
   void sortByDate() async{
-    if(formList.length>0){
-      if(ascOrDesc.value){
-        formList.sort((a,b)=>a.lastChangeDate!.compareTo(b.lastChangeDate!));
+    if (isCheckList.length > 0) {
+      if (ascOrDesc.value) {
+        isCheckList.sort((a, b) => a.formData!.lastChangeDate!
+            .compareTo(b.formData!.lastChangeDate!));
         showToast(msg: 'Sorted by ascending order.');
-      }else{
-        formList.sort((a,b)=>-a.lastChangeDate!.compareTo(b.lastChangeDate!));
+      } else {
+        isCheckList.sort((a, b) => -a.formData!.lastChangeDate!
+            .compareTo(b.formData!.lastChangeDate!));
         showToast(msg: 'Sorted by descending order');
       }
     }
@@ -171,7 +203,7 @@ class FormListController extends GetxController{
     try{
       for(var element in isCheckList){
         if(element.isChecked && element.formData != null){
-          final results = await _formRepository.submitFormOperation(1,element.formData);
+          final results = await _formRepository.submitFormOperation(element.formData);
           if (results.isNotEmpty) {
             //succ
           }
@@ -189,8 +221,9 @@ class FormListController extends GetxController{
   void setupDefaultCheckBox() {
     isCheckList.clear();
     formList.forEach((element) {
-      isCheckList.add(DraftCheckboxData(false, null));
+      isCheckList.add(DraftCheckboxData(false, element));
     });
+    isCheckListTemp = isCheckList;
   }
 
   ///handling checkbox

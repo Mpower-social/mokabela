@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:m_survey/app_icons_icons.dart';
 import 'package:m_survey/controllers/dashboard_controller.dart';
+import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
 import 'package:m_survey/utils/utils.dart';
@@ -232,7 +233,10 @@ class DashboardScreen extends StatelessWidget {
         itemBuilder: (ctx, i) {
           return InkWell(
             onTap: () {
-              Get.to(() => FormDetailsScreen());
+              Get.to(() => FormDetailsScreen(formId: _controller.recentFormList[i].formId,projectListFromData: ProjectListFromLocalDb(
+                projectName: _controller.recentFormList[i].displayName ?? '',
+                id: _controller.recentFormList[i].id ?? 0,
+              ),));
             },
             child: recentFormCard(
                 title: _controller.recentFormList[i].displayName ?? '',

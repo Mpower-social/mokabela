@@ -73,6 +73,7 @@ class ReadyToSyncFormFormController extends GetxController{
   void filter(int projectId){
     if(projectId == 0) formList.value = formListTemp.value;
     else formList.value = formListTemp.where((v) => v.projectId == projectId).toList();
+    setupDefaultCheckBox();
   }
 
   ///sending complete list to draft
@@ -97,7 +98,7 @@ class ReadyToSyncFormFormController extends GetxController{
     try{
       for(var element in isCheckList){
         if(element.isChecked && element.formData != null){
-          final results = await _formRepository.submitFormOperation(1,element.formData);
+          final results = await _formRepository.submitFormOperation(element.formData);
           if (results.isNotEmpty) {
             //succ
           }

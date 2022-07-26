@@ -2,8 +2,6 @@ import 'package:get/get.dart';
 import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/models/local/submitted_form_list_data.dart';
-import 'package:m_survey/models/response/all_form_list_response.dart';
-import 'package:m_survey/models/response/submitted_form_list_response.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/utils/shared_pref.dart';

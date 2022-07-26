@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:m_survey/models/draft_checkbox_data.dart';
 import 'package:m_survey/network/apis.dart';
 import 'package:m_survey/network/base_api_provider.dart';
 import 'package:m_survey/network/dio_exception.dart';
@@ -28,7 +26,7 @@ class FormService extends BaseApiProvider{
 
 
   ///submit form data
-  Future<String?> submitFormOperation(projectId, formData) async {
+  Future<String?> submitFormOperation(formData) async {
     try{
     Directory? tempDir = await getExternalStorageDirectory();
 

@@ -58,7 +58,8 @@ class DashboardService extends BaseApiProvider {
   Future<AllFormListResponse?> getAllFormList() async {
     try {
       var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
-      var response = await dio.get(Apis.getAllFormList,
+      var response = await dio.post(Apis.getAllFormList,
+          data:jsonEncode({ "from_date": "2021-01-19"}),
           options: Options(
               headers: {'Authorization': 'Bearer $token',},
               responseType: ResponseType.plain

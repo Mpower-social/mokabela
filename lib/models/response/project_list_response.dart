@@ -85,16 +85,20 @@ class Attributes {
 class ProjectStatus {
   ProjectStatus({
     this.id,
+    this.name
   });
 
   int? id;
+  String? name;
 
   factory ProjectStatus.fromJson(Map<String, dynamic> json) => ProjectStatus(
-    id: json["id"] ?? ''
+    id: json["id"] ?? '',
+      name: json["name"] ?? ''
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id ?? ''
+    "id": id ?? '',
+    "name": name ?? ''
   };
 }
 

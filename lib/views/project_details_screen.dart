@@ -174,6 +174,7 @@ class ProjectDetailsScreen extends StatelessWidget {
             height: 35,
             child: TextFormField(
               autofocus: false,
+              controller: _controller.searchEditingController,
               style: const TextStyle(color: Colors.black),
               decoration: CommonStyle.textFieldStyle(
                   horPadding: 12,

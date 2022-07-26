@@ -28,7 +28,7 @@ class DatabaseProvider{
 
   void initDb(Database database,int version) async{
 
-    //customer table
+    //project list table
     await database.execute(
         'CREATE TABLE IF NOT EXISTS $TABLE_NAME_PROJECT ($PROJECT_ID INTEGER PRIMARY KEY,'
             '$PROJECT_NAME TEXT,'
