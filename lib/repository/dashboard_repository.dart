@@ -15,29 +15,33 @@ class DashboardRepository {
   ////////remote data////////
   Future<List<ProjectListFromLocalDb>> getProjectListOperation(
       currentPage, pageSize, forceLoad) async {
-    final Database? db = await DatabaseProvider.dbProvider.database;
-    List<ProjectListFromLocalDb> projectList = await getAllProjectFromLocal();
+    try{
+      final Database? db = await DatabaseProvider.dbProvider.database;
+      List<ProjectListFromLocalDb> projectList = await getAllProjectFromLocal();
 
-    if (projectList.isEmpty || forceLoad) {
-      ProjectListResponse? projectListResponse = await _dashboardService
-          .getProjectListOperation(currentPage, pageSize);
+      if (projectList.isEmpty || forceLoad) {
+        ProjectListResponse? projectListResponse = await _dashboardService
+            .getProjectListOperation(currentPage, pageSize);
 
-      if (projectListResponse != null) {
-        if (projectListResponse.data!.isNotEmpty) {
-          db!.delete(TABLE_NAME_PROJECT);
-          for (var projectData in projectListResponse.data!) {
-            insertProject(ProjectListFromLocalDb(
-                id: int.tryParse(projectData.id!),
-                projectName: projectData.attributes?.name,
-                startDate: projectData.attributes?.startDate.toString(),
-                endDate: projectData.attributes?.endDate.toString(),
-                status: projectData.attributes?.projectStatus?.id.toString()));
+        if (projectListResponse != null) {
+          if (projectListResponse.data!.isNotEmpty) {
+            db!.delete(TABLE_NAME_PROJECT);
+            for (var projectData in projectListResponse.data!) {
+              insertProject(ProjectListFromLocalDb(
+                  id: int.tryParse(projectData.id!),
+                  projectName: projectData.attributes?.name,
+                  startDate: projectData.attributes?.startDate.toString(),
+                  endDate: projectData.attributes?.endDate.toString(),
+                  status: projectData.attributes?.projectStatus?.id.toString()));
+            }
           }
+          return await getAllProjectFromLocal();
         }
-        return await getAllProjectFromLocal();
       }
+      return projectList;
+    }catch(_){
+      return [];
     }
-    return projectList;
   }
 
   Future<String> getFormList() async {
@@ -45,62 +49,70 @@ class DashboardRepository {
   }
 
   Future<List<SubmittedFormListData?>> getSubmittedFormList() async {
-    final Database? db = await DatabaseProvider.dbProvider.database;
+    try{
+      final Database? db = await DatabaseProvider.dbProvider.database;
 
-    List<SubmittedFormListData> submittedFormList =
-        await getAllSubmittedFromLocal();
+      List<SubmittedFormListData> submittedFormList =
+      await getAllSubmittedFromLocal();
 
-    if (submittedFormList.isEmpty) {
-      List<SubmittedFormListResponse?>? submittedFormListResponse =
-          await _dashboardService.getSubmittedFormList();
-      if (submittedFormList != null) {
-        db!.delete(TABLE_NAME_SUBMITTED_FORM);
-        for (var formData in submittedFormListResponse!) {
-          await insertSubmittedForms(SubmittedFormListData(
-              id: formData?.id,
-              formName: formData?.formName,
-              formIdString: formData?.formIdString,
-              projectId: formData?.projectId,
-              dateCreated: formData?.dateCreated.toString(),
-              submittedById: formData?.submittedBy?.id,
-              submittedByUsername: formData?.submittedBy?.username,
-              submittedByFirstLame: formData?.submittedBy?.firstName,
-              submittedByLastName: formData?.submittedBy?.lastName,
-              xml: formData?.xml));
+      if (submittedFormList.isEmpty) {
+        List<SubmittedFormListResponse?>? submittedFormListResponse =
+        await _dashboardService.getSubmittedFormList();
+        if (submittedFormList != null) {
+          db!.delete(TABLE_NAME_SUBMITTED_FORM);
+          for (var formData in submittedFormListResponse!) {
+            await insertSubmittedForms(SubmittedFormListData(
+                id: formData?.id,
+                formName: formData?.formName,
+                formIdString: formData?.formIdString,
+                projectId: formData?.projectId,
+                dateCreated: formData?.dateCreated.toString(),
+                submittedById: formData?.submittedBy?.id,
+                submittedByUsername: formData?.submittedBy?.username,
+                submittedByFirstLame: formData?.submittedBy?.firstName,
+                submittedByLastName: formData?.submittedBy?.lastName,
+                xml: formData?.xml));
+          }
+          return await getAllSubmittedFromLocalByDelete();
         }
-        return await getAllSubmittedFromLocalByDelete();
       }
+      return await getAllSubmittedFromLocalByDelete();
+    }catch(_){
+      return [];
     }
-    return await getAllSubmittedFromLocalByDelete();
   }
 
   Future<List<AllFormsData?>> getAllFormList() async {
-    final Database? db = await DatabaseProvider.dbProvider.database;
+   //try{
+     final Database? db = await DatabaseProvider.dbProvider.database;
 
-    List<AllFormsData> allFormList = await getAllFromLocal();
-    if (allFormList.isEmpty) {
-      AllFormListResponse? allFormResponse =
-          await _dashboardService.getAllFormList();
+     List<AllFormsData> allFormList = await getAllFromLocal();
+     if (allFormList.isEmpty) {
+       AllFormListResponse? allFormResponse =
+       await _dashboardService.getAllFormList();
 
-      if (allFormResponse?.data != null) {
-        db!.delete(TABLE_NAME_All_FORM);
-        for (Data formData in allFormResponse?.data ?? []) {
-          insertAllForms(AllFormsData(
-            id: formData.id,
-            xFormId: formData.attributes?.xformId,
-            title: formData.attributes?.title,
-            idString: formData.attributes?.idString,
-            createdAt: formData.attributes?.createdAt,
-            target: formData.attributes?.target,
-            projectId: formData.attributes?.project?.id,
-            projectName: formData.attributes?.project?.name,
-            projectDes: formData.attributes?.project?.description,
-          ));
-        }
-        return await getAllFromLocal();
-      }
-    }
-    return allFormList;
+       if (allFormResponse?.data != null) {
+         db!.delete(TABLE_NAME_All_FORM);
+         for (Data formData in allFormResponse?.data ?? []) {
+           insertAllForms(AllFormsData(
+             id: formData.id,
+             xFormId: formData.attributes?.xformId,
+             title: formData.attributes?.title,
+             idString: formData.attributes?.idString,
+             createdAt: formData.attributes?.createdAt,
+             target: formData.attributes?.target,
+             projectId: formData.attributes?.project?.id,
+             projectName: formData.attributes?.project?.name,
+             projectDes: formData.attributes?.project?.description,
+           ));
+         }
+         return await getAllFromLocal();
+       }
+     }
+     return allFormList;
+   /*}catch(_){
+     return [];
+   }*/
   }
 
   ///////////local data/////////

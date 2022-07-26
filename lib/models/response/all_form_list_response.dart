@@ -48,12 +48,13 @@ class Data {
 }
 
 class Attributes {
-  String? id;
+  int? id;
   String? xformId;
   String? title;
   String? idString;
   int? projectId;
   String? createdAt;
+  String? updatedAt;
   int? target;
   Project? project;
 
@@ -64,6 +65,7 @@ class Attributes {
         this.idString,
         this.projectId,
         this.createdAt,
+        this.updatedAt,
         this.target,
         this.project});
 
@@ -74,9 +76,9 @@ class Attributes {
     idString = json['idString'];
     projectId = json['projectId'];
     createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
     target = json['target'];
-    project =
-    json['project'] != null ? new Project.fromJson(json['project']) : null;
+    project = json['project'] != null ? new Project.fromJson(json['project']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -87,6 +89,7 @@ class Attributes {
     data['idString'] = this.idString;
     data['projectId'] = this.projectId;
     data['createdAt'] = this.createdAt;
+    data['updatedAt'] = this.updatedAt;
     data['target'] = this.target;
     if (this.project != null) {
       data['project'] = this.project!.toJson();
