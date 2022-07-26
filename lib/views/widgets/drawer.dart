@@ -76,6 +76,10 @@ Widget drawer(String name, String designation, {required wp}) {
                     'Settings',
                     style: TextStyle(fontSize: 20, color: white),
                   ),
+                  onTap: () {
+                    Get.back();
+                    controller.goToSettings();
+                  },
                 ),
                 ListTile(
                   leading: Icon(

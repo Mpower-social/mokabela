@@ -30,6 +30,7 @@ import org.odk.collect.android.provider.InstanceProviderAPI
 import org.odk.collect.android.provider.InstanceProviderAPI.InstanceColumns
 import org.odk.collect.android.storage.StorageInitializer
 import org.odk.collect.android.utilities.PermissionUtils
+import org.odk.collect.android.preferences.PreferencesActivity
 
 class MainActivity: FlutterActivity() {
     private val CHANNEL = "flutter_to_odk_communication"
@@ -46,6 +47,9 @@ class MainActivity: FlutterActivity() {
             PermissionUtils().requestStoragePermissions(this, object: PermissionListener {
                 override fun granted() {
                     when {
+                        call.method.equals("goToSettings", true) -> {
+                            startActivity(Intent(this@MainActivity, PreferencesActivity::class.java))
+                        }
                         call.method.equals("openForm", true) -> {
                             val formId = call.argument<String>("formId")
                             formArguments = call.argument<Map<String, Any>>("arguments")

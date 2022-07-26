@@ -8,6 +8,10 @@ class OdkUtil {
 
   var methodChannel = MethodChannel('flutter_to_odk_communication');
 
+  Future<dynamic> goToSettings() async {
+    return await methodChannel.invokeMethod('goToSettings');
+  }
+
   Future<dynamic> initializeOdk(String xmlData) async {
     return await methodChannel
         .invokeMethod('initializeOdk', {'xmlData': xmlData});
@@ -48,6 +52,7 @@ class OdkUtil {
   }
 
   Future<dynamic> getRecentForms(List<String> formIds) async {
-    return await methodChannel.invokeMethod('recentForms', {'formIds': formIds});
+    return await methodChannel
+        .invokeMethod('recentForms', {'formIds': formIds});
   }
 }
