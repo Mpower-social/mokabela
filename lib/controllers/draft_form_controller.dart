@@ -6,10 +6,11 @@ import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 
-class DraftFormController extends GetxController{
+class DraftFormController extends GetxController {
   var formList = <formData.FormData>[].obs;
   var formListTemp = <formData.FormData>[].obs;
-  var selectedProject = ProjectListFromLocalDb(id: 0,projectName: 'Select project').obs;  var isCheckedAll = false.obs;
+  var selectedProject;
+  var isCheckedAll = false.obs;
   var isLoadingDraftForm = false.obs;
 
   var projectList = <ProjectListFromLocalDb>[].obs;
@@ -20,54 +21,82 @@ class DraftFormController extends GetxController{
 
   ///true=asc, false=desc
   var ascOrDesc = false.obs;
-
-  @override
-  void onInit()async{
-    super.onInit();
-    await loadProjects();
-    await getDraftFormList();
-  }
+  ProjectListFromLocalDb? currentProject;
 
   ///getting project list for dropdown
-  loadProjects() async{
+  loadProjects() async {
     projectList.clear();
-    projectList.add(ProjectListFromLocalDb(id: 0,projectName: 'Select project'));
+    selectedProject =
+        ProjectListFromLocalDb(id: 0, projectName: 'Select project');
+
+    projectList.add(selectedProject);
     projectList.addAll(await _dashboardRepository.getAllProjectFromLocal());
   }
 
-  ///getting all draft form here
-  getDraftFormList() async{
+  ///getting active form data and project list here
+  getAllData() async {
     isLoadingDraftForm.value = true;
-    final results = await OdkUtil.instance.getDraftForms(['member_register_test901']);
+    loadProjects();
+
+    final results = await OdkUtil.instance.getDraftForms([]);
     if (results != null && results.isNotEmpty) {
-     formList.value = formData.formDataFromJson(results);
-     formListTemp.value = formList.value;
-     isLoadingDraftForm.value = false;
-     return;
+      formList.value = formData.formDataFromJson(results);
+      formListTemp.value = List.from(formList);
     }
-    formList.value = [];
+
     isLoadingDraftForm.value = false;
   }
 
+  getProjectData() async {
+    isLoadingDraftForm.value = true;
+    projectList.clear();
+    selectedProject = currentProject;
+    projectList.add(selectedProject);
+
+    final results =
+        await OdkUtil.instance.getDraftForms(['member_register_test901']);
+    if (results != null && results.isNotEmpty) {
+      formList.value = formData.formDataFromJson(results);
+      formListTemp.value = List.from(formList);
+    }
+
+    isLoadingDraftForm.value = false;
+  }
+
+  getData() async {
+    if (currentProject == null)
+      await getAllData();
+    else
+      await getProjectData();
+  }
+
   ///delete specific form
-  void deleteForm(int id) async{
+  void deleteForm(int id) async {
     final results = await OdkUtil.instance.deleteDraftForm(id);
     if (results != null && results.isNotEmpty) {
       Get.back();
-      await getDraftFormList();
+      await getData();
       await _dashboardController.getDraftFormCount();
       return;
     }
   }
-  
+
   ///filter draft project list
-  void filter(int projectId){
-    if(projectId == 0) formList.value = formListTemp.value;
-    else formList.value = formListTemp.where((v) => v.projectId == projectId).toList();
+  void filter(int projectId) {
+    if (projectId == selectedProject.id) return;
+
+    selectedProject =
+        projectList.firstWhere((element) => element.id == projectId);
+
+    if (projectId == 0)
+      formList.value = formListTemp;
+    else
+      formList.value =
+          formListTemp.where((v) => v.projectId == projectId).toList();
   }
 
   ///edit form
-  void editDraftForm(int id) async{
+  void editDraftForm(int id) async {
     final results = await OdkUtil.instance.editForm(id);
     if (results != null && results.isNotEmpty) {
       return;
@@ -75,13 +104,14 @@ class DraftFormController extends GetxController{
   }
 
   ///sort list asc or desc
-  void sortByDate() async{
-    if(formList.length>0){
-      if(ascOrDesc.value){
-        formList.sort((a,b)=>a.lastChangeDate!.compareTo(b.lastChangeDate!));
+  void sortByDate() async {
+    if (formList.length > 0) {
+      if (ascOrDesc.value) {
+        formList.sort((a, b) => a.lastChangeDate!.compareTo(b.lastChangeDate!));
         showToast(msg: 'Sorted by ascending order.');
-      }else{
-        formList.sort((a,b)=>-a.lastChangeDate!.compareTo(b.lastChangeDate!));
+      } else {
+        formList
+            .sort((a, b) => -a.lastChangeDate!.compareTo(b.lastChangeDate!));
         showToast(msg: 'Sorted by descending order');
       }
     }

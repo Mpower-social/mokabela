@@ -59,7 +59,11 @@ class ProjectDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () => Get.to(() => DraftFormScreen()),
+                  onTap: () => Get.to(
+                    () => DraftFormScreen(
+                      project: _projectListFromData,
+                    ),
+                  ),
                   child: Obx(
                     () => statisticsCard(
                         title: 'Draft',

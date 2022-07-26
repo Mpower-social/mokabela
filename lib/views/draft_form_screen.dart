@@ -15,6 +15,13 @@ import 'package:m_survey/widgets/progress_bar.dart';
 class DraftFormScreen extends StatelessWidget {
   Function? wp;
   Function? hp;
+  final controller = DraftFormController();
+  final ProjectListFromLocalDb? project;
+
+  DraftFormScreen({this.project}) {
+    controller.currentProject = project;
+    controller.getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,190 +30,198 @@ class DraftFormScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: baseAppBar(
-            title: 'All Draft'
-        ),
-
-        body: GetX<DraftFormController>(
-          init: DraftFormController(),
-          builder: (controller){
-            return Container(
-              padding: const EdgeInsets.all(10),
-              height: hp!(100),
-              width: wp!(100),
-              child: Column(
-                children: [
-                  const SizedBox(height: 15,),
-
-                  _filter(controller),
-
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Expanded(child: _formList(controller)),
-                ],
-              ),
-            );
-          },
+        appBar: baseAppBar(title: 'Draft Forms'),
+        body: Container(
+          height: hp!(100),
+          width: wp!(100),
+          child: Column(
+            children: [
+              const SizedBox(height: 15),
+              _filter(),
+              const SizedBox(height: 15),
+              Expanded(child: _formList()),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _filter([DraftFormController? controller]) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Flexible(
-          flex: 7,
-          child: Row(
-            children: [
-              Flexible(
-                flex: 5,
-                child: SizedBox(
-                  height: 40,
-                  child: DropdownButtonFormField<ProjectListFromLocalDb>(
-                      isExpanded: true,
-                      value: controller?.selectedProject.value.id == 0? controller?.projectList[0]:controller?.selectedProject.value,
-                      items: controller?.projectList.map((e) => DropdownMenuItem<ProjectListFromLocalDb>(value: e,child: Text(e.projectName!),)).toList(),
-                      decoration: CommonStyle.textFieldStyle(
-                        verPadding: 8,
-                        horPadding: 10,
-                      ),
-                      onChanged: (v){
-                        controller?.selectedProject.value = v!;
-                        controller?.filter(v?.id??0);
-                      }),
+  Widget _filter() {
+    return Padding(
+      padding: EdgeInsets.only(left: 10, right: 12),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Flexible(
+            flex: 7,
+            child: Row(
+              children: [
+                Flexible(
+                  flex: 5,
+                  child: SizedBox(
+                    height: 40,
+                    child: Obx(
+                      () {
+                        return DropdownButtonFormField<ProjectListFromLocalDb>(
+                            isExpanded: true,
+                            selectedItemBuilder: (_) {
+                              return controller.projectList
+                                  .map((ProjectListFromLocalDb item) {
+                                return Text(
+                                  item.projectName!,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                );
+                              }).toList();
+                            },
+                            value: controller.selectedProject,
+                            items: controller.projectList
+                                .map(
+                                  (e) =>
+                                      DropdownMenuItem<ProjectListFromLocalDb>(
+                                    value: e,
+                                    child: Text(e.projectName!),
+                                  ),
+                                )
+                                .toList(),
+                            decoration: CommonStyle.textFieldStyle(
+                              verPadding: 8,
+                              horPadding: 10,
+                            ),
+                            onChanged: (v) {
+                              controller.filter(v?.id ?? 0);
+                            });
+                      },
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        Flexible(
-          flex: 3,
-          child: InkWell(
-            onTap: (){
-              controller?.ascOrDesc.value = !controller.ascOrDesc.value;
-              controller?.sortByDate();
-            },
-            child: Container(
-              constraints: const BoxConstraints(
-                  minHeight: 30
-              ),
-              padding: const EdgeInsets.all(2),
-              decoration: BoxDecoration(
-                  border: Border.all(color: grey),
-                  borderRadius: BorderRadius.circular(10)
-              ),
-              child: const Icon(AppIcons.group_15 ,size: 35,),
+              ],
             ),
           ),
-        )
-      ],
+          Flexible(
+            flex: 3,
+            child: InkWell(
+              onTap: () {
+                controller.ascOrDesc.value = !controller.ascOrDesc.value;
+                controller.sortByDate();
+              },
+              child: Container(
+                constraints: const BoxConstraints(minHeight: 30),
+                padding: const EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                    border: Border.all(color: grey),
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Icon(
+                  AppIcons.group_15,
+                  size: 35,
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
-  Widget _formList([DraftFormController? controller]) {
-    return controller?.isLoadingDraftForm.value==true?
-    progressBar():
-    controller?.formList.length==0?
-    noDataFound():
-    ListView.separated(
-      itemCount: controller?.formList.length??0,
-      itemBuilder: (ctx, i) {
-        return Container(
-          width: wp!(100),
-          padding: const EdgeInsets.only(left: 10,right: 10),
-          constraints: const BoxConstraints(minHeight: 50),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: grey.withOpacity(.1)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(controller?.formList[i].displayName??''),
-                      const SizedBox(height: 5,),
-                      Row(
-                        children:  [
-                          Icon(
-                            Icons.date_range,
-                            size: 15,
-                          ),
-                          SizedBox(
-                            width: 2,
-                          ),
-                          Text(Utils.timeStampToDate(controller?.formList[i].lastChangeDate??0)),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Icon(
-                            Icons.access_time,
-                            size: 15,
-                          ),
-                          SizedBox(
-                            width: 2,
-                          ),
-                          Text(Utils.timeStampToTime(controller?.formList[i].lastChangeDate??0)),
-                        ],
-                      )
-                    ],
-                  )
+  Widget _formList() {
+    return Obx(
+      () => controller.isLoadingDraftForm.value == true
+          ? progressBar()
+          : controller.formList.length == 0
+              ? noDataFound()
+              : ListView.separated(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  itemCount: controller.formList.length,
+                  itemBuilder: (ctx, i) {
+                    var data = controller.formList[i];
 
-                ],
-              ),
-              Row(
-                children: [
-                  Container(
-                    width: .5,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        color: grey
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  IconButton(
-                      onPressed:()=>controller?.editDraftForm(controller.formList[i].id??0),
-                      icon: Icon(
-                        AppIcons.edit,
-                        size: 22,
-                      )),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  IconButton(
-                    onPressed: (){
-                      infoDialog(
-                          title: 'Alert',
-                          msg: 'Are you sure to delete ?',
-                          confirmText: 'Yes',
-                          cancelText: 'No',
-                          onOkTap: ()=>controller?.deleteForm(controller.formList[i].id??0),
-                          onCancelTap: ()=>Get.back()
-                      );
-                    },
-                    icon: Icon(
-                      AppIcons.delete,
-                      size: 22,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
-      separatorBuilder: (ctx, i) {
-        return const SizedBox(
-          height: 6,
-        );
-      },
+                    return Container(
+                      width: wp!(100),
+                      padding: const EdgeInsets.only(left: 10, right: 0),
+                      constraints: const BoxConstraints(minHeight: 50),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color.fromARGB(255, 233, 234, 235),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                data.displayName ?? '',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.date_range,
+                                    size: 15,
+                                  ),
+                                  SizedBox(width: 2),
+                                  Text(
+                                    Utils.timeStampToDate(
+                                        data.lastChangeDate ?? 0),
+                                  ),
+                                  SizedBox(width: 5),
+                                  Icon(
+                                    Icons.access_time,
+                                    size: 15,
+                                  ),
+                                  SizedBox(width: 2),
+                                  Text(
+                                    Utils.timeStampToTime(
+                                        data.lastChangeDate ?? 0),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: .5,
+                                height: 50,
+                                decoration:
+                                    BoxDecoration(color: Color(0xFFB5B5B5)),
+                              ),
+                              SizedBox(width: 5),
+                              IconButton(
+                                onPressed: () =>
+                                    controller.editDraftForm(data.id ?? 0),
+                                icon: Icon(
+                                  AppIcons.edit,
+                                  size: 22,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  infoDialog(
+                                      title: 'Alert',
+                                      msg: 'Are you sure to delete?',
+                                      confirmText: 'Yes',
+                                      cancelText: 'No',
+                                      onOkTap: () =>
+                                          controller.deleteForm(data.id ?? 0),
+                                      onCancelTap: () => Get.back());
+                                },
+                                icon: Icon(
+                                  AppIcons.delete,
+                                  size: 22,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  separatorBuilder: (ctx, i) {
+                    return SizedBox(height: 6);
+                  },
+                ),
     );
   }
 }
