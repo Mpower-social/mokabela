@@ -24,6 +24,8 @@ class FormListScreen extends StatelessWidget {
       controller.getDraftFormByFormId(allFormsData?.idString??'');
     }else if(formStatus == FormStatus.readyToSync){
       controller.getCompleteFormList(allFormsData?.idString??'');
+    }else if(formStatus == FormStatus.reverted){
+      controller.getRevertedFormList(allFormsData?.idString??'');
     }else{
       controller.getSubmittedFormList(allFormsData?.idString??'');
     }
@@ -44,7 +46,7 @@ class FormListScreen extends StatelessWidget {
                 ? 'Saved Response'
                 : formStatus == FormStatus.readyToSync
                     ? 'Completed Response'
-                    : 'Synced Response'),
+                : formStatus == FormStatus.reverted?'Reverted' : 'Synced Response'),
         body: Container(
           padding: const EdgeInsets.all(10),
           height: hp!(100),
@@ -256,6 +258,26 @@ class FormListScreen extends StatelessWidget {
                                   },
                                   icon: const Icon(
                                     AppIcons.delete,
+                                    size: 22,
+                                  ),
+                                ),
+                              ),
+
+                              Visibility(
+                                visible: formStatus == FormStatus.reverted
+                                    ? false
+                                    : true,
+                                child: IconButton(
+                                  onPressed: () {
+                                    infoDialog(
+                                        title: 'Feedback',
+                                        msg: 'Are you sure to delete ?',
+                                        confirmText: 'Ok',
+                                        onOkTap: ()=>Get.back(),
+                                    );
+                                  },
+                                  icon: const Icon(
+                                    Icons.message,
                                     size: 22,
                                   ),
                                 ),

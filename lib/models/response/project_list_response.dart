@@ -49,6 +49,7 @@ class Attributes {
     this.description,
     this.startDate,
     this.endDate,
+    this.updatedAt,
     this.partnerOrganization,
     this.projectStatus,
   });
@@ -58,6 +59,7 @@ class Attributes {
   String? description;
   DateTime? startDate;
   DateTime? endDate;
+  String? updatedAt;
   List<PartnerOrganization>? partnerOrganization;
   ProjectStatus? projectStatus;
 
@@ -67,6 +69,7 @@ class Attributes {
     description: json["description"] ?? '',
     startDate: json["startDate"] == null ? null : DateTime.parse(json["startDate"]),
     endDate: json["endDate"] == null ? null : DateTime.parse(json["endDate"]),
+    updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
     partnerOrganization: json["partnerOrganization"] == null ? null : List<PartnerOrganization>.from(json["partnerOrganization"].map((x) => PartnerOrganization.fromJson(x))),
     projectStatus: ProjectStatus.fromJson(json["projectStatus"]),
   );
@@ -77,6 +80,7 @@ class Attributes {
     "description": description ?? '',
     "startDate": startDate == null ? null : "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
     "endDate": endDate == null ? null : "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
+    "updatedAt": updatedAt ?? '',
     "partnerOrganization": partnerOrganization == null ? null : List<dynamic>.from(partnerOrganization!.map((x) => x.toJson())),
     "projectStatus": projectStatus,
   };

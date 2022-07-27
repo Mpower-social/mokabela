@@ -63,12 +63,23 @@ class DatabaseProvider{
           '$All_FORM_TARGET INTEGER,'
           '$All_FORM_PROJECT_ID INTEGER,'
           '$All_FORM_PROJECT_NAME TEXT,'
+          '$All_FORM_STATUS TEXT,'
           '$All_FORM_PROJECT_DES TEXT)',
     );
 
     //deleted submitted form table
     await database.execute(
       'CREATE TABLE IF NOT EXISTS $TABLE_NAME_DELETED_SUBMITTED_FORM ($DELETED_SUBMITTED_FORM_ID INTEGER PRIMARY KEY)',
+    );
+
+    //reverted form table
+    await database.execute(
+      'CREATE TABLE IF NOT EXISTS $TABLE_NAME_REVERTED_FORM ($REVERTED_FORM_ID INTEGER PRIMARY KEY,'
+          '$REVERTED_FORM_PROJECT_ID INTEGER,'
+          '$REVERTED_FORM_INSTANCE_ID TEXT,'
+          '$REVERTED_FORM_FEEDBACK TEXT,'
+          '$REVERTED_FORM_CREATED_AT TEXT,'
+          '$REVERTED_FORM_UPDATED_AT TEXT)',
     );
   }
 }

@@ -18,7 +18,8 @@ class DashboardService extends BaseApiProvider {
       var dateTime = await SharedPref.sharedPref.getString(SharedPref.PROJECT_DATE_TIME)??'0';
 
       dio.options.headers.addAll({'Authorization':'Bearer $token'});
-      var response = await dio.get(Apis.getProjectList(orgId, currentPage, pageSize));
+      var response = await dio.post(Apis.getProjectList(orgId, currentPage, pageSize),
+        data:jsonEncode({ "from_date": "$dateTime"}),);
       return ProjectListResponse.fromJson(response.data);
     }catch(error){
       showToast(msg:DioException.getDioException(error),isError: true);
@@ -27,7 +28,7 @@ class DashboardService extends BaseApiProvider {
   }
 
   Future<String?> getFormList() async{
-    try{
+    //try{
       var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
 
       var response = await dio.get(Apis.getFormList,options: Options(
@@ -35,9 +36,9 @@ class DashboardService extends BaseApiProvider {
         responseType: ResponseType.plain
       ));
       return response.data.toString();
-    }catch(error){
+   /* }catch(error){
       showToast(msg:DioException.getDioException(error),isError: true);
-    }
+    }*/
     return null;
   }
 
@@ -45,7 +46,7 @@ class DashboardService extends BaseApiProvider {
     var list = <SubmittedFormListResponse>[];
     try {
       var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
-      var dateTime = await SharedPref.sharedPref.getString(SharedPref.SUBMITTED_FORM_DATE_TIME)??'0';
+      var dateTime = await SharedPref.sharedPref.getString(SharedPref.SUBMITTED_FORM_DATE_TIME)??'2022-01-01T06:29:22.243Z';
       var response = await dio.post(Apis.getSubmittedFormList,
           data:jsonEncode({ "from_date": "$dateTime"}),
           options: Options(
@@ -64,6 +65,23 @@ class DashboardService extends BaseApiProvider {
       var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
       var dateTime = await SharedPref.sharedPref.getString(SharedPref.ALL_FORM_DATE_TIME)??'0';
       var response = await dio.post(Apis.getAllFormList,
+          data:jsonEncode({ "from_date": "$dateTime"}),
+          options: Options(
+              headers: {'Authorization': 'Bearer $token',},
+              responseType: ResponseType.plain
+          ));
+      return AllFormListResponse.fromJson(jsonDecode(response.data));
+    } catch (error) {
+      showToast(msg: DioException.getDioException(error), isError: true);
+    }
+    return null;
+  }
+
+  Future<AllFormListResponse?> getRevertedFormList() async {
+    try {
+      var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
+      var dateTime = await SharedPref.sharedPref.getString(SharedPref.REVERTED_FORM_DATE_TIME)??'0';
+      var response = await dio.post(Apis.getRevertedFormList,
           data:jsonEncode({ "from_date": "$dateTime"}),
           options: Options(
               headers: {'Authorization': 'Bearer $token',},

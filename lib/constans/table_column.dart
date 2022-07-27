@@ -39,6 +39,7 @@ const All_FORM_ID_STRING = "idString";
 const All_FORM_PROJECT_ID = "projectId";
 const All_FORM_CREATED_AT = "createdAt";
 const All_FORM_TARGET = "target";
+const All_FORM_STATUS = "status";
 const All_FORM_PROJECT_NAME = "projectName";
 const All_FORM_PROJECT_DES = "projectDes";
 
@@ -47,3 +48,15 @@ const TABLE_NAME_DELETED_SUBMITTED_FORM = 'DeletedSubmittedForm';
 
 //deleted submitted form field
 const DELETED_SUBMITTED_FORM_ID = "id";
+
+//reverted form table
+const TABLE_NAME_REVERTED_FORM = 'RevertedForm';
+
+//submitted form table field
+const REVERTED_FORM_ID = "id";
+const REVERTED_FORM_ID_STRING = "idString";
+const REVERTED_FORM_PROJECT_ID = "projectId";
+const REVERTED_FORM_CREATED_AT = "createdAt";
+const REVERTED_FORM_UPDATED_AT = "updatedAt";
+const REVERTED_FORM_FEEDBACK = "feedback";
+const REVERTED_FORM_INSTANCE_ID = "instanceId";

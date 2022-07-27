@@ -47,10 +47,15 @@ class DashboardController extends GetxController {
 
   ///getting project list here
   void getAllData(forceLoad) async {
+    totalActiveForms.value = 0;
     isLoadingProject.value = true;
     projectList.value = await _dashboardRepository.getProjectListOperation(1, 10, forceLoad);
     submittedFormList.value = await _dashboardRepository.getSubmittedFormList();
     allFormList.value = await _dashboardRepository.getAllFormList();
+    await _dashboardRepository.getRevertedFormList();
+    allFormList.forEach((element) {
+      if(element?.status=='true') totalActiveForms.value++;
+    });
     isLoadingProject.value = false;
   }
 

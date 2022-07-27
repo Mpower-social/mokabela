@@ -68,6 +68,18 @@ class FormDetailsScreen extends StatelessWidget {
                     height: hp!(1),
                   ),
                   Obx(() => iconButton(
+                      icon: CupertinoIcons.arrow_left_square_fill,
+                      title: 'Reverted(${controller.completeFormCount})',
+                      bg: primaryColor,
+                      textColor: white,
+                      height: 45,
+                      width: wp!(85),
+                      onTap: () => Get.to(() => FormListScreen(FormStatus.reverted,allFormsData)))),
+
+                  SizedBox(
+                    height: hp!(1),
+                  ),
+                  Obx(() => iconButton(
                       icon: CupertinoIcons.checkmark_square_fill,
                       title: 'Ready to Sync(${controller.completeFormCount})',
                       bg: primaryColor,
@@ -75,6 +87,7 @@ class FormDetailsScreen extends StatelessWidget {
                       height: 45,
                       width: wp!(85),
                       onTap: () => Get.to(() => FormListScreen(FormStatus.readyToSync,allFormsData)))),
+
                   SizedBox(
                     height: hp!(1),
                   ),

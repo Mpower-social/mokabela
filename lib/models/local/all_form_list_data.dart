@@ -9,7 +9,7 @@ class AllFormsData {
   int? projectId;
   String? projectName;
   String? projectDes;
-  int? status;
+  String? status;
 
 
   AllFormsData(
@@ -21,7 +21,7 @@ class AllFormsData {
         this.target,
         this.projectId,
         this.projectName,
-        this.projectDes});
+        this.projectDes,this.status});
 
   AllFormsData.fromJson(Map<String, dynamic> json) {
     id = json['id'].toString();
@@ -34,6 +34,7 @@ class AllFormsData {
     projectId = json['projectId']??0;
     projectName = json['projectName']??'';
     projectDes = json['projectDes']??'';
+    projectDes = json['status']??'false';
   }
 
   Map<String, dynamic> toJson() {
@@ -48,6 +49,7 @@ class AllFormsData {
     data['projectId'] = this.projectId;
     data['projectName'] = this.projectName;
     data['projectDes'] = this.projectDes;
+    data['status'] = this.status;
     return data;
   }
 }

@@ -150,6 +150,11 @@ class FormListController extends GetxController{
     isLoadingForm.value = false;
   }
 
+  ///getting reverted form here
+  void getRevertedFormList(String formId) {
+
+  }
+
   ///sort list asc or desc
   void sortByDate() async{
     if (isCheckList.length > 0) {

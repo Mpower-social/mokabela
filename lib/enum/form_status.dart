@@ -1,5 +1,6 @@
 enum FormStatus{
   draft,
   readyToSync,
-  submitted
+  submitted,
+  reverted
 }

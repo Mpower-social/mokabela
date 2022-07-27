@@ -36,7 +36,11 @@ class DashboardRepository {
                   status:
                       projectData.attributes?.projectStatus?.id.toString()));
             }
+            if((projectListResponse.data?.length??0)>0){
+              await SharedPref.sharedPref.setString(SharedPref.PROJECT_DATE_TIME, projectListResponse.data?[0].attributes?.updatedAt??'0');
+            }
           }
+
           return await getAllProjectFromLocal();
         }
       }
@@ -96,7 +100,7 @@ class DashboardRepository {
 
   Future<List<AllFormsData?>> getAllActiveFormList() async {
     var allForms = await getAllFormList();
-    return allForms.where((element) => element?.status == 1).toList();
+    return allForms.where((element) => element?.status == 'true').toList();
   }
 
   Future<List<AllFormsData?>> getAllFormList() async {
@@ -126,6 +130,7 @@ class DashboardRepository {
             projectId: formData.attributes?.project?.id,
             projectName: formData.attributes?.project?.name,
             projectDes: formData.attributes?.project?.description,
+              status: formData.attributes?.isActive
           ));
         }
 
@@ -134,6 +139,52 @@ class DashboardRepository {
           await SharedPref.sharedPref.setString(
               SharedPref.SUBMITTED_FORM_DATE_TIME,
               allFormResponse?.data?[0].attributes?.updatedAt ?? '0');
+        }
+        return await getAllFromLocal();
+      }
+    }
+    return allFormList;
+    /*}catch(_){
+     return [];
+   }*/
+  }
+
+  Future<List<AllFormsData?>> getRevertedFormList() async {
+    //try{
+    final Database? db = await DatabaseProvider.dbProvider.database;
+
+    List<AllFormsData> allFormList = await getAllFromLocal();
+
+    ///checking data already exist or not
+    if (allFormList.isEmpty) {
+
+      ///getting data from remote
+      AllFormListResponse? allFormResponse =
+      await _dashboardService.getAllFormList();
+
+      ///checking data already exist or not
+      if (allFormResponse?.data != null) {
+        db!.delete(TABLE_NAME_All_FORM);
+        for (Data formData in allFormResponse?.data ?? []) {
+
+          ///inserting data to local
+          insertAllForms(AllFormsData(
+            id: formData.id,
+            xFormId: formData.attributes?.xformId,
+            title: formData.attributes?.title,
+            idString: formData.attributes?.idString,
+            createdAt: formData.attributes?.createdAt,
+            target: formData.attributes?.target,
+            projectId: formData.attributes?.project?.id,
+            projectName: formData.attributes?.project?.name,
+            projectDes: formData.attributes?.project?.description,
+            status: formData.attributes?.isActive
+          ));
+        }
+
+        ///inserting last updated datetime here
+        if((allFormResponse?.data!.length??0)>0){
+          await SharedPref.sharedPref.setString(SharedPref.SUBMITTED_FORM_DATE_TIME, allFormResponse?.data?[0].attributes?.updatedAt??'0');
         }
         return await getAllFromLocal();
       }
