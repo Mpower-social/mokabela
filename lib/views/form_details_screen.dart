@@ -21,8 +21,12 @@ class FormDetailsScreen extends StatelessWidget {
   String? formId;
   FormDetailsController controller = Get.find();
 
-  FormDetailsScreen({this.projectListFromData,this.allFormsData,this.formId='',}){
-    formId = this.formId!.isEmpty?allFormsData?.idString??'':this.formId;
+  FormDetailsScreen({
+    this.projectListFromData,
+    this.allFormsData,
+    this.formId = '',
+  }) {
+    formId = this.formId!.isEmpty ? allFormsData?.idString ?? '' : this.formId;
     controller.getTotalSubmittedForm(formId);
     controller.getDraftFormCount(formId);
     controller.getCompleteFormCount(formId);
@@ -31,13 +35,16 @@ class FormDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     wp = Screen(MediaQuery.of(context).size).wp;
     hp = Screen(MediaQuery.of(context).size).hp;
-    return SafeArea(
-      child: Scaffold(
-        appBar: baseAppBarWithDrawer(
-          context:context,
-          title: '${allFormsData?.title??''}',
-        ),
-        body:Container(
+
+    return Container(
+      color: statusBarColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: baseAppBarWithDrawer(
+            context: context,
+            title: '${projectListFromData?.projectName ?? ''}',
+          ),
+          body: Container(
             height: hp!(100),
             width: wp!(100),
             child: SingleChildScrollView(
@@ -56,61 +63,69 @@ class FormDetailsScreen extends StatelessWidget {
                   SizedBox(
                     height: hp!(4),
                   ),
-                  Obx(() => iconButton(
-                      icon: AppIcons.draft,
-                      title: 'Drafts(${controller.draftFormCount})',
-                      bg: primaryColor,
-                      textColor: white,
-                      height: 45,
-                      width: wp!(85),
-                      onTap: () => Get.to(() => FormListScreen(FormStatus.draft,allFormsData))),),
+                  Obx(
+                    () => iconButton(
+                        icon: AppIcons.draft,
+                        title: 'Drafts (${controller.draftFormCount})',
+                        bg: primaryColor,
+                        textColor: white,
+                        height: 45,
+                        width: wp!(85),
+                        onTap: () => Get.to(() =>
+                            FormListScreen(FormStatus.draft, allFormsData))),
+                  ),
                   SizedBox(
                     height: hp!(1),
                   ),
                   Obx(() => iconButton(
                       icon: CupertinoIcons.arrow_left_square_fill,
-                      title: 'Reverted(${controller.completeFormCount})',
+                      title: 'Reverted (${controller.completeFormCount})',
                       bg: primaryColor,
                       textColor: white,
                       height: 45,
                       width: wp!(85),
-                      onTap: () => Get.to(() => FormListScreen(FormStatus.reverted,allFormsData)))),
-
+                      onTap: () => Get.to(() =>
+                          FormListScreen(FormStatus.reverted, allFormsData)))),
                   SizedBox(
                     height: hp!(1),
                   ),
                   Obx(() => iconButton(
                       icon: CupertinoIcons.checkmark_square_fill,
-                      title: 'Ready to Sync(${controller.completeFormCount})',
+                      title: 'Ready to Sync (${controller.completeFormCount})',
                       bg: primaryColor,
                       textColor: white,
                       height: 45,
                       width: wp!(85),
-                      onTap: () => Get.to(() => FormListScreen(FormStatus.readyToSync,allFormsData)))),
-
+                      onTap: () => Get.to(() => FormListScreen(
+                          FormStatus.readyToSync, allFormsData)))),
                   SizedBox(
                     height: hp!(1),
                   ),
-                  Obx(()=>iconButton(
-                    icon: Icons.remove_red_eye,
-                    title: 'Submitted(${controller.submittedFormList.length})',
-                    bg: primaryColor,
-                    textColor: white,
-                    height: 45,
-                    width: wp!(85),
-                    onTap: () => Get.to(() => FormListScreen(FormStatus.submitted,allFormsData)),
-                  ))
+                  Obx(() => iconButton(
+                        icon: Icons.remove_red_eye,
+                        title:
+                            'Submitted (${controller.submittedFormList.length})',
+                        bg: primaryColor,
+                        textColor: white,
+                        height: 45,
+                        width: wp!(85),
+                        onTap: () => Get.to(() =>
+                            FormListScreen(FormStatus.submitted, allFormsData)),
+                      ))
                 ],
               ),
             ),
           ),
-
+        ),
       ),
     );
   }
 
   Widget _topPart() {
-    var progress = (((controller.submittedFormList.length/(allFormsData?.target??0))*100.0)/100.0);
+    var progress =
+        (((controller.submittedFormList.length / (allFormsData?.target ?? 0)) *
+                100.0) /
+            100.0);
     return Container(
         padding: EdgeInsets.all(20),
         constraints: BoxConstraints(minHeight: hp!(25)),
@@ -124,32 +139,42 @@ class FormDetailsScreen extends StatelessWidget {
               text: TextSpan(children: [
                 TextSpan(text: 'Project: '),
                 TextSpan(
-                    text: '${projectListFromData?.projectName??''}',
+                    text: '${projectListFromData?.projectName ?? ''}',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ]),
             ),
             SizedBox(height: hp!(5)),
-           Text('Total(${allFormsData?.target??'0'})',
-                style: TextStyle(color: white),
-           ),
+            Text(
+              'Total(${allFormsData?.target ?? '0'})',
+              style: TextStyle(color: white),
+            ),
             SizedBox(height: hp!(1.5)),
             LinearPercentIndicator(
               padding: EdgeInsets.all(0),
               backgroundColor: white,
               lineHeight: 8.0,
-              percent: progress.isInfinite?0:progress.isNaN?0:progress,
+              percent: progress.isInfinite
+                  ? 0
+                  : progress.isNaN
+                      ? 0
+                      : progress,
               progressColor: green,
             ),
             SizedBox(height: hp!(1.5)),
-            Obx(()=>Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text('${controller.submittedFormList.length}', style: TextStyle(color: white),),
-                    Text('${((allFormsData?.target??0)-controller.submittedFormList.length)}', style: TextStyle(color: white))
-                  ],
-                ),
+            Obx(
+              () => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    '${controller.submittedFormList.length}',
+                    style: TextStyle(color: white),
+                  ),
+                  Text(
+                      '${((allFormsData?.target ?? 0) - controller.submittedFormList.length)}',
+                      style: TextStyle(color: white))
+                ],
+              ),
             ),
-
           ],
         ));
   }

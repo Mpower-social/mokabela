@@ -29,7 +29,8 @@ Widget statisticsCard(
             children: [
               Text(
                 title,
-                style: TextStyle(color: white, fontSize: 16),
+                style: TextStyle(
+                    color: white, fontSize: 16, fontWeight: FontWeight.bold),
               ),
               Icon(
                 CupertinoIcons.arrow_right,

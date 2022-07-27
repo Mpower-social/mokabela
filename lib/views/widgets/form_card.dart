@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../../models/local/all_form_list_data.dart';
+import '../../utils/utils.dart';
+
 Widget formCard({
-  String title = '',
-  String subTittle = '',
-  String date = '',
-  int totalSubmission = 0,
-  int totalForm = 0,
-  int submittedForm = 0,
+  required AllFormsData data,
   GestureTapCallback? onTap,
 }) {
   return Card(
@@ -24,7 +22,7 @@ Widget formCard({
             child: Container(
               constraints: const BoxConstraints(minHeight: 132),
               decoration: BoxDecoration(
-                  color: green,
+                  color: data.status == 'true' ? activeColor : inactiveColor,
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(10),
                       bottomLeft: Radius.circular(10))),
@@ -44,15 +42,16 @@ Widget formCard({
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(title,
+                        Text(data.title ?? '',
                             style: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                             maxLines: 3),
                         Visibility(
-                          visible: subTittle.isEmpty ? false : true,
+                          visible:
+                              (data.projectName ?? '').isEmpty ? false : true,
                           child: Padding(
                             padding: EdgeInsets.only(top: 10),
-                            child: Text(subTittle,
+                            child: Text(data.projectName ?? '',
                                 style: const TextStyle(fontSize: 12),
                                 maxLines: 3),
                           ),
@@ -66,12 +65,13 @@ Widget formCard({
                               size: 18,
                             ),
                             SizedBox(width: 5),
-                            Text(date),
+                            Text(Utils.dateFormat
+                                .format(DateTime.parse(data.createdAt!))),
                           ],
                         ),
                         SizedBox(height: 10),
                         Text(
-                          'Total Submission: ${totalSubmission.toString()}',
+                          'Total Submission: ${(data.totalSubmission ?? 0).toString()}',
                           style: TextStyle(fontSize: 16),
                         ),
                       ],
@@ -84,9 +84,9 @@ Widget formCard({
                         CircularPercentIndicator(
                           radius: 40.0,
                           lineWidth: 8.0,
-                          percent: submittedForm / 1000,
+                          percent: (data.totalSubmission ?? 0) / 1000,
                           center: Text(
-                            '${(submittedForm * 10) / 100}%',
+                            '${((data.totalSubmission ?? 0) * 10) / 100}%',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
@@ -97,11 +97,11 @@ Widget formCard({
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: '$submittedForm'.toString(),
+                                text: '${data.totalSubmission ?? 0}'.toString(),
                                 style: TextStyle(fontSize: 16, color: green),
                               ),
                               TextSpan(
-                                text: '/$totalForm'.toString(),
+                                text: ' / ${data.target ?? 0}'.toString(),
                                 style: TextStyle(fontSize: 16, color: black),
                               )
                             ],

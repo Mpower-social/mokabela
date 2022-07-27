@@ -12,7 +12,7 @@ import 'package:m_survey/models/form_data.dart' as formData;
 import 'package:m_survey/widgets/progress_dialog.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 
-class FormListController extends GetxController{
+class FormListController extends GetxController {
   var isCheckedAll = false.obs;
   var selectedStartDate = DateTime.now().obs;
   var selectedEndDate = DateTime.now().obs;
@@ -25,11 +25,11 @@ class FormListController extends GetxController{
   var isCheckList = <DraftCheckboxData>[].obs;
   var isCheckListTemp = <DraftCheckboxData>[].obs;
 
-
   var submittedFormList = <SubmittedFormListData?>[].obs;
   var submittedFormListTemp = <SubmittedFormListData?>[].obs;
 
-  var selectedProject = ProjectListFromLocalDb(id: 0,projectName: 'Select project').obs;
+  var selectedProject =
+      ProjectListFromLocalDb(id: 0, projectName: 'Select project').obs;
   var isLoadingForm = false.obs;
 
   ///true=asc, false=desc
@@ -39,26 +39,26 @@ class FormListController extends GetxController{
   DashboardRepository _dashboardRepository = DashboardRepository();
 
   ///pick date from datepicker
-  void pickDate(String s) async{
+  void pickDate(String s) async {
     final DateTime? picked = await showDatePicker(
         context: Get.context!,
         initialDate: DateTime.now(),
         firstDate: DateTime(2000, 8),
         lastDate: DateTime(2100));
 
-    if(s == 'Start'){
+    if (s == 'Start') {
       if (picked != null && picked != selectedStartDate) {
         selectedStartDate.value = picked;
         selectedStartDateStr.value = DateFormat('dd-MM-yyyy').format(picked);
-        if(selectedEndDateStr!='End'){
+        if (selectedEndDateStr != 'End') {
           filter();
         }
       }
-    }else{
+    } else {
       if (picked != null && picked != selectedEndDate) {
         selectedEndDate.value = picked;
         selectedEndDateStr.value = DateFormat('dd-MM-yyyy').format(picked);
-        if(selectedStartDateStr!='Start'){
+        if (selectedStartDateStr != 'Start') {
           filter();
         }
       }
@@ -66,46 +66,46 @@ class FormListController extends GetxController{
   }
 
   ///sync selected form
-  void sync(String? formId)async{
+  void sync(String? formId) async {
     progressDialog();
-    try{
-      for(var element in isCheckList){
-        if(element.isChecked && element.formData != null){
-          final results = await _formRepository.submitFormOperation(element.formData);
+    try {
+      for (var element in isCheckList) {
+        if (element.isChecked && element.formData != null) {
+          final results =
+              await _formRepository.submitFormOperation(element.formData);
           if (results.isNotEmpty) {
             //succ
           }
         }
       }
-    }catch(_){
-
-    }finally{
+    } catch (_) {
+    } finally {
       await getCompleteFormList(formId);
       Get.back();
     }
   }
 
   ///sort (asc/desc) all forms by date
-  void sortList() {
+  void sortList() {}
 
-  }
-
-  void filter(){
+  void filter() {
     print(selectedStartDate);
-    if(selectedStartDate.value==null && selectedEndDate.value==null) isCheckList.value = isCheckListTemp.value;
+    if (selectedStartDate.value == null && selectedEndDate.value == null)
+      isCheckList.value = isCheckListTemp.value;
     else {
       print(selectedStartDate);
 
-      formList.value = formListTemp.where((v){
+      formList.value = formListTemp.where((v) {
         var d = DateTime.fromMillisecondsSinceEpoch(v.lastChangeDate!);
-        var datetime = DateTime(d.year,d.month,d.day);
-        return (datetime.compareTo(selectedStartDate.value)>=0 && datetime.compareTo(selectedEndDate.value)<=0);
+        var datetime = DateTime(d.year, d.month, d.day);
+        return (datetime.compareTo(selectedStartDate.value) >= 0 &&
+            datetime.compareTo(selectedEndDate.value) <= 0);
       }).toList();
       setupDefaultCheckBox();
     }
   }
 
-  void getDraftFormByFormId(String? formId) async{
+  void getDraftFormByFormId(String? formId) async {
     isLoadingForm.value = true;
     final results = await OdkUtil.instance.getDraftForms([formId!]);
     if (results != null && results.isNotEmpty) {
@@ -120,7 +120,7 @@ class FormListController extends GetxController{
   }
 
   ///getting all complete form here
-  getCompleteFormList(String? formId) async{
+  getCompleteFormList(String? formId) async {
     isLoadingForm.value = true;
     final results = await OdkUtil.instance.getFinalizedForms([formId!]);
     if (results != null && results.isNotEmpty) {
@@ -135,17 +135,18 @@ class FormListController extends GetxController{
   }
 
   ///getting reverted form here
-  void getRevertedFormList(String formId) async{
+  void getRevertedFormList(String formId) async {
     isLoadingForm.value = true;
-    var submittedList = await _dashboardRepository.getRevertedFromLocalByFromId(formId);
+    var submittedList =
+        await _dashboardRepository.getRevertedFromLocalByFromId(formId);
     submittedList.forEach((element) {
       formList.add(formData.FormData(
-        id: int.tryParse(element.xFormId??''),
-        projectId: element.projectId.toString(),
-        formId: element.idString??'',
-        lastChangeDate: DateTime.parse(element.updatedAt!).millisecondsSinceEpoch,
-        feedback: element.feedback
-      ));
+          id: int.tryParse(element.xFormId ?? ''),
+          projectId: element.projectId.toString(),
+          formId: element.idString ?? '',
+          lastChangeDate:
+              DateTime.parse(element.updatedAt!).millisecondsSinceEpoch,
+          feedback: element.feedback));
     });
     formListTemp.value = formList.value;
     setupDefaultCheckBox();
@@ -153,17 +154,18 @@ class FormListController extends GetxController{
   }
 
   ///getting submitted forms here
-  void getSubmittedFormList(String formId) async{
+  void getSubmittedFormList(String formId) async {
     isLoadingForm.value = true;
-    var submittedList = await _projectRepository.getAllSubmittedFromLocalByForm(formId);
+    var submittedList =
+        await _projectRepository.getAllSubmittedFromLocalByForm(formId);
     submittedList.forEach((element) {
       formList.add(formData.FormData(
-          id: element.id??0,
+          id: element.id ?? 0,
           projectId: element.projectId.toString(),
-          displayName: element.formName??'',
-          formId: element.formIdString??'',
-          lastChangeDate: DateTime.parse(element.dateCreated!).millisecondsSinceEpoch
-      ));
+          displayName: element.formName ?? '',
+          formId: element.formIdString ?? '',
+          lastChangeDate:
+              DateTime.parse(element.dateCreated!).millisecondsSinceEpoch));
     });
     formListTemp.value = formList.value;
     setupDefaultCheckBox();
@@ -171,11 +173,11 @@ class FormListController extends GetxController{
   }
 
   ///sort list asc or desc
-  void sortByDate() async{
+  void sortByDate() async {
     if (isCheckList.length > 0) {
       if (ascOrDesc.value) {
-        isCheckList.sort((a, b) => a.formData!.lastChangeDate!
-            .compareTo(b.formData!.lastChangeDate!));
+        isCheckList.sort((a, b) =>
+            a.formData!.lastChangeDate!.compareTo(b.formData!.lastChangeDate!));
         showToast(msg: 'Sorted by ascending order.');
       } else {
         isCheckList.sort((a, b) => -a.formData!.lastChangeDate!
@@ -186,28 +188,29 @@ class FormListController extends GetxController{
   }
 
   ///edit form
-  void editDraftForm(formData.FormData formData) async{
-    final results = await OdkUtil.instance.editForm(formData.id??0,formData);
+  void editDraftForm(formData.FormData formData) async {
+    final results = await OdkUtil.instance.editForm(formData.id ?? 0);
     if (results != null && results.isNotEmpty) {
       return;
     }
   }
 
   ///delete specific form
-  void deleteForm(int id,String formId) async{
+  void deleteForm(int id, String formId) async {
     final results = await OdkUtil.instance.deleteDraftForm(id);
     if (results != null && results.isNotEmpty) {
       Get.back();
-       getDraftFormByFormId(formId);
+      getDraftFormByFormId(formId);
       return;
     }
   }
 
   ///sending complete list to draft
-  void sendBackToDraft(String? formId) async{
-    for(var element in isCheckList){
-      if(element.isChecked && element.formData != null){
-        final results = await OdkUtil.instance.sendBackToDraft(element.formData?.id??0);
+  void sendBackToDraft(String? formId) async {
+    for (var element in isCheckList) {
+      if (element.isChecked && element.formData != null) {
+        final results =
+            await OdkUtil.instance.sendBackToDraft(element.formData?.id ?? 0);
         if (results != null && results.isNotEmpty) {
           //succ
         }
@@ -218,20 +221,20 @@ class FormListController extends GetxController{
   }
 
   ///sync data
-  void syncCompleteForm(String? formId)async{
+  void syncCompleteForm(String? formId) async {
     progressDialog();
-    try{
-      for(var element in isCheckList){
-        if(element.isChecked && element.formData != null){
-          final results = await _formRepository.submitFormOperation(element.formData);
+    try {
+      for (var element in isCheckList) {
+        if (element.isChecked && element.formData != null) {
+          final results =
+              await _formRepository.submitFormOperation(element.formData);
           if (results.isNotEmpty) {
             //succ
           }
         }
       }
-    }catch(_){
-
-    }finally{
+    } catch (_) {
+    } finally {
       await getCompleteFormList(formId);
       Get.back();
     }
@@ -247,29 +250,29 @@ class FormListController extends GetxController{
   }
 
   ///handling checkbox
-  void addCheckBoxData(var pos, {from = 'each',formData.FormData? formData}) {
-
-    if(from == 'each'){
+  void addCheckBoxData(var pos, {from = 'each', formData.FormData? formData}) {
+    if (from == 'each') {
       var trueCount = 0;
-      isCheckList[pos] = DraftCheckboxData(!isCheckList[pos].isChecked,formData);
+      isCheckList[pos] =
+          DraftCheckboxData(!isCheckList[pos].isChecked, formData);
 
       isCheckList.forEach((element) {
-        if(element.isChecked) trueCount++;
+        if (element.isChecked) trueCount++;
       });
       print(trueCount);
 
-      if(trueCount == formList.length) isCheckedAll.value = true;
-      else  isCheckedAll.value = false;
-
-    }else{
-      for(int i=0;i<formList.length;i++){
-        if(isCheckedAll.value){
-          isCheckList[i] = DraftCheckboxData(true,formList[i]);
-        }else{
-          isCheckList[i] = DraftCheckboxData(false,formList[i]);
+      if (trueCount == formList.length)
+        isCheckedAll.value = true;
+      else
+        isCheckedAll.value = false;
+    } else {
+      for (int i = 0; i < formList.length; i++) {
+        if (isCheckedAll.value) {
+          isCheckList[i] = DraftCheckboxData(true, formList[i]);
+        } else {
+          isCheckList[i] = DraftCheckboxData(false, formList[i]);
         }
       }
     }
   }
-
 }

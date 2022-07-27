@@ -7,11 +7,6 @@ import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
 import 'package:m_survey/style/common_style.dart';
 import 'package:m_survey/utils/utils.dart';
-import 'package:m_survey/views/active_form_screen.dart';
-import 'package:m_survey/views/draft_form_screen.dart';
-import 'package:m_survey/views/form_details_screen.dart';
-import 'package:m_survey/views/ready_to_sync_form_screen.dart';
-import 'package:m_survey/views/submitted_form_screen.dart';
 import 'package:m_survey/views/widgets/form_card.dart';
 import 'package:m_survey/views/widgets/statistics_card.dart';
 import 'package:m_survey/widgets/app_bar_with_drawer.dart';
@@ -27,7 +22,8 @@ class ProjectDetailsScreen extends StatelessWidget {
   ProjectDetailsController _controller = Get.find();
   ProjectListFromLocalDb _projectListFromData;
   ProjectDetailsScreen(this._projectListFromData) {
-    _controller.getAllDataByProject(_projectListFromData.id);
+    _controller.currentProjectId = _projectListFromData.id!;
+    _controller.getAllDataByProject();
   }
 
   @override
@@ -50,27 +46,21 @@ class ProjectDetailsScreen extends StatelessWidget {
               Row(
                 children: [
                   InkWell(
-                    onTap: () => Get.to(
-                      () => ActiveFormScreen(
-                        project: _projectListFromData,
-                      ),
-                    ),
+                    onTap: () => _controller
+                        .navigateToActiveFormsScreen(_projectListFromData),
                     child: Obx(
                       () => statisticsCard(
                           title: 'Active Forms',
                           data:
-                              '${Utils.numberFormatter.format(_controller.allFormList.length)}',
+                              '${Utils.numberFormatter.format(_controller.activeFormCount.value)}',
                           icon: AppIcons.active,
                           position: 1,
                           wp: wp!(50)),
                     ),
                   ),
                   InkWell(
-                    onTap: () => Get.to(
-                      () => DraftFormScreen(
-                        project: _projectListFromData,
-                      ),
-                    ),
+                    onTap: () => _controller
+                        .navigateToDraftFormsScreen(_projectListFromData),
                     child: Obx(
                       () => statisticsCard(
                           title: 'Draft',
@@ -86,27 +76,21 @@ class ProjectDetailsScreen extends StatelessWidget {
               Row(
                 children: [
                   InkWell(
-                    onTap: () => Get.to(
-                      () => SubmittedFormScreen(
-                        project: _projectListFromData,
-                      ),
-                    ),
+                    onTap: () => _controller
+                        .navigateToSubmittedFormsScreen(_projectListFromData),
                     child: Obx(
                       () => statisticsCard(
                           title: 'Submitted',
                           data:
-                              '${Utils.numberFormatter.format(_controller.submittedFormList.length)}',
+                              '${Utils.numberFormatter.format(_controller.submittedFormCount.value)}',
                           icon: AppIcons.submitted,
                           position: 3,
                           wp: wp!(50)),
                     ),
                   ),
                   InkWell(
-                    onTap: () => Get.to(
-                      () => ReadyToSyncFormScreen(
-                        project: _projectListFromData,
-                      ),
-                    ),
+                    onTap: () => _controller
+                        .navigateToSyncFormsScreen(_projectListFromData),
                     child: Obx(
                       () => statisticsCard(
                           title: 'Ready to Sync',
@@ -159,18 +143,10 @@ class ProjectDetailsScreen extends StatelessWidget {
                   itemBuilder: (ctx, i) {
                     AllFormsData data = _controller.allFormList[i]!;
                     return formCard(
-                      title: data.title ?? '',
-                      subTittle: data.projectName ?? '',
-                      date: Utils.dateFormat
-                          .format(DateTime.parse(data.createdAt!)),
-                      totalSubmission: data.totalSubmission ?? 0,
-                      totalForm: data.target ?? 0,
-                      submittedForm: data.totalSubmission ?? 0,
-                      onTap: () => Get.to(
-                        () => FormDetailsScreen(
-                          projectListFromData: _projectListFromData,
-                          allFormsData: data,
-                        ),
+                      data: data,
+                      onTap: () => _controller.navigateToFormDetailsScreen(
+                        _projectListFromData,
+                        data,
                       ),
                     );
                   },

@@ -7,59 +7,143 @@ import 'package:m_survey/repository/project_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
 
-class ProjectDetailsController extends GetxController{
+import '../views/active_form_screen.dart';
+import '../views/draft_form_screen.dart';
+import '../views/form_details_screen.dart';
+import '../views/ready_to_sync_form_screen.dart';
+import '../views/submitted_form_screen.dart';
+
+class ProjectDetailsController extends GetxController {
   TextEditingController searchEditingController = TextEditingController();
   var projectList = <ProjectListFromLocalDb>[].obs;
-  var submittedFormList = <SubmittedFormListData?>[].obs;
   var allFormList = <AllFormsData?>[].obs;
   var allFormListTemp = <AllFormsData?>[].obs;
-
   var isLoadingProject = false.obs;
-  var totalActiveForms = 0.obs;
-  var totalSubmittedForms = 0.obs;
-
+  int currentProjectId = 0;
   ProjectRepository _projectRepository = ProjectRepository();
 
-
   var draftFormCount = 0.obs;
+  var activeFormCount = 0.obs;
   var completeFormCount = 0.obs;
-
-  @override
-  void onInit()async{
-    super.onInit();
-    await getDraftFormCount();
-    await getCompleteFormCount();
-  }
+  var submittedFormCount = 0.obs;
 
   ///search operation
-  void searchOperation() async{
-    if(searchEditingController.text.isEmpty) allFormList.value = allFormListTemp;
-    else allFormList.value = allFormListTemp.where((v) => (v?.title??'').toLowerCase().contains(searchEditingController.text.toLowerCase())).toList();
+  void searchOperation() async {
+    if (searchEditingController.text.isEmpty)
+      allFormList.value = allFormListTemp;
+    else
+      allFormList.value = allFormListTemp
+          .where((v) => (v?.title ?? '')
+              .toLowerCase()
+              .contains(searchEditingController.text.toLowerCase()))
+          .toList();
   }
 
   ///getting project list here
-  void getAllDataByProject(projectId) async{
+  void getAllDataByProject() async {
     isLoadingProject.value = true;
-    submittedFormList.value = await _projectRepository.getAllSubmittedFromLocalByProject(projectId);
-    allFormList.value = await _projectRepository.getAllFromLocalByProject(projectId);
-    allFormListTemp.value = allFormList.value;
+    allFormList.value =
+        await _projectRepository.getAllFromLocalByProject(currentProjectId);
+    allFormListTemp.value = List.from(allFormList);
+    await refreshDashBoardCount();
     isLoadingProject.value = false;
   }
 
+  getSubmittedFormCount() async {
+    submittedFormCount.value = (await _projectRepository
+            .getAllSubmittedFromLocalByProject(currentProjectId))
+        .length;
+  }
 
-  getDraftFormCount() async{
-    final results = await OdkUtil.instance.getDraftForms(['member_register_test901']);
-    if (results != null && results.isNotEmpty) {
-      draftFormCount.value = formData.formDataFromJson(results).length;
-      return;
+  getActiveFormCount() async {
+    activeFormCount.value =
+        allFormList.where((form) => form?.status == 'true').length;
+  }
+
+  getDraftFormCount() async {
+    if (allFormList.isNotEmpty) {
+      var formIds = allFormList.map((form) => form!.idString!).toList();
+
+      final results = await OdkUtil.instance.getDraftForms(formIds);
+      if (results != null && results.isNotEmpty) {
+        draftFormCount.value = formData.formDataFromJson(results).length;
+        return;
+      }
     }
   }
 
-  getCompleteFormCount() async{
-    final results = await OdkUtil.instance.getFinalizedForms(['member_register_test901']);
-    if (results != null && results.isNotEmpty) {
-      completeFormCount.value = formData.formDataFromJson(results).length;
-      return;
+  getCompleteFormCount() async {
+    if (allFormList.isNotEmpty) {
+      var formIds = allFormList.map((form) => form!.idString!).toList();
+
+      final results = await OdkUtil.instance.getFinalizedForms(formIds);
+      if (results != null && results.isNotEmpty) {
+        completeFormCount.value = formData.formDataFromJson(results).length;
+        return;
+      }
     }
+  }
+
+  navigateToDraftFormsScreen(ProjectListFromLocalDb projectListFromData) async {
+    await Get.to(
+      () => DraftFormScreen(
+        project: projectListFromData,
+      ),
+    );
+
+    refreshDashBoardCount();
+  }
+
+  navigateToActiveFormsScreen(
+      ProjectListFromLocalDb projectListFromData) async {
+    await Get.to(
+      () => ActiveFormScreen(
+        project: projectListFromData,
+      ),
+    );
+
+    refreshDashBoardCount();
+  }
+
+  navigateToSyncFormsScreen(ProjectListFromLocalDb projectListFromData) async {
+    await Get.to(
+      () => ReadyToSyncFormScreen(
+        project: projectListFromData,
+      ),
+    );
+
+    refreshDashBoardCount();
+  }
+
+  navigateToSubmittedFormsScreen(
+      ProjectListFromLocalDb projectListFromData) async {
+    await Get.to(
+      () => SubmittedFormScreen(
+        project: projectListFromData,
+      ),
+    );
+
+    refreshDashBoardCount();
+  }
+
+  navigateToFormDetailsScreen(
+    ProjectListFromLocalDb projectListFromData,
+    AllFormsData data,
+  ) async {
+    await Get.to(
+      () => FormDetailsScreen(
+        projectListFromData: projectListFromData,
+        allFormsData: data,
+      ),
+    );
+
+    refreshDashBoardCount();
+  }
+
+  Future<void> refreshDashBoardCount() async {
+    await getDraftFormCount();
+    await getActiveFormCount();
+    await getCompleteFormCount();
+    await getSubmittedFormCount();
   }
 }

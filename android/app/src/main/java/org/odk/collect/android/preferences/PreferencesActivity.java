@@ -18,7 +18,7 @@ package org.odk.collect.android.preferences;
 
 import android.app.Fragment;
 import android.os.Bundle;
-
+import androidx.appcompat.widget.Toolbar;
 import org.odk.collect.android.R;
 import org.odk.collect.android.activities.CollectAbstractActivity;
 import org.odk.collect.android.application.Collect;
@@ -38,7 +38,7 @@ public class PreferencesActivity extends CollectAbstractActivity {
         setContentView(R.layout.activity_preferences_layout);
         setTheme(new ThemeUtils(this).getSettingsTheme());
 
-        setTitle(R.string.general_preferences);
+        initToolbar();
         if (savedInstanceState == null) {
             boolean adminMode = getIntent().getBooleanExtra(INTENT_KEY_ADMIN_MODE, false);
             Fragment fragment = GeneralPreferencesFragment.newInstance(adminMode);
@@ -67,5 +67,12 @@ public class PreferencesActivity extends CollectAbstractActivity {
 
     public void setOnBackPressedListener(OnBackPressedListener onBackPressedListener) {
         this.onBackPressedListener = onBackPressedListener;
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle(getString(R.string.general_preferences));
     }
 }

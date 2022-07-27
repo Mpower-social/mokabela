@@ -54,7 +54,7 @@ class ActiveFormController extends GetxController {
     projectList.add(selectedProject);
 
     allFormList.value = await _dashboardRepository
-        .getAllByProjectFromLocal(currentProject!.id!);
+        .getAllActiveFormsByProject(currentProject!.id!);
     allFormListTemp.value = List.from(allFormList);
 
     isLoadingForms.value = false;

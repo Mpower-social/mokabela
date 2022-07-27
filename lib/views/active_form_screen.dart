@@ -128,16 +128,10 @@ class ActiveFormScreen extends StatelessWidget {
                   itemCount: controller.allFormList.length,
                   itemBuilder: (ctx, i) {
                     AllFormsData data = controller.allFormList[i]!;
+
                     return InkWell(
                       onTap: () {},
-                      child: formCard(
-                          title: data.title ?? '',
-                          subTittle: data.projectName ?? '',
-                          date: Utils.dateFormat
-                              .format(DateTime.parse(data.createdAt!)),
-                          totalSubmission: data.totalSubmission ?? 0,
-                          totalForm: data.target ?? 0,
-                          submittedForm: data.totalSubmission ?? 0),
+                      child: formCard(data: data),
                     );
                   },
                 ),

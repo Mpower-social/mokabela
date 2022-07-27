@@ -51,8 +51,7 @@ class OdkUtil {
         .invokeMethod('deleteDraft', {'instanceId': instanceId});
   }
 
-  Future<dynamic> getRecentForms(List<String> formIds) async {
-    return await methodChannel
-        .invokeMethod('recentForms', {'formIds': formIds});
+  Future<dynamic> getRecentForms() async {
+    return await methodChannel.invokeMethod('recentForms');
   }
 }

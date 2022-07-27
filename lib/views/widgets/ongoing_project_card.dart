@@ -3,16 +3,18 @@ import 'package:get/get.dart';
 import '../../models/local/project_list_data.dart';
 import '../../res/color.dart';
 import '../../utils/utils.dart';
-import '../project_details_screen.dart';
 
-Widget ongoingProjectCard(ProjectListFromLocalDb project) {
+Widget ongoingProjectCard(
+  ProjectListFromLocalDb project, {
+  GestureTapCallback? onTap,
+}) {
   return Card(
     color: Color(0xFFF2F3F4),
     elevation: 2,
     shadowColor: grey,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     child: InkWell(
-      onTap: () => Get.to(() => ProjectDetailsScreen(project)),
+      onTap: onTap,
       customBorder:
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Container(
@@ -39,10 +41,9 @@ Widget ongoingProjectCard(ProjectListFromLocalDb project) {
                   height: 15,
                   width: 15,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: project.status == '1'
-                          ? Color(0xFF65905D)
-                          : Color(0xFFFA4A3B)),
+                    borderRadius: BorderRadius.circular(100),
+                    color: project.status == '1' ? activeColor : inactiveColor,
+                  ),
                 ),
               ],
             ),
@@ -59,7 +60,7 @@ Widget ongoingProjectCard(ProjectListFromLocalDb project) {
                           borderRadius: BorderRadius.circular(100),
                           color: primaryColor),
                       child: Text(
-                        (project.totalForms??0).toString(),
+                        (project.totalForms ?? 0).toString(),
                         style: TextStyle(color: white),
                       ),
                     ),

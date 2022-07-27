@@ -6,6 +6,8 @@ import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 
+import '../repository/form_repository.dart';
+
 class DraftFormController extends GetxController {
   var formList = <formData.FormData>[].obs;
   var formListTemp = <formData.FormData>[].obs;
@@ -53,11 +55,17 @@ class DraftFormController extends GetxController {
     selectedProject = currentProject;
     projectList.add(selectedProject);
 
-    final results =
-        await OdkUtil.instance.getDraftForms(['member_register_test901']);
-    if (results != null && results.isNotEmpty) {
-      formList.value = formData.formDataFromJson(results);
-      formListTemp.value = List.from(formList);
+    var projectForms =
+        await _dashboardRepository.getAllFormsByProject(currentProject!.id!);
+
+    if (projectForms.isNotEmpty) {
+      var formIds = projectForms.map((project) => project.idString!).toList();
+
+      final results = await OdkUtil.instance.getDraftForms(formIds);
+      if (results != null && results.isNotEmpty) {
+        formList.value = formData.formDataFromJson(results);
+        formListTemp.value = List.from(formList);
+      }
     }
 
     isLoadingDraftForm.value = false;
@@ -97,7 +105,7 @@ class DraftFormController extends GetxController {
 
   ///edit form
   void editDraftForm(int id) async {
-    final results = await OdkUtil.instance.editForm(id,null);
+    final results = await OdkUtil.instance.editForm(id);
     if (results != null && results.isNotEmpty) {
       return;
     }

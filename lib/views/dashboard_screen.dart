@@ -44,23 +44,24 @@ class DashboardScreen extends StatelessWidget {
               Row(
                 children: [
                   InkWell(
-                    onTap: () => Get.to(() => ActiveFormScreen(showActiveFormsOnly: false,)),
+                    onTap: () => _controller.navigateToActiveFormsScreen(true),
                     child: Obx(
                       () => statisticsCard(
                           title: 'active_form'.tr,
-                          data: '${_controller.totalActiveForms}/${_controller.allFormList.length}',
+                          data:
+                              '${_controller.activeFormCount}/${_controller.allFormList.length}',
                           icon: AppIcons.active,
                           position: 1,
                           wp: wp!(50)),
                     ),
                   ),
                   InkWell(
-                    onTap: () => Get.to(() => SubmittedFormScreen()),
+                    onTap: () => _controller.navigateToSubmittedFormsScreen(),
                     child: Obx(
                       () => statisticsCard(
                           title: 'submitted'.tr,
                           data: Utils.numberFormatter
-                              .format(_controller.submittedFormList.value.length),
+                              .format(_controller.submittedFormCount.value),
                           icon: AppIcons.submitted,
                           position: 2,
                           wp: wp!(50)),
@@ -71,7 +72,7 @@ class DashboardScreen extends StatelessWidget {
               Row(
                 children: [
                   InkWell(
-                    onTap: () => Get.to(() => DraftFormScreen()),
+                    onTap: () => _controller.navigateToDraftFormsScreen(),
                     child: Obx(
                       () => statisticsCard(
                           title: 'draft'.tr,
@@ -83,7 +84,7 @@ class DashboardScreen extends StatelessWidget {
                     ),
                   ),
                   InkWell(
-                    onTap: () => Get.to(() => ReadyToSyncFormScreen()),
+                    onTap: () => _controller.navigateToSyncFormsScreen(),
                     child: Obx(
                       () => statisticsCard(
                           title: 'ready_to_sync'.tr,
@@ -97,63 +98,55 @@ class DashboardScreen extends StatelessWidget {
                 ],
               ),
 
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Obx(
-                          () => Visibility(
-                              visible: _controller.recentFormList.length > 0
-                                  ? true
-                                  : false,
-                              child: Column(
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Obx(
+                        () => Visibility(
+                          visible: _controller.recentFormList.length > 0
+                              ? true
+                              : false,
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      title(title: 'recent_forms'.tr),
-                                      InkWell(
-                                        onTap: () => Get.to(
-                                          () => ActiveFormScreen(
-                                            showActiveFormsOnly: false,
-                                          ),
-                                        ),
-                                        child: title(title: 'all'.tr),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-
-                                  ///recent forms
-                                  SizedBox(
-                                    height: 110,
-                                    child: _recentFormHorizontalList(),
-                                  ),
-
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
+                                  title(title: 'recent_forms'.tr),
+                                  InkWell(
+                                    onTap: () => _controller
+                                        .navigateToActiveFormsScreen(false),
+                                    child: title(title: 'all'.tr),
+                                  )
                                 ],
-                              )),
+                              ),
+                              SizedBox(height: 10),
+
+                              ///recent forms
+                              SizedBox(
+                                height: 110,
+                                child: _recentFormHorizontalList(),
+                              ),
+
+                              const SizedBox(height: 20),
+                            ],
+                          ),
                         ),
-                        title(title: 'ongoing_project'.tr),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Expanded(child: _ongoingProjectList())
-                      ],
-                    ),
+                      ),
+                      title(title: 'ongoing_project'.tr),
+                      const SizedBox(height: 10),
+                      Expanded(child: _ongoingProjectList())
+                    ],
                   ),
-                )
-              ],
-            ),
-            /*    body: Column(
+                ),
+              )
+            ],
+          ),
+          /*    body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -212,23 +205,23 @@ class DashboardScreen extends StatelessWidget {
               )
               ],
             ),*/
-            drawer: Obx(() => drawer(
-                _controller.name.value, _controller.designation.value,
-                wp: wp!(30))),
-            floatingActionButton: FloatingActionButton.extended(
-                onPressed: () => _controller.getAllData(true),
-                backgroundColor: primaryColor,
-                label: Row(
-                  children: [
-                    const Icon(AppIcons.reload),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text('load'.tr)
-                  ],
-                )),
-          ),
+          drawer: Obx(() => drawer(
+              _controller.name.value, _controller.designation.value,
+              wp: wp!(30))),
+          floatingActionButton: FloatingActionButton.extended(
+              onPressed: () => _controller.getAllData(true),
+              backgroundColor: primaryColor,
+              label: Row(
+                children: [
+                  const Icon(AppIcons.reload),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Text('load'.tr)
+                ],
+              )),
         ),
+      ),
     );
   }
 
@@ -239,15 +232,14 @@ class DashboardScreen extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (ctx, i) {
           return InkWell(
-            onTap: () {
-              Get.to(() => FormDetailsScreen(formId: _controller.recentFormList[i].formId,projectListFromData: ProjectListFromLocalDb(
+            onTap: () => _controller.navigateToFormDetailsScreen(
+              _controller.recentFormList[i].formId,
+              ProjectListFromLocalDb(
                 projectName: _controller.recentFormList[i].displayName ?? '',
                 id: _controller.recentFormList[i].id ?? 0,
-              ),));
-            },
-            child: recentFormCard(
-                title: _controller.recentFormList[i].displayName ?? '',
-                subTitle: _controller.recentFormList[i].projectName ?? ''),
+              ),
+            ),
+            child: recentFormCard(formData: _controller.recentFormList[i]),
           );
         },
         separatorBuilder: (ctx, i) => const SizedBox(
@@ -267,7 +259,11 @@ class DashboardScreen extends StatelessWidget {
               : ListView.separated(
                   itemCount: _controller.projectList.length,
                   itemBuilder: (ctx, i) {
-                    return ongoingProjectCard(_controller.projectList[i]);
+                    return ongoingProjectCard(
+                      _controller.projectList[i],
+                      onTap: () => _controller.navigateToProjectDetailsScreen(
+                          _controller.projectList[i]),
+                    );
                   },
                   separatorBuilder: (ctx, i) => const SizedBox(
                     width: 8,
