@@ -3,8 +3,11 @@ class Apis{
 
 
   static var url = 'http://192.168.19.19:3008';//live
-  static var odkRelatedUrl = 'http://192.168.19.16:9037';
   //static var url = 'http://192.168.22.59:3000';//local
+
+  static var odkRelatedUrl = 'http://192.168.19.16:9037';//live
+  //static var odkRelatedUrl = 'http://192.168.22.59:8111';//local
+
   static var baseUrl = '$url/msurvey/api';//dev
 
   static var login = '$baseUrl/auth/login';
@@ -14,5 +17,6 @@ class Apis{
   static var getFormList = '$baseUrl/project/forms/get-form-list-all';
   static var getAllFormList = '$baseUrl/project/forms/get-all-form-configuration';
   static var getSubmittedFormList = '$odkRelatedUrl/msurvey/forms/instance/list/';
+  static var getRevertedFormList = '$baseUrl/project/forms/get-all-reverted-instances';
   static var submitForm = '$odkRelatedUrl/msurvey/forms/instance/submit/';
 }

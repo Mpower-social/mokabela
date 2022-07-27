@@ -265,8 +265,8 @@ class FormListScreen extends StatelessWidget {
 
                               Visibility(
                                 visible: formStatus == FormStatus.reverted
-                                    ? false
-                                    : true,
+                                    ? true
+                                    : false,
                                 child: IconButton(
                                   onPressed: () {
                                     infoDialog(
