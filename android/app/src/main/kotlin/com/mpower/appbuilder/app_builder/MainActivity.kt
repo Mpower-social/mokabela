@@ -12,6 +12,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.mpower.appbuilder.app_builder.models.FormInstance
 import com.mpower.appbuilder.app_builder.utills.AssetFormDownloadUtil
+import com.mpower.appbuilder.app_builder.utills.DateTimeUtil
 import org.odk.collect.android.activities.*
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
@@ -22,15 +23,19 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import org.odk.collect.android.application.Collect
 import org.odk.collect.android.dao.FormsDao
-import org.odk.collect.android.dao.InstancesDao
+import org.odk.collect.android.provider.InstanceProviderAPI
 import org.odk.collect.android.listeners.PermissionListener
 import org.odk.collect.android.preferences.GeneralKeys.KEY_USERNAME
 import org.odk.collect.android.provider.FormsProviderAPI
-import org.odk.collect.android.provider.InstanceProviderAPI
 import org.odk.collect.android.provider.InstanceProviderAPI.InstanceColumns
 import org.odk.collect.android.storage.StorageInitializer
 import org.odk.collect.android.utilities.PermissionUtils
 import org.odk.collect.android.preferences.PreferencesActivity
+import org.odk.collect.android.dao.InstancesDao;
+import org.odk.collect.android.storage.StoragePathProvider
+import org.odk.collect.android.utilities.FileUtils
+import java.io.File
+
 
 class MainActivity: FlutterActivity() {
     private val CHANNEL = "flutter_to_odk_communication"
@@ -61,9 +66,9 @@ class MainActivity: FlutterActivity() {
                         }
                         call.method.equals("editForm", true) -> {
                             val instanceId = call.argument<Int>("instanceId")
-
+                            val formData:FormInstance = Gson().fromJson(call.argument<String>("data"),FormInstance::class.java)
                             instanceId?.let {
-                                editOdkForm(it)
+                                editOdkForm(it,formData)
                             }
                         }
                         call.method.equals("draftForms", true) -> {
@@ -149,9 +154,36 @@ class MainActivity: FlutterActivity() {
         }
     }
 
-    private fun editOdkForm(id: Int) {
+    private fun editOdkForm(id: Int,formData:FormInstance) {
+        val id = InstancesDao().getInstanceIdForModuleId(formData.instanceId) ?: createInstance(formData)
         val instanceUri = ContentUris.withAppendedId(InstanceColumns.CONTENT_URI, id.toLong())
         openEditOdkForm(instanceUri)
+    }
+
+    private fun createInstance(formData:FormInstance): Long {
+        val fileName = "${formData.displayName}_${DateTimeUtil.getCurrentTimeString()}"
+        val instancePath = StoragePathProvider().getAbsoluteInstanceFilePath(fileName)
+        FileUtils.checkMediaPath(File(instancePath))
+        val instanceFile = File(instancePath, "$fileName.xml")
+
+        formData.xml?.let {
+            instanceFile.writeBytes(it.toByteArray())
+        }
+
+        return ContentValues().run {
+            put(InstanceProviderAPI.InstanceColumns.DISPLAY_NAME, "${formData.displayName}")
+            //put(InstanceProviderAPI.InstanceColumns.MODULE_ID, event.uId)
+            put(InstanceProviderAPI.InstanceColumns.INSTANCE_ID, formData.instanceId)
+            put(InstanceProviderAPI.InstanceColumns.INSTANCE_FILE_PATH, StoragePathProvider().getInstanceDbPath(instanceFile.absolutePath))
+            put(InstanceProviderAPI.InstanceColumns.JR_FORM_ID, formData.formId)
+            put(InstanceProviderAPI.InstanceColumns.STATUS, InstanceProviderAPI.STATUS_SUBMITTED)
+            // put(InstanceProviderAPI.InstanceColumns.SUBMITTED_BY, group.submittedBy)
+            put(InstanceProviderAPI.InstanceColumns.LAST_STATUS_CHANGE_DATE, DateTimeUtil.getCurrentTimeInMillis())
+
+            InstancesDao().saveInstance(this).run {
+                ContentUris.parseId(this)
+            }
+        }
     }
 
     private fun openEditOdkForm(uri: Uri) {
@@ -228,7 +260,8 @@ class MainActivity: FlutterActivity() {
                     projectId = it.getString(it.getColumnIndex(InstanceColumns.MODULE_ID)),
                     instanceId = it.getString(it.getColumnIndex(InstanceColumns.INSTANCE_ID)),
                     instanceFilePath = it.getString(it.getColumnIndex(InstanceColumns.INSTANCE_FILE_PATH)),
-                    lastChangeDate = it.getLong(it.getColumnIndex(InstanceColumns.LAST_STATUS_CHANGE_DATE))
+                    lastChangeDate = it.getLong(it.getColumnIndex(InstanceColumns.LAST_STATUS_CHANGE_DATE)),
+                    xml = ""
                 )
             }
             .toList()
@@ -249,7 +282,8 @@ class MainActivity: FlutterActivity() {
                     projectId = it.getString(it.getColumnIndex(InstanceColumns.MODULE_ID)),
                     instanceId = it.getString(it.getColumnIndex(InstanceColumns.INSTANCE_ID)),
                     instanceFilePath = it.getString(it.getColumnIndex(InstanceColumns.INSTANCE_FILE_PATH)),
-                    lastChangeDate = it.getLong(it.getColumnIndex(InstanceColumns.LAST_STATUS_CHANGE_DATE))
+                    lastChangeDate = it.getLong(it.getColumnIndex(InstanceColumns.LAST_STATUS_CHANGE_DATE)),
+                    xml = ""
                 )
             }
             .toList()
@@ -280,7 +314,8 @@ class MainActivity: FlutterActivity() {
                     projectId = it.getString(it.getColumnIndex(InstanceColumns.MODULE_ID)),
                     instanceId = it.getString(it.getColumnIndex(InstanceColumns.INSTANCE_ID)),
                     instanceFilePath = it.getString(it.getColumnIndex(InstanceColumns.INSTANCE_FILE_PATH)),
-                    lastChangeDate = it.getLong(it.getColumnIndex(InstanceColumns.LAST_STATUS_CHANGE_DATE))
+                    lastChangeDate = it.getLong(it.getColumnIndex(InstanceColumns.LAST_STATUS_CHANGE_DATE)),
+                    xml = ""
                 )
             }
             .toList()

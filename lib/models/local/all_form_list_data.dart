@@ -13,6 +13,7 @@ class AllFormsData {
   String? projectDes;
   String? status;
   String? feedback;
+  String? xml;
 
 
   AllFormsData(
@@ -26,26 +27,24 @@ class AllFormsData {
         this.target,
         this.projectId,
         this.projectName,
-        this.projectDes,
-	this.status,
-	this.feedback,
-	});
+        this.projectDes,this.status,this.feedback,this.xml});
 
   AllFormsData.fromJson(Map<String, dynamic> json) {
     id = json['id'].toString();
-    xFormId = json['xformId'] ?? '';
-    title = json['title'] ?? '';
-    idString = json['idString'] ?? '';
-    projectId = json['projectId'] ?? '';
-    createdAt = json['createdAt'] ?? '';
+    xFormId = json['xformId']??'';
+    title = json['title']??'';
+    idString = json['idString']??'';
+    projectId = json['projectId']??'';
+    createdAt = json['createdAt']??'';
     updatedAt = json['updatedAt']??'';
     instanceId = json['instanceId']??'';
-    target = json['target'] ?? 0;
-    projectId = json['projectId'] ?? 0;
-    projectName = json['projectName'] ?? '';
-    projectDes = json['projectDes'] ?? '';
+    target = json['target']??0;
+    projectId = json['projectId']??0;
+    projectName = json['projectName']??'';
+    projectDes = json['projectDes']??'';
     status = json['status']??'false';
     feedback = json['feedback']??'';
+    xml = json['xml']??'';
   }
 
   Map<String, dynamic> toJson() {

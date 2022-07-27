@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:ffi';
 import 'package:flutter/services.dart';
+import 'package:m_survey/models/form_data.dart';
 
 class OdkUtil {
   OdkUtil._internal();
@@ -22,9 +24,12 @@ class OdkUtil {
         .invokeMethod('openForm', {'formId': formId, 'arguments': arguments});
   }
 
-  Future<dynamic> editForm(int instanceId) async {
+  Future<dynamic> editForm(int instanceId,FormData? formData) async {
     return await methodChannel
-        .invokeMethod('editForm', {'instanceId': instanceId});
+        .invokeMethod('editForm', {
+          'instanceId': instanceId,
+          'data':jsonEncode(formData)
+        });
   }
 
   Future<dynamic> getDraftForms(List<String> formIds) async {

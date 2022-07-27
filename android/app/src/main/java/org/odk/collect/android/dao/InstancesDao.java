@@ -442,4 +442,17 @@ public class InstancesDao {
         values.put(InstanceColumns.GEOMETRY_TYPE, instance.getGeometryType());
         return values;
     }
+
+    public Long getInstanceIdForModuleId(String id) {
+        String selection = InstanceColumns.MODULE_ID + "=?";
+        String[] selectionArgs = {id};
+
+        Cursor cursor = getInstancesCursor(null, selection, selectionArgs, null);
+
+        if(cursor != null && cursor.moveToFirst() &&
+                !cursor.isNull(cursor.getColumnIndex(InstanceColumns._ID)))
+            return cursor.getLong(cursor.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID));
+
+        return null;
+    }
 }

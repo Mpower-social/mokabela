@@ -7,5 +7,6 @@ data class FormInstance(
     val projectId: String,
     val instanceId: String,
     val instanceFilePath: String,
+    val xml: String,
     val lastChangeDate: Long
 )
