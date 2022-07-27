@@ -20,6 +20,8 @@ class DashboardController extends GetxController {
   var isLoadingProject = false.obs;
   var totalActiveForms = 0.obs;
   var totalSubmittedForms = 0.obs;
+  var formList = <formData.FormData>[].obs;
+  var formListString = <String>[].obs;
 
   var draftFormCount = 0.obs;
   var completeFormCount = 0.obs;
@@ -53,17 +55,31 @@ class DashboardController extends GetxController {
     allFormList.value = await _dashboardRepository.getAllFormList();
     projectList.value = await _dashboardRepository.getProjectListOperation(1, 10, forceLoad);
     await _dashboardRepository.getRevertedFormList();
+    await getFormData();
     allFormList.forEach((element) {
       if(element?.status=='true') totalActiveForms.value++;
     });
     isLoadingProject.value = false;
   }
 
+  ///getting all forms data here
+  getFormData() async {
+    formListString.clear();
+    allFormList.forEach((element) {
+      formListString.add(element?.idString??'');
+    });
+    var formIds = formListString;
+    var results = await OdkUtil.instance.getFinalizedForms(formIds);
+    if (results != null && results.isNotEmpty) {
+      formList.value = formData.formDataFromJson(results);
+    }
+  }
+
   ///sync all data
   void syncAllForm() async {
 
     try {
-      for (var element in allFormList) {
+      for (var element in formList) {
         if (element != null) {
           final results = await _formRepository.submitFormOperation(element);
           if (results.isNotEmpty) {

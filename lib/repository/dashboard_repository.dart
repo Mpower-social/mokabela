@@ -5,6 +5,7 @@ import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/models/local/submitted_form_list_data.dart';
 import 'package:m_survey/models/response/all_form_list_response.dart';
 import 'package:m_survey/models/response/project_list_response.dart';
+import 'package:m_survey/models/response/reverted_form_list_response.dart';
 import 'package:m_survey/models/response/submitted_form_list_response.dart';
 import 'package:m_survey/services/dashboard_service.dart';
 import 'package:m_survey/utils/shared_pref.dart';
@@ -152,40 +153,40 @@ class DashboardRepository {
     //try{
     final Database? db = await DatabaseProvider.dbProvider.database;
 
-    List<AllFormsData> allFormList = await getAllFromLocal();
+    List<AllFormsData> allFormList = await getRevertedFromLocal();
 
     ///checking data already exist or not
     if (allFormList.isEmpty) {
 
       ///getting data from remote
-      AllFormListResponse? allFormResponse =
-      await _dashboardService.getAllFormList();
+      RevertedFormListResponse? revertedFormListResponse =
+      await _dashboardService.getRevertedFormList();
 
       ///checking data already exist or not
-      if (allFormResponse?.data != null) {
-        db!.delete(TABLE_NAME_All_FORM);
-        for (Data formData in allFormResponse?.data ?? []) {
+      if (revertedFormListResponse?.data != null) {
+        db!.delete(TABLE_NAME_REVERTED_FORM);
+        for (RevertedDatum formData in revertedFormListResponse?.data?? []) {
 
           ///inserting data to local
-          insertAllForms(AllFormsData(
+          insertRevertedForms(AllFormsData(
             id: formData.id,
-            xFormId: formData.attributes?.xformId,
-            title: formData.attributes?.title,
-            idString: formData.attributes?.idString,
-            createdAt: formData.attributes?.createdAt,
-            target: formData.attributes?.target,
-            projectId: formData.attributes?.project?.id,
-            projectName: formData.attributes?.project?.name,
-            projectDes: formData.attributes?.project?.description,
-            status: formData.attributes?.isActive
+            xFormId: formData.attributes?.xform?.xformId,
+            title: formData.attributes?.xform?.title,
+            idString: formData.attributes?.xform?.idString,
+            createdAt: formData.attributes?.updatedAt.toString(),
+            updatedAt: formData.attributes?.updatedAt.toString(),
+            projectId: formData.attributes?.xform?.projectId,
+            status: formData.attributes?.status,
+            instanceId: formData.attributes?.instanceUuid,
+            feedback: formData.attributes?.feedback
           ));
         }
 
         ///inserting last updated datetime here
-        if((allFormResponse?.data!.length??0)>0){
-          await SharedPref.sharedPref.setString(SharedPref.SUBMITTED_FORM_DATE_TIME, allFormResponse?.data?[0].attributes?.updatedAt??'0');
+        if((revertedFormListResponse?.data!.length??0)>0){
+          await SharedPref.sharedPref.setString(SharedPref.REVERTED_FORM_DATE_TIME, (revertedFormListResponse?.data?[0].attributes?.updatedAt??'0').toString());
         }
-        return await getAllFromLocal();
+        return await getRevertedFromLocal();
       }
     }
     return allFormList;
@@ -265,5 +266,28 @@ class DashboardRepository {
     var data = await db!.rawQuery(
         'select * from $TABLE_NAME_All_FORM f WHERE f.$All_FORM_PROJECT_ID = $projectId ORDER BY $All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
+  }
+    ///insert reverted form data to local
+    void insertRevertedForms(AllFormsData allFormsData) async {
+      final Database? db = await DatabaseProvider.dbProvider.database;
+      await db!.insert(TABLE_NAME_REVERTED_FORM, allFormsData.toJsonRevertedForm());
+    }
+
+    ///getting reverted form data from local
+    Future<List<AllFormsData>> getRevertedFromLocal() async {
+      final Database? db = await DatabaseProvider.dbProvider.database;
+      var data = await db!.rawQuery(
+          'select * from $TABLE_NAME_REVERTED_FORM ORDER BY $All_FORM_CREATED_AT DESC');
+      return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
+
+    }
+
+  ///getting reverted form data from local
+  Future<List<AllFormsData>> getRevertedFromLocalByFromId(formId) async {
+    final Database? db = await DatabaseProvider.dbProvider.database;
+    var data = await db!.rawQuery(
+        'select * from $TABLE_NAME_REVERTED_FORM where $REVERTED_FORM_ID_STRING = "$formId" ORDER BY $All_FORM_CREATED_AT DESC');
+    return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
+
   }
 }

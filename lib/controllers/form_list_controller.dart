@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:m_survey/models/draft_checkbox_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/models/local/submitted_form_list_data.dart';
+import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/repository/form_repository.dart';
 import 'package:m_survey/repository/project_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
@@ -35,6 +36,7 @@ class FormListController extends GetxController{
   var ascOrDesc = false.obs;
 
   ProjectRepository _projectRepository = ProjectRepository();
+  DashboardRepository _dashboardRepository = DashboardRepository();
 
   ///pick date from datepicker
   void pickDate(String s) async{
@@ -132,17 +134,17 @@ class FormListController extends GetxController{
     isLoadingForm.value = false;
   }
 
-  ///getting submitted forms here
-  void getSubmittedFormList(String formId) async{
+  ///getting reverted form here
+  void getRevertedFormList(String formId) async{
     isLoadingForm.value = true;
-    var submittedList = await _projectRepository.getAllSubmittedFromLocalByForm(formId);
+    var submittedList = await _dashboardRepository.getRevertedFromLocalByFromId(formId);
     submittedList.forEach((element) {
       formList.add(formData.FormData(
-        id: element.id??0,
+        id: int.tryParse(element.xFormId??''),
         projectId: element.projectId.toString(),
-        displayName: element.formName??'',
-        formId: element.formIdString??'',
-        lastChangeDate: DateTime.parse(element.dateCreated!).millisecondsSinceEpoch
+        formId: element.idString??'',
+        lastChangeDate: DateTime.parse(element.updatedAt!).millisecondsSinceEpoch,
+        feedback: element.feedback
       ));
     });
     formListTemp.value = formList.value;
@@ -150,9 +152,22 @@ class FormListController extends GetxController{
     isLoadingForm.value = false;
   }
 
-  ///getting reverted form here
-  void getRevertedFormList(String formId) {
-
+  ///getting submitted forms here
+  void getSubmittedFormList(String formId) async{
+    isLoadingForm.value = true;
+    var submittedList = await _projectRepository.getAllSubmittedFromLocalByForm(formId);
+    submittedList.forEach((element) {
+      formList.add(formData.FormData(
+          id: element.id??0,
+          projectId: element.projectId.toString(),
+          displayName: element.formName??'',
+          formId: element.formIdString??'',
+          lastChangeDate: DateTime.parse(element.dateCreated!).millisecondsSinceEpoch
+      ));
+    });
+    formListTemp.value = formList.value;
+    setupDefaultCheckBox();
+    isLoadingForm.value = false;
   }
 
   ///sort list asc or desc
@@ -171,8 +186,8 @@ class FormListController extends GetxController{
   }
 
   ///edit form
-  void editDraftForm(int id) async{
-    final results = await OdkUtil.instance.editForm(id);
+  void editDraftForm(formData.FormData formData) async{
+    final results = await OdkUtil.instance.editForm(formData.id??0,formData);
     if (results != null && results.isNotEmpty) {
       return;
     }

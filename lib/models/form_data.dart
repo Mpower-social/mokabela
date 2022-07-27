@@ -13,7 +13,8 @@ class FormData {
     this.instanceId,
     this.lastChangeDate,
     this.projectId,
-    this.projectName
+    this.projectName,
+    this.feedback
   });
 
   String? displayName;
@@ -24,6 +25,7 @@ class FormData {
   int? lastChangeDate;
   String? projectId;
   String? projectName;
+  String? feedback;
 
   factory FormData.fromJson(Map<String, dynamic> json) => FormData(
     displayName: json["displayName"]??'',
@@ -34,6 +36,7 @@ class FormData {
     lastChangeDate: json["lastChangeDate"]??0,
     projectId: json["projectId"]??'',
     projectName: json["projectName"]??'N/A',
+    feedback: json["feedback"]??'N/A',
   );
 
   Map<String, dynamic> toJson() => {
@@ -45,5 +48,6 @@ class FormData {
     "lastChangeDate": lastChangeDate ??0,
     "projectId": projectId??'',
     "projectName": projectName??'N/A',
+    "feedback": feedback??'',
   };
 }

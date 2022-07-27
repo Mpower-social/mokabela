@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:m_survey/models/response/all_form_list_response.dart';
 import 'package:m_survey/models/response/project_list_response.dart';
+import 'package:m_survey/models/response/reverted_form_list_response.dart';
 import 'package:m_survey/models/response/submitted_form_list_response.dart';
 import 'package:m_survey/network/apis.dart';
 import 'package:m_survey/network/base_api_provider.dart';
@@ -77,7 +78,7 @@ class DashboardService extends BaseApiProvider {
     return null;
   }
 
-  Future<AllFormListResponse?> getRevertedFormList() async {
+  Future<RevertedFormListResponse?> getRevertedFormList() async {
     try {
       var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
       var dateTime = await SharedPref.sharedPref.getString(SharedPref.REVERTED_FORM_DATE_TIME)??'0';
@@ -87,7 +88,7 @@ class DashboardService extends BaseApiProvider {
               headers: {'Authorization': 'Bearer $token',},
               responseType: ResponseType.plain
           ));
-      return AllFormListResponse.fromJson(jsonDecode(response.data));
+      return RevertedFormListResponse.fromJson(jsonDecode(response.data));
     } catch (error) {
       showToast(msg: DioException.getDioException(error), isError: true);
     }

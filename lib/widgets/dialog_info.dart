@@ -37,12 +37,15 @@ import 'package:m_survey/widgets/common_button.dart';
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  commonButton(
-                      text: cancelText,
-                      bg: primaryColor,
-                      tap: ()=>onCancelTap!(),
-                      width: 100,
-                      height: 40
+                  Visibility(
+                    visible: cancelText.isEmpty?false:true,
+                    child: commonButton(
+                        text: cancelText,
+                        bg: primaryColor,
+                        tap: ()=>onCancelTap!(),
+                        width: 100,
+                        height: 40
+                    ),
                   ),
 
                   commonButton(

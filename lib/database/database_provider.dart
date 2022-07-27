@@ -60,6 +60,7 @@ class DatabaseProvider{
           '$All_FORM_TITLE TEXT,'
           '$All_FORM_ID_STRING TEXT,'
           '$All_FORM_CREATED_AT TEXT,'
+          '$All_FORM_UPDATED_AT TEXT,'
           '$All_FORM_TARGET INTEGER,'
           '$All_FORM_PROJECT_ID INTEGER,'
           '$All_FORM_PROJECT_NAME TEXT,'
@@ -76,10 +77,14 @@ class DatabaseProvider{
     await database.execute(
       'CREATE TABLE IF NOT EXISTS $TABLE_NAME_REVERTED_FORM ($REVERTED_FORM_ID INTEGER PRIMARY KEY,'
           '$REVERTED_FORM_PROJECT_ID INTEGER,'
+          '$REVERTED_FORM_TITLE TEXT,'
           '$REVERTED_FORM_INSTANCE_ID TEXT,'
+          '$REVERTED_FORM_X_FORM_ID TEXT,'
+          '$REVERTED_FORM_ID_STRING TEXT,'
           '$REVERTED_FORM_FEEDBACK TEXT,'
           '$REVERTED_FORM_CREATED_AT TEXT,'
-          '$REVERTED_FORM_UPDATED_AT TEXT)',
+          '$REVERTED_FORM_UPDATED_AT TEXT,'
+          '$REVERTED_FORM_STATUS TEXT)',
     );
   }
 }

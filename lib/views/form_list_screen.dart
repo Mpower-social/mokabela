@@ -103,7 +103,7 @@ class FormListScreen extends StatelessWidget {
         Row(
           children: [
             Visibility(
-              visible: formStatus == FormStatus.draft ? false : true,
+              visible: (formStatus == FormStatus.draft || formStatus == FormStatus.reverted) ? false : true,
               child:  Obx(()=>Checkbox(
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 value: controller!.isCheckedAll.value,
@@ -173,7 +173,7 @@ class FormListScreen extends StatelessWidget {
                           Row(
                             children: [
                               Visibility(
-                                visible: formStatus == FormStatus.draft
+                                visible: (formStatus == FormStatus.draft || formStatus == FormStatus.reverted)
                                     ? false
                                     : true,
                                 child: formStatus == FormStatus.draft?Container():Obx(()=>Checkbox(
@@ -222,11 +222,11 @@ class FormListScreen extends StatelessWidget {
                                 width: 20,
                               ),
                               Visibility(
-                                visible: formStatus == FormStatus.draft
+                                visible: (formStatus == FormStatus.draft || formStatus == FormStatus.reverted)
                                     ? true
                                     : false,
                                 child: IconButton(
-                                  onPressed: ()=>controller.editDraftForm(controller.isCheckList[i].formData!.id??0),
+                                  onPressed: ()=>controller.editDraftForm(controller.isCheckList[i].formData!),
                                   icon: Icon(
                                     AppIcons.edit,
                                     size: 22,
@@ -242,7 +242,7 @@ class FormListScreen extends StatelessWidget {
                                 ),
                               ),
                               Visibility(
-                                visible: formStatus == FormStatus.submitted
+                                visible: (formStatus == FormStatus.submitted || formStatus == FormStatus.reverted)
                                     ? false
                                     : true,
                                 child: IconButton(
@@ -271,9 +271,11 @@ class FormListScreen extends StatelessWidget {
                                   onPressed: () {
                                     infoDialog(
                                         title: 'Feedback',
-                                        msg: 'Are you sure to delete ?',
-                                        confirmText: 'Ok',
+                                        msg: controller.isCheckList[i].formData?.feedback??'',
+                                        confirmText: 'Edit',
+                                        cancelText: 'Cancel',
                                         onOkTap: ()=>Get.back(),
+                                        onCancelTap: ()=>Get.back(),
                                     );
                                   },
                                   icon: const Icon(
