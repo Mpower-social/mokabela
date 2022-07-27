@@ -34,107 +34,115 @@ class ProjectDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     wp = Screen(MediaQuery.of(context).size).wp;
     hp = Screen(MediaQuery.of(context).size).hp;
-    return SafeArea(
-      child: Scaffold(
-        appBar: baseAppBarWithDrawer(
-            title: '${_projectListFromData.projectName}',
-            onLeadingTap: () => Get.back()),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ///top statistics
-            Row(
-              children: [
-                InkWell(
-                  onTap: () => Get.to(() => ActiveFormScreen()),
-                  child: Obx(
-                    () => statisticsCard(
-                        title: 'Active Forms',
-                        data:
-                            '${Utils.numberFormatter.format(_controller.allFormList.length)}',
-                        icon: AppIcons.active,
-                        position: 1,
-                        wp: wp!(50)),
-                  ),
-                ),
-                InkWell(
-                  onTap: () => Get.to(
-                    () => DraftFormScreen(
-                      project: _projectListFromData,
-                    ),
-                  ),
-                  child: Obx(
-                    () => statisticsCard(
-                        title: 'Draft',
-                        data:
-                            '${Utils.numberFormatter.format(_controller.draftFormCount.value)}',
-                        icon: AppIcons.draft,
-                        position: 2,
-                        wp: wp!(50)),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                InkWell(
-                  onTap: () => Get.to(
-                    () => SubmittedFormScreen(
-                      project: _projectListFromData,
-                    ),
-                  ),
-                  child: Obx(
-                    () => statisticsCard(
-                        title: 'Submitted',
-                        data:
-                            '${Utils.numberFormatter.format(_controller.submittedFormList.length)}',
-                        icon: AppIcons.submitted,
-                        position: 3,
-                        wp: wp!(50)),
-                  ),
-                ),
-                InkWell(
-                  onTap: () => Get.to(
-                    () => ReadyToSyncFormScreen(
-                      project: _projectListFromData,
-                    ),
-                  ),
-                  child: Obx(
-                    () => statisticsCard(
-                        title: 'Ready to Sync',
-                        data:
-                            '${Utils.numberFormatter.format(_controller.completeFormCount.value)}',
-                        icon: AppIcons.ready_sync,
-                        position: 4,
-                        wp: wp!(50)),
-                  ),
-                )
-              ],
-            ),
 
-            Expanded(
-              child: Container(
-                margin: const EdgeInsets.only(left: 15, right: 15, top: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ///search and title
-                    _search(),
-                    const SizedBox(
-                      height: 10,
+    return Container(
+      color: statusBarColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: baseAppBarWithDrawer(
+              title: '${_projectListFromData.projectName}',
+              onLeadingTap: () => Get.back()),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ///top statistics
+              Row(
+                children: [
+                  InkWell(
+                    onTap: () => Get.to(
+                      () => ActiveFormScreen(
+                        project: _projectListFromData,
+                      ),
                     ),
-
-                    ///recent forms
-                    Expanded(
-                      child: _formList(),
+                    child: Obx(
+                      () => statisticsCard(
+                          title: 'Active Forms',
+                          data:
+                              '${Utils.numberFormatter.format(_controller.allFormList.length)}',
+                          icon: AppIcons.active,
+                          position: 1,
+                          wp: wp!(50)),
                     ),
-                  ],
-                ),
+                  ),
+                  InkWell(
+                    onTap: () => Get.to(
+                      () => DraftFormScreen(
+                        project: _projectListFromData,
+                      ),
+                    ),
+                    child: Obx(
+                      () => statisticsCard(
+                          title: 'Draft',
+                          data:
+                              '${Utils.numberFormatter.format(_controller.draftFormCount.value)}',
+                          icon: AppIcons.draft,
+                          position: 2,
+                          wp: wp!(50)),
+                    ),
+                  ),
+                ],
               ),
-            )
-          ],
+              Row(
+                children: [
+                  InkWell(
+                    onTap: () => Get.to(
+                      () => SubmittedFormScreen(
+                        project: _projectListFromData,
+                      ),
+                    ),
+                    child: Obx(
+                      () => statisticsCard(
+                          title: 'Submitted',
+                          data:
+                              '${Utils.numberFormatter.format(_controller.submittedFormList.length)}',
+                          icon: AppIcons.submitted,
+                          position: 3,
+                          wp: wp!(50)),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => Get.to(
+                      () => ReadyToSyncFormScreen(
+                        project: _projectListFromData,
+                      ),
+                    ),
+                    child: Obx(
+                      () => statisticsCard(
+                          title: 'Ready to Sync',
+                          data:
+                              '${Utils.numberFormatter.format(_controller.completeFormCount.value)}',
+                          icon: AppIcons.ready_sync,
+                          position: 4,
+                          wp: wp!(50)),
+                    ),
+                  )
+                ],
+              ),
+
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 15, right: 15, top: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ///search and title
+                      _search(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+
+                      ///recent forms
+                      Expanded(
+                        child: _formList(),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

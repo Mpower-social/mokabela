@@ -31,196 +31,203 @@ class DashboardScreen extends StatelessWidget {
     wp = Screen(MediaQuery.of(context).size).wp;
     hp = Screen(MediaQuery.of(context).size).hp;
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: baseAppBarWithDrawer(title: 'Home', context: context),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ///top statistics
-            Row(
-              children: [
-                InkWell(
-                  onTap: () => Get.to(() => ActiveFormScreen()),
-                  child: Obx(
-                    () => statisticsCard(
-                        title: 'active_form'.tr,
-                        data: '09/${_controller.allFormList.length}',
-                        icon: AppIcons.active,
-                        position: 1,
-                        wp: wp!(50)),
+    return Container(
+      color: statusBarColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: baseAppBarWithDrawer(title: 'Home', context: context),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ///top statistics
+              Row(
+                children: [
+                  InkWell(
+                    onTap: () => Get.to(() => ActiveFormScreen()),
+                    child: Obx(
+                      () => statisticsCard(
+                          title: 'active_form'.tr,
+                          data: '09/${_controller.allFormList.length}',
+                          icon: AppIcons.active,
+                          position: 1,
+                          wp: wp!(50)),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => Get.to(() => SubmittedFormScreen()),
+                    child: Obx(
+                      () => statisticsCard(
+                          title: 'submitted'.tr,
+                          data: Utils.numberFormatter.format(
+                              _controller.submittedFormList.value.length),
+                          icon: AppIcons.submitted,
+                          position: 2,
+                          wp: wp!(50)),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  InkWell(
+                    onTap: () => Get.to(() => DraftFormScreen()),
+                    child: Obx(
+                      () => statisticsCard(
+                          title: 'draft'.tr,
+                          data: Utils.numberFormatter
+                              .format(_controller.draftFormCount.value),
+                          icon: AppIcons.draft,
+                          position: 3,
+                          wp: wp!(50)),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => Get.to(() => ReadyToSyncFormScreen()),
+                    child: Obx(
+                      () => statisticsCard(
+                          title: 'ready_to_sync'.tr,
+                          data: Utils.numberFormatter
+                              .format(_controller.completeFormCount.value),
+                          icon: AppIcons.ready_sync,
+                          position: 4,
+                          wp: wp!(50)),
+                    ),
+                  )
+                ],
+              ),
+
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Obx(
+                        () => Visibility(
+                            visible: _controller.recentFormList.length > 0
+                                ? true
+                                : false,
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    title(title: 'recent_forms'.tr),
+                                    InkWell(
+                                      onTap: () => Get.to(
+                                        () => ActiveFormScreen(
+                                          showActiveFormsOnly: false,
+                                        ),
+                                      ),
+                                      child: title(title: 'all'.tr),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+
+                                ///recent forms
+                                SizedBox(
+                                  height: 110,
+                                  child: _recentFormHorizontalList(),
+                                ),
+
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              ],
+                            )),
+                      ),
+                      title(title: 'ongoing_project'.tr),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Expanded(child: _ongoingProjectList())
+                    ],
                   ),
                 ),
-                InkWell(
-                  onTap: () => Get.to(() => SubmittedFormScreen()),
-                  child: Obx(
-                    () => statisticsCard(
-                        title: 'submitted'.tr,
-                        data: Utils.numberFormatter
-                            .format(_controller.submittedFormList.value.length),
-                        icon: AppIcons.submitted,
-                        position: 2,
-                        wp: wp!(50)),
-                  ),
-                )
-              ],
-            ),
-            Row(
-              children: [
-                InkWell(
-                  onTap: () => Get.to(() => DraftFormScreen()),
-                  child: Obx(
-                    () => statisticsCard(
-                        title: 'draft'.tr,
-                        data: Utils.numberFormatter
-                            .format(_controller.draftFormCount.value),
-                        icon: AppIcons.draft,
-                        position: 3,
-                        wp: wp!(50)),
-                  ),
+              )
+            ],
+          ),
+          /*    body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ///top statistics
+
+                Wrap(
+                  children: [
+                    statisticsCard(
+                        title: 'Active Forms',
+                        data: '09/13',
+                        icon: Icons.account_balance_wallet,
+                        position: 1,wp: 200),
+                    statisticsCard(
+                        title: 'Submitted',
+                        data: '1817',
+                        icon: Icons.account_balance_wallet,
+                        position: 2,wp: 200),
+
+                    statisticsCard(
+                        title: 'Draft',
+                        data: '470',
+                        icon: Icons.account_balance_wallet,
+                        position: 3,wp: 200),
+                    statisticsCard(
+                        title: 'Ready to Sync',
+                        data: '02',
+                        icon: Icons.account_balance_wallet,
+                        position: 4,wp: 200),
+                  ],
                 ),
-                InkWell(
-                  onTap: () => Get.to(() => ReadyToSyncFormScreen()),
-                  child: Obx(
-                    () => statisticsCard(
-                        title: 'ready_to_sync'.tr,
-                        data: Utils.numberFormatter
-                            .format(_controller.completeFormCount.value),
-                        icon: AppIcons.ready_sync,
-                        position: 4,
-                        wp: wp!(50)),
-                  ),
-                )
-              ],
-            ),
+
 
             Expanded(
               child: Container(
-                margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                margin: const EdgeInsets.only(left: 20,right: 20,top: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Obx(
-                      () => Visibility(
-                          visible: _controller.recentFormList.length > 0
-                              ? true
-                              : false,
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  title(title: 'recent_forms'.tr),
-                                  InkWell(
-                                      onTap: () => Get.to(() =>
-                                          ActiveFormScreen(from: 'dashboard')),
-                                      child: title(title: 'all'.tr))
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-
-                              ///recent forms
-                              SizedBox(
-                                height: 110,
-                                child: _recentFormHorizontalList(),
-                              ),
-
-                              const SizedBox(
-                                height: 20,
-                              ),
-                            ],
-                          )),
+                    Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: [ title(title: 'Recent Forms'), title(title: 'All')],),
+                    const SizedBox(height: 10,),
+                    ///recent forms
+                    SizedBox(
+                      height: 110,
+                      child:  _recentFormHorizontalList(),
                     ),
-                    title(title: 'ongoing_project'.tr),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Expanded(child: _ongoingProjectList())
+
+                    const SizedBox(height: 20,),
+                    title(title: 'Ongoing Projects'),
+
+                    const SizedBox(height: 10,),
+                   Expanded(child:  _ongoingProjectList())
                   ],
                 ),
               ),
             )
-          ],
-        ),
-        /*    body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            ///top statistics
-
-              Wrap(
+            ],
+          ),*/
+          drawer: Obx(() => drawer(
+              _controller.name.value, _controller.designation.value,
+              wp: wp!(30))),
+          floatingActionButton: FloatingActionButton.extended(
+              onPressed: () => _controller.getAllData(true),
+              backgroundColor: primaryColor,
+              label: Row(
                 children: [
-                  statisticsCard(
-                      title: 'Active Forms',
-                      data: '09/13',
-                      icon: Icons.account_balance_wallet,
-                      position: 1,wp: 200),
-                  statisticsCard(
-                      title: 'Submitted',
-                      data: '1817',
-                      icon: Icons.account_balance_wallet,
-                      position: 2,wp: 200),
-
-                  statisticsCard(
-                      title: 'Draft',
-                      data: '470',
-                      icon: Icons.account_balance_wallet,
-                      position: 3,wp: 200),
-                  statisticsCard(
-                      title: 'Ready to Sync',
-                      data: '02',
-                      icon: Icons.account_balance_wallet,
-                      position: 4,wp: 200),
-                ],
-              ),
-
-
-          Expanded(
-            child: Container(
-              margin: const EdgeInsets.only(left: 20,right: 20,top: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: [ title(title: 'Recent Forms'), title(title: 'All')],),
-                  const SizedBox(height: 10,),
-                  ///recent forms
-                  SizedBox(
-                    height: 110,
-                    child:  _recentFormHorizontalList(),
+                  const Icon(AppIcons.reload),
+                  const SizedBox(
+                    width: 8,
                   ),
-
-                  const SizedBox(height: 20,),
-                  title(title: 'Ongoing Projects'),
-
-                  const SizedBox(height: 10,),
-                 Expanded(child:  _ongoingProjectList())
+                  Text('load'.tr)
                 ],
-              ),
-            ),
-          )
-          ],
-        ),*/
-        drawer: Obx(() => drawer(
-            _controller.name.value, _controller.designation.value,
-            wp: wp!(30))),
-        floatingActionButton: FloatingActionButton.extended(
-            onPressed: () => _controller.getAllData(true),
-            backgroundColor: primaryColor,
-            label: Row(
-              children: [
-                const Icon(AppIcons.reload),
-                const SizedBox(
-                  width: 8,
-                ),
-                Text('load'.tr)
-              ],
-            )),
+              )),
+        ),
       ),
     );
   }
@@ -233,10 +240,14 @@ class DashboardScreen extends StatelessWidget {
         itemBuilder: (ctx, i) {
           return InkWell(
             onTap: () {
-              Get.to(() => FormDetailsScreen(formId: _controller.recentFormList[i].formId,projectListFromData: ProjectListFromLocalDb(
-                projectName: _controller.recentFormList[i].displayName ?? '',
-                id: _controller.recentFormList[i].id ?? 0,
-              ),));
+              Get.to(() => FormDetailsScreen(
+                    formId: _controller.recentFormList[i].formId,
+                    projectListFromData: ProjectListFromLocalDb(
+                      projectName:
+                          _controller.recentFormList[i].displayName ?? '',
+                      id: _controller.recentFormList[i].id ?? 0,
+                    ),
+                  ));
             },
             child: recentFormCard(
                 title: _controller.recentFormList[i].displayName ?? '',

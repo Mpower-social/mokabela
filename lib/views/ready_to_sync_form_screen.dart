@@ -30,42 +30,45 @@ class ReadyToSyncFormScreen extends StatelessWidget {
     wp = Screen(MediaQuery.of(context).size).wp;
     hp = Screen(MediaQuery.of(context).size).hp;
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: baseAppBar(title: 'Completed Forms'),
-        body: Container(
-          height: hp!(100),
-          width: wp!(100),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 15,
-              ),
-              _filter(),
-              const SizedBox(
-                height: 15,
-              ),
-              Expanded(child: _formList()),
-              Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      commonButton(
-                          text: 'Send Back to draft',
-                          bg: primaryColor,
-                          tap: () => controller.sendBackToDraft(),
-                          width: wp!(40),
-                          height: 40),
-                      commonButton(
-                          text: 'Sync',
-                          bg: green,
-                          tap: () => controller.syncCompleteForm(),
-                          width: wp!(40),
-                          height: 40),
-                    ],
-                  ))
-            ],
+    return Container(
+      color: statusBarColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: baseAppBar(title: 'Completed Forms'),
+          body: Container(
+            height: hp!(100),
+            width: wp!(100),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 15,
+                ),
+                _filter(),
+                const SizedBox(
+                  height: 15,
+                ),
+                Expanded(child: _formList()),
+                Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        commonButton(
+                            text: 'Send Back to draft',
+                            bg: primaryColor,
+                            tap: () => controller.sendBackToDraft(),
+                            width: wp!(40),
+                            height: 40),
+                        commonButton(
+                            text: 'Sync',
+                            bg: green,
+                            tap: () => controller.syncCompleteForm(),
+                            width: wp!(40),
+                            height: 40),
+                      ],
+                    ))
+              ],
+            ),
           ),
         ),
       ),

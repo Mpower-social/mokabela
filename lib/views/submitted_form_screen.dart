@@ -29,32 +29,35 @@ class SubmittedFormScreen extends StatelessWidget {
     wp = Screen(MediaQuery.of(context).size).wp;
     hp = Screen(MediaQuery.of(context).size).hp;
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: baseAppBar(title: 'Submitted Forms'),
-        body: Container(
-          height: hp!(100),
-          width: wp!(100),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 15,
-              ),
-              _filter(),
-              const SizedBox(
-                height: 15,
-              ),
-              Expanded(child: _formList()),
-              Padding(
-                padding: const EdgeInsets.all(5),
-                child: commonButton(
-                    text: 'Clear Sent Response',
-                    bg: red,
-                    tap: () => controller.deleteForm(),
-                    width: wp!(50),
-                    height: 40),
-              )
-            ],
+    return Container(
+      color: statusBarColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: baseAppBar(title: 'Submitted Forms'),
+          body: Container(
+            height: hp!(100),
+            width: wp!(100),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 15,
+                ),
+                _filter(),
+                const SizedBox(
+                  height: 15,
+                ),
+                Expanded(child: _formList()),
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: commonButton(
+                      text: 'Clear Sent Response',
+                      bg: red,
+                      tap: () => controller.deleteForm(),
+                      width: wp!(50),
+                      height: 40),
+                )
+              ],
+            ),
           ),
         ),
       ),

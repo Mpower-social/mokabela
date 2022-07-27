@@ -16,109 +16,131 @@ import 'package:m_survey/widgets/progress_bar.dart';
 class ActiveFormScreen extends StatelessWidget {
   Function? wp;
   Function? hp;
-  var from = 'active';
-  ActiveFormScreen({this.from='active'});
-
+  var showActiveFormsOnly;
   ActiveFormController controller = Get.find();
+  final ProjectListFromLocalDb? project;
+
+  ActiveFormScreen({this.project, this.showActiveFormsOnly = true}) {
+    controller.showActiveFormsOnly = showActiveFormsOnly;
+    controller.currentProject = project;
+    controller.getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     wp = Screen(MediaQuery.of(context).size).wp;
     hp = Screen(MediaQuery.of(context).size).hp;
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: baseAppBar(
-            title: from=='active'?'All Active Forms':'All Forms'
-        ),
-
-        body: Container(
-          padding: const EdgeInsets.all(10),
-          height: hp!(100),
-          width: wp!(100),
-          child: Column(
-            children: [
-              const SizedBox(height: 15,),
-
-              _filter(),
-
-              const SizedBox(
-                height: 15,
+    return Container(
+      color: statusBarColor,
+      child: SafeArea(
+        child: Scaffold(
+            appBar: baseAppBar(
+                title: showActiveFormsOnly ? 'Active Forms' : 'All Forms'),
+            body: Container(
+              height: hp!(100),
+              width: wp!(100),
+              child: Column(
+                children: [
+                  const SizedBox(height: 15),
+                  _filter(),
+                  const SizedBox(height: 15),
+                  Expanded(child: _formList())
+                ],
               ),
-              Expanded(child: _formList())
-            ],
-          ),
-        )
+            )),
       ),
     );
   }
 
   Widget _filter() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Flexible(
-          flex: 6,
-          child: SizedBox(
-            height: 40,
-            child: Obx(()=>DropdownButtonFormField<ProjectListFromLocalDb>(
-                  isExpanded: true,
-                  value: controller.selectedProject.value.id == 0? controller.projectList[0]:controller.selectedProject.value,
-                  items: controller.projectList.map((e) => DropdownMenuItem<ProjectListFromLocalDb>(value: e,child: Text(e.projectName!),)).toList(),
-                  decoration: CommonStyle.textFieldStyle(
-                    verPadding: 8,
-                    horPadding: 10,
-                  ),
-                  onChanged: (v){
-                    controller.selectedProject.value = v!;
-                    controller.filter(v.id??0);
-                  }),
+    return Padding(
+      padding: EdgeInsets.only(left: 15, right: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Flexible(
+            flex: 7,
+            child: SizedBox(
+              height: 40,
+              child: Obx(
+                () => DropdownButtonFormField<ProjectListFromLocalDb>(
+                    isExpanded: true,
+                    selectedItemBuilder: (_) {
+                      return controller.projectList
+                          .map((ProjectListFromLocalDb item) {
+                        return Text(
+                          item.projectName!,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        );
+                      }).toList();
+                    },
+                    value: controller.selectedProject,
+                    items: controller.projectList
+                        .map((e) => DropdownMenuItem<ProjectListFromLocalDb>(
+                              value: e,
+                              child: Text(e.projectName!),
+                            ))
+                        .toList(),
+                    decoration: CommonStyle.textFieldStyle(
+                      verPadding: 8,
+                      horPadding: 10,
+                    ),
+                    onChanged: (v) {
+                      controller.filter(v?.id ?? 0);
+                    }),
+              ),
             ),
           ),
-        ),
-
-        Flexible(
-          flex: 3,
-          child: InkWell(
-            onTap: (){
-              controller.ascOrDesc.value = !controller.ascOrDesc.value;
-              controller.sortByDate();
-            },
-            child: Container(
-              constraints: const BoxConstraints(
-                  minHeight: 30
+          Flexible(
+            flex: 3,
+            child: InkWell(
+              onTap: () {
+                controller.ascOrDesc.value = !controller.ascOrDesc.value;
+                controller.sortByDate();
+              },
+              child: Container(
+                constraints: const BoxConstraints(minHeight: 30),
+                padding: const EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                    border: Border.all(color: grey),
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Icon(
+                  AppIcons.group_15,
+                  size: 35,
+                ),
               ),
-              padding: const EdgeInsets.all(2),
-              decoration: BoxDecoration(
-                  border: Border.all(color: grey),
-                  borderRadius: BorderRadius.circular(10)
-              ),
-              child: const Icon(AppIcons.group_15 ,size: 35,),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 
   Widget _formList() {
-    return Obx(()=>controller.isLoadingForms.value?progressBar():
-    controller.allFormList.length==0?noDataFound():
-     ListView.builder(
-      itemCount: controller.allFormList.length,
-      itemBuilder: (ctx,i){
-        AllFormsData data = controller.allFormList[i]!;
-        return InkWell(
-          onTap: (){},
-          child: formCard(
-              title: data.title??'',
-              subTittle: data.projectName??'',
-              date: Utils.dateFormat.format(DateTime.parse(data.createdAt!)),
-              totalSubmission: data.totalSubmission??0,
-              totalForm: data.target??0,
-              submittedForm: data.totalSubmission??0
-          ),
-        );
-      },
-    ),);
+    return Obx(
+      () => controller.isLoadingForms.value
+          ? progressBar()
+          : controller.allFormList.length == 0
+              ? noDataFound()
+              : ListView.builder(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  itemCount: controller.allFormList.length,
+                  itemBuilder: (ctx, i) {
+                    AllFormsData data = controller.allFormList[i]!;
+                    return InkWell(
+                      onTap: () {},
+                      child: formCard(
+                          title: data.title ?? '',
+                          subTittle: data.projectName ?? '',
+                          date: Utils.dateFormat
+                              .format(DateTime.parse(data.createdAt!)),
+                          totalSubmission: data.totalSubmission ?? 0,
+                          totalForm: data.target ?? 0,
+                          submittedForm: data.totalSubmission ?? 0),
+                    );
+                  },
+                ),
+    );
   }
 }

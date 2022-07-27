@@ -14,7 +14,7 @@ License for the specific language governing permissions and limitations under
 the License.
 -->
 <resources>
-    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimary">#0C67AA</color>
     <color name="colorPrimaryDark">#04579A</color>
     <color name="colorAccent">#D32F2F</color>
     <color name="color_button_completed">#65905D</color>

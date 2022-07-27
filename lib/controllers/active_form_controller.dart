@@ -4,9 +4,10 @@ import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 
-class ActiveFormController extends GetxController{
-  var formList = ['Test1','Test2','test3'];
-  var selectedProject = ProjectListFromLocalDb(id: 0,projectName: 'Select project').obs;  var isCheckedAll = false.obs;
+class ActiveFormController extends GetxController {
+  var formList = ['Test1', 'Test2', 'test3'];
+  var selectedProject;
+  var isCheckedAll = false.obs;
   var projectList = <ProjectListFromLocalDb>[].obs;
   var allFormList = <AllFormsData?>[].obs;
   var allFormListTemp = <AllFormsData?>[].obs;
@@ -16,45 +17,81 @@ class ActiveFormController extends GetxController{
 
   ///true=asc, false=desc
   var ascOrDesc = false.obs;
+  bool showActiveFormsOnly = false;
+  ProjectListFromLocalDb? currentProject;
 
   @override
-  void onInit()async{
+  void onInit() async {
     super.onInit();
-    await getData();
   }
 
-  loadProjects() async{
+  loadProjects() async {
     projectList.clear();
-    projectList.add(ProjectListFromLocalDb(id: 0,projectName: 'Select project'));
+    selectedProject =
+        ProjectListFromLocalDb(id: 0, projectName: 'Select project');
+
+    projectList.add(selectedProject);
     projectList.addAll(await _dashboardRepository.getAllProjectFromLocal());
   }
 
   ///getting active form data and project list here
-  getData() async{
+  getAllData() async {
     isLoadingForms.value = true;
     await loadProjects();
-    allFormList.value = await _dashboardRepository.getAllFormList();
-    allFormListTemp.value = allFormList.value;
+
+    allFormList.value = showActiveFormsOnly
+        ? await _dashboardRepository.getAllActiveFormList()
+        : await _dashboardRepository.getAllFormList();
+    allFormListTemp.value = List.from(allFormList);
+
     isLoadingForms.value = false;
   }
 
+  getProjectData() async {
+    isLoadingForms.value = true;
+    projectList.clear();
+    selectedProject = currentProject;
+    projectList.add(selectedProject);
+
+    allFormList.value = await _dashboardRepository
+        .getAllByProjectFromLocal(currentProject!.id!);
+    allFormListTemp.value = List.from(allFormList);
+
+    isLoadingForms.value = false;
+  }
+
+  getData() async {
+    if (currentProject == null)
+      await getAllData();
+    else
+      await getProjectData();
+  }
+
   ///filter draft project list
-  void filter(int projectId){
-    if(projectId == 0) allFormList.value = allFormListTemp;
-    else allFormList.value = allFormListTemp.where((v) => (v?.projectId??0) == projectId).toList();
+  void filter(int projectId) {
+    if (projectId == selectedProject.id) return;
+
+    selectedProject =
+        projectList.firstWhere((element) => element.id == projectId);
+
+    if (projectId == 0)
+      allFormList.value = allFormListTemp;
+    else
+      allFormList.value = allFormListTemp
+          .where((v) => (v?.projectId ?? 0) == projectId)
+          .toList();
   }
 
   ///sort list asc or desc
-  void sortByDate() async{
-    if(allFormList.length>0){
-      if(ascOrDesc.value){
-        allFormList.sort((a,b)=>a!.createdAt!.compareTo(b!.createdAt!));
+  void sortByDate() async {
+    if (allFormList.length > 0) {
+      if (ascOrDesc.value) {
+        allFormList.sort((a, b) => a!.createdAt!.compareTo(b!.createdAt!));
         showToast(msg: 'Sorted by ascending order.');
-      }else{
-        allFormList.sort((a,b)=>-a!.createdAt!.compareTo(b!.createdAt!));
+      } else {
+        allFormList.sort((a, b) => -a!.createdAt!.compareTo(b!.createdAt!));
         showToast(msg: 'Sorted by descending order');
       }
     }
   }
-
 }
