@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:m_survey/utils/utils.dart';
 import 'package:m_survey/widgets/dialog_info.dart';
 import 'package:m_survey/widgets/icon_button.dart';
+import 'package:m_survey/widgets/show_toast.dart';
 
 Widget drawer(String name, String designation, {required wp}) {
   DashboardController controller = Get.find();
@@ -156,7 +157,11 @@ Widget drawer(String name, String designation, {required wp}) {
                 width: 30,
               ),
               iconButton(
-                  onTap: () => controller.getAllData(true),
+                  onTap: (){
+                    Get.back();
+                    controller.syncAllForm();
+                    showToast(msg: 'Sync started');
+                  },
                   icon: AppIcons.sync_icon,
                   title: 'Sync',
                   width: wp)

@@ -12,6 +12,12 @@ class SharedPref{
   static var DESIGNATION = 'designation';
   static var ORG_ID = 'org_id';
 
+  static var ALL_FORM_DATE_TIME = 'allFormDateTime';
+  static var SUBMITTED_FORM_DATE_TIME = 'submittedFormDateTime';
+  static var REVERTED_FORM_DATE_TIME = 'revertedFormDateTime';
+  static var PROJECT_DATE_TIME = 'projectDateTime';
+
+
   static SharedPreferences? _sharedPreferences;
 
   static SharedPref sharedPref  = SharedPref();

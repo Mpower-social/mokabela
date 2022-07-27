@@ -4,6 +4,7 @@ class SubmittedFormListResponse {
   String? formIdString;
   int? projectId;
   String? dateCreated;
+  String? dateUpdated;
   SubmittedBy? submittedBy;
   String? xml;
 

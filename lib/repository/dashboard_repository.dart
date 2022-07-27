@@ -7,6 +7,7 @@ import 'package:m_survey/models/response/all_form_list_response.dart';
 import 'package:m_survey/models/response/project_list_response.dart';
 import 'package:m_survey/models/response/submitted_form_list_response.dart';
 import 'package:m_survey/services/dashboard_service.dart';
+import 'package:m_survey/utils/shared_pref.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DashboardRepository {
@@ -55,12 +56,16 @@ class DashboardRepository {
       List<SubmittedFormListData> submittedFormList =
       await getAllSubmittedFromLocal();
 
+      ///checking data already exist or not
       if (submittedFormList.isEmpty) {
+        ///getting data from remote
         List<SubmittedFormListResponse?>? submittedFormListResponse =
         await _dashboardService.getSubmittedFormList();
         if (submittedFormList != null) {
           db!.delete(TABLE_NAME_SUBMITTED_FORM);
           for (var formData in submittedFormListResponse!) {
+
+            ///inserting data to local
             await insertSubmittedForms(SubmittedFormListData(
                 id: formData?.id,
                 formName: formData?.formName,
@@ -72,6 +77,10 @@ class DashboardRepository {
                 submittedByFirstLame: formData?.submittedBy?.firstName,
                 submittedByLastName: formData?.submittedBy?.lastName,
                 xml: formData?.xml));
+          }
+          ///inserting last updated datetime here
+          if(submittedFormListResponse.length>0){
+            await SharedPref.sharedPref.setString(SharedPref.SUBMITTED_FORM_DATE_TIME, submittedFormListResponse[0]?.dateUpdated??'0');
           }
           return await getAllSubmittedFromLocalByDelete();
         }
@@ -87,13 +96,20 @@ class DashboardRepository {
      final Database? db = await DatabaseProvider.dbProvider.database;
 
      List<AllFormsData> allFormList = await getAllFromLocal();
+
+     ///checking data already exist or not
      if (allFormList.isEmpty) {
+
+       ///getting data from remote
        AllFormListResponse? allFormResponse =
        await _dashboardService.getAllFormList();
 
+       ///checking data already exist or not
        if (allFormResponse?.data != null) {
          db!.delete(TABLE_NAME_All_FORM);
          for (Data formData in allFormResponse?.data ?? []) {
+
+           ///inserting data to local
            insertAllForms(AllFormsData(
              id: formData.id,
              xFormId: formData.attributes?.xformId,
@@ -106,6 +122,11 @@ class DashboardRepository {
              projectDes: formData.attributes?.project?.description,
            ));
          }
+
+         ///inserting last updated datetime here
+         if((allFormResponse?.data!.length??0)>0){
+           await SharedPref.sharedPref.setString(SharedPref.SUBMITTED_FORM_DATE_TIME, allFormResponse?.data?[0].attributes?.updatedAt??'0');
+         }
          return await getAllFromLocal();
        }
      }
@@ -116,11 +137,14 @@ class DashboardRepository {
   }
 
   ///////////local data/////////
+
+  ///insert project data to local
   void insertProject(ProjectListFromLocalDb projectListFromLocalDb) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     await db!.insert(TABLE_NAME_PROJECT, projectListFromLocalDb.toJson());
   }
 
+  ///getting all project from local
   Future<List<ProjectListFromLocalDb>> getAllProjectFromLocal() async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     var data = await db!.rawQuery('select * from $TABLE_NAME_PROJECT');
@@ -128,12 +152,14 @@ class DashboardRepository {
         data.map((x) => ProjectListFromLocalDb.fromJson(x)));
   }
 
+  ///insert submitted form
   insertSubmittedForms(SubmittedFormListData submittedFormListResponse) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     await db!
         .insert(TABLE_NAME_SUBMITTED_FORM, submittedFormListResponse.toJson());
   }
 
+  ///getting all undeleted submitted form here
   Future<List<SubmittedFormListData>> getAllSubmittedFromLocalByDelete() async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     var data = await db!.rawQuery(
@@ -142,6 +168,7 @@ class DashboardRepository {
         data.map((x) => SubmittedFormListData.fromJson(x)));
   }
 
+  //getting undeleted submitted form from local base on project id
   Future<List<SubmittedFormListData>>
       getAllUndeletedSubmittedFromLocalByProject(int projectId) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
@@ -151,6 +178,7 @@ class DashboardRepository {
         data.map((x) => SubmittedFormListData.fromJson(x)));
   }
 
+  ///getting all submitted form from local
   Future<List<SubmittedFormListData>> getAllSubmittedFromLocal() async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     var data = await db!.rawQuery(
@@ -159,11 +187,13 @@ class DashboardRepository {
         data.map((x) => SubmittedFormListData.fromJson(x)));
   }
 
+  ///insert form data to local
   void insertAllForms(AllFormsData allFormsData) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     await db!.insert(TABLE_NAME_All_FORM, allFormsData.toJson());
   }
 
+  ///getting all form data from local
   Future<List<AllFormsData>> getAllFromLocal() async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     var data = await db!.rawQuery(

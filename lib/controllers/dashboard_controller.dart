@@ -3,8 +3,10 @@ import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/models/local/submitted_form_list_data.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
+import 'package:m_survey/repository/form_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/utils/shared_pref.dart';
+import 'package:m_survey/widgets/show_toast.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
 
@@ -23,6 +25,7 @@ class DashboardController extends GetxController {
   var completeFormCount = 0.obs;
 
   final DashboardRepository _dashboardRepository = DashboardRepository();
+  final FormRepository _formRepository = FormRepository();
 
   @override
   void onInit() async {
@@ -45,11 +48,29 @@ class DashboardController extends GetxController {
   ///getting project list here
   void getAllData(forceLoad) async {
     isLoadingProject.value = true;
-    projectList.value =
-        await _dashboardRepository.getProjectListOperation(1, 10, forceLoad);
+    projectList.value = await _dashboardRepository.getProjectListOperation(1, 10, forceLoad);
     submittedFormList.value = await _dashboardRepository.getSubmittedFormList();
     allFormList.value = await _dashboardRepository.getAllFormList();
     isLoadingProject.value = false;
+  }
+
+  ///sync all data
+  void syncAllForm() async {
+
+    try {
+      for (var element in allFormList) {
+        if (element != null) {
+          final results = await _formRepository.submitFormOperation(element);
+          if (results.isNotEmpty) {
+            //succ
+          }
+        }
+      }
+    } catch (_) {
+      showToast(msg: 'Failed to sync.Try again.',isError: true);
+    } finally {
+      showToast(msg: 'Sync complete');
+    }
   }
 
   getDraftFormCount() async {
