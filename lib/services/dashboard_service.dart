@@ -18,7 +18,7 @@ class DashboardService extends BaseApiProvider {
       var dateTime = await SharedPref.sharedPref.getString(SharedPref.PROJECT_DATE_TIME)??'0';
 
       dio.options.headers.addAll({'Authorization':'Bearer $token'});
-      var response = await dio.post(Apis.getProjectList(orgId, currentPage, pageSize),
+      var response = await dio.post(Apis.getProjectList(orgId),
         data:jsonEncode({ "from_date": "$dateTime"}),);
       return ProjectListResponse.fromJson(response.data);
     }catch(error){

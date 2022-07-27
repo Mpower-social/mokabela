@@ -10,6 +10,7 @@ const PROJECT_NO_OF_FORMS = "numberOfForms";
 const PROJECT_START_DATE = "startDate";
 const PROJECT_END_DATE = "endDate";
 const PROJECT_STATUS = "status";
+const PROJECT_TOTAL_FORMS = "totalForms";
 
 
 //submitted form table

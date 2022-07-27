@@ -59,7 +59,7 @@ Widget ongoingProjectCard(ProjectListFromLocalDb project) {
                           borderRadius: BorderRadius.circular(100),
                           color: primaryColor),
                       child: Text(
-                        project.noOfForms ?? '0',
+                        (project.totalForms??0).toString(),
                         style: TextStyle(color: white),
                       ),
                     ),

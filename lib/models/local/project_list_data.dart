@@ -7,6 +7,7 @@ class ProjectListFromLocalDb {
   String? startDate = '';
   String? endDate = '';
   String? status = '';
+  int? totalForms = 0;
 
   ProjectListFromLocalDb({
     this.id,
@@ -15,6 +16,7 @@ class ProjectListFromLocalDb {
     this.startDate,
     this.endDate,
     this.status,
+    this.totalForms
   });
 
   factory ProjectListFromLocalDb.fromJson(Map<String, dynamic> json) =>
@@ -25,6 +27,7 @@ class ProjectListFromLocalDb {
         startDate: json[PROJECT_START_DATE] ?? '',
         endDate: json[PROJECT_END_DATE] ?? '',
         status: json[PROJECT_STATUS],
+        totalForms: json[PROJECT_TOTAL_FORMS],
       );
 
   Map<String, dynamic> toJson() => {
@@ -33,6 +36,6 @@ class ProjectListFromLocalDb {
         PROJECT_NO_OF_FORMS: noOfForms ?? '0',
         PROJECT_START_DATE: startDate ?? '',
         PROJECT_END_DATE: endDate ?? '',
-        PROJECT_STATUS: status ?? ''
+        PROJECT_STATUS: status ?? '',
       };
 }

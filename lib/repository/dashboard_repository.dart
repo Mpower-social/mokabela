@@ -33,8 +33,7 @@ class DashboardRepository {
                   projectName: projectData.attributes?.name,
                   startDate: projectData.attributes?.startDate.toString(),
                   endDate: projectData.attributes?.endDate.toString(),
-                  status:
-                      projectData.attributes?.projectStatus?.id.toString()));
+                  status: projectData.attributes?.projectStatus?.id.toString()),);
             }
             if((projectListResponse.data?.length??0)>0){
               await SharedPref.sharedPref.setString(SharedPref.PROJECT_DATE_TIME, projectListResponse.data?[0].attributes?.updatedAt??'0');
@@ -206,7 +205,7 @@ class DashboardRepository {
   ///getting all project from local
   Future<List<ProjectListFromLocalDb>> getAllProjectFromLocal() async {
     final Database? db = await DatabaseProvider.dbProvider.database;
-    var data = await db!.rawQuery('select * from $TABLE_NAME_PROJECT');
+    var data = await db!.rawQuery('select p.*,(select count(*) from $TABLE_NAME_All_FORM as a where p.$PROJECT_ID = a.$All_FORM_PROJECT_ID) as $PROJECT_TOTAL_FORMS from $TABLE_NAME_PROJECT as p');
     return List<ProjectListFromLocalDb>.from(
         data.map((x) => ProjectListFromLocalDb.fromJson(x)));
   }
