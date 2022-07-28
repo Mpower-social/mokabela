@@ -54,13 +54,12 @@ class DashboardController extends GetxController {
   }
 
   ///getting project list here
-  Future<void> getAllData(forceLoad) async {
+  Future<void> getAllData(bool forceLoad) async {
     isLoadingProject.value = true;
-    submittedFormList.value = await _dashboardRepository.getSubmittedFormList();
-    allFormList.value = await _dashboardRepository.getAllFormList();
-    projectList.value =
-        await _dashboardRepository.getProjectListOperation(1, 10, forceLoad);
-    await _dashboardRepository.getRevertedFormList();
+    submittedFormList.value = await _dashboardRepository.getSubmittedFormList(forceLoad);
+    allFormList.value = await _dashboardRepository.getAllFormList(forceLoad);
+    projectList.value = await _dashboardRepository.getProjectListOperation(forceLoad);
+    await _dashboardRepository.getRevertedFormList(forceLoad);
     await getFormData();
 
     isLoadingProject.value = false;
@@ -99,7 +98,7 @@ class DashboardController extends GetxController {
 
   getSubmittedFormCount() async {
     submittedFormCount.value =
-        (await _dashboardRepository.getSubmittedFormList()).length;
+        (await _dashboardRepository.getSubmittedFormList(false)).length;
   }
 
   getActiveFormCount() async {

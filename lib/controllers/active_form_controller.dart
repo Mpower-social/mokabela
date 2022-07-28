@@ -40,8 +40,8 @@ class ActiveFormController extends GetxController {
     await loadProjects();
 
     allFormList.value = showActiveFormsOnly
-        ? await _dashboardRepository.getAllActiveFormList()
-        : await _dashboardRepository.getAllFormList();
+        ? await _dashboardRepository.getAllActiveFormList(false)
+        : await _dashboardRepository.getAllFormList(false);
     allFormListTemp.value = List.from(allFormList);
 
     isLoadingForms.value = false;

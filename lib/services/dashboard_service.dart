@@ -12,7 +12,7 @@ import 'package:m_survey/widgets/show_toast.dart';
 
 class DashboardService extends BaseApiProvider {
   ///getting project list here operation
-  Future<ProjectListResponse?> getProjectListOperation(currentPage,pageSize) async {
+  Future<ProjectListResponse?> getProjectListOperation() async {
     try{
       var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
       var orgId = await SharedPref.sharedPref.getString(SharedPref.ORG_ID);
@@ -29,7 +29,7 @@ class DashboardService extends BaseApiProvider {
   }
 
   Future<String?> getFormList() async{
-    //try{
+    try{
       var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
 
       var response = await dio.get(Apis.getFormList,options: Options(
@@ -37,9 +37,9 @@ class DashboardService extends BaseApiProvider {
         responseType: ResponseType.plain
       ));
       return response.data.toString();
-   /* }catch(error){
+    }catch(error){
       showToast(msg:DioException.getDioException(error),isError: true);
-    }*/
+    }
     return null;
   }
 
@@ -64,7 +64,7 @@ class DashboardService extends BaseApiProvider {
   Future<AllFormListResponse?> getAllFormList() async {
     try {
       var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
-      var dateTime = await SharedPref.sharedPref.getString(SharedPref.ALL_FORM_DATE_TIME)??'0';
+      var dateTime = await SharedPref.sharedPref.getString(SharedPref.SUBMITTED_FORM_DATE_TIME)??'0';
       var response = await dio.post(Apis.getAllFormList,
           data:jsonEncode({ "from_date": "$dateTime"}),
           options: Options(

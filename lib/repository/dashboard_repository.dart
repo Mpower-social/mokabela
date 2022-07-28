@@ -15,19 +15,17 @@ class DashboardRepository {
   final DashboardService _dashboardService = DashboardService();
 
   ////////remote data////////
-  Future<List<ProjectListFromLocalDb>> getProjectListOperation(
-      currentPage, pageSize, forceLoad) async {
+  Future<List<ProjectListFromLocalDb>> getProjectListOperation(bool forceLoad) async {
     try {
       final Database? db = await DatabaseProvider.dbProvider.database;
       List<ProjectListFromLocalDb> projectList = await getAllProjectFromLocal();
 
       if (projectList.isEmpty || forceLoad) {
         ProjectListResponse? projectListResponse = await _dashboardService
-            .getProjectListOperation(currentPage, pageSize);
+            .getProjectListOperation();
 
         if (projectListResponse != null) {
           if (projectListResponse.data!.isNotEmpty) {
-            db!.delete(TABLE_NAME_PROJECT);
             for (var projectData in projectListResponse.data!) {
               insertProject(
                 ProjectListFromLocalDb(
@@ -59,7 +57,7 @@ class DashboardRepository {
     return await _dashboardService.getFormList() ?? '';
   }
 
-  Future<List<SubmittedFormListData?>> getSubmittedFormList() async {
+  Future<List<SubmittedFormListData?>> getSubmittedFormList(bool forceLoad) async {
     try {
       final Database? db = await DatabaseProvider.dbProvider.database;
 
@@ -67,12 +65,11 @@ class DashboardRepository {
           await getAllSubmittedFromLocal();
 
       ///checking data already exist or not
-      if (submittedFormList.isEmpty) {
+      if (submittedFormList.isEmpty || forceLoad) {
         ///getting data from remote
         List<SubmittedFormListResponse?>? submittedFormListResponse =
             await _dashboardService.getSubmittedFormList();
         if (submittedFormList != null) {
-          db!.delete(TABLE_NAME_SUBMITTED_FORM);
           for (var formData in submittedFormListResponse!) {
             ///inserting data to local
             await insertSubmittedForms(SubmittedFormListData(
@@ -104,26 +101,25 @@ class DashboardRepository {
     }
   }
 
-  Future<List<AllFormsData?>> getAllActiveFormList() async {
-    var allForms = await getAllFormList();
+  Future<List<AllFormsData?>> getAllActiveFormList(bool forceLoad) async {
+    var allForms = await getAllFormList(forceLoad);
     return allForms.where((element) => element?.status == 'true').toList();
   }
 
-  Future<List<AllFormsData?>> getAllFormList() async {
-    //try{
+  Future<List<AllFormsData?>> getAllFormList(bool forceLoad) async {
+    try{
     final Database? db = await DatabaseProvider.dbProvider.database;
 
     List<AllFormsData> allFormList = await getAllFromLocal();
 
     ///checking data already exist or not
-    if (allFormList.isEmpty) {
+    if (allFormList.isEmpty || forceLoad) {
       ///getting data from remote
       AllFormListResponse? allFormResponse =
           await _dashboardService.getAllFormList();
 
       ///checking data already exist or not
       if (allFormResponse?.data != null) {
-        db!.delete(TABLE_NAME_All_FORM);
         for (Data formData in allFormResponse?.data ?? []) {
           ///inserting data to local
           insertAllForms(AllFormsData(
@@ -149,26 +145,25 @@ class DashboardRepository {
       }
     }
     return allFormList;
-    /*}catch(_){
+    }catch(_){
      return [];
-   }*/
+   }
   }
 
-  Future<List<AllFormsData?>> getRevertedFormList() async {
-    //try{
+  Future<List<AllFormsData?>> getRevertedFormList(bool forceLoad) async {
+    try{
     final Database? db = await DatabaseProvider.dbProvider.database;
 
     List<AllFormsData> allFormList = await getRevertedFromLocal();
 
     ///checking data already exist or not
-    if (allFormList.isEmpty) {
+    if (allFormList.isEmpty || forceLoad) {
       ///getting data from remote
       RevertedFormListResponse? revertedFormListResponse =
           await _dashboardService.getRevertedFormList();
 
       ///checking data already exist or not
       if (revertedFormListResponse?.data != null) {
-        db!.delete(TABLE_NAME_REVERTED_FORM);
         for (RevertedDatum formData in revertedFormListResponse?.data ?? []) {
           ///inserting data to local
           insertRevertedForms(AllFormsData(
@@ -195,9 +190,9 @@ class DashboardRepository {
       }
     }
     return allFormList;
-    /*}catch(_){
+    }catch(_){
      return [];
-   }*/
+   }
   }
 
   ///////////local data/////////
@@ -205,7 +200,7 @@ class DashboardRepository {
   ///insert project data to local
   void insertProject(ProjectListFromLocalDb projectListFromLocalDb) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
-    await db!.insert(TABLE_NAME_PROJECT, projectListFromLocalDb.toJson());
+    await db!.insert(TABLE_NAME_PROJECT, projectListFromLocalDb.toJson(),conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   ///getting all project from local
@@ -221,7 +216,7 @@ class DashboardRepository {
   insertSubmittedForms(SubmittedFormListData submittedFormListResponse) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     await db!
-        .insert(TABLE_NAME_SUBMITTED_FORM, submittedFormListResponse.toJson());
+        .insert(TABLE_NAME_SUBMITTED_FORM, submittedFormListResponse.toJson(),conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   ///getting all undeleted submitted form here
@@ -255,7 +250,7 @@ class DashboardRepository {
   ///insert form data to local
   void insertAllForms(AllFormsData allFormsData) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
-    await db!.insert(TABLE_NAME_All_FORM, allFormsData.toJson());
+    await db!.insert(TABLE_NAME_All_FORM, allFormsData.toJson(),conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   ///getting all form data from local
@@ -286,7 +281,7 @@ class DashboardRepository {
   void insertRevertedForms(AllFormsData allFormsData) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     await db!
-        .insert(TABLE_NAME_REVERTED_FORM, allFormsData.toJsonRevertedForm());
+        .insert(TABLE_NAME_REVERTED_FORM, allFormsData.toJsonRevertedForm(),conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   ///getting reverted form data from local

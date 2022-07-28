@@ -82,7 +82,7 @@ Widget drawer(String name, String designation, {required wp}) {
                     controller.goToSettings();
                   },
                 ),
-                ListTile(
+             /*   ListTile(
                   leading: Icon(
                     AppIcons.ongoing,
                     size: 25,
@@ -114,7 +114,7 @@ Widget drawer(String name, String designation, {required wp}) {
                     'About',
                     style: TextStyle(fontSize: 20, color: white),
                   ),
-                ),
+                ),*/
                 ListTile(
                   leading: Icon(
                     AppIcons.logout,
