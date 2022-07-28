@@ -89,6 +89,7 @@ class DashboardController extends GetxController {
           }
         }
       }
+      await getAllData(true);
     } catch (_) {
       showToast(msg: 'Failed to sync.Try again.', isError: true);
     } finally {
