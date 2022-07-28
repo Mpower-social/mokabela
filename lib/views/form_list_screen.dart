@@ -21,13 +21,13 @@ class FormListScreen extends StatelessWidget {
 
   FormListScreen(this.formStatus, this.allFormsData) {
     if (formStatus == FormStatus.draft) {
-      controller.getDraftFormByFormId(allFormsData?.idString??'');
-    }else if(formStatus == FormStatus.readyToSync){
-      controller.getCompleteFormList(allFormsData?.idString??'');
-    }else if(formStatus == FormStatus.reverted){
-      controller.getRevertedFormList(allFormsData?.idString??'');
-    }else{
-      controller.getSubmittedFormList(allFormsData?.idString??'');
+      controller.getDraftFormByFormId(allFormsData?.idString ?? '');
+    } else if (formStatus == FormStatus.readyToSync) {
+      controller.getCompleteFormList(allFormsData?.idString ?? '');
+    } else if (formStatus == FormStatus.reverted) {
+      controller.getRevertedFormList(allFormsData?.idString ?? '');
+    } else {
+      controller.getSubmittedFormList(allFormsData?.idString ?? '');
     }
   }
 
@@ -46,7 +46,9 @@ class FormListScreen extends StatelessWidget {
                 ? 'Saved Response'
                 : formStatus == FormStatus.readyToSync
                     ? 'Completed Response'
-                : formStatus == FormStatus.reverted?'Reverted' : 'Synced Response'),
+                    : formStatus == FormStatus.reverted
+                        ? 'Reverted'
+                        : 'Synced Response'),
         body: Container(
           padding: const EdgeInsets.all(10),
           height: hp!(100),
@@ -56,8 +58,8 @@ class FormListScreen extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-               Text(
-                '${allFormsData?.title??''}',
+              Text(
+                '${allFormsData?.title ?? ''}',
                 style: TextStyle(fontSize: 18),
               ),
               const SizedBox(
@@ -77,18 +79,27 @@ class FormListScreen extends StatelessWidget {
                           commonButton(
                               text: 'Send Back to draft',
                               bg: primaryColor,
-                              tap: () => controller.sendBackToDraft(allFormsData?.idString??''),
+                              tap: () => controller.sendBackToDraft(
+                                  allFormsData?.idString ?? ''),
                               width: wp!(40),
                               height: 40),
                           commonButton(
                               text: 'Sync',
                               bg: green,
-                              tap: () => controller.sync(allFormsData?.id??''),
+                              tap: () =>
+                                  controller.sync(allFormsData?.id ?? ''),
                               width: wp!(40),
                               height: 40),
                         ],
                       ))
-                  : SizedBox()
+                  : formStatus == FormStatus.submitted
+                      ? commonButton(
+                          text: 'Clear Sent Response',
+                          bg: red,
+                          tap: () => controller.deleteMultipleForm(allFormsData?.idString ?? ''),
+                          width: wp!(50),
+                          height: 40)
+                      : SizedBox()
             ],
           ),
         ),
@@ -103,15 +114,20 @@ class FormListScreen extends StatelessWidget {
         Row(
           children: [
             Visibility(
-              visible: (formStatus == FormStatus.draft || formStatus == FormStatus.reverted) ? false : true,
-              child:  Obx(()=>Checkbox(
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                value: controller!.isCheckedAll.value,
-                onChanged: (v){
-                  controller.isCheckedAll.value = !controller.isCheckedAll.value;
-                  controller.addCheckBoxData(0,from: 'all');
-                },
-              ),
+              visible: (formStatus == FormStatus.draft ||
+                      formStatus == FormStatus.reverted)
+                  ? false
+                  : true,
+              child: Obx(
+                () => Checkbox(
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  value: controller!.isCheckedAll.value,
+                  onChanged: (v) {
+                    controller.isCheckedAll.value =
+                        !controller.isCheckedAll.value;
+                    controller.addCheckBoxData(0, from: 'all');
+                  },
+                ),
               ),
             ),
             _datePickerUi('Start', controller),
@@ -128,20 +144,20 @@ class FormListScreen extends StatelessWidget {
         Flexible(
           flex: 3,
           child: InkWell(
-            onTap: (){
+            onTap: () {
               controller?.ascOrDesc.value = !controller.ascOrDesc.value;
               controller?.sortByDate();
             },
             child: Container(
-              constraints: const BoxConstraints(
-                  minHeight: 30
-              ),
+              constraints: const BoxConstraints(minHeight: 30),
               padding: const EdgeInsets.all(2),
               decoration: BoxDecoration(
                   border: Border.all(color: grey),
-                  borderRadius: BorderRadius.circular(10)
+                  borderRadius: BorderRadius.circular(10)),
+              child: const Icon(
+                AppIcons.group_15,
+                size: 35,
               ),
-              child: const Icon(AppIcons.group_15 ,size: 35,),
             ),
           ),
         )
@@ -161,7 +177,7 @@ class FormListScreen extends StatelessWidget {
                     return Container(
                       width: wp!(100),
                       padding: EdgeInsets.only(
-                          left: formStatus == FormStatus.draft ? 10 : 1,
+                          left: (formStatus == FormStatus.draft || formStatus == FormStatus.reverted) ? 10 : 1,
                           right: 10),
                       constraints: const BoxConstraints(minHeight: 50),
                       decoration: BoxDecoration(
@@ -173,18 +189,26 @@ class FormListScreen extends StatelessWidget {
                           Row(
                             children: [
                               Visibility(
-                                visible: (formStatus == FormStatus.draft || formStatus == FormStatus.reverted)
-                                    ? false
-                                    : true,
-                                child: formStatus == FormStatus.draft?Container():Obx(()=>Checkbox(
-                                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                      value: controller.isCheckList.value[i].isChecked,
-                                      onChanged: (v){
-                                        controller.addCheckBoxData(i,formData:controller.isCheckList[i].formData);
-                                      }
-                                  ),
-                                )
-                              ),
+                                  visible: (formStatus == FormStatus.draft ||
+                                          formStatus == FormStatus.reverted)
+                                      ? false
+                                      : true,
+                                  child: formStatus == FormStatus.draft
+                                      ? Container()
+                                      : Obx(
+                                          () => Checkbox(
+                                              materialTapTargetSize:
+                                                  MaterialTapTargetSize
+                                                      .shrinkWrap,
+                                              value: controller.isCheckList
+                                                  .value[i].isChecked,
+                                              onChanged: (v) {
+                                                controller.addCheckBoxData(i,
+                                                    formData: controller
+                                                        .isCheckList[i]
+                                                        .formData);
+                                              }),
+                                        )),
                               const Icon(
                                 Icons.date_range,
                                 size: 15,
@@ -192,7 +216,11 @@ class FormListScreen extends StatelessWidget {
                               const SizedBox(
                                 width: 2,
                               ),
-                              Text(Utils.timeStampToDate(controller.isCheckList[i].formData!.lastChangeDate??0)),
+                              Text(Utils.timeStampToDate(controller
+                                      .isCheckList[i]
+                                      .formData!
+                                      .lastChangeDate ??
+                                  0)),
                               const SizedBox(
                                 width: 5,
                               ),
@@ -203,7 +231,11 @@ class FormListScreen extends StatelessWidget {
                               const SizedBox(
                                 width: 2,
                               ),
-                              Text(Utils.timeStampToTime(controller.isCheckList[i].formData!.lastChangeDate??0)),
+                              Text(Utils.timeStampToTime(controller
+                                      .isCheckList[i]
+                                      .formData!
+                                      .lastChangeDate ??
+                                  0)),
                             ],
                           ),
                           Row(
@@ -222,11 +254,13 @@ class FormListScreen extends StatelessWidget {
                                 width: 20,
                               ),
                               Visibility(
-                                visible: (formStatus == FormStatus.draft || formStatus == FormStatus.reverted)
+                                visible: (formStatus == FormStatus.draft ||
+                                        formStatus == FormStatus.reverted)
                                     ? true
                                     : false,
                                 child: IconButton(
-                                  onPressed: ()=>controller.editDraftForm(controller.isCheckList[i].formData!),
+                                  onPressed: () => controller.editDraftForm(
+                                      controller.isCheckList[i].formData!),
                                   icon: Icon(
                                     AppIcons.edit,
                                     size: 22,
@@ -234,7 +268,8 @@ class FormListScreen extends StatelessWidget {
                                 ),
                               ),
                               Visibility(
-                                visible: formStatus == FormStatus.draft
+                                visible:  (formStatus == FormStatus.submitted ||
+                                    formStatus == FormStatus.reverted)
                                     ? true
                                     : false,
                                 child: const SizedBox(
@@ -242,7 +277,8 @@ class FormListScreen extends StatelessWidget {
                                 ),
                               ),
                               Visibility(
-                                visible: (formStatus == FormStatus.submitted || formStatus == FormStatus.reverted)
+                                visible: (formStatus == FormStatus.submitted ||
+                                        formStatus == FormStatus.reverted)
                                     ? false
                                     : true,
                                 child: IconButton(
@@ -252,9 +288,11 @@ class FormListScreen extends StatelessWidget {
                                         msg: 'Are you sure to delete ?',
                                         confirmText: 'Yes',
                                         cancelText: 'No',
-                                        onOkTap: ()=>controller.deleteForm( controller.isCheckList[i].formData!.id!, allFormsData!.idString!),
-                                        onCancelTap: ()=>Get.back()
-                                    );
+                                        onOkTap: () => controller.deleteForm(
+                                            controller
+                                                .isCheckList[i].formData!.id!,
+                                            allFormsData!.idString!),
+                                        onCancelTap: () => Get.back());
                                   },
                                   icon: const Icon(
                                     AppIcons.delete,
@@ -262,7 +300,6 @@ class FormListScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-
                               Visibility(
                                 visible: formStatus == FormStatus.reverted
                                     ? true
@@ -270,12 +307,18 @@ class FormListScreen extends StatelessWidget {
                                 child: IconButton(
                                   onPressed: () {
                                     infoDialog(
-                                        title: 'Feedback',
-                                        msg: controller.isCheckList[i].formData?.feedback??'',
-                                        confirmText: 'Edit',
-                                        cancelText: 'Cancel',
-                                        onOkTap: ()=>Get.back(),
-                                        onCancelTap: ()=>Get.back(),
+                                      title: 'Feedback',
+                                      msg: controller.isCheckList[i].formData
+                                              ?.feedback ??
+                                          '',
+                                      confirmText: 'Edit',
+                                      cancelText: 'Cancel',
+                                      onOkTap: () {
+                                        Get.back();
+                                        controller.editDraftForm(controller
+                                            .isCheckList[i].formData!);
+                                      },
+                                      onCancelTap: () => Get.back(),
                                     );
                                   },
                                   icon: const Icon(
@@ -300,42 +343,43 @@ class FormListScreen extends StatelessWidget {
   }
 
   Widget _datePickerUi(String s, FormListController? controller) {
-    return Obx((){
-      var date = s;
-      if (s == 'Start')
-        date = controller!.selectedStartDateStr.value;
-      else
-        date = controller!.selectedEndDateStr.value;
+    return Obx(
+      () {
+        var date = s;
+        if (s == 'Start')
+          date = controller!.selectedStartDateStr.value;
+        else
+          date = controller!.selectedEndDateStr.value;
 
-      return InkWell(
-        onTap: () {
-          controller.pickDate(s);
-        },
-        child: Container(
-          constraints: const BoxConstraints(minHeight: 30),
-          padding: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-              border: Border.all(color: grey),
-              borderRadius: BorderRadius.circular(8)),
-          child: Row(
-            children: [
-              Text(
-                date,
-                style: TextStyle(color: black.withOpacity(.6)),
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              Icon(
-                Icons.date_range,
-                color: grey,
-                size: 20,
-              )
-            ],
+        return InkWell(
+          onTap: () {
+            controller.pickDate(s);
+          },
+          child: Container(
+            constraints: const BoxConstraints(minHeight: 30),
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+                border: Border.all(color: grey),
+                borderRadius: BorderRadius.circular(8)),
+            child: Row(
+              children: [
+                Text(
+                  date,
+                  style: TextStyle(color: black.withOpacity(.6)),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Icon(
+                  Icons.date_range,
+                  color: grey,
+                  size: 20,
+                )
+              ],
+            ),
           ),
-        ),
-      );
-    },
+        );
+      },
     );
   }
 }

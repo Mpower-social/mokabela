@@ -7,7 +7,6 @@ import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
-import 'package:m_survey/views/form_list_screen.dart';
 import 'package:m_survey/widgets/app_bar_with_drawer.dart';
 import 'package:m_survey/widgets/icon_button.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -30,6 +29,7 @@ class FormDetailsScreen extends StatelessWidget {
     controller.getTotalSubmittedForm(formId);
     controller.getDraftFormCount(formId);
     controller.getCompleteFormCount(formId);
+    controller.getRevertedFormCount(formId);
   }
   @override
   Widget build(BuildContext context) {
@@ -71,21 +71,19 @@ class FormDetailsScreen extends StatelessWidget {
                         textColor: white,
                         height: 45,
                         width: wp!(85),
-                        onTap: () => Get.to(() =>
-                            FormListScreen(FormStatus.draft, allFormsData))),
+                        onTap: () => controller.navigateToFormList(FormStatus.draft, allFormsData,formId)),
                   ),
                   SizedBox(
                     height: hp!(1),
                   ),
                   Obx(() => iconButton(
                       icon: CupertinoIcons.arrow_left_square_fill,
-                      title: 'Reverted (${controller.completeFormCount})',
+                      title: 'Reverted (${controller.revertedFormCount})',
                       bg: primaryColor,
                       textColor: white,
                       height: 45,
                       width: wp!(85),
-                      onTap: () => Get.to(() =>
-                          FormListScreen(FormStatus.reverted, allFormsData)))),
+                      onTap: () => controller.navigateToFormList(FormStatus.reverted, allFormsData,formId))),
                   SizedBox(
                     height: hp!(1),
                   ),
@@ -96,21 +94,18 @@ class FormDetailsScreen extends StatelessWidget {
                       textColor: white,
                       height: 45,
                       width: wp!(85),
-                      onTap: () => Get.to(() => FormListScreen(
-                          FormStatus.readyToSync, allFormsData)))),
+                      onTap: () =>controller.navigateToFormList(FormStatus.readyToSync, allFormsData,formId))),
                   SizedBox(
                     height: hp!(1),
                   ),
                   Obx(() => iconButton(
                         icon: Icons.remove_red_eye,
-                        title:
-                            'Submitted (${controller.submittedFormList.length})',
+                        title: 'Submitted (${controller.submittedFormList.length})',
                         bg: primaryColor,
                         textColor: white,
                         height: 45,
                         width: wp!(85),
-                        onTap: () => Get.to(() =>
-                            FormListScreen(FormStatus.submitted, allFormsData)),
+                        onTap: () => controller.navigateToFormList(FormStatus.submitted, allFormsData,formId)
                       ))
                 ],
               ),

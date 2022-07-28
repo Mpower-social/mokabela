@@ -9,6 +9,7 @@ class SubmittedFormListData {
     this.submittedByUsername,
     this.submittedByFirstLame,
     this.submittedByLastName,
+    this.instanceId,
     this.xml,
   });
 
@@ -21,6 +22,7 @@ class SubmittedFormListData {
   String? submittedByUsername;
   String? submittedByFirstLame;
   String? submittedByLastName;
+  String? instanceId;
 
   String? xml;
 
@@ -34,6 +36,7 @@ class SubmittedFormListData {
     submittedByUsername: json["submitted_by_username"]??'',
     submittedByFirstLame: json["submitted_by_f_name"] ??'',
     submittedByLastName: json["submitted_by_l_name"]??'',
+    instanceId: json["instanceId"]??'',
     xml: json["xml"] == null ? null : json["xml"],
   );
 
@@ -49,6 +52,7 @@ class SubmittedFormListData {
     "submitted_by_username": submittedByUsername??'',
     "submitted_by_f_name": submittedByFirstLame??'',
     "submitted_by_l_name": submittedByLastName??'',
+    "instanceId": instanceId??'',
     "xml": xml == null ? null : xml,
   };
 }

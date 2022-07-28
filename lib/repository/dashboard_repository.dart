@@ -85,6 +85,7 @@ class DashboardRepository {
                 submittedByUsername: formData?.submittedBy?.username,
                 submittedByFirstLame: formData?.submittedBy?.firstName,
                 submittedByLastName: formData?.submittedBy?.lastName,
+                instanceId: formData?.instanceId,
                 xml: formData?.xml));
           }
 
@@ -300,7 +301,7 @@ class DashboardRepository {
   Future<List<AllFormsData>> getRevertedFromLocalByFromId(formId) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     var data = await db!.rawQuery(
-        'select r.*,s.$SUBMITTED_XML from $TABLE_NAME_REVERTED_FORM as r left join $TABLE_NAME_SUBMITTED_FORM as s on s.$REVERTED_FORM_INSTANCE_ID = r.$REVERTED_FORM_INSTANCE_ID where $REVERTED_FORM_ID_STRING = "$formId" ORDER BY $All_FORM_CREATED_AT DESC');
+        'select r.*,s.$SUBMITTED_XML from $TABLE_NAME_REVERTED_FORM as r left join $TABLE_NAME_SUBMITTED_FORM as s on s.$SUBMITTED_INSTANCE_ID = r.$REVERTED_FORM_INSTANCE_ID where $REVERTED_FORM_ID_STRING = "$formId" ORDER BY $All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 }

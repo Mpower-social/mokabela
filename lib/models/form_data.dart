@@ -14,6 +14,7 @@ class FormData {
     this.lastChangeDate,
     this.projectId,
     this.projectName,
+    this.xml,
     this.status,
     this.feedback
   });
@@ -39,6 +40,7 @@ class FormData {
     lastChangeDate: json["lastChangeDate"]??0,
     projectId: json["projectId"]??'',
     projectName: json["projectName"]??'N/A',
+    xml: json["xml"]??'',
     status: json["status"] ?? 'false',
     feedback: json["feedback"]??'N/A',
   );

@@ -65,10 +65,9 @@ class MainActivity: FlutterActivity() {
                             openOdkForm(formId)
                         }
                         call.method.equals("editForm", true) -> {
-                            val instanceId = call.argument<Int>("instanceId")
                             val formData:FormInstance = Gson().fromJson(call.argument<String>("data"),FormInstance::class.java)
-                            instanceId?.let {
-                                editOdkForm(it,formData)
+                            formData?.let {
+                                editOdkForm(it)
                             }
                         }
                         call.method.equals("draftForms", true) -> {
@@ -154,8 +153,8 @@ class MainActivity: FlutterActivity() {
         }
     }
 
-    private fun editOdkForm(id: Int,formData:FormInstance) {
-        val id = InstancesDao().getInstanceIdForModuleId(formData.instanceId) ?: createInstance(formData)
+    private fun editOdkForm(formData:FormInstance) {
+        val id = InstancesDao().getInstanceIdForModuleId(formData.projectId) ?: createInstance(formData)
         val instanceUri = ContentUris.withAppendedId(InstanceColumns.CONTENT_URI, id.toLong())
         openEditOdkForm(instanceUri)
     }
@@ -172,7 +171,7 @@ class MainActivity: FlutterActivity() {
 
         return ContentValues().run {
             put(InstanceProviderAPI.InstanceColumns.DISPLAY_NAME, "${formData.displayName}")
-            //put(InstanceProviderAPI.InstanceColumns.MODULE_ID, event.uId)
+            put(InstanceProviderAPI.InstanceColumns.MODULE_ID, formData.projectId)
             put(InstanceProviderAPI.InstanceColumns.INSTANCE_ID, formData.instanceId)
             put(InstanceProviderAPI.InstanceColumns.INSTANCE_FILE_PATH, StoragePathProvider().getInstanceDbPath(instanceFile.absolutePath))
             put(InstanceProviderAPI.InstanceColumns.JR_FORM_ID, formData.formId)

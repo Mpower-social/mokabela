@@ -6,8 +6,6 @@ import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 
-import '../repository/form_repository.dart';
-
 class DraftFormController extends GetxController {
   var formList = <formData.FormData>[].obs;
   var formListTemp = <formData.FormData>[].obs;
@@ -104,8 +102,8 @@ class DraftFormController extends GetxController {
   }
 
   ///edit form
-  void editDraftForm(int id) async {
-    final results = await OdkUtil.instance.editForm(id,null);
+  void editDraftForm(formData.FormData formData) async {
+    final results = await OdkUtil.instance.editForm(formData);
     if (results != null && results.isNotEmpty) {
       return;
     }

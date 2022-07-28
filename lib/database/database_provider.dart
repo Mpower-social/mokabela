@@ -49,6 +49,7 @@ class DatabaseProvider{
           '$SUBMITTED_BY_USERNAME TEXT,'
           '$SUBMITTED_BY_FIRST_NAME TEXT,'
           '$SUBMITTED_BY_LAST_NAME TEXT,'
+          '$SUBMITTED_INSTANCE_ID TEXT,'
           '$SUBMITTED_XML TEXT)',
     );
 

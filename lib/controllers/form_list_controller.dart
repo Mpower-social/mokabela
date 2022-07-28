@@ -143,9 +143,10 @@ class FormListController extends GetxController {
       formList.add(formData.FormData(
           id: int.tryParse(element.xFormId ?? ''),
           projectId: element.projectId.toString(),
+          displayName: element.title,
           formId: element.idString ?? '',
-          lastChangeDate:
-              DateTime.parse(element.updatedAt!).millisecondsSinceEpoch,
+          lastChangeDate: DateTime.parse(element.updatedAt!).millisecondsSinceEpoch,
+          xml: element.xml,
           feedback: element.feedback));
     });
     formListTemp.value = formList.value;
@@ -155,6 +156,7 @@ class FormListController extends GetxController {
 
   ///getting submitted forms here
   void getSubmittedFormList(String formId) async {
+    formList.clear();
     isLoadingForm.value = true;
     var submittedList =
         await _projectRepository.getAllSubmittedFromLocalByForm(formId);
@@ -164,8 +166,7 @@ class FormListController extends GetxController {
           projectId: element.projectId.toString(),
           displayName: element.formName ?? '',
           formId: element.formIdString ?? '',
-          lastChangeDate:
-              DateTime.parse(element.dateCreated!).millisecondsSinceEpoch));
+          lastChangeDate: DateTime.parse(element.dateCreated!).millisecondsSinceEpoch));
     });
     formListTemp.value = formList.value;
     setupDefaultCheckBox();
@@ -189,7 +190,8 @@ class FormListController extends GetxController {
 
   ///edit form
   void editDraftForm(formData.FormData formData) async {
-    final results = await OdkUtil.instance.editForm(formData.id ?? 0,null);
+    print(formData.xml);
+    final results = await OdkUtil.instance.editForm(formData);
     if (results != null && results.isNotEmpty) {
       return;
     }
@@ -202,6 +204,26 @@ class FormListController extends GetxController {
       Get.back();
       getDraftFormByFormId(formId);
       return;
+    }
+  }
+
+  ///delete multiple data
+  void deleteMultipleForm(String formId) async {
+    var anySelected = isCheckList.any((element) => element.isChecked == true);
+    if (!anySelected) {
+      showToast(msg: 'You didn\'t select any form to delete');
+      return;
+    }
+
+    try {
+      for (var element in isCheckList) {
+        if (element.isChecked) {
+          _formRepository.deleteSubmittedForm(SubmittedFormListData(id: element.formData?.id));
+        }
+      }
+    } catch (_) {
+    } finally {
+      getSubmittedFormList(formId);
     }
   }
 

@@ -5,6 +5,7 @@ class SubmittedFormListResponse {
   int? projectId;
   String? dateCreated;
   String? dateUpdated;
+  String? instanceId;
   SubmittedBy? submittedBy;
   String? xml;
 
@@ -23,6 +24,8 @@ class SubmittedFormListResponse {
     formIdString = json['form_id_string'];
     projectId = json['project_id'];
     dateCreated = json['date_created'];
+    dateUpdated = json['date_modified'];
+    instanceId = json['uuid'];
     submittedBy = json['submitted_by'] != null
         ? new SubmittedBy.fromJson(json['submitted_by'])
         : null;
@@ -36,6 +39,8 @@ class SubmittedFormListResponse {
     data['form_id_string'] = this.formIdString;
     data['project_id'] = this.projectId;
     data['date_created'] = this.dateCreated;
+    data['date_modified'] = this.dateUpdated;
+    data['uuid'] = this.instanceId;
     if (this.submittedBy != null) {
       data['submitted_by'] = this.submittedBy!.toJson();
     }

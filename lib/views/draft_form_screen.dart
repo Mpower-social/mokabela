@@ -193,7 +193,7 @@ class DraftFormScreen extends StatelessWidget {
                               SizedBox(width: 5),
                               IconButton(
                                 onPressed: () =>
-                                    controller.editDraftForm(data.id ?? 0),
+                                    controller.editDraftForm(data),
                                 icon: Icon(
                                   AppIcons.edit,
                                   size: 22,
