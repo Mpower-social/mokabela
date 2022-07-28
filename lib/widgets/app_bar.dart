@@ -18,7 +18,7 @@ AppBar baseAppBar({
     ),
 
     actions: [
-      Padding(
+     /* Padding(
         padding: const EdgeInsets.only(right: 10),
         child: Visibility(
           visible: from == Constant.NOTIFICATION?false:true,
@@ -53,7 +53,7 @@ AppBar baseAppBar({
             ),
           ),
         ),
-      )
+      )*/
     ],
   );
 }

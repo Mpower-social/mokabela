@@ -15,7 +15,7 @@ AppBar baseAppBarWithDrawer(
       icon: const Icon(AppIcons.burger,color: Colors.white,),
     ),*/
     actions: [
-      Padding(
+      /*Padding(
         padding: const EdgeInsets.only(right: 10),
         child: InkWell(
           onTap: () => Get.to(() => NotificationScreen()),
@@ -46,7 +46,7 @@ AppBar baseAppBarWithDrawer(
             ],
           ),
         ),
-      )
+      )*/
     ],
   );
 }

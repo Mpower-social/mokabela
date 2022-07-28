@@ -138,7 +138,7 @@ class DashboardRepository {
         ///inserting last updated datetime here
         if ((allFormResponse?.data!.length ?? 0) > 0) {
           await SharedPref.sharedPref.setString(
-              SharedPref.SUBMITTED_FORM_DATE_TIME,
+              SharedPref.ALL_FORM_DATE_TIME,
               allFormResponse?.data?[0].attributes?.updatedAt ?? '0');
         }
         return await getAllFromLocal();
