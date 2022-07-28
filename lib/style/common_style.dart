@@ -2,44 +2,39 @@ import 'package:flutter/material.dart';
 
 class CommonStyle {
   ///textfield style
-  static InputDecoration textFieldStyle({
-    String labelTextStr = "",
-    String hintTextStr = "",
-    double verPadding = 0.0,
-    double horPadding = 0.0,
-    Color fillColor = Colors.white,
-    Color borderColor = Colors.grey,
-    InputBorder inputBorder = InputBorder.none,
-
-  }) {
+  static InputDecoration textFieldStyle(
+      {String labelTextStr = "",
+      String hintTextStr = "",
+      double verPadding = 0.0,
+      double horPadding = 0.0,
+      Color fillColor = Colors.white,
+      Color borderColor = Colors.grey,
+      InputBorder inputBorder = InputBorder.none,
+      Widget? suffixIcon}) {
     return InputDecoration(
       border: inputBorder,
       alignLabelWithHint: true,
       fillColor: fillColor,
       hintText: hintTextStr,
-      hintStyle: TextStyle(
-        color: borderColor
-      ),
-      suffixStyle: TextStyle(
-        color: borderColor
-      ),
-
-      contentPadding: EdgeInsets.symmetric(
-          vertical: verPadding, horizontal: horPadding),
+      hintStyle: TextStyle(color: borderColor),
+      suffixStyle: TextStyle(color: borderColor),
+      suffixIcon: suffixIcon,
+      contentPadding:
+          EdgeInsets.symmetric(vertical: verPadding, horizontal: horPadding),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
-          borderSide:  BorderSide(color:  borderColor)),
+          borderSide: BorderSide(color: borderColor)),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
-        borderSide:  BorderSide(color: borderColor),
+        borderSide: BorderSide(color: borderColor),
       ),
       disabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
-        borderSide:  BorderSide(color: borderColor),
+        borderSide: BorderSide(color: borderColor),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
-        borderSide:  BorderSide(color: borderColor),
+        borderSide: BorderSide(color: borderColor),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
@@ -47,6 +42,7 @@ class CommonStyle {
       ),
     );
   }
+
   static InputDecoration textFieldStyleWithHint({
     String hintTextStr = "",
     double verPadding = 0.0,
@@ -58,8 +54,8 @@ class CommonStyle {
       fillColor: Colors.white,
       hintText: hintTextStr,
       filled: true,
-      contentPadding: EdgeInsets.symmetric(
-          vertical: verPadding, horizontal: horPadding),
+      contentPadding:
+          EdgeInsets.symmetric(vertical: verPadding, horizontal: horPadding),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
           borderSide: const BorderSide(color: Colors.grey)),
@@ -81,6 +77,7 @@ class CommonStyle {
       ),
     );
   }
+
   ///textfield style date picker
   static InputDecoration textFieldStyleDatePicker({
     String labelTextStr = "",
@@ -94,8 +91,8 @@ class CommonStyle {
         fillColor: Colors.white,
         hintText: hintTextStr,
         filled: true,
-        contentPadding: EdgeInsets.symmetric(
-            vertical: verPadding, horizontal: horPadding),
+        contentPadding:
+            EdgeInsets.symmetric(vertical: verPadding, horizontal: horPadding),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
             borderSide: const BorderSide(color: Colors.grey)),
@@ -114,8 +111,6 @@ class CommonStyle {
         suffixIcon: const Icon(Icons.date_range));
   }
 
-
-
   ///text field style date picker
   static InputDecoration textFieldStyleSearch({
     String labelTextStr = "",
@@ -127,11 +122,9 @@ class CommonStyle {
         border: InputBorder.none,
         fillColor: Colors.white,
         hintText: hintTextStr,
-        hintStyle: const TextStyle(
-          color: Colors.grey
-        ),
-        contentPadding: EdgeInsets.symmetric(
-            vertical: verPadding, horizontal: horPadding),
+        hintStyle: const TextStyle(color: Colors.grey),
+        contentPadding:
+            EdgeInsets.symmetric(vertical: verPadding, horizontal: horPadding),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(50),
             borderSide: const BorderSide(color: Colors.grey)),
@@ -156,10 +149,9 @@ class CommonStyle {
       borderRadius: BorderRadius.circular(5),
     );
   }
+
   static BoxDecoration decorationWithRadiusTen() {
     return BoxDecoration(
-      borderRadius: BorderRadius.circular(10),
-      color: Colors.blueAccent
-    );
+        borderRadius: BorderRadius.circular(10), color: Colors.blueAccent);
   }
 }

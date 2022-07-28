@@ -1,12 +1,11 @@
+import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
-import 'package:m_survey/models/local/submitted_form_list_data.dart';
 import 'package:m_survey/repository/project_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
-
 import '../views/active_form_screen.dart';
 import '../views/draft_form_screen.dart';
 import '../views/form_details_screen.dart';
@@ -15,12 +14,14 @@ import '../views/submitted_form_screen.dart';
 
 class ProjectDetailsController extends GetxController {
   TextEditingController searchEditingController = TextEditingController();
+  ProjectRepository _projectRepository = ProjectRepository();
   var projectList = <ProjectListFromLocalDb>[].obs;
   var allFormList = <AllFormsData?>[].obs;
   var allFormListTemp = <AllFormsData?>[].obs;
   var isLoadingProject = false.obs;
+  var clearSearchText = false.obs;
   int currentProjectId = 0;
-  ProjectRepository _projectRepository = ProjectRepository();
+  Timer? debounce;
 
   var draftFormCount = 0.obs;
   var activeFormCount = 0.obs;
@@ -28,15 +29,30 @@ class ProjectDetailsController extends GetxController {
   var submittedFormCount = 0.obs;
 
   ///search operation
-  void searchOperation() async {
-    if (searchEditingController.text.isEmpty)
+  void clearSearchView() async {
+    if (clearSearchText.value) {
+      searchEditingController.clear();
+      clearSearchText.value = false;
       allFormList.value = allFormListTemp;
-    else
-      allFormList.value = allFormListTemp
-          .where((v) => (v?.title ?? '')
-              .toLowerCase()
-              .contains(searchEditingController.text.toLowerCase()))
-          .toList();
+    }
+  }
+
+  onSearchChanged(String query) async {
+    if (debounce?.isActive ?? false) debounce?.cancel();
+
+    debounce = Timer(const Duration(milliseconds: 300), () {
+      if (searchEditingController.text.isEmpty) {
+        clearSearchText.value = false;
+        allFormList.value = allFormListTemp;
+      } else {
+        clearSearchText.value = true;
+        allFormList.value = allFormListTemp
+            .where((v) => (v?.title ?? '')
+                .toLowerCase()
+                .contains(searchEditingController.text.toLowerCase()))
+            .toList();
+      }
+    });
   }
 
   ///getting project list here
@@ -145,5 +161,11 @@ class ProjectDetailsController extends GetxController {
     await getActiveFormCount();
     await getCompleteFormCount();
     await getSubmittedFormCount();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    debounce?.cancel();
   }
 }

@@ -11,14 +11,16 @@ Widget statisticsCard(
     width: wp,
     constraints: const BoxConstraints(minHeight: 100),
     decoration: BoxDecoration(
-        color: primaryColor,
-        border: Border(
-          top: BorderSide(width: .25, color: white),
-          left: BorderSide(
-              width: .25, color: position == 1 | 3 ? primaryColor : white),
-          right: BorderSide(
-              width: .25, color: position == 2 | 4 ? primaryColor : white),
-        )),
+      color: primaryColor,
+      border: Border(
+        top: BorderSide(
+            width: .25,
+            color: (position == 1 || position == 2) ? primaryColor : white),
+        left: BorderSide(
+            width: .25,
+            color: (position == 1 || position == 3) ? primaryColor : white),
+      ),
+    ),
     child: Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
       child: Column(
