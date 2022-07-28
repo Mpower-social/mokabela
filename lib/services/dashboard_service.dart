@@ -44,7 +44,6 @@ class DashboardService extends BaseApiProvider {
   }
 
   Future<List<SubmittedFormListResponse?>?> getSubmittedFormList() async {
-    var list = <SubmittedFormListResponse>[];
     try {
       var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
       var dateTime = await SharedPref.sharedPref.getString(SharedPref.SUBMITTED_FORM_DATE_TIME)??'2022-01-01T06:29:22.243Z';
@@ -64,7 +63,7 @@ class DashboardService extends BaseApiProvider {
   Future<AllFormListResponse?> getAllFormList() async {
     try {
       var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
-      var dateTime = await SharedPref.sharedPref.getString(SharedPref.SUBMITTED_FORM_DATE_TIME)??'0';
+      var dateTime = await SharedPref.sharedPref.getString(SharedPref.ALL_FORM_DATE_TIME)??'0';
       var response = await dio.post(Apis.getAllFormList,
           data:jsonEncode({ "from_date": "$dateTime"}),
           options: Options(

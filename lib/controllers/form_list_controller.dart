@@ -193,6 +193,7 @@ class FormListController extends GetxController {
     print(formData.xml);
     final results = await OdkUtil.instance.editForm(formData);
     if (results != null && results.isNotEmpty) {
+      getDraftFormByFormId(formData.formId);
       return;
     }
   }

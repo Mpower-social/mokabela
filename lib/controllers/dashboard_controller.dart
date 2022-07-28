@@ -44,7 +44,6 @@ class DashboardController extends GetxController {
     await getAllData(false);
     downloadForm();
     await getRecentFormList();
-    refreshDashBoardCount();
   }
 
   void getUserdata() async {
@@ -61,6 +60,7 @@ class DashboardController extends GetxController {
     projectList.value = await _dashboardRepository.getProjectListOperation(forceLoad);
     await _dashboardRepository.getRevertedFormList(forceLoad);
     await getFormData();
+    refreshDashBoardCount();
 
     isLoadingProject.value = false;
   }

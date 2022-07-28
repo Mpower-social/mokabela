@@ -21,11 +21,11 @@ class FormDetailsController extends GetxController {
     super.onInit();
   }
 
-  void openOdkForm(int? id) async {
+  void openOdkForm(int? id, String? formId) async {
     final results = await OdkUtil.instance.openForm('member_register_test901',
         arguments: {'projectId': id?.toString()});
     if (results != null && results.isNotEmpty) {
-      print("success  $results");
+      await refreshCount(formId);
     }
     print('failed');
   }
