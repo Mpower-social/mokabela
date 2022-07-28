@@ -2,15 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:m_survey/app_icons_icons.dart';
 import 'package:m_survey/controllers/dashboard_controller.dart';
+import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
 import 'package:m_survey/utils/utils.dart';
-import 'package:m_survey/views/active_form_screen.dart';
-import 'package:m_survey/views/draft_form_screen.dart';
-import 'package:m_survey/views/form_details_screen.dart';
-import 'package:m_survey/views/ready_to_sync_form_screen.dart';
-import 'package:m_survey/views/submitted_form_screen.dart';
 import 'package:m_survey/views/widgets/drawer.dart';
 import 'package:m_survey/views/widgets/statistics_card.dart';
 import 'package:m_survey/widgets/app_bar_with_drawer.dart';
@@ -233,7 +229,12 @@ class DashboardScreen extends StatelessWidget {
         itemBuilder: (ctx, i) {
           return InkWell(
             onTap: () => _controller.navigateToFormDetailsScreen(
-              _controller.recentFormList[i].formId,
+              AllFormsData(
+                id: _controller.recentFormList[i].id.toString(),
+                title: _controller.recentFormList[i].displayName,
+                idString: _controller.recentFormList[i].formId,
+                projectName: _controller.recentFormList[i].projectName,
+              ),
               ProjectListFromLocalDb(
                 projectName: _controller.recentFormList[i].displayName ?? '',
                 id: _controller.recentFormList[i].id ?? 0,

@@ -210,12 +210,12 @@ class DashboardController extends GetxController {
   }
 
   navigateToFormDetailsScreen(
-    String? formId,
+    AllFormsData? allFormsData,
     ProjectListFromLocalDb projectListFromData,
   ) async {
     await Get.to(
       () => FormDetailsScreen(
-        formId: formId,
+        allFormsData: allFormsData,
         projectListFromData: projectListFromData,
       ),
     );
