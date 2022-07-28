@@ -260,7 +260,7 @@ class FormListScreen extends StatelessWidget {
                                     : false,
                                 child: IconButton(
                                   onPressed: () => controller.editDraftForm(
-                                      controller.isCheckList[i].formData!),
+                                      controller.isCheckList[i].formData!,formStatus),
                                   icon: Icon(
                                     AppIcons.edit,
                                     size: 22,
@@ -315,8 +315,7 @@ class FormListScreen extends StatelessWidget {
                                       cancelText: 'Cancel',
                                       onOkTap: () {
                                         Get.back();
-                                        controller.editDraftForm(controller
-                                            .isCheckList[i].formData!);
+                                        controller.editDraftForm(controller.isCheckList[i].formData!,formStatus);
                                       },
                                       onCancelTap: () => Get.back(),
                                     );

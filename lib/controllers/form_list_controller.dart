@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:m_survey/enum/form_status.dart';
 import 'package:m_survey/models/draft_checkbox_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/models/local/submitted_form_list_data.dart';
@@ -137,6 +138,7 @@ class FormListController extends GetxController {
   ///getting reverted form here
   void getRevertedFormList(String formId) async {
     isLoadingForm.value = true;
+    formList.clear();
     var submittedList =
         await _dashboardRepository.getRevertedFromLocalByFromId(formId);
     submittedList.forEach((element) {
@@ -189,11 +191,14 @@ class FormListController extends GetxController {
   }
 
   ///edit form
-  void editDraftForm(formData.FormData formData) async {
-    print(formData.xml);
+  void editDraftForm(formData.FormData formData, FormStatus formStatus) async {
     final results = await OdkUtil.instance.editForm(formData);
     if (results != null && results.isNotEmpty) {
-      getDraftFormByFormId(formData.formId);
+      if(formStatus == FormStatus.reverted){
+        getRevertedFormList(formData.formId??'');
+      }else{
+        getDraftFormByFormId(formData.formId);
+      }
       return;
     }
   }
