@@ -8,7 +8,10 @@ AppBar baseAppBarWithDrawer(
   return AppBar(
     backgroundColor: primaryColor,
     elevation: 0,
-    title: Text(title),
+    title: Text(
+      title,
+      style: TextStyle(fontWeight: FontWeight.bold),
+    ),
     centerTitle: true,
     /* leading: IconButton(
       onPressed: (){},

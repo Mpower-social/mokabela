@@ -16,6 +16,7 @@
 
 package org.odk.collect.android.dao;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
@@ -131,7 +132,7 @@ public class InstancesDao {
     }
 
     public Cursor getRecentInstancesCursor() {
-        String sortOrder = InstanceColumns.LAST_STATUS_CHANGE_DATE + " DESC LIMIT 5";
+        String sortOrder = InstanceColumns.LAST_STATUS_CHANGE_DATE;
         return getInstancesCursor(null, null, null, sortOrder);
     }
 
@@ -293,6 +294,20 @@ public class InstancesDao {
         return getInstancesCursor(null, selection, selectionArgs, null);
     }
 
+    @SuppressLint("Range")
+    public Long getInstanceIdForInstanceUid(String instanceUid) {
+        String selection = InstanceColumns.INSTANCE_ID + "=?";
+        String[] selectionArgs = { instanceUid };
+
+        Cursor cursor = getInstancesCursor(null, selection, selectionArgs, null);
+
+        if(cursor != null && cursor.moveToFirst() &&
+            !cursor.isNull(cursor.getColumnIndex(InstanceColumns._ID)))
+            return cursor.getLong(cursor.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID));
+
+        return null;
+    }
+
     public Cursor getInstancesCursor(String selection, String[] selectionArgs) {
         return getInstancesCursor(null, selection, selectionArgs, null);
     }
@@ -441,18 +456,5 @@ public class InstancesDao {
         values.put(InstanceColumns.GEOMETRY, instance.getGeometry());
         values.put(InstanceColumns.GEOMETRY_TYPE, instance.getGeometryType());
         return values;
-    }
-
-    public Long getInstanceIdForModuleId(String id) {
-        String selection = InstanceColumns.MODULE_ID + "=?";
-        String[] selectionArgs = {id};
-
-        Cursor cursor = getInstancesCursor(null, selection, selectionArgs, null);
-
-        if(cursor != null && cursor.moveToFirst() &&
-                !cursor.isNull(cursor.getColumnIndex(InstanceColumns._ID)))
-            return cursor.getLong(cursor.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID));
-
-        return null;
     }
 }

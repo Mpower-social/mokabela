@@ -171,32 +171,37 @@ class ProjectDetailsScreen extends StatelessWidget {
               controller: _controller.searchEditingController,
               style: const TextStyle(color: Colors.black),
               decoration: CommonStyle.textFieldStyle(
-                  horPadding: 12,
-                  fillColor: primaryColor,
-                  borderColor: grey,
-                  hintTextStr: 'Search'),
+                horPadding: 12,
+                fillColor: primaryColor,
+                borderColor: grey,
+                hintTextStr: 'Search',
+                suffixIcon: Container(
+                  height: 35,
+                  width: 35,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(5),
+                        bottomRight: Radius.circular(5),
+                      ),
+                      color: primaryColor),
+                  child: InkWell(
+                    onTap: _controller.clearSearchView,
+                    child: Obx(() {
+                      return Icon(
+                        _controller.clearSearchText.value
+                            ? Icons.clear
+                            : Icons.search,
+                        color: white,
+                      );
+                    }),
+                  ),
+                ),
+              ),
+              onChanged: _controller.onSearchChanged,
             ),
           ),
         ),
-        const SizedBox(
-          width: 5,
-        ),
-        Container(
-          height: 35,
-          width: 35,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5), color: primaryColor),
-          child: IconButton(
-            onPressed: () {
-              _controller.searchOperation();
-            },
-            icon: Icon(
-              Icons.search,
-              color: white,
-            ),
-          ),
-        )
       ],
     );
   }
