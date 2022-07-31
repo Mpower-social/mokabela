@@ -103,7 +103,7 @@ class DraftFormController extends GetxController {
 
   ///edit form
   void editDraftForm(formData.FormData formData) async {
-    final results = await OdkUtil.instance.editForm(formData);
+    final results = await OdkUtil.instance.editForm(formData.id!);
     if (results != null && results.isNotEmpty) {
       await getData();
       return;

@@ -191,8 +191,13 @@ class FormListController extends GetxController {
   }
 
   ///edit form
-  void editDraftForm(formData.FormData formData, FormStatus formStatus) async {
-    final results = await OdkUtil.instance.editForm(formData);
+  void editForm(formData.FormData formData, FormStatus formStatus) async {
+    final results;
+    if(formStatus == FormStatus.reverted){
+      results = await OdkUtil.instance.correctForm(formData);
+    }else{
+      results = await OdkUtil.instance.editForm(formData.id!);
+    }
     if (results != null && results.isNotEmpty) {
       if(formStatus == FormStatus.reverted){
         getRevertedFormList(formData.formId??'');

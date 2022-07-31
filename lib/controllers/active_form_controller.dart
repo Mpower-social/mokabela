@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
+import 'package:m_survey/views/form_details_screen.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 
 class ActiveFormController extends GetxController {
@@ -23,6 +24,18 @@ class ActiveFormController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+  }
+
+  navigateToFormDetailsScreen(
+      ProjectListFromLocalDb projectListFromData,
+      AllFormsData data,
+      ) async {
+    await Get.to(
+          () => FormDetailsScreen(
+        projectListFromData: projectListFromData,
+        allFormsData: data,
+      ),
+    );
   }
 
   loadProjects() async {

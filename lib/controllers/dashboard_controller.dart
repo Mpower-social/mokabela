@@ -4,6 +4,7 @@ import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/models/local/submitted_form_list_data.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/repository/form_repository.dart';
+import 'package:m_survey/utils/check_network_conn.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/utils/shared_pref.dart';
 import 'package:m_survey/widgets/show_toast.dart';
@@ -61,7 +62,6 @@ class DashboardController extends GetxController {
     await _dashboardRepository.getRevertedFormList(forceLoad);
     await getFormData();
     refreshDashBoardCount();
-
     isLoadingProject.value = false;
   }
 
@@ -82,11 +82,9 @@ class DashboardController extends GetxController {
   void syncAllForm() async {
     try {
       for (var element in formList) {
-        if (element != null) {
-          final results = await _formRepository.submitFormOperation(element);
-          if (results.isNotEmpty) {
-            //succ
-          }
+        final results = await _formRepository.submitFormOperation(element);
+        if (results.isNotEmpty) {
+          //succ
         }
       }
       await getAllData(true);
@@ -97,9 +95,9 @@ class DashboardController extends GetxController {
     }
   }
 
-  getSubmittedFormCount() async {
+  getSubmittedFormCount(forceLoad) async {
     submittedFormCount.value =
-        (await _dashboardRepository.getSubmittedFormList(false)).length;
+        (await _dashboardRepository.getSubmittedFormList(forceLoad)).length;
   }
 
   getActiveFormCount() async {
@@ -228,10 +226,18 @@ class DashboardController extends GetxController {
     await getDraftFormCount();
     await getActiveFormCount();
     await getCompleteFormCount();
-    await getSubmittedFormCount();
+    if(await CheckNetwork.checkNetwork.check()){
+      await getSubmittedFormCount(true);
+    }
   }
 
   void goToSettings() {
     OdkUtil.instance.goToSettings();
+  }
+
+  void sync() async{
+    Get.back();
+    await getFormData();
+    syncAllForm();
   }
 }

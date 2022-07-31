@@ -158,9 +158,7 @@ Widget drawer(String name, String designation, {required wp}) {
               ),
               iconButton(
                   onTap: ()async{
-                    Get.back();
-                    await controller.getFormData();
-                    controller.syncAllForm();
+                    controller.sync();
                     showToast(msg: 'Sync started');
                   },
                   icon: AppIcons.sync_icon,

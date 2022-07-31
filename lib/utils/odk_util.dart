@@ -23,8 +23,12 @@ class OdkUtil {
         .invokeMethod('openForm', {'formId': formId, 'arguments': arguments});
   }
 
-  Future<dynamic> editForm(FormData? formData) async {
-    return await methodChannel.invokeMethod('editForm', {'data':jsonEncode(formData)});
+  Future<dynamic> editForm(int instanceId) async {
+    return await methodChannel.invokeMethod('editForm', {'instanceId':instanceId});
+  }
+
+  Future<dynamic> correctForm(FormData? formData) async {
+    return await methodChannel.invokeMethod('correctForm', {'data':jsonEncode(formData)});
   }
 
   Future<dynamic> getDraftForms(List<String> formIds) async {

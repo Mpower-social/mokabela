@@ -240,7 +240,7 @@ class MainActivity: FlutterActivity() {
             val instancePath = getFormInstancePath(value!!)
             FormUtil.addDeprecatedInstanceId(instancePath, deprecatedInstanceId!!)
             deprecatedInstanceId = null
-            if(channelResult!=null) channelResult?.success(value)
+            if(channelResult!=null) channelResult?.success(value.toString())
             //if(channelResult!=null) channelResult?.success(value)
         }
 

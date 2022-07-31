@@ -3,7 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
+import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/repository/project_repository.dart';
+import 'package:m_survey/utils/check_network_conn.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
 import '../views/active_form_screen.dart';
@@ -15,6 +17,7 @@ import '../views/submitted_form_screen.dart';
 class ProjectDetailsController extends GetxController {
   TextEditingController searchEditingController = TextEditingController();
   ProjectRepository _projectRepository = ProjectRepository();
+  DashboardRepository _dashboardRepository = DashboardRepository();
   var projectList = <ProjectListFromLocalDb>[].obs;
   var allFormList = <AllFormsData?>[].obs;
   var allFormListTemp = <AllFormsData?>[].obs;
@@ -66,9 +69,10 @@ class ProjectDetailsController extends GetxController {
   }
 
   getSubmittedFormCount() async {
-    submittedFormCount.value = (await _projectRepository
-            .getAllSubmittedFromLocalByProject(currentProjectId))
-        .length;
+    if(await CheckNetwork.checkNetwork.check()){
+      await _dashboardRepository.getSubmittedFormList(true);
+    }
+    submittedFormCount.value = (await _projectRepository.getAllSubmittedFromLocalByProject(currentProjectId)).length;
   }
 
   getActiveFormCount() async {

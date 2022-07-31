@@ -128,9 +128,14 @@ class ActiveFormScreen extends StatelessWidget {
                   itemCount: controller.allFormList.length,
                   itemBuilder: (ctx, i) {
                     AllFormsData data = controller.allFormList[i]!;
-
                     return InkWell(
-                      onTap: () {},
+                      onTap: () => controller.navigateToFormDetailsScreen(
+                        ProjectListFromLocalDb(
+                          id: data.projectId,
+                          projectName: data.projectName
+                        ),
+                        data,
+                      ),
                       child: formCard(data: data),
                     );
                   },

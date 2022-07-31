@@ -46,6 +46,7 @@ class FormService extends BaseApiProvider{
       );
       if(response.statusCode == 200 || response.statusCode == 201 || response.statusCode == 202){
         await OdkUtil.instance.sendToSubmitted(formData.id);
+
       }
       return 'success';
     }catch(error){

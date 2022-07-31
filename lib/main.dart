@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:m_survey/bindings/allbinding.dart';
 import 'package:m_survey/utils/shared_pref.dart';
 import 'package:m_survey/views/splash_screen.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
 import 'res/translation.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  /* SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);*/
+   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await SharedPref.sharedPref.init();
   runApp(const MyApp());
 }
