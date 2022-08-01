@@ -18,10 +18,13 @@ showFormSubmitStatusDialog(List<FormSubmitStatus> list){
                 Text('Form Submit Status',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
                 SizedBox(height: 15,),
                 Expanded(
-                  child: list.length==0?noDataFound():ListView.builder(
+                  child: list.length==0?noDataFound():ListView.separated(
                       itemCount: list.length,
                       itemBuilder: (ctx,i){
                         return Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: grey)
+                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -30,7 +33,10 @@ showFormSubmitStatusDialog(List<FormSubmitStatus> list){
                             ],
                           ),
                         );
-                      }),
+                      },
+
+                    separatorBuilder: (ctx,i)=>SizedBox(height: 5,),
+                  ),
                 )
               ],
             ),
