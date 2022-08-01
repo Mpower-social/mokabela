@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:m_survey/models/form_submit_status.dart';
 import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/models/local/submitted_form_list_data.dart';
@@ -7,6 +8,7 @@ import 'package:m_survey/repository/form_repository.dart';
 import 'package:m_survey/utils/check_network_conn.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/utils/shared_pref.dart';
+import 'package:m_survey/widgets/form_submit_status_dialog.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
@@ -37,10 +39,12 @@ class DashboardController extends GetxController {
   final DashboardRepository _dashboardRepository = DashboardRepository();
   final FormRepository _formRepository = FormRepository();
 
+  var formSubmitStatusList = <FormSubmitStatus>[].obs;
+
   @override
   void onInit() async {
     super.onInit();
-    handlePermission();
+    //handlePermission();
     getUserdata();
     await getAllData(false);
     downloadForm();
@@ -80,18 +84,26 @@ class DashboardController extends GetxController {
 
   ///sync all data
   void syncAllForm() async {
+
+    if (formList.isEmpty) {
+      showToast(msg: 'No form found to sync.');
+      return;
+    }
+    formSubmitStatusList.clear();
     try {
       for (var element in formList) {
         final results = await _formRepository.submitFormOperation(element);
         if (results.isNotEmpty) {
-          //succ
+          formSubmitStatusList.add(FormSubmitStatus(element.displayName??'',true));
+        }else{
+          formSubmitStatusList.add(FormSubmitStatus(element.displayName??'',false));
         }
       }
       await getAllData(true);
     } catch (_) {
       showToast(msg: 'Failed to sync.Try again.', isError: true);
     } finally {
-      showToast(msg: 'Sync complete');
+      showFormSubmitStatusDialog(formSubmitStatusList);
     }
   }
 

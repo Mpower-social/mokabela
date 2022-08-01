@@ -14,7 +14,8 @@ import 'package:m_survey/widgets/common_button.dart';
   Function? onOkTap,
   Function? onCancelTap,
   Color bgColor = Colors.white
-}){return showDialog(
+}){
+   return showDialog(
       context: Get.context!, 
       builder: (ctx){
         return CupertinoAlertDialog(

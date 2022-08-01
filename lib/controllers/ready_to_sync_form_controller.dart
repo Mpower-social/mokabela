@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 import 'package:m_survey/controllers/dashboard_controller.dart';
 import 'package:m_survey/models/draft_checkbox_data.dart';
+import 'package:m_survey/models/form_submit_status.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
 import 'package:m_survey/repository/form_repository.dart';
 import 'package:m_survey/utils/odk_util.dart';
+import 'package:m_survey/widgets/form_submit_status_dialog.dart';
 import 'package:m_survey/widgets/progress_dialog.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 
@@ -25,6 +27,7 @@ class ReadyToSyncFormController extends GetxController {
   final FormRepository _formRepository = FormRepository();
 
   DashboardController _dashboardController = Get.find();
+  var formSubmitStatusList = <FormSubmitStatus>[].obs;
 
   ///true=asc, false=desc
   var ascOrDesc = false.obs;
@@ -136,12 +139,15 @@ class ReadyToSyncFormController extends GetxController {
     }
 
     progressDialog();
+    formSubmitStatusList.clear();
     try {
       for (var element in isCheckList) {
         if (element.isChecked && element.formData != null) {
           final results = await _formRepository.submitFormOperation(element.formData);
           if (results.isNotEmpty) {
-            //succ
+            formSubmitStatusList.add(FormSubmitStatus(element.formData?.displayName??'',true));
+          }else{
+            formSubmitStatusList.add(FormSubmitStatus(element.formData?.displayName??'',false));
           }
         }
       }
@@ -149,6 +155,7 @@ class ReadyToSyncFormController extends GetxController {
     } finally {
       await getData();
       Get.back();
+      showFormSubmitStatusDialog(formSubmitStatusList);
     }
   }
 
