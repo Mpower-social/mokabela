@@ -22,8 +22,10 @@ showFormSubmitStatusDialog(List<FormSubmitStatus> list){
                       itemCount: list.length,
                       itemBuilder: (ctx,i){
                         return Container(
+                          padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
-                            border: Border.all(color: grey)
+                            border: Border.all(color: grey),
+                            borderRadius: BorderRadius.circular(10)
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

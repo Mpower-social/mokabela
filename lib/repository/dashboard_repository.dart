@@ -128,6 +128,7 @@ class DashboardRepository {
               title: formData.attributes?.title,
               idString: formData.attributes?.idString,
               createdAt: formData.attributes?.createdAt,
+              updatedAt: formData.attributes?.updatedAt,
               target: formData.attributes?.target,
               projectId: formData.attributes?.project?.id,
               projectName: formData.attributes?.project?.name,
