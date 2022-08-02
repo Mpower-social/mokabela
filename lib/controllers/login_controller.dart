@@ -13,7 +13,7 @@ class LoginController extends GetxController{
     isLoading.value = true;
     bool res = await _authRepository.loginOperation(emailController.text.toString().trim(), passController.text.toString().trim());
     if(res){
-      Get.to(()=>DashboardScreen());
+      Get.offAll(()=>DashboardScreen());
     }
     isLoading.value = false;
   }

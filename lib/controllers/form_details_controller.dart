@@ -22,7 +22,7 @@ class FormDetailsController extends GetxController {
   }
 
   void openOdkForm(int? id, String? formId) async {
-    final results = await OdkUtil.instance.openForm('member_register_test901',
+    final results = await OdkUtil.instance.openForm(formId??'',
         arguments: {'projectId': id?.toString()});
     if (results != null && results.isNotEmpty) {
       await refreshCount(formId);

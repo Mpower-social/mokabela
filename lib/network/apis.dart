@@ -2,11 +2,14 @@ class Apis{
   static var AUTH = "Authorization";
 
 
-  static var url = 'http://192.168.19.19:3008';//dev
+  //static var url = 'http://192.168.19.19:3008';//dev
+  static var url = 'http://msurvey-front.dev.mpower-social.com:3008';//dev
   //static var url = 'http://192.168.22.59:3000';//local
 
   //static var odkRelatedUrl = 'http://192.168.19.16:9037';//dev
-  static var odkRelatedUrl = 'http://192.168.19.16:8092/';//dev
+  //static var odkRelatedUrl = 'http://192.168.19.16:8092/';//dev
+  //static var odkRelatedUrl = 'http://192.168.19.16:9037';//dev
+  static var odkRelatedUrl = 'http://msurvey-product.dev.mpower-social.com';//dev
   //static var odkRelatedUrl = 'http://192.168.22.59:8111';//local
 
 
