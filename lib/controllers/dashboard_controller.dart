@@ -238,6 +238,7 @@ class DashboardController extends GetxController {
     await getDraftFormCount();
     await getActiveFormCount();
     await getCompleteFormCount();
+    await getRecentFormList();
     if(await CheckNetwork.checkNetwork.check()){
       await getSubmittedFormCount(true);
     }
