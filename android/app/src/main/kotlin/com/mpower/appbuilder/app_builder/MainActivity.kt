@@ -269,7 +269,7 @@ class MainActivity: FlutterActivity() {
         else {
             var selection = "${ InstanceColumns.JR_FORM_ID } IN("
             repeat(formIds.size) {
-                selection += "?"
+                selection += "?,"
             }
             selection = "${ selection.trimEnd(',') })"
 
@@ -323,7 +323,7 @@ class MainActivity: FlutterActivity() {
         else {
             var selection = "${ InstanceColumns.JR_FORM_ID } IN("
             repeat(formIds.size) {
-                selection += "?"
+                selection += "?,"
             }
             selection = "${ selection.trimEnd(',') })"
 

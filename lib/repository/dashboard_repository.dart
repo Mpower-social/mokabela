@@ -17,7 +17,6 @@ class DashboardRepository {
   ////////remote data////////
   Future<List<ProjectListFromLocalDb>> getProjectListOperation(bool forceLoad) async {
     try {
-      final Database? db = await DatabaseProvider.dbProvider.database;
       List<ProjectListFromLocalDb> projectList = await getAllProjectFromLocal();
 
       if (projectList.isEmpty || forceLoad) {
@@ -59,8 +58,6 @@ class DashboardRepository {
 
   Future<List<SubmittedFormListData?>> getSubmittedFormList(bool forceLoad) async {
     try {
-      final Database? db = await DatabaseProvider.dbProvider.database;
-
       List<SubmittedFormListData> submittedFormList =
           await getAllSubmittedFromLocal();
 
@@ -108,8 +105,6 @@ class DashboardRepository {
 
   Future<List<AllFormsData?>> getAllFormList(bool forceLoad) async {
     try{
-    final Database? db = await DatabaseProvider.dbProvider.database;
-
     List<AllFormsData> allFormList = await getAllFromLocal();
 
     ///checking data already exist or not
@@ -130,9 +125,9 @@ class DashboardRepository {
               createdAt: formData.attributes?.createdAt,
               updatedAt: formData.attributes?.updatedAt,
               target: formData.attributes?.target,
-              projectId: formData.attributes?.project?.id,
-              projectName: formData.attributes?.project?.name,
-              projectDes: formData.attributes?.project?.description,
+              projectId: formData.attributes?.project?.id??0,
+              projectName: formData.attributes?.project?.name??'',
+              projectDes: formData.attributes?.project?.description??'',
               status: formData.attributes?.isActive));
         }
 
@@ -153,8 +148,6 @@ class DashboardRepository {
 
   Future<List<AllFormsData?>> getRevertedFormList(bool forceLoad) async {
     try{
-    final Database? db = await DatabaseProvider.dbProvider.database;
-
     List<AllFormsData> allFormList = await getRevertedFromLocal();
 
     ///checking data already exist or not
