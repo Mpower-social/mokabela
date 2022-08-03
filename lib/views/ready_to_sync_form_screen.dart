@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:m_survey/app_icons_icons.dart';
 import 'package:m_survey/controllers/ready_to_sync_form_controller.dart';
-import 'package:m_survey/models/form_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
@@ -19,10 +18,12 @@ class ReadyToSyncFormScreen extends StatelessWidget {
   Function? hp;
   final ProjectListFromLocalDb? project;
   final controller = ReadyToSyncFormController();
+  List<String> formIds=[];
 
-  ReadyToSyncFormScreen({this.project}) {
+  ReadyToSyncFormScreen({this.project, required List<String> formIds}) {
+    this.formIds = formIds;
     controller.currentProject = project;
-    controller.getData();
+    controller.getData(formIds);
   }
 
   @override
@@ -56,13 +57,13 @@ class ReadyToSyncFormScreen extends StatelessWidget {
                         commonButton(
                             text: 'Send Back to draft',
                             bg: primaryColor,
-                            tap: () => controller.sendBackToDraft(),
+                            tap: () => controller.sendBackToDraft(formIds),
                             width: wp!(40),
                             height: 40),
                         commonButton(
                             text: 'Sync',
                             bg: green,
-                            tap: () => controller.syncCompleteForm(),
+                            tap: () => controller.syncCompleteForm(formIds),
                             width: wp!(40),
                             height: 40),
                       ],
@@ -245,7 +246,7 @@ class ReadyToSyncFormScreen extends StatelessWidget {
                                         confirmText: 'Yes',
                                         cancelText: 'No',
                                         onOkTap: () =>
-                                            controller.deleteForm(data.id ?? 0),
+                                            controller.deleteForm(data.id ?? 0,formIds),
                                         onCancelTap: () => Get.back());
                                   },
                                   icon: Icon(

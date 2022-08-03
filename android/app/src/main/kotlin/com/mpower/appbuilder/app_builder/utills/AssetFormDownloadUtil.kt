@@ -48,7 +48,7 @@ class AssetFormDownloadUtil(val context: Context) {
             getFormList(formXml).forEach { selectedForm ->
                 try {
                     deleteOldFormIfExist(selectedForm.formId)
-                    val downloadFile = downloadForm(selectedForm.formName, selectedForm.downloadUrl)
+                    val downloadFile = downloadForm(selectedForm.formId, selectedForm.downloadUrl)
                     val tempMediaPath = File(StoragePathProvider().getDirPath(StorageSubdirectory.CACHE), System.currentTimeMillis().toString()).absolutePath
 
                     if (selectedForm.manifestUrl != null) {

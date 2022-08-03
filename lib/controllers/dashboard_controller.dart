@@ -118,7 +118,8 @@ class DashboardController extends GetxController {
   }
 
   getDraftFormCount() async {
-    final results = await OdkUtil.instance.getDraftForms([]);
+    var formIds = allFormList.map((form) => form!.idString!).toList();
+    final results = await OdkUtil.instance.getDraftForms(formIds);
     if (results != null && results.isNotEmpty) {
       draftFormCount.value = formData.formDataFromJson(results).length;
       return;
@@ -175,8 +176,9 @@ class DashboardController extends GetxController {
   }
 
   navigateToDraftFormsScreen() async {
+    var formIds = allFormList.map((form) => form!.idString!).toList();
     await Get.to(
-      () => DraftFormScreen(),
+      () => DraftFormScreen(formIds),
     );
 
     refreshDashBoardCount();
@@ -194,7 +196,7 @@ class DashboardController extends GetxController {
 
   navigateToSyncFormsScreen() async {
     await Get.to(
-      () => ReadyToSyncFormScreen(),
+      () => ReadyToSyncFormScreen(formIds: [],),
     );
 
     refreshDashBoardCount();

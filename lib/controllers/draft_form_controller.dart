@@ -34,11 +34,11 @@ class DraftFormController extends GetxController {
   }
 
   ///getting active form data and project list here
-  getAllData() async {
+  getAllData(List<String> formIds) async {
     isLoadingDraftForm.value = true;
     loadProjects();
 
-    final results = await OdkUtil.instance.getDraftForms([]);
+    final results = await OdkUtil.instance.getDraftForms(formIds);
     if (results != null && results.isNotEmpty) {
       formList.value = formData.formDataFromJson(results);
       formListTemp.value = List.from(formList);
@@ -69,19 +69,19 @@ class DraftFormController extends GetxController {
     isLoadingDraftForm.value = false;
   }
 
-  getData() async {
+  getData(List<String> formIds) async {
     if (currentProject == null)
-      await getAllData();
+      await getAllData(formIds);
     else
       await getProjectData();
   }
 
   ///delete specific form
-  void deleteForm(int id) async {
+  void deleteForm(int id, List<String> formIds) async {
     final results = await OdkUtil.instance.deleteDraftForm(id);
     if (results != null && results.isNotEmpty) {
       Get.back();
-      await getData();
+      await getData(formIds);
       await _dashboardController.getDraftFormCount();
       return;
     }
@@ -102,10 +102,10 @@ class DraftFormController extends GetxController {
   }
 
   ///edit form
-  void editDraftForm(formData.FormData formData) async {
+  void editDraftForm(formData.FormData formData, List<String> formIds) async {
     final results = await OdkUtil.instance.editForm(formData.id!);
     if (results != null && results.isNotEmpty) {
-      await getData();
+      await getData(formIds);
       return;
     }
   }

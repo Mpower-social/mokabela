@@ -1,19 +1,15 @@
 class ProjectListResponse {
   ProjectListResponse({
-    this.meta,
     this.data,
   });
 
-  Meta? meta;
   List<Datum>? data;
 
   factory ProjectListResponse.fromJson(Map<String, dynamic> json) => ProjectListResponse(
-    meta: json["meta"] == null ? null : Meta.fromJson(json["meta"]),
     data: json["data"] == null ? null : List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "meta": meta == null ? null : meta!.toJson(),
     "data": data == null ? null : List<dynamic>.from(data!.map((x) => x.toJson())),
   };
 }
@@ -50,7 +46,7 @@ class Attributes {
     this.startDate,
     this.endDate,
     this.updatedAt,
-    this.partnerOrganization,
+    //this.partnerOrganization,
     this.projectStatus,
   });
 
@@ -60,7 +56,7 @@ class Attributes {
   DateTime? startDate;
   DateTime? endDate;
   String? updatedAt;
-  List<PartnerOrganization>? partnerOrganization;
+  //List<PartnerOrganization>? partnerOrganization;
   ProjectStatus? projectStatus;
 
   factory Attributes.fromJson(Map<String, dynamic> json) => Attributes(
@@ -70,7 +66,7 @@ class Attributes {
     startDate: json["startDate"] == null ? null : DateTime.parse(json["startDate"]),
     endDate: json["endDate"] == null ? null : DateTime.parse(json["endDate"]),
     updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
-    partnerOrganization: json["partnerOrganization"] == null ? null : List<PartnerOrganization>.from(json["partnerOrganization"].map((x) => PartnerOrganization.fromJson(x))),
+    //partnerOrganization: json["partnerOrganization"] == null ? null : List<PartnerOrganization>.from(json["partnerOrganization"].map((x) => PartnerOrganization.fromJson(x))),
     projectStatus: ProjectStatus.fromJson(json["projectStatus"]),
   );
 
@@ -81,7 +77,7 @@ class Attributes {
     "startDate": startDate == null ? null : "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
     "endDate": endDate == null ? null : "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
     "updatedAt": updatedAt ?? '',
-    "partnerOrganization": partnerOrganization == null ? null : List<dynamic>.from(partnerOrganization!.map((x) => x.toJson())),
+    //"partnerOrganization": partnerOrganization == null ? null : List<dynamic>.from(partnerOrganization!.map((x) => x.toJson())),
     "projectStatus": projectStatus,
   };
 }
@@ -168,21 +164,4 @@ class ProjectPartner {
     "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
     "updatedAt": updatedAt == null ? null : updatedAt!.toIso8601String(),
   };
-}
-
-class Meta {
-  Meta({
-    this.count,
-  });
-
-  int? count;
-
-  factory Meta.fromJson(Map<String, dynamic> json) => Meta(
-    count: json["count"] ?? 0,
-  );
-
-  Map<String, dynamic> toJson() => {
-    "count": count ?? 0,
-  };
-
 }

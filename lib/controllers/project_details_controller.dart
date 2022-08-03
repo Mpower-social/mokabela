@@ -105,8 +105,11 @@ class ProjectDetailsController extends GetxController {
   }
 
   navigateToDraftFormsScreen(ProjectListFromLocalDb projectListFromData) async {
+    var formIds = allFormList.map((form) => form!.idString!).toList();
+
     await Get.to(
       () => DraftFormScreen(
+        formIds,
         project: projectListFromData,
       ),
     );
@@ -126,9 +129,11 @@ class ProjectDetailsController extends GetxController {
   }
 
   navigateToSyncFormsScreen(ProjectListFromLocalDb projectListFromData) async {
+    var formIds = allFormList.map((form) => form!.idString!).toList();
     await Get.to(
       () => ReadyToSyncFormScreen(
         project: projectListFromData,
+        formIds:formIds
       ),
     );
 

@@ -54,13 +54,12 @@ class ReadyToSyncFormController extends GetxController {
     isLoadingForm.value = false;
   }
 
-  getProjectData() async {
+  getProjectData(formIds) async {
     isLoadingForm.value = true;
     projectList.clear();
     selectedProject = currentProject;
     projectList.add(selectedProject);
 
-    var formIds = ['member_register_test901'];
     var results = await OdkUtil.instance.getFinalizedForms(formIds);
     if (results != null && results.isNotEmpty) {
       formList.value = formData.formDataFromJson(results);
@@ -70,21 +69,21 @@ class ReadyToSyncFormController extends GetxController {
     isLoadingForm.value = false;
   }
 
-  getData() async {
+  getData(formIds) async {
     if (currentProject == null)
       await getAllData();
     else
-      await getProjectData();
+      await getProjectData(formIds);
 
     setupDefaultCheckBox();
   }
 
   ///delete specific form
-  void deleteForm(int id) async {
+  void deleteForm(int id, List<String> formIds) async {
     final results = await OdkUtil.instance.deleteDraftForm(id);
     if (results != null && results.isNotEmpty) {
       Get.back();
-      await getData();
+      await getData(formIds);
       await _dashboardController.getDraftFormCount();
       return;
     }
@@ -107,7 +106,7 @@ class ReadyToSyncFormController extends GetxController {
   }
 
   ///sending complete list to draft
-  void sendBackToDraft() async {
+  void sendBackToDraft(List<String> formIds) async {
     var anySelected = isCheckList.any((element) => element.isChecked == true);
     if (!anySelected) {
       showToast(msg: 'You didn\'t select any form');
@@ -124,14 +123,14 @@ class ReadyToSyncFormController extends GetxController {
       }
     }
     isCheckedAll.value = false;
-    await getData();
+    await getData(formIds);
 
     await _dashboardController.getDraftFormCount();
     await _dashboardController.getCompleteFormCount();
   }
 
   ///sync data
-  void syncCompleteForm() async {
+  void syncCompleteForm(List<String> formIds) async {
     var anySelected = isCheckList.any((element) => element.isChecked == true);
     if (!anySelected) {
       showToast(msg: 'You didn\'t select any form');
@@ -153,7 +152,7 @@ class ReadyToSyncFormController extends GetxController {
       }
     } catch (_) {
     } finally {
-      await getData();
+      await getData(formIds);
       Get.back();
       showFormSubmitStatusDialog(formSubmitStatusList);
     }

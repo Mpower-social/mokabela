@@ -20,7 +20,7 @@ class DashboardService extends BaseApiProvider {
 
       dio.options.headers.addAll({'Authorization':'Bearer $token'});
       var response = await dio.post(Apis.getProjectList(orgId),
-        data:jsonEncode({ "from_date": "$dateTime"}),);
+        data:jsonEncode({ "lastSyncDate": "$dateTime"}),);
       return ProjectListResponse.fromJson(response.data);
     }catch(error){
       showToast(msg:DioException.getDioException(error),isError: true);

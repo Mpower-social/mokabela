@@ -17,10 +17,12 @@ class DraftFormScreen extends StatelessWidget {
   Function? hp;
   final controller = DraftFormController();
   final ProjectListFromLocalDb? project;
+  List<String> formIds = [];
 
-  DraftFormScreen({this.project}) {
+  DraftFormScreen(List<String> formIds, {this.project}) {
+    this.formIds = formIds;
     controller.currentProject = project;
-    controller.getData();
+    controller.getData(formIds);
   }
 
   @override
@@ -193,7 +195,7 @@ class DraftFormScreen extends StatelessWidget {
                               SizedBox(width: 5),
                               IconButton(
                                 onPressed: () =>
-                                    controller.editDraftForm(data),
+                                    controller.editDraftForm(data,formIds),
                                 icon: Icon(
                                   AppIcons.edit,
                                   size: 22,
@@ -207,7 +209,7 @@ class DraftFormScreen extends StatelessWidget {
                                       confirmText: 'Yes',
                                       cancelText: 'No',
                                       onOkTap: () =>
-                                          controller.deleteForm(data.id ?? 0),
+                                          controller.deleteForm(data.id ?? 0,formIds),
                                       onCancelTap: () => Get.back());
                                 },
                                 icon: Icon(
