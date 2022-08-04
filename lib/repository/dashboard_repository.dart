@@ -250,23 +250,27 @@ class DashboardRepository {
   Future<List<AllFormsData>> getAllFromLocal() async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     var data = await db!.rawQuery(
-        'select * from $TABLE_NAME_All_FORM ORDER BY $All_FORM_CREATED_AT DESC');
+        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission from $TABLE_NAME_All_FORM as a ORDER BY a.$All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 
   ///getting all form data from local for a project
   Future<List<AllFormsData>> getAllFormsByProject(int projectId) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
+    /*var data = await db!.rawQuery(
+        "select * from $TABLE_NAME_All_FORM f WHERE f.$All_FORM_PROJECT_ID = $projectId ORDER BY $All_FORM_CREATED_AT DESC");*/
     var data = await db!.rawQuery(
-        "select * from $TABLE_NAME_All_FORM f WHERE f.$All_FORM_PROJECT_ID = $projectId ORDER BY $All_FORM_CREATED_AT DESC");
+        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission from $TABLE_NAME_All_FORM as a WHERE a.$All_FORM_PROJECT_ID = $projectId ORDER BY a.$All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 
   ///getting all form data from local for a project
   Future<List<AllFormsData>> getAllActiveFormsByProject(int projectId) async {
     final Database? db = await DatabaseProvider.dbProvider.database;
+    /*var data = await db!.rawQuery(
+        "select * from $TABLE_NAME_All_FORM f WHERE f.$All_FORM_PROJECT_ID = $projectId AND f.$All_FORM_STATUS = 'true' ORDER BY $All_FORM_CREATED_AT DESC");*/
     var data = await db!.rawQuery(
-        "select * from $TABLE_NAME_All_FORM f WHERE f.$All_FORM_PROJECT_ID = $projectId AND f.$All_FORM_STATUS = 'true' ORDER BY $All_FORM_CREATED_AT DESC");
+        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission from $TABLE_NAME_All_FORM as a WHERE a.$All_FORM_PROJECT_ID = $projectId AND a.$All_FORM_STATUS = "true" ORDER BY a.$All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 

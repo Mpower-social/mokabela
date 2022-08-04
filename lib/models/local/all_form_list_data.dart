@@ -25,6 +25,7 @@ class AllFormsData {
         this.updatedAt,
         this.instanceId,
         this.target,
+        this.totalSubmission,
         this.projectId,
         this.projectName,
         this.projectDes,this.status,this.feedback,this.xml});
@@ -39,6 +40,7 @@ class AllFormsData {
     updatedAt = json['updatedAt']??'';
     instanceId = json['instanceId']??'';
     target = json['target']??0;
+    totalSubmission = json['totalSubmission']??0;
     projectId = json['projectId']??0;
     projectName = json['projectName']??'';
     projectDes = json['projectDes']??'';

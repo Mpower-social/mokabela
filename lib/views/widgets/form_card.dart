@@ -84,9 +84,9 @@ Widget formCard({
                         CircularPercentIndicator(
                           radius: 40.0,
                           lineWidth: 8.0,
-                          percent: (data.totalSubmission ?? 0) / 1000,
+                          percent: (((data.totalSubmission ?? 0) * (data.target??0).toInt())/100)/100,
                           center: Text(
-                            '${((data.totalSubmission ?? 0) * 10) / 100}%',
+                            '${((data.totalSubmission ?? 0) * data.target!.toInt()) / 100}%',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
