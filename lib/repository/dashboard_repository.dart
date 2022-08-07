@@ -16,7 +16,7 @@ class DashboardRepository {
 
   ////////remote data////////
   Future<List<ProjectListFromLocalDb>> getProjectListOperation(bool forceLoad) async {
-    //try {
+    try {
       List<ProjectListFromLocalDb> projectList = await getAllProjectFromLocal();
 
       if (projectList.isEmpty || forceLoad) {
@@ -46,9 +46,9 @@ class DashboardRepository {
         }
       }
       return projectList;
-   /* } catch (_) {
+    } catch (_) {
       return [];
-    }*/
+    }
   }
 
   Future<String> getFormList() async {

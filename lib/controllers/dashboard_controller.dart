@@ -47,7 +47,7 @@ class DashboardController extends GetxController {
     //handlePermission();
     getUserdata();
     await getAllData(false);
-    downloadForm();
+    await downloadForm();
     await getRecentFormList();
   }
 
@@ -156,7 +156,7 @@ class DashboardController extends GetxController {
     recentFormList.value = [];
   }
 
-  void downloadForm() async {
+   downloadForm() async {
     _dashboardRepository.getFormList().then((value) async {
       final results = await OdkUtil.instance.initializeOdk(value);
       if (results != null && results.isNotEmpty) {
