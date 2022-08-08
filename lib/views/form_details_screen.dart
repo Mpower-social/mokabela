@@ -9,6 +9,7 @@ import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
 import 'package:m_survey/widgets/app_bar_with_drawer.dart';
 import 'package:m_survey/widgets/icon_button.dart';
+import 'package:m_survey/widgets/show_toast.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:get/get.dart';
 
@@ -118,9 +119,7 @@ class FormDetailsScreen extends StatelessWidget {
 
   Widget _topPart() {
     var progress =
-        (((controller.submittedFormList.length / (allFormsData?.target ?? 0)) *
-                100.0) /
-            100.0);
+        (((controller.submittedFormList.length * 100) / (allFormsData?.target ?? 0)) / 100.0);
     return Container(
         padding: EdgeInsets.all(20),
         constraints: BoxConstraints(minHeight: hp!(25)),
@@ -191,7 +190,13 @@ class FormDetailsScreen extends StatelessWidget {
               color: Colors.green,
               child: InkWell(
                 onTap: () {
-                  controller.openOdkForm(projectListFromData?.id,formId);
+                  print((allFormsData?.target??0)<=0);
+                  if((allFormsData?.status??'false') == 'true') {
+                    if((allFormsData?.target??0)<=0){
+                      showToast(msg: 'Target is empty.',isError: true);
+                    }
+                     else controller.openOdkForm(projectListFromData?.id,formId);
+                  }else showToast(msg: 'Unable to open inactive form.',isError: true);
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

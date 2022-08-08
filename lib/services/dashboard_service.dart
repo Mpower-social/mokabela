@@ -65,7 +65,7 @@ class DashboardService extends BaseApiProvider {
       var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
       var dateTime = await SharedPref.sharedPref.getString(SharedPref.ALL_FORM_DATE_TIME)??'0';
       var response = await dio.post(Apis.getAllFormList,
-          data:jsonEncode({ "fromDate": "$dateTime"}),
+          data:jsonEncode({ "lastSyncDate": "$dateTime"}),
           options: Options(
               headers: {'Authorization': 'Bearer $token',},
               responseType: ResponseType.plain

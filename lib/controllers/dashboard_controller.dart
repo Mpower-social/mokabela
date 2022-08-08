@@ -59,6 +59,7 @@ class DashboardController extends GetxController {
 
   ///getting project list here
   Future<void> getAllData(bool forceLoad) async {
+    if(!await CheckNetwork().check()) forceLoad = false;
     isLoadingProject.value = true;
     submittedFormList.value = await _dashboardRepository.getSubmittedFormList(forceLoad);
     allFormList.value = await _dashboardRepository.getAllFormList(forceLoad);
@@ -157,13 +158,15 @@ class DashboardController extends GetxController {
   }
 
    downloadForm() async {
-    _dashboardRepository.getFormList().then((value) async {
-      final results = await OdkUtil.instance.initializeOdk(value);
-      if (results != null && results.isNotEmpty) {
-        print('Success');
-      }
-      print('failed');
-    });
+     if(await CheckNetwork().check()){
+       _dashboardRepository.getFormList().then((value) async {
+         final results = await OdkUtil.instance.initializeOdk(value);
+         if (results != null && results.isNotEmpty) {
+           print('Success');
+         }
+         print('failed');
+       });
+     }
   }
 
   void handlePermission() async {
@@ -243,6 +246,8 @@ class DashboardController extends GetxController {
     await getRecentFormList();
     if(await CheckNetwork.checkNetwork.check()){
       await getSubmittedFormCount(true);
+    }else{
+      await getSubmittedFormCount(false);
     }
   }
 

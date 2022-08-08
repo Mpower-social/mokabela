@@ -5,7 +5,7 @@ class Apis{
   //static var url = 'http://192.168.19.19:3008';//dev
   static var url = 'https://msurvey-api.dev.mpower-social.com';//dev
   //static var url = 'http://192.168.22.59:3000';//local imam
-  //static var url = 'http://192.168.22.59:3000';//local tanvir
+  //static var url = 'http://192.168.23.89:3000';//local tanvir
 
   //static var odkRelatedUrl = 'http://192.168.19.16:9037';//dev
   //static var odkRelatedUrl = 'http://192.168.19.16:8092/';//dev
