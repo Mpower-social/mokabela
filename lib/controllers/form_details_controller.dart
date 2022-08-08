@@ -16,23 +16,26 @@ class FormDetailsController extends GetxController {
   var completeFormCount = 0.obs;
   var revertedFormCount = 0.obs;
 
+  var progress = 0.0.obs;
+
   @override
   void onInit() async {
     super.onInit();
   }
 
-  void openOdkForm(int? id, String? formId) async {
+  void openOdkForm(int? id, String? formId,AllFormsData? allFormsData) async {
     final results = await OdkUtil.instance.openForm(formId??'',
         arguments: {'projectId': id?.toString()});
     if (results != null && results.isNotEmpty) {
-      await refreshCount(formId);
+      await refreshCount(formId,allFormsData);
     }
     print('failed');
   }
 
-  getTotalSubmittedForm(String? idString) async {
+  getTotalSubmittedForm(String? idString,AllFormsData? allFormsData) async {
     submittedFormList.value =
         await _projectRepository.getAllSubmittedFromLocalByForm(idString);
+    progress.value = (((submittedFormList.length * 100) / (allFormsData?.target ?? 0)) / 100.0);
   }
   getDraftFormCount(String? idString)async{
     final results = await OdkUtil.instance.getDraftForms([idString!]);
@@ -58,8 +61,8 @@ class FormDetailsController extends GetxController {
     }
   }
 
-  refreshCount(String? idString){
-    getTotalSubmittedForm(idString);
+  refreshCount(String? idString,AllFormsData? allFormsData){
+    getTotalSubmittedForm(idString,allFormsData);
     getDraftFormCount(idString);
     getCompleteFormCount(idString);
     getRevertedFormCount(idString);
@@ -68,7 +71,7 @@ class FormDetailsController extends GetxController {
 
   navigateToFormList(FormStatus formStatus, AllFormsData? allFormsData, String? idString,)async{
     await Get.to(() => FormListScreen(formStatus, allFormsData));
-    refreshCount(idString);
+    refreshCount(idString,allFormsData);
   }
 
 }

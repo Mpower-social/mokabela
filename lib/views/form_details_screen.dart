@@ -27,7 +27,7 @@ class FormDetailsScreen extends StatelessWidget {
     this.formId = '',
   }) {
     formId = this.formId!.isEmpty ? allFormsData?.idString ?? '' : this.formId;
-    controller.getTotalSubmittedForm(formId);
+    controller.getTotalSubmittedForm(formId,allFormsData);
     controller.getDraftFormCount(formId);
     controller.getCompleteFormCount(formId);
     controller.getRevertedFormCount(formId);
@@ -118,59 +118,59 @@ class FormDetailsScreen extends StatelessWidget {
   }
 
   Widget _topPart() {
-    var progress =
-        (((controller.submittedFormList.length * 100) / (allFormsData?.target ?? 0)) / 100.0);
-    return Container(
-        padding: EdgeInsets.all(20),
-        constraints: BoxConstraints(minHeight: hp!(25)),
-        width: wp!(100),
-        color: primaryColor,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            RichText(
-              text: TextSpan(children: [
-                TextSpan(text: 'Project: '),
-                TextSpan(
-                    text: '${projectListFromData?.projectName ?? ''}',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              ]),
-            ),
-            SizedBox(height: hp!(5)),
-            Text(
-              'Total(${allFormsData?.target ?? '0'})',
-              style: TextStyle(color: white),
-            ),
-            SizedBox(height: hp!(1.5)),
-            LinearPercentIndicator(
-              padding: EdgeInsets.all(0),
-              backgroundColor: white,
-              lineHeight: 8.0,
-              percent: progress.isInfinite
-                  ? 0
-                  : progress.isNaN
-                      ? 0
-                      : progress,
-              progressColor: green,
-            ),
-            SizedBox(height: hp!(1.5)),
-            Obx(
-              () => Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    '${controller.submittedFormList.length}',
-                    style: TextStyle(color: white),
-                  ),
-                  Text(
-                      '${((allFormsData?.target ?? 0) - controller.submittedFormList.length)}',
-                      style: TextStyle(color: white))
-                ],
+
+    return Obx(()=>Container(
+          padding: EdgeInsets.all(20),
+          constraints: BoxConstraints(minHeight: hp!(25)),
+          width: wp!(100),
+          color: primaryColor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              RichText(
+                text: TextSpan(children: [
+                  TextSpan(text: 'Project: '),
+                  TextSpan(
+                      text: '${projectListFromData?.projectName ?? ''}',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ]),
               ),
-            ),
-          ],
-        ));
+              SizedBox(height: hp!(5)),
+              Text(
+                'Total(${allFormsData?.target ?? '0'})',
+                style: TextStyle(color: white),
+              ),
+              SizedBox(height: hp!(1.5)),
+              LinearPercentIndicator(
+                padding: EdgeInsets.all(0),
+                backgroundColor: white,
+                lineHeight: 8.0,
+                percent: controller.progress.value.isInfinite
+                    ? 0
+                    : controller.progress.value.isNaN
+                        ? 0
+                        : controller.progress.value,
+                progressColor: green,
+              ),
+              SizedBox(height: hp!(1.5)),
+              Obx(
+                () => Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      '${controller.submittedFormList.length}',
+                      style: TextStyle(color: white),
+                    ),
+                    Text(
+                        '${((allFormsData?.target ?? 0) - controller.submittedFormList.length)}',
+                        style: TextStyle(color: white))
+                  ],
+                ),
+              ),
+            ],
+          )),
+    );
   }
 
   Widget _collectButton() {
@@ -195,7 +195,7 @@ class FormDetailsScreen extends StatelessWidget {
                     if((allFormsData?.target??0)<=0){
                       showToast(msg: 'Target is empty.',isError: true);
                     }
-                     else controller.openOdkForm(projectListFromData?.id,formId);
+                     else controller.openOdkForm(projectListFromData?.id,formId,allFormsData);
                   }else showToast(msg: 'Unable to open inactive form.',isError: true);
                 },
                 child: Column(
