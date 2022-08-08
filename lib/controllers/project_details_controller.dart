@@ -71,7 +71,8 @@ class ProjectDetailsController extends GetxController {
   getSubmittedFormCount() async {
     if(await CheckNetwork.checkNetwork.check()){
       await _dashboardRepository.getSubmittedFormList(true);
-    }
+    }else await _dashboardRepository.getSubmittedFormList(false);
+
     submittedFormCount.value = (await _projectRepository.getAllSubmittedFromLocalByProject(currentProjectId)).length;
   }
 
