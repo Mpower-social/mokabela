@@ -8,6 +8,7 @@ import 'package:m_survey/widgets/show_toast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
+import 'package:path/path.dart';
 
 class FormService extends BaseApiProvider{
   ///get submitted form list
@@ -31,26 +32,38 @@ class FormService extends BaseApiProvider{
     Directory? tempDir = await getExternalStorageDirectory();
 
     var finalDir = "${tempDir!.path.replaceAll("'", '')}/instances/${formData.instanceFilePath.toString()}";
+    var mediaDir = "${tempDir.path.replaceAll("'", '')}/instances/";
     var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
       var xmlFile = await MultipartFile.fromFile(finalDir, filename: "file");
+      List<MultipartFile> multipartList = [];
+
+      Map<String,dynamic> data = Map<String,dynamic>();
+      data['xml_submission_file'] = xmlFile;
+      data['id_string'] = formData.formId.toString();
+
+
+      List<FileSystemEntity> dir = await Directory(mediaDir).list().toList();
+      for (var element in dir){
+      if(extension(element.path)){
+        var filename = element.path.split("/").last;
+        data[filename] = await MultipartFile.fromFile(finalDir, filename: filename);
+      }
+      }
 
       dio.options.headers.addAll({'Authorization':'Bearer $token'});
-
       var response = await dio.post(Apis.submitForm,
-        data: FormData.fromMap(
-          {
-            "xml_submission_file":xmlFile,
-            "id_string":formData.formId.toString()
-          }
-        )
+        data: FormData.fromMap(data)
       );
+
+      print(response.data);
       if(response.statusCode == 200 || response.statusCode == 201 || response.statusCode == 202){
         await OdkUtil.instance.sendToSubmitted(formData.id);
 
       }
       return 'success';
     }catch(error){
-      //showToast(msg:DioException.getDioException(error),isError: true);
+      print(error);
+      showToast(msg:DioException.getDioException(error),isError: true);
       return null;
     }
   }
