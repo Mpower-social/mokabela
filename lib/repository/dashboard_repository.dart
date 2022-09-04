@@ -65,8 +65,8 @@ class DashboardRepository {
         ///getting data from remote
         List<SubmittedFormListResponse?>? submittedFormListResponse =
             await _dashboardService.getSubmittedFormList();
-        if (submittedFormList != null) {
-          for (var formData in submittedFormListResponse!) {
+        if (submittedFormListResponse != null) {
+          for (var formData in submittedFormListResponse) {
             ///inserting data to local
             await insertSubmittedForms(SubmittedFormListData(
                 id: formData?.id,

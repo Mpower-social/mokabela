@@ -7,7 +7,6 @@ import 'package:m_survey/utils/shared_pref.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:dio/dio.dart';
-import 'package:m_survey/models/form_data.dart' as formData;
 import 'package:path/path.dart';
 
 class FormService extends BaseApiProvider{
@@ -30,12 +29,13 @@ class FormService extends BaseApiProvider{
   Future<String?> submitFormOperation(formData) async {
     try{
     Directory? tempDir = await getExternalStorageDirectory();
+    var mediaFolder = formData.instanceFilePath.toString().split('/');
 
     var finalDir = "${tempDir!.path.replaceAll("'", '')}/instances/${formData.instanceFilePath.toString()}";
-    var mediaDir = "${tempDir.path.replaceAll("'", '')}/instances/";
+    var mediaDir = "${tempDir.path.replaceAll("'", '')}/instances/${mediaFolder[mediaFolder.length-2]}";
+
     var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
       var xmlFile = await MultipartFile.fromFile(finalDir, filename: "file");
-      List<MultipartFile> multipartList = [];
 
       Map<String,dynamic> data = Map<String,dynamic>();
       data['xml_submission_file'] = xmlFile;
@@ -44,9 +44,9 @@ class FormService extends BaseApiProvider{
 
       List<FileSystemEntity> dir = await Directory(mediaDir).list().toList();
       for (var element in dir){
-      if(extension(element.path)){
+      if(extension(element.path)!='.xml'){
         var filename = element.path.split("/").last;
-        data[filename] = await MultipartFile.fromFile(finalDir, filename: filename);
+        data[filename.split('.').first] = await MultipartFile.fromFile(finalDir, filename: filename);
       }
       }
 

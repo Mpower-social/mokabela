@@ -7,7 +7,7 @@ class BaseApiProvider {
 
   BaseApiProvider() {
     var dio = Dio();
-    _dioClient = DioClient(dio,interceptors: [RefreshTokenInterceptor()]);
+    _dioClient = DioClient(dio,interceptors: [RefreshTokenInterceptor(dio)]);
   }
 
   Dio get dio => _dioClient.clientDio!;

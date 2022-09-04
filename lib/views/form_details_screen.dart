@@ -190,7 +190,7 @@ class FormDetailsScreen extends StatelessWidget {
               color: Colors.green,
               child: InkWell(
                 onTap: () {
-                  print((allFormsData?.target??0)<=0);
+                  print('${projectListFromData?.id}, $formId,  $allFormsData  ${allFormsData?.status}');
                   if((allFormsData?.status??'false') == 'true') {
                     if((allFormsData?.target??0)<=0){
                       showToast(msg: 'Target is empty.',isError: true);

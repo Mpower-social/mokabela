@@ -234,10 +234,13 @@ class DashboardScreen extends StatelessWidget {
                 title: _controller.recentFormList[i].displayName,
                 idString: _controller.recentFormList[i].formId,
                 projectName: _controller.recentFormList[i].projectName,
+                status: _controller.recentFormList[i].status,
+               target: _controller.recentFormList[i].target,
               ),
               ProjectListFromLocalDb(
-                projectName: _controller.recentFormList[i].displayName ?? '',
+                projectName: _controller.recentFormList[i].projectName ?? '',
                 id: _controller.recentFormList[i].id ?? 0,
+                status: _controller.recentFormList[i].status
               ),
             ),
             child: recentFormCard(formData: _controller.recentFormList[i]),

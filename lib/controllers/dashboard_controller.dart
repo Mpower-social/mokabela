@@ -48,7 +48,7 @@ class DashboardController extends GetxController {
     getUserdata();
     await getAllData(false);
     await downloadForm();
-    await getRecentFormList();
+   // await getRecentFormList();
   }
 
   void getUserdata() async {
@@ -141,13 +141,14 @@ class DashboardController extends GetxController {
     if (results != null && results.isNotEmpty) {
       formData.formDataFromJson(results).forEach((element) {
         var projectId = int.tryParse(element.projectId!);
-        var currentProject =
-            projectList.firstWhereOrNull((v) => v.id == projectId);
-        var currentForm = allFormList
-            .firstWhereOrNull((form) => form?.projectId == projectId);
+        var currentProject = projectList.firstWhereOrNull((v) => v.id == projectId);
+        var currentForm = allFormList.firstWhereOrNull((form) => form?.idString == element.formId);
 
-        element.projectName = currentProject?.projectName ?? 'N/A';
+        element.projectName = currentForm?.projectName ?? 'N/A';
         element.status = currentForm?.status ?? 'false';
+        element.formId = currentForm?.idString??'';
+        element.id = int.tryParse(currentForm?.id??'0')??0;
+        element.target = currentForm?.target??0;
 
         recentFormList.add(element);
       });
