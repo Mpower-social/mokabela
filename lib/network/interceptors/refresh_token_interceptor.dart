@@ -15,8 +15,7 @@ class RefreshTokenInterceptor implements dio.InterceptorsWrapper{
       if((err.response?.statusCode == 403 ||
           err.response?.statusCode == 401)
       ){
-        if((err.requestOptions.uri.toString().trim() == Apis.login.toString().trim()
-            || err.requestOptions.uri.toString().trim()==Apis.refreshToken.toString().trim())){
+        if(err.requestOptions.uri.toString().trim()==Apis.refreshToken.toString().trim()){
           Utils.logoutOperation();
         }else{
           var value = await authRepository.refreshTokenOperation();
@@ -34,8 +33,6 @@ class RefreshTokenInterceptor implements dio.InterceptorsWrapper{
             return handler.resolve(req);
           }
         }
-      }else{
-        Utils.logoutOperation();
       }
     }catch(e){Utils.logoutOperation();}
     return handler.next(err);
