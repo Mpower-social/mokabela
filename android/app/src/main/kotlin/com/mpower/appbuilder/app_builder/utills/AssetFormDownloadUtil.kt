@@ -39,13 +39,11 @@ class AssetFormDownloadUtil(val context: Context) {
     var formsDao: FormsDao = FormsDao()
 
     fun getForms(formXml: String?): Boolean {
-        if(formsDao.formsCursor.count > 0) {
-            return true
-        }
-
         try {
-
             getFormList(formXml).forEach { selectedForm ->
+                if(!(selectedForm.isNewerFormVersionAvailable() || selectedForm.areNewerMediaFilesAvailable()))
+                    return@forEach
+
                 try {
                     deleteOldFormIfExist(selectedForm.formId)
                     val downloadFile = downloadForm(selectedForm.formId, selectedForm.downloadUrl)

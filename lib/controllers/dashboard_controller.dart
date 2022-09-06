@@ -47,7 +47,6 @@ class DashboardController extends GetxController {
     //handlePermission();
     getUserdata();
     await getAllData(false);
-    await downloadForm();
    // await getRecentFormList();
   }
 
@@ -67,6 +66,7 @@ class DashboardController extends GetxController {
     await _dashboardRepository.getRevertedFormList(forceLoad);
     await getFormData();
     refreshDashBoardCount();
+    await downloadForm();
     isLoadingProject.value = false;
   }
 
@@ -161,6 +161,7 @@ class DashboardController extends GetxController {
    downloadForm() async {
      if(await CheckNetwork().check()){
        _dashboardRepository.getFormList().then((value) async {
+         print('vv '+value);
          final results = await OdkUtil.instance.initializeOdk(value);
          if (results != null && results.isNotEmpty) {
            print('Success');
