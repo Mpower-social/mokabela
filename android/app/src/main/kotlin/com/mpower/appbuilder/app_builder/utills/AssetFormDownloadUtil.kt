@@ -41,7 +41,7 @@ class AssetFormDownloadUtil(val context: Context) {
     fun getForms(formXml: String?): Boolean {
         try {
             getFormList(formXml).forEach { selectedForm ->
-                if(!(selectedForm.isNewerFormVersionAvailable() || selectedForm.areNewerMediaFilesAvailable()))
+                if(!(selectedForm.isNewerFormVersionAvailable || selectedForm.areNewerMediaFilesAvailable()))
                     return@forEach
 
                 try {
@@ -170,10 +170,9 @@ class AssetFormDownloadUtil(val context: Context) {
                     }
                 }
 
-                var isNewerFormVersionAvailable = false
-                var areNewerMediaFilesAvailable = false
-
                 if(formId != null && formName != null && downloadUrl != null) {
+                    var isNewerFormVersionAvailable = false
+                    var areNewerMediaFilesAvailable = false
 
                     if (isThisFormAlreadyDownloaded(formId)) {
                         isNewerFormVersionAvailable = isNewerFormVersionAvailable(FormDownloader.getMd5Hash(hash))
@@ -184,6 +183,9 @@ class AssetFormDownloadUtil(val context: Context) {
                                     areNewerMediaFilesAvailable(formId, version, mediaFiles)
                             }
                         }
+                    } else {
+                        isNewerFormVersionAvailable = true
+                        areNewerMediaFilesAvailable = true
                     }
 
                     formDetails.add(FormDetails(formName, downloadUrl, manifestUrl, formId,
@@ -358,7 +360,7 @@ class AssetFormDownloadUtil(val context: Context) {
         var doc: Document? = null
 
         try {
-            inputStream = /*context.assets.open(formListUrl)*/ByteArrayInputStream( formListXml.toByteArray());
+            inputStream = /*context.assets.open(formListUrl)*/ByteArrayInputStream( formListXml.toByteArray())
             inputStreamReader = InputStreamReader(inputStream, "UTF-8")
             doc = Document()
             val parser = KXmlParser()
