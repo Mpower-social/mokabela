@@ -52,6 +52,9 @@ android {
         resValue("bool", "CRASHLYTICS_ENABLED", "false")
         resValue("string", "GOOGLE_MAPS_API_KEY", "")
         buildConfigField 'String', "MAPBOX_ACCESS_TOKEN", '"' + 1213 + '"'
+        ndk {
+            abiFilters 'x86', 'x86_64', 'armeabi', 'armeabi-v7a', 'mips', 'mips64', 'arm64-v8a'
+        }
     }
 
     compileOptions {
