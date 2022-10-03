@@ -31,9 +31,11 @@ Widget ongoingProjectCard(
                 Flexible(
                   child: Text(
                     project.projectName ?? '',
+                    maxLines: 2,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
+                      overflow: TextOverflow.ellipsis
                     ),
                   ),
                 ),

@@ -55,14 +55,12 @@ class FormService extends BaseApiProvider{
         data: FormData.fromMap(data)
       );
 
-      print(response.data);
       if(response.statusCode == 200 || response.statusCode == 201 || response.statusCode == 202){
         await OdkUtil.instance.sendToSubmitted(formData.id);
 
       }
       return 'success';
     }catch(error){
-      print(error);
       showToast(msg:DioException.getDioException(error),isError: true);
       return null;
     }

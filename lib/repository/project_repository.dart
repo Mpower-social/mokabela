@@ -28,7 +28,10 @@ class ProjectRepository{
     final Database? db = await DatabaseProvider.dbProvider.database;
    // var data = await db!.rawQuery('select * from $TABLE_NAME_All_FORM where $All_FORM_PROJECT_ID = $projectId ORDER BY $All_FORM_CREATED_AT DESC');
     var data = await db!.rawQuery(
-        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission from $TABLE_NAME_All_FORM as a where a.$All_FORM_PROJECT_ID = $projectId ORDER BY a.$All_FORM_CREATED_AT DESC');
+        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s left join $TABLE_NAME_DELETED_SUBMITTED_FORM as d on s.$SUBMITTED_ID=d.$DELETED_SUBMITTED_FORM_ID where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING and d.$DELETED_SUBMITTED_FORM_ID is null) as totalSubmission from $TABLE_NAME_All_FORM as a '
+            'where a.$All_FORM_PROJECT_ID = $projectId '
+            'and (select count(*) from $TABLE_NAME_DELETED_SUBMITTED_FORM as d left join  $TABLE_NAME_SUBMITTED_FORM as s on d.$DELETED_SUBMITTED_FORM_ID=s.$All_FORM_ID)>0 '
+            'ORDER BY a.$All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 

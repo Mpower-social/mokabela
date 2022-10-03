@@ -9,6 +9,7 @@ Widget formCard({
   required AllFormsData data,
   GestureTapCallback? onTap,
 }) {
+  var totalSubmission = (data.totalSubmission??0)>(data.target??0)?data.target:data.totalSubmission;
   return Card(
     clipBehavior: Clip.hardEdge,
     color: white.withOpacity(.8),
@@ -84,9 +85,9 @@ Widget formCard({
                         CircularPercentIndicator(
                           radius: 40.0,
                           lineWidth: 8.0,
-                          percent: ((data.totalSubmission ?? 0)==0 || (data.target??0).toInt() ==0)?0:((((data.totalSubmission ?? 0) * 100)/(data.target??0).toInt()))/100,
+                          percent: ((data.totalSubmission??0)>(data.target??0))?1:((data.totalSubmission ?? 0)==0 || (data.target??0).toInt() ==0)?0:((((totalSubmission ?? 0) * 100)/(data.target??0).toInt()))/100,
                           center: Text(
-                            '${((data.totalSubmission ?? 0)==0 || (data.target??0).toInt() ==0)?0:(((data.totalSubmission ?? 0) * 100) / data.target!.toInt()).round()}%',
+                            '${((data.totalSubmission??0)>(data.target??0))?100:((data.totalSubmission ?? 0)==0 || (data.target??0).toInt() ==0)?0:(((totalSubmission ?? 0) * 100) / data.target!.toInt()).round()}%',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),

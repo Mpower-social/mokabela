@@ -16,7 +16,7 @@ class DashboardRepository {
 
   ////////remote data////////
   Future<List<ProjectListFromLocalDb>> getProjectListOperation(bool forceLoad) async {
-    try {
+   // try {
       List<ProjectListFromLocalDb> projectList = await getAllProjectFromLocal();
 
       if (projectList.isEmpty || forceLoad) {
@@ -46,9 +46,9 @@ class DashboardRepository {
         }
       }
       return projectList;
-    } catch (_) {
+   /* } catch (_) {
       return [];
-    }
+    }*/
   }
 
   Future<String> getFormList() async {
@@ -56,7 +56,7 @@ class DashboardRepository {
   }
 
   Future<List<SubmittedFormListData?>> getSubmittedFormList(bool forceLoad) async {
-    try {
+    //try {
       List<SubmittedFormListData> submittedFormList =
           await getAllSubmittedFromLocal();
 
@@ -92,9 +92,9 @@ class DashboardRepository {
         }
       }
       return await getAllSubmittedFromLocalByDelete();
-    } catch (_) {
+   /* } catch (_) {
       return [];
-    }
+    }*/
   }
 
   Future<List<AllFormsData?>> getAllActiveFormList(bool forceLoad) async {
@@ -103,7 +103,7 @@ class DashboardRepository {
   }
 
   Future<List<AllFormsData?>> getAllFormList(bool forceLoad) async {
-    try{
+    //try{
     List<AllFormsData> allFormList = await getAllFromLocal();
 
     ///checking data already exist or not
@@ -140,13 +140,13 @@ class DashboardRepository {
       }
     }
     return allFormList;
-    }catch(_){
+  /*  }catch(_){
      return [];
-   }
+   }*/
   }
 
   Future<List<AllFormsData?>> getRevertedFormList(bool forceLoad) async {
-    try{
+    //try{
     List<AllFormsData> allFormList = await getRevertedFromLocal();
 
     ///checking data already exist or not
@@ -183,9 +183,9 @@ class DashboardRepository {
       }
     }
     return allFormList;
-    }catch(_){
+   /* }catch(_){
      return [];
-   }
+   }*/
   }
 
   ///////////local data/////////
