@@ -23,7 +23,7 @@ class ProjectDetailsScreen extends StatelessWidget {
   ProjectListFromLocalDb _projectListFromData;
   ProjectDetailsScreen(this._projectListFromData) {
     _controller.currentProjectId = _projectListFromData.id!;
-    _controller.getAllDataByProject();
+    _controller.getAllData();
   }
 
   @override

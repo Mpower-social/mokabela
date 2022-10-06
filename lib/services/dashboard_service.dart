@@ -53,9 +53,10 @@ class DashboardService extends BaseApiProvider {
               headers: {'Authorization': 'Bearer $token',},
               responseType: ResponseType.plain
           ));
-      return response.data is String?null: List<SubmittedFormListResponse>.from(response.data.map((x) => SubmittedFormListResponse.fromJson(x)));
+      return List<SubmittedFormListResponse>.from(jsonDecode(response.data).map((x) => SubmittedFormListResponse.fromJson(x)));
     } catch (error) {
-      showToast(msg: DioException.getDioException(error), isError: true);
+      print(error);
+      //showToast(msg: DioException.getDioException(error), isError: true);
     }
     return null;
   }

@@ -5,7 +5,6 @@ import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/repository/dashboard_repository.dart';
 import 'package:m_survey/repository/project_repository.dart';
-import 'package:m_survey/utils/check_network_conn.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/models/form_data.dart' as formData;
 import '../views/active_form_screen.dart';
@@ -59,20 +58,24 @@ class ProjectDetailsController extends GetxController {
   }
 
   ///getting project list here
-  void getAllDataByProject() async {
+  getAllData() async {
     isLoadingProject.value = true;
-    allFormList.value =
-        await _projectRepository.getAllFromLocalByProject(currentProjectId);
-    allFormListTemp.value = List.from(allFormList);
     await refreshDashBoardCount();
     isLoadingProject.value = false;
   }
 
-  getSubmittedFormCount() async {
-    if(await CheckNetwork.checkNetwork.check()){
-      await _dashboardRepository.getSubmittedFormList(true);
-    }else await _dashboardRepository.getSubmittedFormList(false);
+  getAllDataByProject() async {
 
+    allFormList.value =
+    await _projectRepository.getAllFromLocalByProject(currentProjectId);
+    allFormListTemp.value = List.from(allFormList);
+  }
+
+  getSubmittedFormCount() async {
+   /* if(await CheckNetwork.checkNetwork.check()){
+      //await _dashboardRepository.getSubmittedFormList(true);
+    }else */
+    await _dashboardRepository.getSubmittedFormList(false);
     submittedFormCount.value = (await _projectRepository.getAllSubmittedFromLocalByProject(currentProjectId)).length;
   }
 
@@ -171,6 +174,7 @@ class ProjectDetailsController extends GetxController {
     await getActiveFormCount();
     await getCompleteFormCount();
     await getSubmittedFormCount();
+    await getAllDataByProject();
   }
 
   @override
