@@ -1,3 +1,5 @@
+import 'package:m_survey/models/local/project_list_data.dart';
+
 class AllFormsData {
   String? id;
   String? xFormId;
@@ -11,7 +13,8 @@ class AllFormsData {
   int? projectId;
   String? projectName;
   String? projectDes;
-  String? status;
+  bool? isActive;
+  bool? isPublished;
   String? feedback;
   String? xml;
 
@@ -28,7 +31,11 @@ class AllFormsData {
         this.totalSubmission,
         this.projectId,
         this.projectName,
-        this.projectDes,this.status,this.feedback,this.xml});
+        this.projectDes,
+        this.isActive,
+        this.isPublished,
+        this.feedback,
+        this.xml});
 
   AllFormsData.fromJson(Map<String, dynamic> json) {
     id = json['id'].toString();
@@ -44,7 +51,8 @@ class AllFormsData {
     projectId = json['projectId']??0;
     projectName = json['projectName']??'';
     projectDes = json['projectDes']??'';
-    status = json['status']??'false';
+    isActive = boolean[json['isActive']??0];
+    isPublished = boolean[json['isPublished']??0];
     feedback = json['feedback']??'';
     xml = json['xml']??'';
   }
@@ -62,7 +70,8 @@ class AllFormsData {
     data['projectId'] = this.projectId;
     data['projectName'] = this.projectName;
     data['projectDes'] = this.projectDes;
-    data['status'] = this.status;
+    data['isActive'] = this.isActive;
+    data['isPublished'] = this.isPublished;
     return data;
   }
 
@@ -77,7 +86,7 @@ class AllFormsData {
     data['createdAt'] = this.createdAt;
     data['updatedAt'] = this.updatedAt;
     data['projectId'] = this.projectId;
-    data['status'] = this.status;
+    data['status'] = this.isActive;
     data['feedback'] = this.feedback;
     return data;
   }

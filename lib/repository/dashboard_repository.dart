@@ -16,7 +16,7 @@ class DashboardRepository {
 
   ////////remote data////////
   Future<List<ProjectListFromLocalDb>> getProjectListOperation(bool forceLoad) async {
-   // try {
+    try {
       List<ProjectListFromLocalDb> projectList = await getAllProjectFromLocal();
 
       if (projectList.isEmpty || forceLoad) {
@@ -32,7 +32,13 @@ class DashboardRepository {
                     projectName: projectData.attributes?.name,
                     startDate: projectData.attributes?.startDate.toString(),
                     endDate: projectData.attributes?.endDate.toString(),
-                    status: projectData.attributes?.projectStatus?.id.toString()),
+                    status: projectData.attributes?.projectStatus?.id.toString(),
+                    isPublished: projectData.attributes?.isPublished,
+                    isActive: projectData.attributes?.isActive,
+                    isArchived: projectData.attributes?.isArchived,
+                    isDeleted: projectData.attributes?.projectMember?.voided,
+
+                )
               );
             }
             if ((projectListResponse.data?.length ?? 0) > 0) {
@@ -46,9 +52,9 @@ class DashboardRepository {
         }
       }
       return projectList;
-   /* } catch (_) {
+    } catch (_) {
       return [];
-    }*/
+    }
   }
 
   Future<String> getFormList() async {
@@ -56,7 +62,7 @@ class DashboardRepository {
   }
 
   Future<List<SubmittedFormListData?>> getSubmittedFormList(bool forceLoad) async {
-    //try {
+    try {
       List<SubmittedFormListData> submittedFormList =
           await getAllSubmittedFromLocal();
 
@@ -92,18 +98,18 @@ class DashboardRepository {
         }
       }
       return await getAllSubmittedFromLocalByDelete();
-   /* } catch (_) {
+    } catch (_) {
       return [];
-    }*/
+    }
   }
 
   Future<List<AllFormsData?>> getAllActiveFormList(bool forceLoad) async {
     var allForms = await getAllFormList(forceLoad);
-    return allForms.where((element) => element?.status == 'true').toList();
+    return allForms.where((element) => element?.isActive == true).toList();
   }
 
   Future<List<AllFormsData?>> getAllFormList(bool forceLoad) async {
-    //try{
+    try{
     List<AllFormsData> allFormList = await getAllFromLocal();
 
     ///checking data already exist or not
@@ -127,7 +133,9 @@ class DashboardRepository {
               projectId: formData.attributes?.project?.id??0,
               projectName: formData.attributes?.project?.name??'',
               projectDes: formData.attributes?.project?.description??'',
-              status: formData.attributes?.isActive));
+              isActive: formData.attributes?.isActive,
+              isPublished: formData.attributes?.isPublished
+          ));
         }
 
         ///inserting last updated datetime here
@@ -140,13 +148,13 @@ class DashboardRepository {
       }
     }
     return allFormList;
-  /*  }catch(_){
+    }catch(_){
      return [];
-   }*/
+   }
   }
 
   Future<List<AllFormsData?>> getRevertedFormList(bool forceLoad) async {
-    //try{
+    try{
     List<AllFormsData> allFormList = await getRevertedFromLocal();
 
     ///checking data already exist or not
@@ -167,7 +175,7 @@ class DashboardRepository {
               createdAt: formData.attributes?.updatedAt.toString(),
               updatedAt: formData.attributes?.updatedAt.toString(),
               projectId: formData.attributes?.xform?.projectId,
-              status: formData.attributes?.status,
+              isActive: formData.attributes?.status=='true'?true:false,
               instanceId: formData.attributes?.instanceUuid,
               feedback: formData.attributes?.feedback));
         }
@@ -183,9 +191,9 @@ class DashboardRepository {
       }
     }
     return allFormList;
-   /* }catch(_){
+    }catch(_){
      return [];
-   }*/
+   }
   }
 
   ///////////local data/////////
@@ -200,7 +208,9 @@ class DashboardRepository {
   Future<List<ProjectListFromLocalDb>> getAllProjectFromLocal() async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     var data = await db!.rawQuery(
-        'select p.*,(select count(*) from $TABLE_NAME_All_FORM as a where p.$PROJECT_ID = a.$All_FORM_PROJECT_ID) as $PROJECT_TOTAL_FORMS from $TABLE_NAME_PROJECT as p');
+        'select p.*,(select count(*) from $TABLE_NAME_All_FORM as a'
+            ' where p.$PROJECT_ID = a.$All_FORM_PROJECT_ID and a.$All_FORM_IS_PUBLISHED = ${1}) as $PROJECT_TOTAL_FORMS from $TABLE_NAME_PROJECT as p'
+            ' where p.$PROJECT_IS_ARCHIVED = ${0} and p.$PROJECT_IS_DELETED != ${1}');
     return List<ProjectListFromLocalDb>.from(
         data.map((x) => ProjectListFromLocalDb.fromJson(x)));
   }
@@ -250,7 +260,9 @@ class DashboardRepository {
   Future<List<AllFormsData>> getAllFromLocal() async {
     final Database? db = await DatabaseProvider.dbProvider.database;
     var data = await db!.rawQuery(
-        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission from $TABLE_NAME_All_FORM as a ORDER BY a.$All_FORM_CREATED_AT DESC');
+        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission '
+            'from $TABLE_NAME_All_FORM as a left join $TABLE_NAME_PROJECT as p on a.$All_FORM_PROJECT_ID = p.$PROJECT_ID where p.$PROJECT_IS_ARCHIVED = ${0} '
+            'and a.$All_FORM_IS_PUBLISHED = ${1} ORDER BY a.$All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 
@@ -260,7 +272,9 @@ class DashboardRepository {
     /*var data = await db!.rawQuery(
         "select * from $TABLE_NAME_All_FORM f WHERE f.$All_FORM_PROJECT_ID = $projectId ORDER BY $All_FORM_CREATED_AT DESC");*/
     var data = await db!.rawQuery(
-        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission from $TABLE_NAME_All_FORM as a WHERE a.$All_FORM_PROJECT_ID = $projectId ORDER BY a.$All_FORM_CREATED_AT DESC');
+        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s '
+            'where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission from $TABLE_NAME_All_FORM as a '
+            'WHERE a.$All_FORM_PROJECT_ID = $projectId and a.$All_FORM_IS_PUBLISHED = ${1} ORDER BY a.$All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 
@@ -270,7 +284,10 @@ class DashboardRepository {
     /*var data = await db!.rawQuery(
         "select * from $TABLE_NAME_All_FORM f WHERE f.$All_FORM_PROJECT_ID = $projectId AND f.$All_FORM_STATUS = 'true' ORDER BY $All_FORM_CREATED_AT DESC");*/
     var data = await db!.rawQuery(
-        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission from $TABLE_NAME_All_FORM as a WHERE a.$All_FORM_PROJECT_ID = $projectId AND a.$All_FORM_STATUS = "true" ORDER BY a.$All_FORM_CREATED_AT DESC');
+        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission '
+            'from $TABLE_NAME_All_FORM as a '
+            'left join $TABLE_NAME_PROJECT as p on a.$PROJECT_ID = p.$PROJECT_ID where p.$PROJECT_IS_PUBLISHED = ${1} and p.$PROJECT_IS_ARCHIVED = ${0} and'
+            ' a.$All_FORM_PROJECT_ID = $projectId AND a.$All_FORM_IS_PUBLISHED = ${1}  ORDER BY a.$All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 

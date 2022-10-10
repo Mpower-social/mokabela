@@ -11,6 +11,10 @@ const PROJECT_START_DATE = "startDate";
 const PROJECT_END_DATE = "endDate";
 const PROJECT_STATUS = "status";
 const PROJECT_TOTAL_FORMS = "totalForms";
+const PROJECT_IS_PUBLISHED = "isPublished";
+const PROJECT_IS_ACTIVE = "isActive";
+const PROJECT_IS_ARCHIVED= "isArchived";
+const PROJECT_IS_DELETED = "isDeleted";
 
 
 //submitted form table
@@ -42,7 +46,8 @@ const All_FORM_PROJECT_ID = "projectId";
 const All_FORM_CREATED_AT = "createdAt";
 const All_FORM_UPDATED_AT = "updatedAt";
 const All_FORM_TARGET = "target";
-const All_FORM_STATUS = "status";
+const All_FORM_IS_ACTIVE = "isActive";
+const All_FORM_IS_PUBLISHED = "isPublished";
 const All_FORM_PROJECT_NAME = "projectName";
 const All_FORM_PROJECT_DES = "projectDes";
 

@@ -35,22 +35,32 @@ class FormService extends BaseApiProvider{
     var mediaDir = "${tempDir.path.replaceAll("'", '')}/instances/${mediaFolder[mediaFolder.length-2]}";
 
     var token = await SharedPref.sharedPref.getString(SharedPref.TOKEN);
-      var xmlFile = await MultipartFile.fromFile(finalDir, filename: "file");
+    var xmlFile = await MultipartFile.fromFile(finalDir, filename: "file");
 
       Map<String,dynamic> data = Map<String,dynamic>();
+      Map<String,String> dataExtra = Map<String,String>();
+
       data['xml_submission_file'] = xmlFile;
       data['id_string'] = formData.formId.toString();
+
+     dataExtra.addAll({
+       'xml_submission_file':finalDir,
+       'id_string' : formData.formId.toString()
+     });
 
 
       List<FileSystemEntity> dir = await Directory(mediaDir).list().toList();
       for (var element in dir){
-      if(extension(element.path)!='.xml'){
-        var filename = element.path.split("/").last;
-        data[filename.split('.').first] = await MultipartFile.fromFile(finalDir, filename: filename);
-      }
+        if(extension(element.path)!='.xml'){
+          var filename = element.path.split("/").last;
+          data[filename.split('.').first] = await MultipartFile.fromFile(finalDir, filename: filename.split('.').first);
+          dataExtra[filename.split('.').first] = finalDir;
+        }
       }
 
       dio.options.headers.addAll({'Authorization':'Bearer $token'});
+      dio.options.extra.addAll(dataExtra);
+
       var response = await dio.post(Apis.submitForm,
         data: FormData.fromMap(data)
       );

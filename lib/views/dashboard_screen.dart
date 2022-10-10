@@ -234,8 +234,8 @@ class DashboardScreen extends StatelessWidget {
                 title: _controller.recentFormList[i].displayName,
                 idString: _controller.recentFormList[i].formId,
                 projectName: _controller.recentFormList[i].projectName,
-                status: _controller.recentFormList[i].status,
-               target: _controller.recentFormList[i].target,
+                isActive: _controller.recentFormList[i].status=='true'?true:false,
+                target: _controller.recentFormList[i].target,
               ),
               ProjectListFromLocalDb(
                 projectName: _controller.recentFormList[i].projectName ?? '',

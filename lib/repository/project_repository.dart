@@ -14,7 +14,10 @@ class ProjectRepository{
 
   Future<List<SubmittedFormListData>> getAllSubmittedFromLocalByForm(formId)async{
     final Database? db = await DatabaseProvider.dbProvider.database;
-    var data = await db!.rawQuery('select s.* from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_ID not in (select * from $TABLE_NAME_DELETED_SUBMITTED_FORM) and s.$SUBMITTED_FORM_ID_STRING = "$formId" ORDER BY s.$SUBMITTED_DATE_CREATED DESC');
+    var q = 'select s.* from $TABLE_NAME_SUBMITTED_FORM as s '
+        'where s.$SUBMITTED_ID not in (select * from $TABLE_NAME_DELETED_SUBMITTED_FORM) and s.$SUBMITTED_FORM_ID_STRING = "$formId" ORDER BY s.$SUBMITTED_DATE_CREATED DESC';
+    print(q);
+    var data = await db!.rawQuery(q);
     return List<SubmittedFormListData>.from(data.map((x) => SubmittedFormListData.fromJson(x)));
   }
 
@@ -27,11 +30,12 @@ class ProjectRepository{
   Future<List<AllFormsData>> getAllFromLocalByProject(projectId)async{
     final Database? db = await DatabaseProvider.dbProvider.database;
    // var data = await db!.rawQuery('select * from $TABLE_NAME_All_FORM where $All_FORM_PROJECT_ID = $projectId ORDER BY $All_FORM_CREATED_AT DESC');
-    var data = await db!.rawQuery(
-        'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s left join $TABLE_NAME_DELETED_SUBMITTED_FORM as d on s.$SUBMITTED_ID=d.$DELETED_SUBMITTED_FORM_ID '
-            'where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING and d.$DELETED_SUBMITTED_FORM_ID is null) as totalSubmission from $TABLE_NAME_All_FORM as a '
-            'where a.$All_FORM_PROJECT_ID = $projectId '
-            'ORDER BY a.$All_FORM_CREATED_AT DESC');
+    var q = 'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s left join $TABLE_NAME_DELETED_SUBMITTED_FORM as d on s.$SUBMITTED_ID=d.$DELETED_SUBMITTED_FORM_ID '
+        'where a.$All_FORM_IS_PUBLISHED = ${1} and s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING and d.$DELETED_SUBMITTED_FORM_ID is null) as totalSubmission from $TABLE_NAME_All_FORM as a '
+        'where a.$All_FORM_PROJECT_ID = $projectId and a.$All_FORM_IS_PUBLISHED = ${1} '
+        'ORDER BY a.$All_FORM_CREATED_AT DESC';
+    print(q);
+    var data = await db!.rawQuery(q);
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 

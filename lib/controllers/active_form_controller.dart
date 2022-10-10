@@ -36,6 +36,8 @@ class ActiveFormController extends GetxController {
         allFormsData: data,
       ),
     );
+    
+    await getData();
   }
 
   loadProjects() async {

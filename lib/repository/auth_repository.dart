@@ -33,8 +33,12 @@ class AuthRepository{
       var token =  await SharedPref.sharedPref.getString(SharedPref.TOKEN);
       var refreshTokenResponse = await _loginServices.refreshToken(refreshToken,token);
 
-      await SharedPref.sharedPref.setString(SharedPref.TOKEN, refreshTokenResponse?.token);
-      await SharedPref.sharedPref.setString(SharedPref.REFRESH_TOKEN, refreshTokenResponse?.refreshToken?.token);
+      try{
+        await SharedPref.sharedPref.setString(SharedPref.TOKEN, refreshTokenResponse?.token);
+        await SharedPref.sharedPref.setString(SharedPref.REFRESH_TOKEN, refreshTokenResponse?.refreshToken?.token);
+      }catch(_){
+        return '';
+      }
       return refreshTokenResponse?.token??'';
   }
 

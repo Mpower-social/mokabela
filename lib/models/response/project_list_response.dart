@@ -46,6 +46,11 @@ class Attributes {
     this.startDate,
     this.endDate,
     this.updatedAt,
+    this.isPublished,
+    this.isActive,
+    this.isArchived,
+    this.isDeleted,
+    this.projectMember,
     //this.partnerOrganization,
     this.projectStatus,
   });
@@ -56,7 +61,12 @@ class Attributes {
   DateTime? startDate;
   DateTime? endDate;
   String? updatedAt;
+  bool? isPublished;
+  bool? isActive;
+  bool? isArchived;
+  bool? isDeleted;
   //List<PartnerOrganization>? partnerOrganization;
+  ProjectMember? projectMember;
   ProjectStatus? projectStatus;
 
   factory Attributes.fromJson(Map<String, dynamic> json) => Attributes(
@@ -66,8 +76,13 @@ class Attributes {
     startDate: json["startDate"] == null ? null : DateTime.parse(json["startDate"]),
     endDate: json["endDate"] == null ? null : DateTime.parse(json["endDate"]),
     updatedAt: json["updatedAt"] == null ? null : json["updatedAt"],
+    isPublished: json["isPublished"]??false,
+    isActive: json["isActive"]??false,
+    isArchived: json["isArchived"]??false,
+    isDeleted: json["voided"]??false,
     //partnerOrganization: json["partnerOrganization"] == null ? null : List<PartnerOrganization>.from(json["partnerOrganization"].map((x) => PartnerOrganization.fromJson(x))),
     projectStatus: ProjectStatus.fromJson(json["projectStatus"]),
+    projectMember: ProjectMember.fromJson(json["projectMember"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -77,7 +92,14 @@ class Attributes {
     "startDate": startDate == null ? null : "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
     "endDate": endDate == null ? null : "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
     "updatedAt": updatedAt ?? '',
+
+    "isPublished": isPublished ?? false,
+    "isActive": isActive ?? false,
+    "isArchived": isArchived ?? false,
+    'voided': isDeleted??false,
+
     //"partnerOrganization": partnerOrganization == null ? null : List<dynamic>.from(partnerOrganization!.map((x) => x.toJson())),
+    'projectMember':projectMember,
     "projectStatus": projectStatus,
   };
 }
@@ -100,6 +122,25 @@ class ProjectStatus {
     "id": id ?? '',
     "name": name ?? ''
   };
+}
+
+class ProjectMember {
+  bool? voided;
+  String? deletedAt;
+
+  ProjectMember({this.voided, this.deletedAt});
+
+  ProjectMember.fromJson(Map<String, dynamic> json) {
+    voided = json['voided']??false;
+    deletedAt = json['deleted_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['voided'] = this.voided;
+    data['deleted_at'] = this.deletedAt;
+    return data;
+  }
 }
 
 class PartnerOrganization {

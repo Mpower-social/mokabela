@@ -94,6 +94,7 @@ class FormListController extends GetxController {
     } catch (_) {
     } finally {
       await getCompleteFormList(formId);
+      _dashboardRepository.getSubmittedFormList(true);
       Get.back();
       showFormSubmitStatusDialog(formSubmitStatusList);
     }
@@ -170,7 +171,7 @@ class FormListController extends GetxController {
   }
 
   ///getting submitted forms here
-  void getSubmittedFormList(String formId) async {
+   getSubmittedFormList(String formId) async {
     formList.clear();
     isLoadingForm.value = true;
     var submittedList =
@@ -247,7 +248,7 @@ class FormListController extends GetxController {
       }
     } catch (_) {
     } finally {
-      getSubmittedFormList(formId);
+      await getSubmittedFormList(formId);
     }
   }
 

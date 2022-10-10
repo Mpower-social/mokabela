@@ -9,7 +9,6 @@ import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
 import 'package:m_survey/widgets/app_bar_with_drawer.dart';
 import 'package:m_survey/widgets/icon_button.dart';
-import 'package:m_survey/widgets/show_toast.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:get/get.dart';
 
@@ -195,8 +194,9 @@ class FormDetailsScreen extends StatelessWidget {
                    /* if((allFormsData?.target??0)<=0){
                       showToast(msg: 'Target is empty.',isError: true);
                     }
-                     else*/ controller.openOdkForm(projectListFromData?.id,formId,allFormsData);
+                     else*/ /*controller.openOdkForm(projectListFromData?.id,formId,allFormsData);*/
                  // }else showToast(msg: 'Unable to open inactive form.',isError: true);
+                  controller.openOdkForm(projectListFromData?.id,formId,allFormsData);
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

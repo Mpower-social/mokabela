@@ -66,8 +66,7 @@ class ProjectDetailsController extends GetxController {
 
   getAllDataByProject() async {
 
-    allFormList.value =
-    await _projectRepository.getAllFromLocalByProject(currentProjectId);
+    allFormList.value = await _projectRepository.getAllFromLocalByProject(currentProjectId);
     allFormListTemp.value = List.from(allFormList);
   }
 
@@ -80,8 +79,7 @@ class ProjectDetailsController extends GetxController {
   }
 
   getActiveFormCount() async {
-    activeFormCount.value =
-        allFormList.where((form) => form?.status == 'true').length;
+    activeFormCount.value = allFormList.where((form) => form?.isActive == true).length;
   }
 
   getDraftFormCount() async {
@@ -170,11 +168,11 @@ class ProjectDetailsController extends GetxController {
   }
 
   Future<void> refreshDashBoardCount() async {
+    await getAllDataByProject();
     await getDraftFormCount();
     await getActiveFormCount();
     await getCompleteFormCount();
     await getSubmittedFormCount();
-    await getAllDataByProject();
   }
 
   @override

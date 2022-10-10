@@ -35,7 +35,11 @@ class DatabaseProvider{
             '$PROJECT_NO_OF_FORMS TEXT,'
             '$PROJECT_START_DATE TEXT,'
             '$PROJECT_END_DATE TEXT,'
-            '$PROJECT_STATUS TEXT)',
+            '$PROJECT_STATUS TEXT,'
+            '$PROJECT_IS_PUBLISHED BOOLEAN,'
+            '$PROJECT_IS_ACTIVE BOOLEAN,'
+            '$PROJECT_IS_ARCHIVED BOOLEAN,'
+            '$PROJECT_IS_DELETED BOOLEAN)',
     );
 
     //submitted form table
@@ -65,7 +69,8 @@ class DatabaseProvider{
           '$All_FORM_TARGET INTEGER,'
           '$All_FORM_PROJECT_ID INTEGER,'
           '$All_FORM_PROJECT_NAME TEXT,'
-          '$All_FORM_STATUS TEXT,'
+          '$All_FORM_IS_ACTIVE BOOLEAN,'
+          '$All_FORM_IS_PUBLISHED BOOLEAN,'
           '$All_FORM_PROJECT_DES TEXT)',
     );
 

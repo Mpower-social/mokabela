@@ -37,14 +37,14 @@ class FormDetailsController extends GetxController {
         await _projectRepository.getAllSubmittedFromLocalByForm(idString);
     progress.value = (((submittedFormList.length * 100) / (allFormsData?.target ?? 0)) / 100.0);
   }
-  getDraftFormCount(String? idString)async{
+  getDraftFormCount(String? idString) async{
     final results = await OdkUtil.instance.getDraftForms([idString!]);
     if (results != null && results.isNotEmpty) {
       draftFormCount.value = formData.formDataFromJson(results).length;
       return;
     }
   }
-  getCompleteFormCount(String? idString)async{
+  getCompleteFormCount(String? idString) async{
     final results = await OdkUtil.instance.getFinalizedForms([idString!]);
     if (results != null && results.isNotEmpty) {
       completeFormCount.value = formData.formDataFromJson(results).length;
@@ -52,7 +52,7 @@ class FormDetailsController extends GetxController {
     }
   }
 
-  getRevertedFormCount(String? idString)async{
+  getRevertedFormCount(String? idString) async{
     final results = await OdkUtil.instance.getFinalizedForms([idString!]);
     if (results != null && results.isNotEmpty) {
       var formList = await _dashboardRepository.getRevertedFromLocalByFromId(idString);
@@ -61,17 +61,17 @@ class FormDetailsController extends GetxController {
     }
   }
 
-  refreshCount(String? idString,AllFormsData? allFormsData){
-    getTotalSubmittedForm(idString,allFormsData);
-    getDraftFormCount(idString);
-    getCompleteFormCount(idString);
-    getRevertedFormCount(idString);
+  refreshCount(String? idString,AllFormsData? allFormsData) async{
+    await getTotalSubmittedForm(idString,allFormsData);
+    await getDraftFormCount(idString);
+    await getCompleteFormCount(idString);
+    await getRevertedFormCount(idString);
   }
 
 
-  navigateToFormList(FormStatus formStatus, AllFormsData? allFormsData, String? idString,)async{
+  navigateToFormList(FormStatus formStatus, AllFormsData? allFormsData, String? idString,) async{
     await Get.to(() => FormListScreen(formStatus, allFormsData));
-    refreshCount(idString,allFormsData);
+    await refreshCount(idString,allFormsData);
   }
 
 }

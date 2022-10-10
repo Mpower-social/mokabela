@@ -57,7 +57,8 @@ class Attributes {
   String? updatedAt;
   int? target;
   Project? project;
-  String? isActive;
+  bool? isActive;
+  bool? isPublished;
 
   Attributes(
       {this.id,
@@ -69,7 +70,7 @@ class Attributes {
         this.updatedAt,
         this.target,
         this.project,
-        this.isActive});
+        this.isActive,this.isPublished});
 
   Attributes.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -77,7 +78,8 @@ class Attributes {
     title = json['title'];
     idString = json['idString'];
     projectId = json['projectId'];
-    isActive = json['isActive'].toString();
+    isActive = json['isActive']??false;
+    isPublished = json['isPublished']??false;
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     target = json['target'];
@@ -91,7 +93,8 @@ class Attributes {
     data['title'] = this.title;
     data['idString'] = this.idString;
     data['projectId'] = this.projectId;
-    data['isActive'] = this.isActive.toString();
+    data['isActive'] = this.isActive;
+    data['isPublished'] = this.isPublished;
     data['createdAt'] = this.createdAt;
     data['updatedAt'] = this.updatedAt;
     data['target'] = this.target;

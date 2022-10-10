@@ -23,7 +23,7 @@ Widget formCard({
             child: Container(
               constraints: const BoxConstraints(minHeight: 132),
               decoration: BoxDecoration(
-                  color: data.status == 'true' ? activeColor : inactiveColor,
+                  color: data.isActive == true ? activeColor : inactiveColor,
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(10),
                       bottomLeft: Radius.circular(10))),

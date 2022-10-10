@@ -61,7 +61,10 @@ class DashboardController extends GetxController {
     if(!await CheckNetwork().check()) forceLoad = false;
     isLoadingProject.value = true;
     submittedFormList.value = await _dashboardRepository.getSubmittedFormList(forceLoad);
+    projectList.value = await _dashboardRepository.getProjectListOperation(forceLoad);
     allFormList.value = await _dashboardRepository.getAllFormList(forceLoad);
+    //need to call again for handle relation
+    //project have relation with form
     projectList.value = await _dashboardRepository.getProjectListOperation(forceLoad);
     await _dashboardRepository.getRevertedFormList(forceLoad);
     await getFormData();
@@ -115,7 +118,7 @@ class DashboardController extends GetxController {
 
   getActiveFormCount() async {
     activeFormCount.value =
-        allFormList.where((form) => form?.status == 'true').length;
+        allFormList.where((form) => form?.isActive == true).length;
   }
 
   getDraftFormCount() async {
@@ -145,7 +148,7 @@ class DashboardController extends GetxController {
         var currentForm = allFormList.firstWhereOrNull((form) => form?.idString == element.formId);
 
         element.projectName = currentForm?.projectName ?? 'N/A';
-        element.status = currentForm?.status ?? 'false';
+        element.status = (currentForm?.isActive ?? false).toString();
         element.formId = currentForm?.idString??'';
         element.id = int.tryParse(currentForm?.id??'0')??0;
         element.target = currentForm?.target??0;
