@@ -132,7 +132,7 @@ public class InstancesDao {
     }
 
     public Cursor getRecentInstancesCursor() {
-        String sortOrder = InstanceColumns.LAST_STATUS_CHANGE_DATE;
+        String sortOrder = InstanceColumns.LAST_STATUS_CHANGE_DATE+" DESC";
         return getInstancesCursor(null, null, null, sortOrder);
     }
 
