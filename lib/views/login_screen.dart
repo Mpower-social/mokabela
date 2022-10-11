@@ -67,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                               verPadding:15,
                               horPadding: 10,
                               fillColor: primaryColor,
-                              borderColor: white,
+                              borderColor: grey,
                               hintTextStr: '${'enter'.tr} ${'email'.tr}'
                           ),
 
@@ -95,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                               verPadding:15,
                               horPadding: 10,
                               fillColor: primaryColor,
-                              borderColor: white,
+                              borderColor: grey,
                               hintTextStr: '${'enter'.tr} ${'password'.tr}'
                           ),
 

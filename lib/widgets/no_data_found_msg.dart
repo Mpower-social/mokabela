@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-noDataFound(){
-  return Center(child: Text('no_data_found'.tr));
+noDataFound({String msg = 'no_data_found'}){
+  return Center(child: Text(msg.tr));
 }

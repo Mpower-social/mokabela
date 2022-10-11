@@ -18,7 +18,7 @@ showFormSubmitStatusDialog(List<FormSubmitStatus> list){
                 Text('Form Submit Status',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
                 SizedBox(height: 15,),
                 Expanded(
-                  child: list.length==0?noDataFound():ListView.separated(
+                  child: list.length==0?noDataFound(msg: 'no_form_found'):ListView.separated(
                       itemCount: list.length,
                       itemBuilder: (ctx,i){
                         return Container(

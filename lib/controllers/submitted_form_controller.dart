@@ -68,6 +68,7 @@ class SubmittedFormController extends GetxController {
 
   ///filter submitted project list
   void filter(int projectId) {
+    print(projectId);
     if (projectId == selectedProject.id) return;
 
     selectedProject =
@@ -77,7 +78,9 @@ class SubmittedFormController extends GetxController {
       submittedFormList.value = submittedFormListTemp;
     else
       submittedFormList.value = submittedFormListTemp
-          .where((v) => (v?.projectId ?? 0) == projectId)
+          .where((v){
+            return (v?.projectId ?? 0) == projectId;
+      })
           .toList();
 
     setupDefaultCheckBox();

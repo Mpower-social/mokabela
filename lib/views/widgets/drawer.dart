@@ -127,7 +127,7 @@ Widget drawer(String name, String designation, {required wp}) {
                   ),
                   onTap: () {
                     infoDialog(
-                        title: 'Alert',
+                        title: 'Log out',
                         msg: 'Are you sure to Logout?',
                         confirmText: 'Yes',
                         cancelText: 'No',

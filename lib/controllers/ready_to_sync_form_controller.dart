@@ -100,7 +100,7 @@ class ReadyToSyncFormController extends GetxController {
       formList.value = formListTemp;
     else
       formList.value =
-          formListTemp.where((v) => (v.projectId ?? 0) == projectId).toList();
+          formListTemp.where((v) => (v.projectId ?? '0') == projectId.toString()).toList();
 
     setupDefaultCheckBox();
   }
@@ -142,11 +142,13 @@ class ReadyToSyncFormController extends GetxController {
     try {
       for (var element in isCheckList) {
         if (element.isChecked && element.formData != null) {
-          final results = await _formRepository.submitFormOperation(element.formData);
-          if (results.isNotEmpty) {
-            formSubmitStatusList.add(FormSubmitStatus(element.formData?.displayName??'',true));
-          }else{
-            formSubmitStatusList.add(FormSubmitStatus(element.formData?.displayName??'',false));
+          if(_dashboardController.allFormList.firstWhereOrNull((e) => (e?.isActive==true && e?.idString == element.formData?.formId))!=null){
+            final results = await _formRepository.submitFormOperation(element.formData);
+            if (results.isNotEmpty) {
+              formSubmitStatusList.add(FormSubmitStatus(element.formData?.displayName??'',true));
+            }else{
+              formSubmitStatusList.add(FormSubmitStatus(element.formData?.displayName??'',false));
+            }
           }
         }
       }
@@ -155,6 +157,7 @@ class ReadyToSyncFormController extends GetxController {
       await getData(formIds);
       Get.back();
       showFormSubmitStatusDialog(formSubmitStatusList);
+      isCheckedAll.value = false;
     }
   }
 

@@ -90,17 +90,19 @@ class DashboardController extends GetxController {
   void syncAllForm() async {
 
     if (formList.isEmpty) {
-      showToast(msg: 'No form found to sync.');
+      showToast(msg: 'No active form found to sync.');
       return;
     }
     formSubmitStatusList.clear();
     try {
       for (var element in formList) {
-        final results = await _formRepository.submitFormOperation(element);
-        if (results.isNotEmpty) {
-          formSubmitStatusList.add(FormSubmitStatus(element.displayName??'',true));
-        }else{
-          formSubmitStatusList.add(FormSubmitStatus(element.displayName??'',false));
+        if(allFormList.firstWhereOrNull((e) => (e?.isActive==true && e?.idString == element.formId))!=null){
+          final results = await _formRepository.submitFormOperation(element);
+          if (results.isNotEmpty) {
+            formSubmitStatusList.add(FormSubmitStatus(element.displayName??'',true));
+          }else{
+            formSubmitStatusList.add(FormSubmitStatus(element.displayName??'',false));
+          }
         }
       }
       await getAllData(true);

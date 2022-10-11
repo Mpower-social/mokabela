@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:m_survey/controllers/dashboard_controller.dart';
 import 'package:m_survey/enum/form_status.dart';
 import 'package:m_survey/models/draft_checkbox_data.dart';
 import 'package:m_survey/models/form_submit_status.dart';
@@ -42,16 +43,23 @@ class FormListController extends GetxController {
   ProjectRepository _projectRepository = ProjectRepository();
   DashboardRepository _dashboardRepository = DashboardRepository();
 
+  DashboardController _dashboardController = Get.find();
+
   ///pick date from datepicker
   void pickDate(String s) async {
     final DateTime? picked = await showDatePicker(
         context: Get.context!,
         initialDate: DateTime.now(),
-        firstDate: DateTime(2000, 8),
-        lastDate: DateTime(2100));
+        firstDate: /*DateTime(2000, 8).subtract(*/s == 'Start'?selectedEndDate.value.subtract(Duration(days: 3650)):selectedStartDate.value, //3650 = 10 years before
+        lastDate: /*DateTime(2100).subtract(Duration(days: selectedStartDate.value.day))*/s=='End'?selectedStartDate.value.add(Duration(days: 3650)):selectedEndDate.value //3650 = 10 years after
+    );
 
     if (s == 'Start') {
       if (picked != null && picked != selectedStartDate) {
+       /* if(selectedStartDate.value.difference(selectedEndDate.value).inMicroseconds<=0 && selectedEndDate!=DateTime.now()){
+          showToast(msg: 'Select valid date');
+          return;
+        }*/
         selectedStartDate.value = picked;
         selectedStartDateStr.value = DateFormat('dd-MM-yyyy').format(picked);
         if (selectedEndDateStr != 'End') {
@@ -59,6 +67,10 @@ class FormListController extends GetxController {
         }
       }
     } else {
+      /*if(selectedStartDate.value.difference(selectedEndDate.value).inMicroseconds>=0 && selectedStartDate!=DateTime.now()){
+        showToast(msg: 'Select valid date');
+        return;
+      }*/
       if (picked != null && picked != selectedEndDate) {
         selectedEndDate.value = picked;
         selectedEndDateStr.value = DateFormat('dd-MM-yyyy').format(picked);
@@ -82,21 +94,24 @@ class FormListController extends GetxController {
     try {
       for (var element in isCheckList) {
         if (element.isChecked && element.formData != null) {
-          final results =
-              await _formRepository.submitFormOperation(element.formData);
-          if (results.isNotEmpty) {
-            formSubmitStatusList.add(FormSubmitStatus(element.formData?.displayName??'',true));
-          }else{
-            formSubmitStatusList.add(FormSubmitStatus(element.formData?.displayName??'',false));
+          if(_dashboardController.allFormList.firstWhereOrNull((e) => (e?.isActive==true && e?.idString == element.formData?.formId))!=null){
+            final results =
+            await _formRepository.submitFormOperation(element.formData);
+            if (results.isNotEmpty) {
+              formSubmitStatusList.add(FormSubmitStatus(element.formData?.displayName??'',true));
+            }else{
+              formSubmitStatusList.add(FormSubmitStatus(element.formData?.displayName??'',false));
+            }
           }
         }
       }
     } catch (_) {
     } finally {
       await getCompleteFormList(formId);
-      _dashboardRepository.getSubmittedFormList(true);
+      await _dashboardRepository.getSubmittedFormList(true);
       Get.back();
       showFormSubmitStatusDialog(formSubmitStatusList);
+      isCheckedAll.value = false;
     }
   }
 
@@ -104,7 +119,6 @@ class FormListController extends GetxController {
   void sortList() {}
 
   void filter() {
-    print(selectedStartDate);
     if (selectedStartDate.value == null && selectedEndDate.value == null)
       isCheckList.value = isCheckListTemp.value;
     else {
@@ -139,6 +153,7 @@ class FormListController extends GetxController {
     isLoadingForm.value = true;
     final results = await OdkUtil.instance.getFinalizedForms([formId!]);
     if (results != null && results.isNotEmpty) {
+
       formList.value = formData.formDataFromJson(results);
       formListTemp.value = formList.value;
       setupDefaultCheckBox();
@@ -163,7 +178,9 @@ class FormListController extends GetxController {
           formId: element.idString ?? '',
           lastChangeDate: DateTime.parse(element.updatedAt!).millisecondsSinceEpoch,
           xml: element.xml,
-          feedback: element.feedback));
+          feedback: element.feedback,
+          status: element.isActive.toString()
+      ));
     });
     formListTemp.value = formList.value;
     setupDefaultCheckBox();
@@ -265,26 +282,6 @@ class FormListController extends GetxController {
     }
     await getCompleteFormList(formId);
     setupDefaultCheckBox();
-  }
-
-  ///sync data
-  void syncCompleteForm(String? formId) async {
-    progressDialog();
-    try {
-      for (var element in isCheckList) {
-        if (element.isChecked && element.formData != null) {
-          final results =
-              await _formRepository.submitFormOperation(element.formData);
-          if (results.isNotEmpty) {
-            //succ
-          }
-        }
-      }
-    } catch (_) {
-    } finally {
-      await getCompleteFormList(formId);
-      Get.back();
-    }
   }
 
   //initial defaults checkbox

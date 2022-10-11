@@ -262,7 +262,7 @@ class DashboardRepository {
     var data = await db!.rawQuery(
         'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission '
             'from $TABLE_NAME_All_FORM as a left join $TABLE_NAME_PROJECT as p on a.$All_FORM_PROJECT_ID = p.$PROJECT_ID where p.$PROJECT_IS_ARCHIVED = ${0} '
-            'and a.$All_FORM_IS_PUBLISHED = ${1} ORDER BY a.$All_FORM_CREATED_AT DESC');
+            'and a.$All_FORM_IS_PUBLISHED = ${1} and p.$PROJECT_IS_DELETED != ${1} ORDER BY a.$All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 
@@ -287,7 +287,7 @@ class DashboardRepository {
         'select a.*,(select count(*) from $TABLE_NAME_SUBMITTED_FORM as s where s.$SUBMITTED_FORM_ID_STRING = a.$All_FORM_ID_STRING) as totalSubmission '
             'from $TABLE_NAME_All_FORM as a '
             'left join $TABLE_NAME_PROJECT as p on a.$PROJECT_ID = p.$PROJECT_ID where p.$PROJECT_IS_PUBLISHED = ${1} and p.$PROJECT_IS_ARCHIVED = ${0} and'
-            ' a.$All_FORM_PROJECT_ID = $projectId AND a.$All_FORM_IS_PUBLISHED = ${1}  ORDER BY a.$All_FORM_CREATED_AT DESC');
+            ' a.$All_FORM_PROJECT_ID = $projectId AND a.$All_FORM_IS_PUBLISHED = ${1} and p.$PROJECT_IS_DELETED != ${1}  ORDER BY a.$All_FORM_CREATED_AT DESC');
     return List<AllFormsData>.from(data.map((x) => AllFormsData.fromJson(x)));
   }
 

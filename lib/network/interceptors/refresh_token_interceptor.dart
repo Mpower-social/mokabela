@@ -4,7 +4,7 @@ import 'package:m_survey/network/apis.dart';
 import 'package:m_survey/repository/auth_repository.dart';
 import 'package:m_survey/utils/utils.dart';
 class RefreshTokenInterceptor implements dio.InterceptorsWrapper{
-  var _dio;
+  dio.Dio _dio;
   RefreshTokenInterceptor(this._dio);
 
   @override
@@ -44,10 +44,14 @@ class RefreshTokenInterceptor implements dio.InterceptorsWrapper{
                 queryParameters: err.requestOptions.queryParameters,
                 options: options);
             return handler.resolve(req);
+          }else{
+            this._dio.close(force: true);
+            Utils.logoutOperation();
           }
 
       }
     }}catch(e){
+      this._dio.close(force: true);
       Utils.logoutOperation();
     }
     return handler.next(err);

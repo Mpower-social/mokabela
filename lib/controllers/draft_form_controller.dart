@@ -89,6 +89,7 @@ class DraftFormController extends GetxController {
 
   ///filter draft project list
   void filter(int projectId) {
+    print('$projectId  ${selectedProject.id}');
     if (projectId == selectedProject.id) return;
 
     selectedProject =
@@ -98,7 +99,7 @@ class DraftFormController extends GetxController {
       formList.value = formListTemp;
     else
       formList.value =
-          formListTemp.where((v) => v.projectId == projectId).toList();
+          formListTemp.where((v) => v.projectId == projectId.toString()).toList();
   }
 
   ///edit form

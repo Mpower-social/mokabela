@@ -87,7 +87,7 @@ class FormListScreen extends StatelessWidget {
                               text: 'Sync',
                               bg: green,
                               tap: () =>
-                                  controller.sync(allFormsData?.id ?? ''),
+                                  controller.sync(allFormsData?.idString ?? ''),
                               width: wp!(40),
                               height: 40),
                         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:m_survey/res/color.dart';
 
 class CommonStyle {
   ///textfield style
@@ -16,14 +17,15 @@ class CommonStyle {
       alignLabelWithHint: true,
       fillColor: fillColor,
       hintText: hintTextStr,
-      hintStyle: TextStyle(color: borderColor),
+      hintStyle: TextStyle(color: white),
       suffixStyle: TextStyle(color: borderColor),
       suffixIcon: suffixIcon,
+      errorStyle: TextStyle(fontSize: 15),
       contentPadding:
           EdgeInsets.symmetric(vertical: verPadding, horizontal: horPadding),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: borderColor)),
+          borderSide: BorderSide(color: Colors.white)),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
         borderSide: BorderSide(color: borderColor),
@@ -34,11 +36,11 @@ class CommonStyle {
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
-        borderSide: BorderSide(color: borderColor),
+        borderSide: BorderSide(color: red),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
-        borderSide: BorderSide(color: borderColor),
+        borderSide: BorderSide(color: red),
       ),
     );
   }

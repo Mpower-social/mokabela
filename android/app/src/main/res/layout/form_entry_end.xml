@@ -84,7 +84,7 @@ the specific language governing permissions and limitations under the License.
                 android:textSize="21sp" />
         </LinearLayout>
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/mandatory_warning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,7 +95,7 @@ the specific language governing permissions and limitations under the License.
             android:textColor="@color/red_500"
             android:lineSpacingMultiplier="1.2"
             android:text="@string/mandatory_warning"
-            android:textSize="14sp" />
+            android:textSize="14sp" />-->
 
         <View
             android:layout_width="match_parent"
