@@ -89,7 +89,7 @@ class DraftFormScreen extends StatelessWidget {
                                   ),
                                 )
                                 .toList(),
-                            decoration: CommonStyle.textFieldStyle(
+                            decoration: CommonStyle.dropDownFieldStyle(
                               verPadding: 8,
                               horPadding: 10,
                             ),

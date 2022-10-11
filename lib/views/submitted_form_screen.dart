@@ -113,7 +113,7 @@ class SubmittedFormScreen extends StatelessWidget {
                                     child: Text(e.projectName!),
                                   ))
                               .toList(),
-                          decoration: CommonStyle.textFieldStyle(
+                          decoration: CommonStyle.dropDownFieldStyle(
                             verPadding: 8,
                             horPadding: 10,
                           ),

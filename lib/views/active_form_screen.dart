@@ -6,7 +6,6 @@ import 'package:m_survey/models/local/project_list_data.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
 import 'package:m_survey/style/common_style.dart';
-import 'package:m_survey/utils/utils.dart';
 import 'package:m_survey/views/widgets/form_card.dart';
 import 'package:m_survey/widgets/app_bar.dart';
 import 'package:get/get.dart';
@@ -82,7 +81,7 @@ class ActiveFormScreen extends StatelessWidget {
                               child: Text(e.projectName!),
                             ))
                         .toList(),
-                    decoration: CommonStyle.textFieldStyle(
+                    decoration: CommonStyle.dropDownFieldStyle(
                       verPadding: 8,
                       horPadding: 10,
                     ),

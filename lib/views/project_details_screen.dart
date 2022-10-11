@@ -170,7 +170,7 @@ class ProjectDetailsScreen extends StatelessWidget {
               autofocus: false,
               controller: _controller.searchEditingController,
               style: const TextStyle(color: Colors.black),
-              decoration: CommonStyle.textFieldStyle(
+              decoration: CommonStyle.dropDownFieldStyle(
                 horPadding: 12,
                 fillColor: primaryColor,
                 borderColor: grey,

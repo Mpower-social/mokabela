@@ -45,6 +45,47 @@ class CommonStyle {
     );
   }
 
+  static InputDecoration dropDownFieldStyle(
+      {String labelTextStr = "",
+        String hintTextStr = "",
+        double verPadding = 0.0,
+        double horPadding = 0.0,
+        Color fillColor = Colors.white,
+        Color borderColor = Colors.grey,
+        InputBorder inputBorder = InputBorder.none,
+        Widget? suffixIcon}) {
+    return InputDecoration(
+      border: inputBorder,
+      alignLabelWithHint: true,
+      fillColor: fillColor,
+      hintText: hintTextStr,
+      hintStyle: TextStyle(color: borderColor),
+      suffixStyle: TextStyle(color: borderColor),
+      suffixIcon: suffixIcon,
+      contentPadding:
+      EdgeInsets.symmetric(vertical: verPadding, horizontal: horPadding),
+      focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: BorderSide(color: borderColor)),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5),
+        borderSide: BorderSide(color: borderColor),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5),
+        borderSide: BorderSide(color: borderColor),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5),
+        borderSide: BorderSide(color: borderColor),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5),
+        borderSide: BorderSide(color: borderColor),
+      ),
+    );
+  }
+
   static InputDecoration textFieldStyleWithHint({
     String hintTextStr = "",
     double verPadding = 0.0,
