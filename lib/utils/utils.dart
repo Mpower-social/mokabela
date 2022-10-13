@@ -9,7 +9,7 @@ import 'package:intl/intl.dart';
 
 class Utils{
   static final dateFormat = DateFormat('dd-MM-yyyy');
-  static final timeFormat = DateFormat('HH:mm a');
+  static final timeFormat = DateFormat('hh:mm a');
   static NumberFormat numberFormatter = new NumberFormat("00");
 
 

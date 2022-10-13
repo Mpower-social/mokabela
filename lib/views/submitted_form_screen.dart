@@ -209,8 +209,7 @@ class SubmittedFormScreen extends StatelessWidget {
                                         size: 15,
                                       ),
                                       SizedBox(width: 2),
-                                      Text(Utils.dateFormat.format(
-                                          DateTime.parse(data.dateCreated!))),
+                                      Text(Utils.dateFormat.format(DateTime.parse(data.dateCreated!))),
                                       SizedBox(width: 5),
                                       Icon(
                                         Icons.access_time,
@@ -218,7 +217,7 @@ class SubmittedFormScreen extends StatelessWidget {
                                       ),
                                       SizedBox(width: 2),
                                       Text(Utils.timeFormat.format(
-                                          DateTime.parse(data.dateCreated!))),
+                                          DateTime.parse(data.dateCreated!).toLocal())),
                                     ],
                                   )
                                 ],
