@@ -8,7 +8,7 @@ class AuthRepository{
   Future<bool> loginOperation(username,pass)async{
     AuthResponse? loginResponse = await _loginServices.loginOperation(username, pass);
     if(loginResponse!=null){
-      var userInfo = await _loginServices.getUserOperation(loginResponse.content?.preferredUsername.toString(),loginResponse.token);
+      var userInfo = await _loginServices.getUserOperation(/*loginResponse.content?.preferredUsername.toString()*/username,loginResponse.token);
       if(userInfo?.data?.attributes?.organization?.id!=null){
         SharedPref.sharedPref.setString(SharedPref.TOKEN, loginResponse.token);
         SharedPref.sharedPref.setString(SharedPref.REFRESH_TOKEN, loginResponse.refreshToken?.token);
