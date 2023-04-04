@@ -123,7 +123,10 @@ class MainActivity: FlutterActivity() {
                             val username = call.argument<String>("username") ?: "bahis_ulo"
                             initializeOdk(username)
 
-                            subscriptions.add(Observable.fromCallable {AssetFormDownloadUtil(this@MainActivity).getForms(formXml)}
+                            subscriptions.add(Observable.fromCallable {
+
+                                AssetFormDownloadUtil(this@MainActivity).getForms(formXml)
+                            }
                                 .subscribeOn(Schedulers.io())
                                 .subscribe(
                                     {

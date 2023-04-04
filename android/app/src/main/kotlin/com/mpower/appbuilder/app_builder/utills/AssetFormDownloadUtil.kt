@@ -513,6 +513,10 @@ class AssetFormDownloadUtil(val context: Context) {
             connection.allowUserInteraction = false
             connection.connectTimeout = 30000
             connection.readTimeout = 30000
+            connection.instanceFollowRedirects = true
+            connection.instanceFollowRedirects = true
+            connection.addRequestProperty("User-Agent", "Mozilla");
+            connection.addRequestProperty("Referer", "google.com");
             connection.connect()
 
             when(connection.responseCode) {
@@ -535,7 +539,7 @@ class AssetFormDownloadUtil(val context: Context) {
             }
         } catch (ex: Exception) {
             ex.stackTrace
-        } finally {
+        }finally {
             inputStream?.close()
             outputStream?.flush()
             outputStream?.close()
