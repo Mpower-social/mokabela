@@ -6,6 +6,7 @@ import 'package:m_survey/views/login_screen.dart';
 import '../res/color.dart';
 import '../res/screen_size.dart';
 import '../utils/shared_pref.dart';
+import '../widgets/single_image_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -37,12 +38,12 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              //singleImageHolder('assets/splash_muzzle.png',hp(50),wp(80)),
-              Text('mSurvey',
+              singleImageHolder('assets/images/msurvey_appicon.png',hp(50),wp(80)),
+             /* Text('mSurvey',
               style: TextStyle(
                 color: primaryColor,
                 fontSize: 36
-              ),),
+              ),),*/
             ],
           ),
         ),
