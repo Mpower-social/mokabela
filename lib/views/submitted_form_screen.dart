@@ -167,88 +167,63 @@ class SubmittedFormScreen extends StatelessWidget {
                         controller.isCheckList[i].submittedFormListData!;
                     return Container(
                       width: wp!(100),
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                      padding: EdgeInsets.all(10),
                       constraints: const BoxConstraints(minHeight: 50),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: grey.withOpacity(.1)),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Obx(
-                                () => Checkbox(
+                          Expanded(
+                            flex: 1,
+                              child: Obx(
+                                    () => Checkbox(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(3),
                                     ),
                                     materialTapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
+                                    MaterialTapTargetSize.shrinkWrap,
                                     value:
-                                        (controller.isCheckList[i].isChecked),
+                                    (controller.isCheckList[i].isChecked),
                                     onChanged: (v) {
                                       controller.addCheckBoxData(i,
                                           formData:
-                                              controller.submittedFormList[i]);
+                                          controller.submittedFormList[i]);
                                     }),
-                              ),
-                              SizedBox(width: 10),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    data.formName ?? '',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  const SizedBox(height: 5),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.date_range,
-                                        size: 15,
-                                      ),
-                                      SizedBox(width: 2),
-                                      Text(Utils.dateFormat.format(DateTime.parse(data.dateCreated!))),
-                                      SizedBox(width: 5),
-                                      Icon(
-                                        Icons.access_time,
-                                        size: 15,
-                                      ),
-                                      SizedBox(width: 2),
-                                      Text(Utils.timeFormat.format(
-                                          DateTime.parse(data.dateCreated!).toLocal())),
-                                    ],
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                          /*    Row(
-                  children: [
-                    Container(
-                      width: .5,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          color: grey
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    const Icon(
-                      AppIcons.edit,
-                      size: 22,
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    const Icon(
-                      AppIcons.delete,
-                      size: 22,
-                    ),
-                  ],
-                ),*/
+                              ),),
+                          SizedBox(width: 10),
+                          Expanded(
+                            flex: 8,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  data.formName ?? '',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(height: 10),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.date_range,
+                                      size: 15,
+                                    ),
+                                    SizedBox(width: 2),
+                                    Text(Utils.dateFormat.format(DateTime.parse(data.dateCreated!))),
+                                    SizedBox(width: 5),
+                                    Icon(
+                                      Icons.access_time,
+                                      size: 15,
+                                    ),
+                                    SizedBox(width: 2),
+                                    Text(Utils.timeFormat.format(
+                                        DateTime.parse(data.dateCreated!).toLocal())),
+                                  ],
+                                )
+                              ],
+                            ),
+                          )
                         ],
                       ),
                     );

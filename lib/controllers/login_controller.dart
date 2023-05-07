@@ -9,6 +9,8 @@ class LoginController extends GetxController{
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
 
+  var isPassVisible = false.obs;
+
   void loginOperation()async{
     isLoading.value = true;
     bool res = await _authRepository.loginOperation(emailController.text.toString().trim(), passController.text.toString().trim());
