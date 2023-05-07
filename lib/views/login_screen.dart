@@ -88,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         child: TextFormField(
                           autofocus: false,
-                          obscureText: !controller.isPassVisible.value,
+                          obscureText: true,
                           style: const TextStyle(color: Colors.white),
                           controller: controller.passController,
                           decoration: CommonStyle.textFieldStyle(
@@ -96,12 +96,7 @@ class LoginScreen extends StatelessWidget {
                               horPadding: 10,
                               fillColor: primaryColor,
                               borderColor: grey,
-                              hintTextStr: '${'enter'.tr} ${'password'.tr}',
-                              suffixIcon: IconButton(
-                                  onPressed: (){
-                                    controller.isPassVisible.value = !controller.isPassVisible.value;
-                                  }, icon: Icon(controller.isPassVisible.value?CupertinoIcons.eye_slash_fill:CupertinoIcons.eye_fill,color: white,)
-                              )
+                              hintTextStr: '${'enter'.tr} ${'password'.tr}'
                           ),
 
                           validator: (v){

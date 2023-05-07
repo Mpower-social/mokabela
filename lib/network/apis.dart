@@ -4,8 +4,8 @@ class Apis{
 
   //static var url = 'http://192.168.19.19:3008';//dev
   //static var url = 'https://msurvey-api.qa.mpower-social.com';//qa
- // static var url = 'https://msurvey-api.dev.mpower-social.com';//dev
-  static var url = 'https://msurvey-api.demo.mpower-social.com';//dev
+  static var url = 'https://msurvey-api.dev.mpower-social.com';//dev
+  //static var url = 'https://msurvey-api.demo.mpower-social.com';//dev
   //static var url = 'http://192.168.22.59:3000';//local imam
   //static var url = 'http://192.168.23.89:3000';//local tanvir
 
@@ -13,8 +13,8 @@ class Apis{
   //static var odkRelatedUrl = 'http://192.168.19.16:8092/';//dev
   //static var odkRelatedUrl = 'http://192.168.19.16:9037';//dev
   //static var odkRelatedUrl = 'https://msurvey-product.qa.mpower-social.com';//qa
-  //static var odkRelatedUrl = 'https://msurvey-product.dev.mpower-social.com';//dev
-  static var odkRelatedUrl = 'https://msurvey-product.demo.mpower-social.com';//demo
+  static var odkRelatedUrl = 'https://msurvey-product.dev.mpower-social.com';//dev
+  //static var odkRelatedUrl = 'https://msurvey-product.demo.mpower-social.com';//demo
   //static var odkRelatedUrl = 'http://192.168.22.59:8111';//local
 
 
