@@ -15,6 +15,7 @@ class AuthServices extends BaseApiProvider{
       var response = await dio.post(Apis.login,
           data: jsonEncode({"username": username, "password": pass}));
       dio.interceptors.add(RefreshTokenInterceptor(dio));
+      print(response.data);
       return AuthResponse.fromJson(response.data);
 
     }catch(error){
