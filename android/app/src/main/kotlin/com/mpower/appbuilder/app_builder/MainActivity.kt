@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.util.Log
 import android.widget.Toast
-//import com.dghs.citizenportal.awaztulun.NewMainAwaztulunActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.mpower.appbuilder.app_builder.models.FormInstance
@@ -55,10 +54,6 @@ class MainActivity: FlutterActivity() {
             PermissionUtils().requestStoragePermissions(this, object: PermissionListener {
                 override fun granted() {
                     when {
-//                        call.method.equals("navigateToAwaztulun", true) -> {
-//                            startActivity(Intent(this@MainActivity, NewMainAwaztulunActivity::class.java))
-//                        }
-
                         call.method.equals("goToSettings", true) -> {
                             startActivity(Intent(this@MainActivity, PreferencesActivity::class.java))
                         }
@@ -137,12 +132,8 @@ class MainActivity: FlutterActivity() {
                                     {
                                        // fetchGeoCsvAndProcess()
                                         Log.v("Form Download: ", "Success")
-                                        channelResult?.success("success")
                                     },
-                                    {
-                                        Log.v("Form Download: ", "Failure")
-                                        channelResult?.success("failure")
-                                    }
+                                    { Log.v("Form Download: ", "Failure") }
                                 )
                             )
                         }
@@ -157,17 +148,6 @@ class MainActivity: FlutterActivity() {
                 override fun denied() {
                     channelResult?.error("Permission Required", "Failed", null)
                 }
-            })
-
-            PermissionUtils().requestLocationPermissions(this,object: PermissionListener{
-                override fun granted() {
-                    //TODO("Not yet implemented")
-                }
-
-                override fun denied() {
-                    //TODO("Not yet implemented")
-                }
-
             })
         }
     }
@@ -200,7 +180,7 @@ class MainActivity: FlutterActivity() {
     }
 
     private fun createInstance(formData: FormInstance): Long {
-        val fileName = "${formData.displayName.replace("/","_")}_${formData.projectId}_${formData.id}_${DateTimeUtil.getCurrentTimeString()}"
+        val fileName = "${formData.displayName}_${formData.projectId}_${formData.id}_${DateTimeUtil.getCurrentTimeString()}"
         val instancePath = StoragePathProvider().getAbsoluteInstanceFilePath(fileName)
         FileUtils.checkMediaPath(File(instancePath))
         val instanceFile = File(instancePath, "$fileName.xml")
@@ -279,7 +259,6 @@ class MainActivity: FlutterActivity() {
     }
 
     private fun initializeOdk(username: String) {
-
         Collect.getInstance().setValue(KEY_USERNAME, username)
         Collect.getInstance().initializeJavaRosa()
         StorageInitializer().createOdkDirsOnStorage()
@@ -299,7 +278,7 @@ class MainActivity: FlutterActivity() {
             InstancesDao().getDraftInstancesCursor(selection, formIds)
         }
 
-        val formInstances = generateSequence { if (cursor != null && cursor.moveToNext()) cursor else null  }
+        val formInstances = generateSequence { if (cursor != null && cursor.moveToNext()) cursor else null }
             .map {
                 FormInstance(
                     id = it.getLong(it.getColumnIndex(InstanceColumns._ID)),
@@ -320,7 +299,7 @@ class MainActivity: FlutterActivity() {
     @SuppressLint("Range")
     private fun getRecentForms(): String {
         val cursor = InstancesDao().recentInstancesCursor
-        val formInstances = generateSequence { if (cursor.moveToNext()) cursor else null }
+        val formInstances = generateSequence { if (cursor != null && cursor.moveToNext()) cursor else null }
             .map {
                 FormInstance(
                     id = it.getLong(it.getColumnIndex(InstanceColumns._ID)),
@@ -353,7 +332,7 @@ class MainActivity: FlutterActivity() {
             InstancesDao().getFinalizedInstancesCursor(selection, formIds)
         }
 
-        val formInstances = generateSequence { if (cursor != null && cursor.moveToNext()) cursor else null  }
+        val formInstances = generateSequence { if (cursor != null && cursor.moveToNext()) cursor else null }
             .map {
                 FormInstance(
                     id = it.getLong(it.getColumnIndex(InstanceColumns._ID)),

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
@@ -44,21 +45,8 @@ import timber.log.Timber;
 public class PermissionUtils {
 
     public static boolean areStoragePermissionsGranted(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
-            return areStoragePermissionsGrantedFromTIRAMISU(context);
-        else
-            return areStoragePermissionsGrantedBeforeTIRAMISU(context);
-    }
-    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
-    private static boolean areStoragePermissionsGrantedFromTIRAMISU(Context context) {
         return isPermissionGranted(context,
-                Manifest.permission.READ_MEDIA_IMAGES,
-                Manifest.permission.READ_MEDIA_AUDIO,
-                Manifest.permission.READ_MEDIA_VIDEO);
-    }
-    private static boolean areStoragePermissionsGrantedBeforeTIRAMISU(Context context) {
-        return isPermissionGranted(context,
-        Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
@@ -128,6 +116,14 @@ public class PermissionUtils {
     public static void finishAllActivities(Activity activity) {
         activity.finishAndRemoveTask();
     }
+
+    /**
+     * Checks to see if the user granted Collect the permissions necessary for reading
+     * and writing to storage and if not utilizes the permissions API to request them.
+     *
+     * @param activity needed for requesting permissions
+     * @param action is a listener that provides the calling component with the permission result.
+     */
     public void requestStoragePermissions(Activity activity, @NonNull PermissionListener action) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
             requestStoragePermissionsFromTIRAMISU(activity, action);
@@ -146,7 +142,7 @@ public class PermissionUtils {
             @Override
             public void denied() {
                 showAdditionalExplanation(activity, R.string.storage_runtime_permission_denied_title,
-                        R.string.storage_runtime_permission_denied_desc, R.drawable.sd, action);
+                    R.string.storage_runtime_permission_denied_desc, R.drawable.sd, action);
             }
         }, Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_AUDIO, Manifest.permission.READ_MEDIA_VIDEO);
     }
@@ -161,7 +157,7 @@ public class PermissionUtils {
             @Override
             public void denied() {
                 showAdditionalExplanation(activity, R.string.storage_runtime_permission_denied_title,
-                        R.string.storage_runtime_permission_denied_desc, R.drawable.sd, action);
+                    R.string.storage_runtime_permission_denied_desc, R.drawable.sd, action);
             }
         }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
@@ -225,29 +221,6 @@ public class PermissionUtils {
             }
         }, Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO);
     }
-
-    /**
-     * Checks to see if the user granted Collect the permissions necessary for reading
-     * and writing to storage and if not utilizes the permissions API to request them.
-     *
-     * @param activity needed for requesting permissions
-     * @param action is a listener that provides the calling component with the permission result.
-     */
-    /*public void requestStoragePermissions(Activity activity, @NonNull PermissionListener action) {
-        requestPermissions(activity, new PermissionListener() {
-            @Override
-            public void granted() {
-                action.granted();
-            }
-
-            @Override
-            public void denied() {
-                showAdditionalExplanation(activity, R.string.storage_runtime_permission_denied_title,
-                        R.string.storage_runtime_permission_denied_desc, R.drawable.sd, action);
-            }
-        }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-    }*/
-
 
     public void requestGetAccountsPermission(Activity activity, @NonNull PermissionListener action) {
         requestPermissions(activity, new PermissionListener() {
@@ -348,7 +321,6 @@ public class PermissionUtils {
                 });
     }
 
-
     private DexterBuilder createMultiplePermissionsRequest(Activity activity, PermissionListener listener, String[] permissions) {
         return Dexter.withActivity(activity)
                 .withPermissions(permissions)
@@ -368,7 +340,6 @@ public class PermissionUtils {
                     }
                 });
     }
-
 
     protected void showAdditionalExplanation(Activity activity, int title, int message, int drawable, @NonNull PermissionListener action) {
         AlertDialog alertDialog = new AlertDialog.Builder(activity, R.style.Theme_Collect_Dialog_PermissionAlert)
