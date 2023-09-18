@@ -232,7 +232,7 @@ public class Collect extends FlutterApplication {
 
         setupRemoteAnalytics();
         //setupLeakCanary();
-        setupOSMDroid();
+        //setupOSMDroid();
 
         // Force inclusion of scoped storage strings so they can be translated
         Timber.i("%s %s", getString(R.string.scoped_storage_banner_text),
@@ -243,10 +243,6 @@ public class Collect extends FlutterApplication {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         boolean isAnalyticsEnabled = settings.getBoolean(GeneralKeys.KEY_ANALYTICS, true);
         setAnalyticsCollectionEnabled(isAnalyticsEnabled);
-    }
-
-    protected void setupOSMDroid() {
-        org.osmdroid.config.Configuration.getInstance().setUserAgentValue(userAgentProvider.getUserAgent());
     }
 
     private void setupDagger() {
