@@ -45,9 +45,24 @@ import timber.log.Timber;
 public class PermissionUtils {
 
     public static boolean areStoragePermissionsGranted(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
+            return areStoragePermissionsGrantedFromTIRAMISU(context);
+        else
+            return areStoragePermissionsGrantedBeforeTIRAMISU(context);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+    private static boolean areStoragePermissionsGrantedFromTIRAMISU(Context context) {
         return isPermissionGranted(context,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            Manifest.permission.READ_MEDIA_IMAGES,
+            Manifest.permission.READ_MEDIA_AUDIO,
+            Manifest.permission.READ_MEDIA_VIDEO);
+    }
+
+    private static boolean areStoragePermissionsGrantedBeforeTIRAMISU(Context context) {
+        return isPermissionGranted(context,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     public static boolean isCameraPermissionGranted(Context context) {

@@ -132,8 +132,12 @@ class MainActivity: FlutterActivity() {
                                     {
                                        // fetchGeoCsvAndProcess()
                                         Log.v("Form Download: ", "Success")
+                                        channelResult?.success("success")
                                     },
-                                    { Log.v("Form Download: ", "Failure") }
+                                    {
+                                        Log.v("Form Download: ", "Failure")
+                                        channelResult?.success("failure")
+                                    }
                                 )
                             )
                         }
