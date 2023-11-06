@@ -155,6 +155,7 @@ class ReadyToSyncFormController extends GetxController {
     } catch (_) {
     } finally {
       await getData(formIds);
+      await _dashboardRepository.getSubmittedFormList(true);
       Get.back();
       showFormSubmitStatusDialog(formSubmitStatusList);
       isCheckedAll.value = false;

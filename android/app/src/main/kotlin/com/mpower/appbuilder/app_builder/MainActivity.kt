@@ -180,7 +180,7 @@ class MainActivity: FlutterActivity() {
     }
 
     private fun createInstance(formData: FormInstance): Long {
-        val fileName = "${formData.displayName}_${formData.projectId}_${formData.id}_${DateTimeUtil.getCurrentTimeString()}"
+        val fileName = "${formData.displayName.replace("/","_")}_${formData.projectId}_${formData.id}_${DateTimeUtil.getCurrentTimeString()}"
         val instancePath = StoragePathProvider().getAbsoluteInstanceFilePath(fileName)
         FileUtils.checkMediaPath(File(instancePath))
         val instanceFile = File(instancePath, "$fileName.xml")

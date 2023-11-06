@@ -81,6 +81,7 @@
         android:allowBackup="false"
         tools:targetApi="m"
         tools:replace="android:icon"
+        android:requestLegacyExternalStorage="true"
         >
 
         <provider

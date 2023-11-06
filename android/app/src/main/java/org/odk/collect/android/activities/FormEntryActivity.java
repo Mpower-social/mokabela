@@ -536,8 +536,9 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
             String selection;
             if (jrVersion == null) {
                 selectionArgs = new String[]{jrFormId};
-                selection = FormsColumns.JR_FORM_ID + "=? AND "
-                        + FormsColumns.JR_VERSION + " IS NULL";
+                /*selection = FormsColumns.JR_FORM_ID + "=? AND "
+                        + FormsColumns.JR_VERSION + " IS NULL";*/
+                selection = FormsColumns.JR_FORM_ID + "=?";
             } else {
                 selectionArgs = new String[]{jrFormId, jrVersion};
                 selection = FormsColumns.JR_FORM_ID + "=? AND "

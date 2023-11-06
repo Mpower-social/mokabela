@@ -293,8 +293,10 @@ public class EncryptionUtils {
                                 + "=?";
                     } else {
                         selectionArgs = new String[]{jrFormId};
-                        selection = FormsColumns.JR_FORM_ID + " =? AND " + FormsColumns.JR_VERSION
-                                + " IS NULL";
+                      /*  selection = FormsColumns.JR_FORM_ID + " =? AND " + FormsColumns.JR_VERSION
+                                + " IS NULL";*/
+                        selection = FormsColumns.JR_FORM_ID + " =?";
+
                     }
                 } finally {
                     if (instanceCursor != null) {

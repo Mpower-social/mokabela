@@ -149,7 +149,7 @@ class FormDetailsScreen extends StatelessWidget {
                     ? 0
                     : controller.progress.value.isNaN
                         ? 0
-                        : controller.progress.value,
+                        : (controller.progress.value > 1?1:controller.progress.value),
                 progressColor: green,
               ),
               SizedBox(height: hp!(1.5)),

@@ -60,8 +60,9 @@ public class FormsDao {
 
         if (formVersion == null) {
             selectionArgs = new String[]{formId};
-            selection = FormsColumns.JR_FORM_ID + "=? AND "
-                    + FormsColumns.JR_VERSION + " IS NULL";
+            /*selection = FormsColumns.JR_FORM_ID + "=? AND "
+                    + FormsColumns.JR_VERSION + " IS NULL";*/
+            selection = FormsColumns.JR_FORM_ID + "=?";
         } else {
             selectionArgs = new String[]{formId, formVersion};
             selection = FormsColumns.JR_FORM_ID + "=? AND "

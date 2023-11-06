@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -178,6 +180,7 @@ class FormListController extends GetxController {
           formId: element.idString ?? '',
           lastChangeDate: DateTime.parse(element.updatedAt!).millisecondsSinceEpoch,
           xml: element.xml,
+          instanceId: element.instanceId,
           feedback: element.feedback,
           status: element.isActive.toString()
       ));
@@ -224,7 +227,9 @@ class FormListController extends GetxController {
   ///edit form
   void editForm(formData.FormData formData, FormStatus formStatus) async {
     final results;
+    print(jsonEncode(formData));
     if(formStatus == FormStatus.reverted){
+      print(jsonEncode(formData));
       results = await OdkUtil.instance.correctForm(formData);
     }else{
       results = await OdkUtil.instance.editForm(formData.id!);

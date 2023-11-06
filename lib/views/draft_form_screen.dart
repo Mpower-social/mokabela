@@ -151,38 +151,43 @@ class DraftFormScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                data.displayName ?? '',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.date_range,
-                                    size: 15,
-                                  ),
-                                  SizedBox(width: 2),
-                                  Text(
-                                    Utils.timeStampToDate(
-                                        data.lastChangeDate ?? 0),
-                                  ),
-                                  SizedBox(width: 5),
-                                  Icon(
-                                    Icons.access_time,
-                                    size: 15,
-                                  ),
-                                  SizedBox(width: 2),
-                                  Text(
-                                    Utils.timeStampToTime(
-                                        data.lastChangeDate ?? 0),
-                                  ),
-                                ],
-                              )
-                            ],
+                          Expanded(
+                            flex: 8,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 5),
+                                Text(
+                                  data.displayName ?? '',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(height: 8),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.date_range,
+                                      size: 15,
+                                    ),
+                                    SizedBox(width: 2),
+                                    Text(
+                                      Utils.timeStampToDate(
+                                          data.lastChangeDate ?? 0),
+                                    ),
+                                    SizedBox(width: 5),
+                                    Icon(
+                                      Icons.access_time,
+                                      size: 15,
+                                    ),
+                                    SizedBox(width: 2),
+                                    Text(
+                                      Utils.timeStampToTime(
+                                          data.lastChangeDate ?? 0),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 5),
+                              ],
+                            ),
                           ),
                           Row(
                             children: [
@@ -195,7 +200,7 @@ class DraftFormScreen extends StatelessWidget {
                               SizedBox(width: 5),
                               IconButton(
                                 onPressed: () =>
-                                    controller.editDraftForm(data,formIds),
+                                    controller.editDraftForm(data, formIds),
                                 icon: Icon(
                                   AppIcons.edit,
                                   size: 22,
@@ -208,8 +213,8 @@ class DraftFormScreen extends StatelessWidget {
                                       msg: 'Are you sure to delete?',
                                       confirmText: 'Yes',
                                       cancelText: 'No',
-                                      onOkTap: () =>
-                                          controller.deleteForm(data.id ?? 0,formIds),
+                                      onOkTap: () => controller.deleteForm(
+                                          data.id ?? 0, formIds),
                                       onCancelTap: () => Get.back());
                                 },
                                 icon: Icon(

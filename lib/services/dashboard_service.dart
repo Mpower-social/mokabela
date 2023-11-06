@@ -53,7 +53,7 @@ class DashboardService extends BaseApiProvider {
               headers: {'Authorization': 'Bearer $token',},
               responseType: ResponseType.plain
           ));
-      print(response.data+" "+response.statusCode);
+      //print(response.data+" "+response.statusCode);
       return List<SubmittedFormListResponse>.from(jsonDecode(response.data).map((x) => SubmittedFormListResponse.fromJson(x)));
     } catch (error) {
       print(error);

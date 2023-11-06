@@ -35,6 +35,10 @@ class FormDetailsController extends GetxController {
   getTotalSubmittedForm(String? idString,AllFormsData? allFormsData) async {
     submittedFormList.value =
         await _projectRepository.getAllSubmittedFromLocalByForm(idString);
+    if((allFormsData?.target ?? 0) < submittedFormList.length){
+      progress.value = 1;
+      return;
+    }
     progress.value = (((submittedFormList.length * 100) / (allFormsData?.target ?? 0)) / 100.0);
   }
   getDraftFormCount(String? idString) async{
