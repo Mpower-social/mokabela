@@ -24,7 +24,8 @@ class Translation extends Translations {
       'timeline':'Timeline',
       'all':'All',
       'load':'Load',
-      'no_internet_conn':'No internet connection.'
+      'no_internet_conn':'No internet connection.',
+      'powered_by': 'Powered By'
     },
     'de_DE': {
       'hello': 'Hallo Welt',

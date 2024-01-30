@@ -135,7 +135,26 @@ class DashboardScreen extends StatelessWidget {
                       ),
                       title(title: 'ongoing_project'.tr),
                       const SizedBox(height: 10),
-                      Expanded(child: _ongoingProjectList())
+                      Expanded(
+                          flex: 9,
+                          child: _ongoingProjectList()
+                      ),
+
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                            width: wp!(100),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text('powered_by'.tr),
+                                const SizedBox(height: 8),
+                                Image.asset('assets/images/mpower.png')
+                              ],
+                            )
+                        ),
+                      )
                     ],
                   ),
                 ),
