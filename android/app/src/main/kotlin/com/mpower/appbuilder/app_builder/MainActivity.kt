@@ -149,6 +149,17 @@ class MainActivity: FlutterActivity() {
                     channelResult?.error("Permission Required", "Failed", null)
                 }
             })
+
+            PermissionUtils().requestLocationPermissions(this,object: PermissionListener{
+                override fun granted() {
+                    //TODO("Not yet implemented")
+                }
+
+                override fun denied() {
+                    //TODO("Not yet implemented")
+                }
+
+            })
         }
     }
 

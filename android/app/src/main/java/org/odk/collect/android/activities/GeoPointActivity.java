@@ -18,10 +18,12 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.GnssStatus;
 import android.location.GpsSatellite;
 import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.format.DateUtils;
@@ -72,8 +74,27 @@ public class GeoPointActivity extends CollectAbstractActivity implements Locatio
 
     private Timer timer;
 
+    /** Report satellite status */
+    private GnssStatus.Callback statusCallback = new GnssStatus.Callback() {
+        @Override
+        public void onStarted() { }
+
+        @Override
+        public void onStopped() { }
+
+        @Override
+        public void onFirstFix(int ttffMillis) { }
+
+        @Override
+        public void onSatelliteStatusChanged(GnssStatus status) {
+            numberOfAvailableSatellites = status.getSatelliteCount();
+            updateDialogMessage();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
 
         if (!areLocationPermissionsGranted(this)) {
@@ -82,7 +103,6 @@ public class GeoPointActivity extends CollectAbstractActivity implements Locatio
             return;
         }
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         if (savedInstanceState != null) {
             locationCount = savedInstanceState.getInt(LOCATION_COUNT);
@@ -175,7 +195,11 @@ public class GeoPointActivity extends CollectAbstractActivity implements Locatio
 
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (locationManager != null) {
-            locationManager.addGpsStatusListener(this);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                locationManager.registerGnssStatusCallback(statusCallback);
+            } else {
+                locationManager.addGpsStatusListener(this);
+            }
         }
 
         if (locationClient.isLocationAvailable()) {
@@ -196,7 +220,11 @@ public class GeoPointActivity extends CollectAbstractActivity implements Locatio
         locationClient.stopLocationUpdates();
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (locationManager != null) {
-            locationManager.removeGpsStatusListener(this);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                locationManager.unregisterGnssStatusCallback(statusCallback);
+            } else {
+                locationManager.removeGpsStatusListener(this);
+            }
         }
     }
 
