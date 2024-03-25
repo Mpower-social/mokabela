@@ -43,7 +43,7 @@ dependencies:
   connectivity: ^3.0.6
   sqflite: ^2.0.1
   flutter_image_compress: ^1.1.0
-  permission_handler: ^8.1.0
+  permission_handler: ^10.1.0
   fluttertoast: ^8.0.9
   intl: ^0.17.0
   percent_indicator: ^4.0.1
