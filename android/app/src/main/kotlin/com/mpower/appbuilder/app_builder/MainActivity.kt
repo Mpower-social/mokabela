@@ -132,8 +132,12 @@ class MainActivity: FlutterActivity() {
                                     {
                                        // fetchGeoCsvAndProcess()
                                         Log.v("Form Download: ", "Success")
+                                        channelResult?.success("success")
                                     },
-                                    { Log.v("Form Download: ", "Failure") }
+                                    {
+                                        Log.v("Form Download: ", "Failure")
+                                        channelResult?.success("failure")
+                                    }
                                 )
                             )
                         }
@@ -290,7 +294,7 @@ class MainActivity: FlutterActivity() {
             InstancesDao().getDraftInstancesCursor(selection, formIds)
         }
 
-        val formInstances = generateSequence { if (cursor.moveToNext()) cursor else null }
+        val formInstances = generateSequence { if (cursor != null && cursor.moveToNext()) cursor else null  }
             .map {
                 FormInstance(
                     id = it.getLong(it.getColumnIndex(InstanceColumns._ID)),
@@ -344,7 +348,7 @@ class MainActivity: FlutterActivity() {
             InstancesDao().getFinalizedInstancesCursor(selection, formIds)
         }
 
-        val formInstances = generateSequence { if (cursor.moveToNext()) cursor else null }
+        val formInstances = generateSequence { if (cursor != null && cursor.moveToNext()) cursor else null  }
             .map {
                 FormInstance(
                     id = it.getLong(it.getColumnIndex(InstanceColumns._ID)),

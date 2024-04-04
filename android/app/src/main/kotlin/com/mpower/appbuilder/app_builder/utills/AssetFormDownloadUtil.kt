@@ -306,7 +306,7 @@ class AssetFormDownloadUtil(val context: Context) {
 
     private fun isThisFormAlreadyDownloaded(formId: String): Boolean {
         val cursor = formsDao.getFormsCursorForFormId(formId)
-        return cursor == null || cursor.count > 0
+        return cursor != null && cursor.count > 0
     }
 
     private fun isNewerFormVersionAvailable(md5Hash: String?): Boolean {

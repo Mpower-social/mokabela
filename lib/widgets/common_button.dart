@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget commonButton(
@@ -20,17 +17,19 @@ Widget commonButton(
     child: ElevatedButton(
       onPressed: tap != null ? () => tap() : null,
       style: ElevatedButton.styleFrom(
-          primary: bg,
+          backgroundColor: bg,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-      child: isLoading?const CircularProgressIndicator():Text(
-        text,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: textColor ?? Colors.white,
-          fontSize: 15,
-        ),
-      ),
+      child: isLoading
+          ? const CircularProgressIndicator()
+          : Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: textColor ?? Colors.white,
+                fontSize: 15,
+              ),
+            ),
     ),
   );
 }

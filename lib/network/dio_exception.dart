@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:m_survey/utils/utils.dart';
 
@@ -9,24 +10,29 @@ class DioException {
         if (error is DioError) {
           switch (error.type) {
             case DioErrorType.cancel:
-            case DioErrorType.connectTimeout:
-            case DioErrorType.other:
-            if (DioErrorType.other is SocketException) {
-              return "Cant connect to Server. Please check your Internet connectivity";
-            }
-            return "Something went wrong. Please try again";
+            case DioErrorType.badCertificate:
+            case DioErrorType.connectionError:
+            case DioErrorType.connectionTimeout:
+            case DioErrorType.unknown:
+              if (DioErrorType.unknown is SocketException) {
+                return "Cant connect to Server. Please check your Internet connectivity";
+              }
+              return "Something went wrong. Please try again";
             case DioErrorType.receiveTimeout:
             case DioErrorType.sendTimeout:
               return "Something went wrong. Please try again";
-            case DioErrorType.response:
+            case DioErrorType.badResponse:
               switch (error.response?.statusCode) {
                 case 400:
-
-                  if((error.response?.data["data"]??'').toString().trim() == 'TokenExpiredError: jwt expired'.trim()){
+                  if ((error.response?.data["data"] ?? '').toString().trim() ==
+                      'TokenExpiredError: jwt expired'.trim()) {
                     Utils.logoutOperation();
                     return "Token expired. Login Again.";
-                  }else{
-                      return error.response?.data["data"]??error.response?.data["message"]??error.response?.data["details"]??"";
+                  } else {
+                    return error.response?.data["data"] ??
+                        error.response?.data["message"] ??
+                        error.response?.data["details"] ??
+                        "";
                   }
                 case 401:
                   //Utils.logoutOperation();
@@ -45,11 +51,9 @@ class DioException {
                   return "Received invalid status code: $responseCode";
               }
           }
-        }
-        else if (error is SocketException) {
+        } else if (error is SocketException) {
           return "Cant connect to Server. Please check your Internet connectivity";
-        }
-        else {
+        } else {
           return "Something went wrong. Please try again";
         }
       } on FormatException {

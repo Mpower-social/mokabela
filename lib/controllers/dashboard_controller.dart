@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:m_survey/models/form_data.dart' as formData;
 import 'package:m_survey/models/form_submit_status.dart';
 import 'package:m_survey/models/local/all_form_list_data.dart';
 import 'package:m_survey/models/local/project_list_data.dart';
@@ -11,7 +12,6 @@ import 'package:m_survey/utils/shared_pref.dart';
 import 'package:m_survey/widgets/form_submit_status_dialog.dart';
 import 'package:m_survey/widgets/show_toast.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:m_survey/models/form_data.dart' as formData;
 
 import '../views/active_form_screen.dart';
 import '../views/draft_form_screen.dart';
@@ -47,7 +47,7 @@ class DashboardController extends GetxController {
     //handlePermission();
     getUserdata();
     await getAllData(false);
-   // await getRecentFormList();
+    // await getRecentFormList();
   }
 
   void getUserdata() async {
@@ -58,18 +58,23 @@ class DashboardController extends GetxController {
 
   ///getting project list here
   Future<void> getAllData(bool forceLoad) async {
-    if(!await CheckNetwork().check()) forceLoad = false;
+    if (!await CheckNetwork().check()) forceLoad = false;
     isLoadingProject.value = true;
-    submittedFormList.value = await _dashboardRepository.getSubmittedFormList(forceLoad);
-    projectList.value = await _dashboardRepository.getProjectListOperation(forceLoad);
+    submittedFormList.value =
+        await _dashboardRepository.getSubmittedFormList(forceLoad);
+    projectList.value =
+        await _dashboardRepository.getProjectListOperation(forceLoad);
+
     allFormList.value = await _dashboardRepository.getAllFormList(forceLoad);
     //need to call again for handle relation
     //project have relation with form
-    projectList.value = await _dashboardRepository.getProjectListOperation(forceLoad);
+    projectList.value =
+        await _dashboardRepository.getProjectListOperation(forceLoad);
     await _dashboardRepository.getRevertedFormList(forceLoad);
-    await getFormData();
-    refreshDashBoardCount();
+
     await downloadForm();
+    await getFormData();
+    await refreshDashBoardCount();
     isLoadingProject.value = false;
   }
 
@@ -77,7 +82,7 @@ class DashboardController extends GetxController {
   getFormData() async {
     formListString.clear();
     allFormList.forEach((element) {
-      formListString.add(element?.idString??'');
+      formListString.add(element?.idString ?? '');
     });
     var formIds = formListString;
     var results = await OdkUtil.instance.getFinalizedForms(formIds);
@@ -88,7 +93,6 @@ class DashboardController extends GetxController {
 
   ///sync all data
   void syncAllForm() async {
-
     if (formList.isEmpty) {
       showToast(msg: 'No active form found to sync.');
       return;
@@ -96,12 +100,16 @@ class DashboardController extends GetxController {
     formSubmitStatusList.clear();
     try {
       for (var element in formList) {
-        if(allFormList.firstWhereOrNull((e) => (e?.isActive==true && e?.idString == element.formId))!=null){
+        if (allFormList.firstWhereOrNull((e) =>
+                (e?.isActive == true && e?.idString == element.formId)) !=
+            null) {
           final results = await _formRepository.submitFormOperation(element);
           if (results.isNotEmpty) {
-            formSubmitStatusList.add(FormSubmitStatus(element.displayName??'',true));
-          }else{
-            formSubmitStatusList.add(FormSubmitStatus(element.displayName??'',false));
+            formSubmitStatusList
+                .add(FormSubmitStatus(element.displayName ?? '', true));
+          } else {
+            formSubmitStatusList
+                .add(FormSubmitStatus(element.displayName ?? '', false));
           }
         }
       }
@@ -146,14 +154,16 @@ class DashboardController extends GetxController {
     if (results != null && results.isNotEmpty) {
       formData.formDataFromJson(results).forEach((element) {
         var projectId = int.tryParse(element.projectId!);
-        var currentProject = projectList.firstWhereOrNull((v) => v.id == projectId);
-        var currentForm = allFormList.firstWhereOrNull((form) => form?.idString == element.formId);
+        var currentProject =
+            projectList.firstWhereOrNull((v) => v.id == projectId);
+        var currentForm = allFormList
+            .firstWhereOrNull((form) => form?.idString == element.formId);
 
         element.projectName = currentForm?.projectName ?? 'N/A';
         element.status = (currentForm?.isActive ?? false).toString();
-        element.formId = currentForm?.idString??'';
-        element.id = int.tryParse(currentForm?.id??'0')??0;
-        element.target = currentForm?.target??0;
+        element.formId = currentForm?.idString ?? '';
+        element.id = int.tryParse(currentForm?.id ?? '0') ?? 0;
+        element.target = currentForm?.target ?? 0;
 
         recentFormList.add(element);
       });
@@ -163,16 +173,16 @@ class DashboardController extends GetxController {
     recentFormList.value = [];
   }
 
-   downloadForm() async {
-     if(await CheckNetwork().check()){
-       _dashboardRepository.getFormList().then((value) async {
-         final results = await OdkUtil.instance.initializeOdk(value);
-         if (results != null && results.isNotEmpty) {
-           print('Success');
-         }
-         print('failed');
-       });
-     }
+  downloadForm() async {
+    if (await CheckNetwork().check()) {
+      _dashboardRepository.getFormList().then((value) async {
+        final results = await OdkUtil.instance.initializeOdk(value);
+        if (results != null && results.isNotEmpty) {
+          print('Success');
+        }
+        print('failed');
+      });
+    }
   }
 
   void handlePermission() async {
@@ -205,7 +215,9 @@ class DashboardController extends GetxController {
 
   navigateToSyncFormsScreen() async {
     await Get.to(
-      () => ReadyToSyncFormScreen(formIds: [],),
+      () => ReadyToSyncFormScreen(
+        formIds: [],
+      ),
     );
 
     refreshDashBoardCount();
@@ -245,14 +257,14 @@ class DashboardController extends GetxController {
     refreshDashBoardCount();
   }
 
-  void refreshDashBoardCount() async {
+  Future<void> refreshDashBoardCount() async {
     await getDraftFormCount();
     await getActiveFormCount();
     await getCompleteFormCount();
     await getRecentFormList();
-    if(await CheckNetwork.checkNetwork.check()){
+    if (await CheckNetwork.checkNetwork.check()) {
       await getSubmittedFormCount(true);
-    }else{
+    } else {
       await getSubmittedFormCount(false);
     }
   }
@@ -261,7 +273,7 @@ class DashboardController extends GetxController {
     OdkUtil.instance.goToSettings();
   }
 
-  void sync() async{
+  void sync() async {
     Get.back();
     await getFormData();
     syncAllForm();
