@@ -9,6 +9,7 @@ buildscript {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
+        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -37,6 +38,19 @@ allprojects {
             url 'https://staging.dev.medicmobile.org/_couch/maven-repo'
             metadataSources { artifact() }
         }
+        maven {
+            url 'https://mvnrepository.com/artifact/com.burgstaller/okhttp-digest'
+        }
+        maven { url 'https://staging.dev.medicmobile.org/_couch/maven-repo' }
+
+      /*  maven {
+            url = uri("https://api.mapbox.com/downloads/v2/releases/maven")
+            // Do not change the username below. It should always be "mapbox" (not your username).
+            credentials.username = "mapbox"
+            // Use the secret token stored in gradle.properties as the password
+            credentials.password = providers.gradleProperty("MAPBOX_DOWNLOADS_TOKEN").get()
+            authentication { basic(BasicAuthentication) }
+        }*/
     }
 }
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:m_survey/views/dashboard_screen.dart';
 import 'package:m_survey/views/login_screen.dart';
+import 'package:m_survey/views/login_type_screen.dart';
 import '../res/color.dart';
 import '../res/screen_size.dart';
 import '../utils/shared_pref.dart';
@@ -56,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if(await SharedPref.sharedPref.getString(SharedPref.TOKEN)!=null){
       Get.offAll(()=>DashboardScreen());
     }else{
-      Get.offAll(()=> LoginScreen());
+      Get.offAll(()=> LoginTypeScreen());
     }
   }
 }

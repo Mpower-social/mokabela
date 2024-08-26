@@ -7,7 +7,9 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.maps.GoogleMap;
+/*
 import com.mapbox.mapboxsdk.maps.Style;
+*/
 
 import org.odk.collect.android.R;
 import org.odk.collect.android.geo.GoogleMapConfigurator.GoogleMapTypeOption;
@@ -75,8 +77,7 @@ public class MapProvider {
                     new GoogleMapTypeOption(GoogleMap.MAP_TYPE_SATELLITE, R.string.satellite)
                 )
             ),
-            new SourceOption(BASEMAP_SOURCE_MAPBOX, R.string.basemap_source_mapbox,
-                new MapboxMapConfigurator(
+            /*new SourceOption(BASEMAP_SOURCE_MAPBOX, R.string.basemap_source_mapbox, new MapboxMapConfigurator(
                     KEY_MAPBOX_MAP_STYLE, R.string.basemap_source_mapbox,
                     new MapboxUrlOption(Style.MAPBOX_STREETS, R.string.streets),
                     new MapboxUrlOption(Style.LIGHT, R.string.light),
@@ -85,7 +86,7 @@ public class MapProvider {
                     new MapboxUrlOption(Style.SATELLITE_STREETS, R.string.hybrid),
                     new MapboxUrlOption(Style.OUTDOORS, R.string.outdoors)
                 )
-            ),
+            ),*/
             new SourceOption(BASEMAP_SOURCE_OSM, R.string.basemap_source_osm,
                 new OsmDroidMapConfigurator(
                     new WebMapService(

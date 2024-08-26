@@ -33,7 +33,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.common.collect.ImmutableList;
+/*
 import com.rarepebble.colorpicker.ColorPickerView;
+*/
 
 import org.odk.collect.android.R;
 import org.odk.collect.android.adapters.IconMenuListAdapter;
@@ -327,7 +329,7 @@ public class DrawActivity extends CollectAbstractActivity {
         if (view.getVisibility() == View.VISIBLE) {
             fabActions.performClick();
 
-            final ColorPickerView picker = new ColorPickerView(this);
+          /*  final ColorPickerView picker = new ColorPickerView(this);
             picker.setColor(drawView.getColor());
             picker.showAlpha(false);
             picker.showHex(false);
@@ -336,7 +338,7 @@ public class DrawActivity extends CollectAbstractActivity {
             builder
                     .setView(picker)
                     .setPositiveButton(R.string.ok, (dialog, which) -> drawView.setColor(picker.getColor()))
-                    .show();
+                    .show();*/
         }
     }
 }

@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'mSurvey',
+      title: 'Mokabela',
       theme: ThemeData(
         primarySwatch: Colors.blue,
        textTheme: GoogleFonts.robotoTextTheme()

@@ -116,11 +116,11 @@ android {
             resValue "string", "default_server_url", "http://clarissa.dev.mpower-social.com:9023/"
         }*/
         dev {
-            applicationId 'com.mpower.hybrid.app.msurvey'
+            applicationId 'com.dghs.citizenportal.awaztulun'
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             dimension "flavor-type"
-            resValue "string", "app_name", "mSurvey"
+            resValue "string", "app_name", "mokabela"
             resValue "string", "default_server_url", "http://192.168.22.59:3000"
         }
     }
@@ -154,21 +154,22 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-analytics:21.1.0'
 
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.1'
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v7:0.6.0'
+    /*implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.1'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v7:0.6.0'*/
+    //implementation("com.mapbox.maps:android:11.6.0")
 
     implementation("com.google.guava:guava:28.1-android")
 
     implementation "com.squareup.okhttp3:okhttp:${rootProject.okhttp3Version}"
-    implementation 'com.burgstaller:okhttp-digest:1.18' //newer versions require minSdkVersion >= 21
+    implementation 'io.github.rburgst:okhttp-digest:3.1.0'//newer versions require minSdkVersion >= 21
 
     implementation 'com.github.mohamadian:PersianJodaTime:1.2'
     implementation 'com.github.chanmratekoko:myanmar-calendar:1.0.6.RC3'
     implementation 'bikramsambat:bikram-sambat:1.1.0'
     implementation "com.evernote:android-job:1.4.2"
-    implementation "com.rarepebble:colorpicker:3.0.1"
+    //implementation "com.rarepebble:colorpicker:3.0.1"
     implementation "commons-io:commons-io:2.6"
-    implementation "net.sf.opencsv:opencsv:2.4"
+    implementation "net.sf.opencsv:opencsv:2.1"
     implementation("org.opendatakit:opendatakit-javarosa:2.17.0") {
         exclude group: 'joda-time'
         exclude group: 'org.slf4j'
@@ -228,9 +229,9 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.7.0'
 
     // Optional JobDispatcher support so devices with Play Services do better than AlarmManager
-    implementation("android.arch.work:work-firebase:1.0.0-alpha11") {
+    /*implementation("android.arch.work:work-firebase:1.0.0-alpha11") {
         exclude group: 'com.google.guava', module: 'listenablefuture'
-    }
+    }*/
 
     // Makes binding to Views easy:
     implementation "com.jakewharton:butterknife:10.2.1"

@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.preference.Preference;
 
 import com.google.common.collect.ImmutableSet;
+/*
 import com.mapbox.mapboxsdk.maps.Style;
+*/
 
 import org.odk.collect.android.R;
 import org.odk.collect.android.preferences.PrefUtils;
@@ -33,7 +35,7 @@ class MapboxMapConfigurator implements MapConfigurator {
     }
 
     @Override public boolean isAvailable(Context context) {
-        return MapboxUtils.initMapbox() != null;
+        return /*MapboxUtils.initMapbox() != null*/false;
     }
 
     @Override public void showUnavailableMessage(Context context) {
@@ -42,7 +44,7 @@ class MapboxMapConfigurator implements MapConfigurator {
     }
 
     @Override public MapFragment createMapFragment(Context context) {
-        return MapboxUtils.initMapbox() != null ? new MapboxMapFragment() : null;
+        return /*MapboxUtils.initMapbox() != null ?*//* new MapboxMapFragment() :*/ null;
     }
 
     @Override public List<Preference> createPrefs(Context context) {
@@ -66,10 +68,10 @@ class MapboxMapConfigurator implements MapConfigurator {
 
     @Override public Bundle buildConfig(SharedPreferences prefs) {
         Bundle config = new Bundle();
-        config.putString(MapboxMapFragment.KEY_STYLE_URL,
+       /* config.putString(MapboxMapFragment.KEY_STYLE_URL,
             prefs.getString(KEY_MAPBOX_MAP_STYLE, Style.MAPBOX_STREETS));
         config.putString(MapboxMapFragment.KEY_REFERENCE_LAYER,
-            prefs.getString(KEY_REFERENCE_LAYER, null));
+            prefs.getString(KEY_REFERENCE_LAYER, null));*/
         return config;
     }
 
