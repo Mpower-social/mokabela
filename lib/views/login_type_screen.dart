@@ -28,7 +28,7 @@ class LoginTypeScreen extends StatelessWidget {
               children: [
                 commonButton(
                     text: 'Login for NGO'.tr,
-                    bg: green,
+                    bg: Colors.white,
                     textColor: black,
                     tap: () => Get.to(() => LoginScreen()),
                     width: wp!(100),
@@ -37,8 +37,8 @@ class LoginTypeScreen extends StatelessWidget {
                   height: 20,
                 ),
                 commonButton(
-                    text: 'For All Users'.tr,
-                    bg: green,
+                    text: 'Entry For All'.tr,
+                    bg: Colors.white,
                     textColor: black,
                     tap: () => OdkUtil.instance.navigateToAwaztulo(),
                     width: wp!(100),

@@ -122,7 +122,7 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             dimension "flavor-type"
-            resValue "string", "app_name", "mokabela"
+            resValue "string", "app_name", "মোকাবেলা"
             resValue "string", "default_server_url", "http://192.168.22.59:3000"
         }
     }

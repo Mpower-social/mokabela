@@ -35,18 +35,18 @@ class LoginScreen extends StatelessWidget {
                     children: [
 
                       ///tittle
-                      Text('mSurvey',
+                      Text('মোকাবেলা',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 45,color: white
                         ),),
                       const SizedBox(height: 5,),
                       ///subtittle
-                      Text('login_top_title'.tr,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 16,color: white
-                        ),),
+                      // Text('login_top_title'.tr,
+                      //   textAlign: TextAlign.center,
+                      //   style: TextStyle(
+                      //       fontSize: 16,color: white
+                      //   ),),
                       const SizedBox(height: 40,),
 
 
