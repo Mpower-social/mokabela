@@ -23,7 +23,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+/*
 import org.osmdroid.tileprovider.MapTile;
+*/
 import org.osmdroid.tileprovider.tilesource.BitmapTileSourceBase;
 
 import java.io.ByteArrayInputStream;
@@ -119,9 +121,9 @@ public class OsmMBTileSource extends BitmapTileSourceBase {
         return value;
     }
 
-    public InputStream getInputStream(MapTile mapTile) {
+  /*  public InputStream getInputStream(MapTile mapTile) {
 
-        try {
+       *//* try {
             InputStream ret = null;
             final String[] tile = {COL_TILES_TILE_DATA};
             final String[] xyz = {Integer.toString(mapTile.getX()),
@@ -149,7 +151,7 @@ public class OsmMBTileSource extends BitmapTileSourceBase {
 
         } catch (final Throwable e) {
             Timber.w(e, "Error getting db stream: %s", mapTile);
-        }
+        }*//*
         return null;
-    }
+    }*/
 }

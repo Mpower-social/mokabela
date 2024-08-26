@@ -9,6 +9,11 @@ class OdkUtil {
 
   var methodChannel = MethodChannel('flutter_to_odk_communication');
 
+
+  Future<dynamic> navigateToAwaztulo() async {
+    return await methodChannel.invokeMethod('navigateToAwaztulun');
+  }
+
   Future<dynamic> goToSettings() async {
     return await methodChannel.invokeMethod('goToSettings');
   }

@@ -24,14 +24,11 @@ if (flutterVersionName == null) {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
 apply from: '../config/quality.gradle'
 apply from: '../config/jacoco.gradle'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 33
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -44,7 +41,8 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "org.odk.collect.android"
         minSdk 21
-        targetSdkVersion 33
+        compileSdk 34
+        targetSdk 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
@@ -74,6 +72,10 @@ android {
         disable 'MissingTranslation'
         checkReleaseBuilds false
         abortOnError false
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
     }
 
     testOptions {
@@ -131,6 +133,7 @@ flutter {
 }
 
 dependencies {
+    implementation project(':awaztulun')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 

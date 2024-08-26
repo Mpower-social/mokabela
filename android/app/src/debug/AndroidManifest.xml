@@ -79,7 +79,7 @@
         android:theme="@style/AppThemeBase.Collect"
         android:usesCleartextTraffic="true"
         android:allowBackup="false"
-        tools:replace="android:icon"
+        tools:replace="android:icon,android:allowBackup,android:name,android:theme"
         >
 
         <provider

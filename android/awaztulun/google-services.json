@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1072735118238",
+    "project_id": "citizen-dbec8",
+    "storage_bucket": "citizen-dbec8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072735118238:android:49a2ea5bd7274775496c8f",
+        "android_client_info": {
+          "package_name": "com.dghs.citizenportal.awaztulun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLzXltkb98QpvFozahM2rHoB6N48xVK44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
+import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/views/login_screen.dart';
 import 'package:m_survey/widgets/common_button.dart';
 
@@ -29,17 +30,17 @@ class LoginTypeScreen extends StatelessWidget {
                     text: 'Login for NGO'.tr,
                     bg: green,
                     textColor: black,
-                    tap: () {},
+                    tap: () => Get.to(() => LoginScreen()),
                     width: wp!(100),
                     height: 50),
                 const SizedBox(
                   height: 20,
                 ),
                 commonButton(
-                    text: 'Login for All Users'.tr,
+                    text: 'For All Users'.tr,
                     bg: green,
                     textColor: black,
-                    tap: () => Get.to(() => LoginScreen()),
+                    tap: () => OdkUtil.instance.navigateToAwaztulo(),
                     width: wp!(100),
                     height: 50),
               ],

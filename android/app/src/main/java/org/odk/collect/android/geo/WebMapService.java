@@ -1,7 +1,9 @@
 package org.odk.collect.android.geo;
 
 import org.odk.collect.android.application.Collect;
+/*
 import org.osmdroid.tileprovider.MapTile;
+*/
 import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase;
 
 import java.io.Serializable;
@@ -39,7 +41,7 @@ class WebMapService implements Serializable {
     // Note: org.osmdroid.views.MapView.setTileSource takes an ITileSource,
     // but really it requires an instance of OnlineTileSourceBase.
     public OnlineTileSourceBase asOnlineTileSource() {
-        if (onlineTileSource == null) {
+      /*  if (onlineTileSource == null) {
             String extension = getExtension(urlTemplates[0]);
             onlineTileSource = new OnlineTileSourceBase(cacheName, minZoomLevel,
                 maxZoomLevel, tileSize, extension, urlTemplates, copyright) {
@@ -50,7 +52,7 @@ class WebMapService implements Serializable {
                         .replace("{z}", String.valueOf(tile.getZoomLevel()));
                 }
             };
-        }
+        }*/
         return onlineTileSource;
     }
 

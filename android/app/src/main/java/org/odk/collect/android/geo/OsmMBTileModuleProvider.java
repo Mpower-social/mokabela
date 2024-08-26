@@ -22,14 +22,12 @@ import android.graphics.drawable.Drawable;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.IRegisterReceiver;
+/*
 import org.osmdroid.tileprovider.MapTile;
-import org.osmdroid.tileprovider.MapTileRequestState;
+*/
+import org.osmdroid.tileprovider.modules.CantContinueException;
 import org.osmdroid.tileprovider.modules.MapTileFileStorageProviderBase;
-import org.osmdroid.tileprovider.modules.MapTileModuleProviderBase;
 import org.osmdroid.tileprovider.tilesource.ITileSource;
-import org.osmdroid.tileprovider.util.StreamUtils;
-
-import java.io.InputStream;
 
 import timber.log.Timber;
 
@@ -60,8 +58,13 @@ public class OsmMBTileModuleProvider extends MapTileFileStorageProviderBase {
     }
 
     @Override
-    protected Runnable getTileLoader() {
-        return new TileLoader();
+    public TileLoader getTileLoader() {
+        return new TileLoader() {
+            @Override
+            public Drawable loadTile(long pMapTileIndex) throws CantContinueException {
+                return null;
+            }
+        };
     }
 
     @Override
@@ -90,21 +93,21 @@ public class OsmMBTileModuleProvider extends MapTileFileStorageProviderBase {
         }
     }
 
-    private class TileLoader extends MapTileModuleProviderBase.TileLoader {
+   /* private class TileLoader extends MapTileModuleProviderBase.TileLoader {
 
         @Override
         public Drawable loadTile(final MapTileRequestState state) {
 
             // if there's no sdcard then don't do anything
-            if (!isSdCardAvailable()) {
+           *//* if (!isSdCardAvailable()) {
                 return null;
-            }
+            }*//*
 
-            MapTile mapTile = state.getMapTile();
+           // MapTile mapTile = state.getMapTile();
             InputStream inputStream = null;
 
             try {
-                inputStream = tileSource.getInputStream(mapTile);
+                //inputStream = tileSource.getInputStream(mapTile);
 
                 if (inputStream != null) {
 
@@ -124,6 +127,6 @@ public class OsmMBTileModuleProvider extends MapTileFileStorageProviderBase {
 
             return null;
         }
-    }
+    }*/
 
 }
