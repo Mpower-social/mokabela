@@ -10,7 +10,8 @@ import com.dghs.citizenportal.awaztulun.util.SharedPreferenceUtil
 import javax.inject.Inject
 
 class CitizenApplication: MultiDexApplication() {
-    @Inject lateinit var preferenceUtil: SharedPreferenceUtil
+    @Inject
+    lateinit var preferenceUtil: SharedPreferenceUtil
 
     private lateinit var citizenComponent: CitizenComponent
     companion object {

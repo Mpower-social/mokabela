@@ -72,7 +72,8 @@ class DashboardController extends GetxController {
         await _dashboardRepository.getProjectListOperation(forceLoad);
     await _dashboardRepository.getRevertedFormList(forceLoad);
 
-    await downloadForm();
+    downloadForm();
+
     await getFormData();
     await refreshDashBoardCount();
     isLoadingProject.value = false;

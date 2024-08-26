@@ -11,7 +11,7 @@ on 30 aug 2023
  */
 
 @Module
-class ContextModule(private val context: Application) {
+public class ContextModule(private val context: Application) {
     @Provides
     internal fun context(): Context {
         return context

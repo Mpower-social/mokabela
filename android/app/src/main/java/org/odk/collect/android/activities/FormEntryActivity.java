@@ -52,6 +52,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -2100,7 +2101,7 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
         // Register to receive location provider change updates and write them to the audit log
         if (formController != null && formController.currentFormAuditsLocation()
                 && PlayServicesUtil.isGooglePlayServicesAvailable(this)) {
-            registerReceiver(locationProvidersReceiver, new IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION));
+            ContextCompat.registerReceiver(this,locationProvidersReceiver, new IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION),ContextCompat.RECEIVER_NOT_EXPORTED);
         }
 
         // User may have changed location permissions in Android settings
@@ -2469,7 +2470,7 @@ public class FormEntryActivity extends CollectAbstractActivity implements Animat
         // log. onStart has already run but the formController was null so try again.
         if (formController.currentFormAuditsLocation()
                 && PlayServicesUtil.isGooglePlayServicesAvailable(this)) {
-            registerReceiver(locationProvidersReceiver, new IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION));
+            ContextCompat.registerReceiver(this,locationProvidersReceiver, new IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION),ContextCompat.RECEIVER_NOT_EXPORTED);
         }
 
         // onStart ran before the form was loaded. Let the viewModel know that the activity

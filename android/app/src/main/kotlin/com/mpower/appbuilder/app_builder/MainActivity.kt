@@ -6,6 +6,8 @@ import android.content.ContentValues
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 //import com.dghs.citizenportal.awaztulun.NewMainAwaztulunActivity
@@ -88,24 +90,32 @@ class MainActivity: FlutterActivity() {
                         call.method.equals("draftForms", true) -> {
                             val formIds = call.argument<List<String>>("formIds")
                             val forms = getDraftForms(formIds ?: emptyList())
-                            channelResult?.success(forms)
+                               try {
+                                   channelResult?.success(forms)
+                               }catch (e:Exception){}
                         }
                         call.method.equals("recentForms", true) -> {
                             val forms = getRecentForms()
-                            channelResult?.success(forms)
+                            try {
+                                channelResult?.success(forms)
+                            }catch (e:Exception){}
                         }
                         call.method.equals("finalizedForms", true) -> {
                             val formIds = call.argument<List<String>>("formIds")
                             val forms = getFinalizedForms(formIds ?: emptyList())
-                            channelResult?.success(forms)
+                            try {
+                                channelResult?.success(forms)
+                            }catch (e:Exception){}
                         }
                         call.method.equals("sendBackToDraft", true) -> {
                             val instanceId = call.argument<Int>("instanceId")
                             instanceId?.let {
                                 sendBackToDraft(it)
                             }
+                            try {
+                                channelResult?.success("success")
+                            }catch (e:Exception){}
 
-                            channelResult?.success("success")
                         }
 
                         call.method.equals("sendToSubmitted", true) -> {
@@ -113,15 +123,20 @@ class MainActivity: FlutterActivity() {
                             instanceId?.let {
                                 sendToSubmitted(it)
                             }
+                            try {
+                                channelResult?.success("success")
+                            }catch (e:Exception){}
 
-                            channelResult?.success("success")
                         }
                         call.method.equals("deleteDraft", true) -> {
                             val instanceId = call.argument<Int>("instanceId")
                             instanceId?.let {
                                 deleteDraftForm(it)
                             }
-                            channelResult?.success("success")
+                            try {
+                                channelResult?.success("success")
+                            }catch (e:Exception){}
+
                         }
                         call.method.equals("initializeOdk", true) -> {
                             val formXml = call.argument<String>("xmlData")
@@ -137,11 +152,15 @@ class MainActivity: FlutterActivity() {
                                     {
                                        // fetchGeoCsvAndProcess()
                                         Log.v("Form Download: ", "Success")
-                                        channelResult?.success("success")
+                                        try {
+                                            channelResult?.success("success")
+                                        }catch (e:Exception){}
                                     },
                                     {
                                         Log.v("Form Download: ", "Failure")
-                                        channelResult?.success("failure")
+                                        try {
+                                            channelResult?.success("failure")
+                                        }catch (e:Exception){}
                                     }
                                 )
                             )
@@ -155,7 +174,9 @@ class MainActivity: FlutterActivity() {
                 }
 
                 override fun denied() {
-                    channelResult?.error("Permission Required", "Failed", null)
+                    try {
+                        channelResult?.error("Permission Required", "Failed", null)
+                    }catch (e:Exception){}
                 }
             })
 
@@ -181,7 +202,9 @@ class MainActivity: FlutterActivity() {
             val formUri = ContentUris.withAppendedId(FormsProviderAPI.FormsColumns.CONTENT_URI, idFormsTable)
             openEditOdkForm(formUri)
         } else {
-            channelResult?.error("Related form not found", "failed", null)
+            try {
+                channelResult?.error("Related form not found", "failed", null)
+            }catch (e:Exception){}
             Toast.makeText(this, "Related form not found", Toast.LENGTH_SHORT).show()
         }
     }
@@ -247,14 +270,22 @@ class MainActivity: FlutterActivity() {
 
         if(requestCode == 100 && data!=null) {
             val value = data.getStringExtra("data")
-            if(channelResult!=null) channelResult?.success(value)
+            if(channelResult!=null) {
+                try {
+                    channelResult?.success(value)
+                }catch (e:Exception){}
+            }
             //if(channelResult!=null) channelResult?.success(value)
         }
 
         if(requestCode == 101 && data!=null && data.data != null) {
             val value = data.data
             val instancePath = getFormInstancePath(value!!)
-            if(channelResult!=null) channelResult?.success(instancePath)
+            if(channelResult!=null) {
+                try {
+                    channelResult?.success(instancePath)
+                }catch (e:Exception){}
+            }
            // if(channelResult!=null) channelResult?.success(instancePath)
         }
 
@@ -263,7 +294,11 @@ class MainActivity: FlutterActivity() {
             val instancePath = getFormInstancePath(value!!)
             FormUtil.addDeprecatedInstanceId(instancePath, deprecatedInstanceId!!)
             deprecatedInstanceId = null
-            if(channelResult!=null) channelResult?.success(value.toString())
+            if(channelResult!=null) {
+                try {
+                    channelResult?.success(value.toString())
+                }catch (e:Exception){}
+            }
             //if(channelResult!=null) channelResult?.success(value)
         }
 

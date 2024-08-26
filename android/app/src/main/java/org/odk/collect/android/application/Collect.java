@@ -28,6 +28,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
 import androidx.multidex.MultiDex;
 
 import com.evernote.android.job.JobManager;
@@ -198,8 +199,8 @@ public class Collect extends FlutterApplication {
 
         NotificationUtils.createNotificationChannel(singleton);
 
-        registerReceiver(new SmsSentBroadcastReceiver(), new IntentFilter(SMS_SEND_ACTION));
-        registerReceiver(new SmsNotificationReceiver(), new IntentFilter(SMS_NOTIFICATION_ACTION));
+        ContextCompat.registerReceiver(this,new SmsSentBroadcastReceiver(), new IntentFilter(SMS_SEND_ACTION), ContextCompat.RECEIVER_NOT_EXPORTED);
+        ContextCompat.registerReceiver(this,new SmsNotificationReceiver(), new IntentFilter(SMS_NOTIFICATION_ACTION),ContextCompat.RECEIVER_EXPORTED);
 
         try {
             JobManager

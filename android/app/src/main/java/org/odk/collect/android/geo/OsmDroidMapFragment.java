@@ -102,7 +102,7 @@ public class OsmDroidMapFragment extends Fragment implements MapFragment,
 
     @Override public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
         Context context = getActivity();
-        return context != null ? context.registerReceiver(receiver, filter) : null;
+        return context != null ? ContextCompat.registerReceiver(context,receiver, filter,ContextCompat.RECEIVER_NOT_EXPORTED) : null;
     }
 
     @Override public void unregisterReceiver(BroadcastReceiver receiver) {

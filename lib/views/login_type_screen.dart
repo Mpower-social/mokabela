@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:m_survey/controllers/login_type_controller.dart';
 import 'package:m_survey/res/color.dart';
 import 'package:m_survey/res/screen_size.dart';
 import 'package:m_survey/utils/odk_util.dart';
 import 'package:m_survey/views/login_screen.dart';
 import 'package:m_survey/widgets/common_button.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class LoginTypeScreen extends StatelessWidget {
   Function? hp;
@@ -15,6 +17,7 @@ class LoginTypeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     hp = Screen(MediaQuery.of(context).size).hp;
     wp = Screen(MediaQuery.of(context).size).wp;
+    Get.put(LoginTypeController());
     return SafeArea(
       child: Scaffold(
         backgroundColor: primaryColor,
@@ -40,7 +43,7 @@ class LoginTypeScreen extends StatelessWidget {
                     text: 'Entry For All'.tr,
                     bg: Colors.white,
                     textColor: black,
-                    tap: () => OdkUtil.instance.navigateToAwaztulo(),
+                    tap: () {}/*=> OdkUtil.instance.navigateToAwaztulo()*/,
                     width: wp!(100),
                     height: 50),
               ],
@@ -48,4 +51,14 @@ class LoginTypeScreen extends StatelessWidget {
       ),
     );
   }
+
+  Future<bool> requestManageExternalStoragePermission() async {
+    if (await Permission.manageExternalStorage.isGranted) {
+      return true; // Permission already granted
+    } else {
+      final status = await Permission.manageExternalStorage.request();
+      return status.isGranted;
+    }
+  }
+
 }

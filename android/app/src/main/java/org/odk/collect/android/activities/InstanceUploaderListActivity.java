@@ -34,6 +34,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LiveData;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
@@ -300,7 +301,6 @@ public class InstanceUploaderListActivity extends InstanceListActivity implement
         // the default, lower values will be after it.
         filter.setPriority(1);
 
-        registerReceiver(smsForegroundReceiver, filter);
         setupUploadButtons();
     }
 
