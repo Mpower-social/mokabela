@@ -4,6 +4,7 @@ Widget commonButton(
     {required String text,
     required Color bg,
     Color? textColor,
+    double? radius,
     required Function? tap,
     required double width,
     required double height,
@@ -18,8 +19,8 @@ Widget commonButton(
       onPressed: tap != null ? () => tap() : null,
       style: ElevatedButton.styleFrom(
           backgroundColor: bg,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(radius ?? 10))),
       child: isLoading
           ? const CircularProgressIndicator()
           : Text(

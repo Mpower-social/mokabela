@@ -81,8 +81,8 @@
 
     <application
         android:name=".application.Collect"
-        android:icon="@drawable/dghs_govt"
-        android:roundIcon="@drawable/dghs_govt"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:installLocation="auto"
         android:label="@string/app_name"
         android:largeHeap="true"
@@ -330,6 +330,10 @@
             </intent-filter>
         </activity>
 
+
+
+
+        <!-- Awaz Tulun -->
         <activity
             android:name="com.dghs.citizenportal.awaztulun.report.ReportActivity"
             android:exported="true"
