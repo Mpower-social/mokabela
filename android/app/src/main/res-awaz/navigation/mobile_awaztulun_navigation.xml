@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_awaztulun_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.dghs.citizenportal.awaztulun.home.NewHomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_awaztulun_home">
+        <action
+            android:id="@+id/action_nav_home_to_nav_registration"
+            app:destination="@id/nav_report"
+            app:popUpTo="@id/nav_home"
+            app:popUpToInclusive="true"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_report"
+        android:name="com.dghs.citizenportal.awaztulun.report.ReportFragment"
+        android:label="@string/do_report"
+        tools:layout="@layout/fragment_add_report" >
+        <action
+            android:id="@+id/action_nav_registration_to_nav_otp_verify"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_incident_detail"
+        android:name="com.dghs.citizenportal.awaztulun.report.ReportFragment"
+        android:label="@string/do_report"
+        tools:layout="@layout/fragment_add_report" >
+        <action
+            android:id="@+id/action_nav_registration_to_nav_otp_verify"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+</navigation>

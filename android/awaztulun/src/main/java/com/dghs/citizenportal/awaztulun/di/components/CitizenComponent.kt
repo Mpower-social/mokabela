@@ -18,7 +18,7 @@ import dagger.Component
 on 30 aug 2023
  */
 
-@Component(modules = [ApiModule::class,ContextModule::class])
+@Component(modules = [ApiModule::class])
 interface CitizenComponent {
 
     fun injectApplication(application: CitizenApplication)
@@ -33,7 +33,6 @@ interface CitizenComponent {
         fun build(): CitizenComponent
         fun apiModule(apiModule: ApiModule): Builder
         fun networkModule(networkModule: NetworkModule): Builder
-        fun contextModule(contextModule: ContextModule): Builder
         fun okHttpClientModule(okHttpClientModule: OkHttpModule): Builder
     }
 }

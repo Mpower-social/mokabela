@@ -300,7 +300,12 @@ public class InstanceUploaderListActivity extends InstanceListActivity implement
         // the default, lower values will be after it.
         filter.setPriority(1);
 
-        registerReceiver(smsForegroundReceiver, filter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(smsForegroundReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(smsForegroundReceiver, filter);
+        }
+
         setupUploadButtons();
     }
 

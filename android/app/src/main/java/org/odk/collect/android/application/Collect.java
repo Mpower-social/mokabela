@@ -21,6 +21,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -30,6 +31,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.multidex.MultiDex;
 
+import com.dghs.citizenportal.awaztulun.di.components.CitizenComponent;
+import com.dghs.citizenportal.awaztulun.di.components.DaggerCitizenComponent;
+import com.dghs.citizenportal.awaztulun.di.modules.ApiModule;
+import com.dghs.citizenportal.awaztulun.di.modules.NetworkModule;
+import com.dghs.citizenportal.awaztulun.di.modules.OkHttpModule;
 import com.evernote.android.job.JobManager;
 import com.evernote.android.job.JobManagerCreateException;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -102,6 +108,7 @@ public class Collect extends FlutterApplication {
     private ExternalDataManager externalDataManager;
     private FirebaseAnalytics firebaseAnalytics;
     private AppDependencyComponent applicationComponent;
+    private CitizenComponent citizenComponent;
     private Context activityContext;
 
     @Inject
@@ -198,8 +205,13 @@ public class Collect extends FlutterApplication {
 
         NotificationUtils.createNotificationChannel(singleton);
 
-        registerReceiver(new SmsSentBroadcastReceiver(), new IntentFilter(SMS_SEND_ACTION));
-        registerReceiver(new SmsNotificationReceiver(), new IntentFilter(SMS_NOTIFICATION_ACTION));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(new SmsSentBroadcastReceiver(), new IntentFilter(SMS_SEND_ACTION), Context.RECEIVER_NOT_EXPORTED);
+            registerReceiver(new SmsNotificationReceiver(), new IntentFilter(SMS_NOTIFICATION_ACTION), Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(new SmsSentBroadcastReceiver(), new IntentFilter(SMS_SEND_ACTION));
+            registerReceiver(new SmsNotificationReceiver(), new IntentFilter(SMS_NOTIFICATION_ACTION));
+        }
 
         try {
             JobManager
@@ -246,8 +258,16 @@ public class Collect extends FlutterApplication {
     }
 
     private void setupDagger() {
+
         applicationComponent = DaggerAppDependencyComponent.builder()
                 .application(this)
+                .build();
+
+        citizenComponent = DaggerCitizenComponent.builder()
+                .appComponent(applicationComponent)
+                .apiModule(ApiModule.INSTANCE)
+                .okHttpClientModule(OkHttpModule.INSTANCE)
+                .networkModule(NetworkModule.INSTANCE)
                 .build();
 
         applicationComponent.inject(this);
@@ -392,6 +412,10 @@ public class Collect extends FlutterApplication {
                 );
     }
 
+    public String getMokabelaServerBaseAddress() {
+        return getString(R.string.mokabela_server_url);
+    }
+
     public String getUsername() {
         String userName = PreferenceManager
                 .getDefaultSharedPreferences(this)
@@ -413,5 +437,9 @@ public class Collect extends FlutterApplication {
 
     public Map<String, String> addMetaDataToSurveyForm(String instancePath, String formId) {
         return FormUtil.INSTANCE.addMetaDataToSurveyForm(instancePath, formId);
+    }
+
+    public CitizenComponent getCitizenComponent() {
+        return citizenComponent;
     }
 }

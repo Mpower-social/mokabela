@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.util.Log
 import android.widget.Toast
+import com.dghs.citizenportal.awaztulun.NewMainAwaztulunActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.mpower.appbuilder.app_builder.models.FormInstance
@@ -54,6 +55,10 @@ class MainActivity: FlutterActivity() {
             PermissionUtils().requestStoragePermissions(this, object: PermissionListener {
                 override fun granted() {
                     when {
+                        call.method.equals("navigateToAwaztulun", true) -> {
+                            startActivity(Intent(this@MainActivity, NewMainAwaztulunActivity::class.java))
+                        }
+
                         call.method.equals("goToSettings", true) -> {
                             startActivity(Intent(this@MainActivity, PreferencesActivity::class.java))
                         }
