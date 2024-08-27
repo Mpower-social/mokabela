@@ -231,7 +231,7 @@ public class Collect extends FlutterApplication {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         JodaTimeAndroid.init(this);
 
-        defaultSysLanguage = Locale.getDefault().getLanguage();
+        defaultSysLanguage = "bn";
         new LocaleHelper().updateLocale(this);
 
         initializeJavaRosa();

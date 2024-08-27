@@ -133,7 +133,7 @@ public final class GeneralKeys {
         hashMap.put(KEY_SUBMISSION_TRANSPORT_TYPE,  Collect.getInstance().getString(R.string.transport_type_value_internet));
         // user_interface_preferences.xml
         hashMap.put(KEY_APP_THEME,                  Collect.getInstance().getString(R.string.app_theme_light));
-        hashMap.put(KEY_APP_LANGUAGE,               "");
+        hashMap.put(KEY_APP_LANGUAGE,               "bn");
         hashMap.put(KEY_FONT_SIZE,                  Collect.DEFAULT_FONTSIZE);
         hashMap.put(KEY_NAVIGATION,                 NAVIGATION_SWIPE_BUTTONS);
         hashMap.put(KEY_SHOW_SPLASH,                false);
