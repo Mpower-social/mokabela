@@ -73,7 +73,7 @@ Widget formCard({
                           ),
                           SizedBox(height: 10),
                           Text(
-                            'Total Submission: ${(data.totalSubmission ?? 0).toString()}',
+                            'মোট জমা: ${(data.totalSubmission ?? 0).toString()}',
                             style: TextStyle(fontSize: 16),
                           ),
                         ],

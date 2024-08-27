@@ -31,7 +31,7 @@ class DashboardScreen extends StatelessWidget {
       color: statusBarColor,
       child: SafeArea(
         child: Scaffold(
-          appBar: baseAppBarWithDrawer(title: 'Home', context: context),
+          appBar: baseAppBarWithDrawer(title: 'Home'.tr, context: context),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -66,7 +66,7 @@ class FormDetailsScreen extends StatelessWidget {
                   Obx(
                     () => iconButton(
                         icon: AppIcons.draft,
-                        title: 'Drafts (${controller.draftFormCount})',
+                        title: '${'draft'.tr} (${controller.draftFormCount})',
                         bg: primaryColor,
                         textColor: white,
                         height: 45,
@@ -78,7 +78,7 @@ class FormDetailsScreen extends StatelessWidget {
                   ),
                   Obx(() => iconButton(
                       icon: CupertinoIcons.arrow_left_square_fill,
-                      title: 'Reverted (${controller.revertedFormCount})',
+                      title: '${'Reverted'.tr} (${controller.revertedFormCount})',
                       bg: primaryColor,
                       textColor: white,
                       height: 45,
@@ -89,7 +89,7 @@ class FormDetailsScreen extends StatelessWidget {
                   ),
                   Obx(() => iconButton(
                       icon: CupertinoIcons.checkmark_square_fill,
-                      title: 'Ready to Sync (${controller.completeFormCount})',
+                      title: '${'ready_to_sync'.tr} (${controller.completeFormCount})',
                       bg: primaryColor,
                       textColor: white,
                       height: 45,
@@ -100,7 +100,7 @@ class FormDetailsScreen extends StatelessWidget {
                   ),
                   Obx(() => iconButton(
                         icon: Icons.remove_red_eye,
-                        title: 'Submitted (${controller.submittedFormList.length})',
+                        title: '${'submitted'.tr} (${controller.submittedFormList.length})',
                         bg: primaryColor,
                         textColor: white,
                         height: 45,
@@ -129,7 +129,7 @@ class FormDetailsScreen extends StatelessWidget {
             children: [
               RichText(
                 text: TextSpan(children: [
-                  TextSpan(text: 'Project: '),
+                  TextSpan(text: 'Project: '.tr),
                   TextSpan(
                       text: '${projectListFromData?.projectName ?? ''}',
                       style: TextStyle(fontWeight: FontWeight.bold)),
@@ -137,7 +137,7 @@ class FormDetailsScreen extends StatelessWidget {
               ),
               SizedBox(height: hp!(5)),
               Text(
-                'Total(${allFormsData?.target ?? '0'})',
+                '${'Total'.tr}(${allFormsData?.target ?? '0'})',
                 style: TextStyle(color: white),
               ),
               SizedBox(height: hp!(1.5)),
@@ -210,7 +210,7 @@ class FormDetailsScreen extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      'Collect',
+                      'Collect'.tr,
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold),
                     )

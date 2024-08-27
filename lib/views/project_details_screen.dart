@@ -50,7 +50,7 @@ class ProjectDetailsScreen extends StatelessWidget {
                         .navigateToActiveFormsScreen(_projectListFromData),
                     child: Obx(
                       () => statisticsCard(
-                          title: 'Active Forms',
+                          title: 'active_form'.tr,
                           data:
                               '${Utils.numberFormatter.format(_controller.activeFormCount.value)}',
                           icon: AppIcons.active,
@@ -63,7 +63,7 @@ class ProjectDetailsScreen extends StatelessWidget {
                         .navigateToDraftFormsScreen(_projectListFromData),
                     child: Obx(
                       () => statisticsCard(
-                          title: 'Draft',
+                          title: 'draft'.tr,
                           data:
                               '${Utils.numberFormatter.format(_controller.draftFormCount.value)}',
                           icon: AppIcons.draft,
@@ -80,7 +80,7 @@ class ProjectDetailsScreen extends StatelessWidget {
                         .navigateToSubmittedFormsScreen(_projectListFromData),
                     child: Obx(
                       () => statisticsCard(
-                          title: 'Submitted',
+                          title: 'submitted'.tr,
                           data:
                               '${Utils.numberFormatter.format(_controller.submittedFormCount.value)}',
                           icon: AppIcons.submitted,
@@ -93,7 +93,7 @@ class ProjectDetailsScreen extends StatelessWidget {
                         .navigateToSyncFormsScreen(_projectListFromData),
                     child: Obx(
                       () => statisticsCard(
-                          title: 'Ready to Sync',
+                          title: 'ready_to_sync'.tr,
                           data:
                               '${Utils.numberFormatter.format(_controller.completeFormCount.value)}',
                           icon: AppIcons.ready_sync,
@@ -160,7 +160,7 @@ class ProjectDetailsScreen extends StatelessWidget {
       children: [
         Expanded(
           flex: 4,
-          child: title(title: 'All Forms'),
+          child: title(title: 'All_Forms'.tr),
         ),
         Expanded(
           flex: 6,
@@ -174,7 +174,7 @@ class ProjectDetailsScreen extends StatelessWidget {
                 horPadding: 12,
                 fillColor: primaryColor,
                 borderColor: grey,
-                hintTextStr: 'Search',
+                hintTextStr: 'Search'.tr,
                 suffixIcon: Container(
                   height: 35,
                   width: 35,

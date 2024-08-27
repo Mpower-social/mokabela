@@ -23,14 +23,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Mokabela',
+      title: 'মোকাবেলা',
       theme: ThemeData(
         primarySwatch: Colors.blue,
        textTheme: GoogleFonts.robotoTextTheme()
       ),
       initialBinding: AllBindings(),
       translations: Translation(),
-      locale: const Locale('en','EN'),
+      locale: const Locale('bn','BN'),
       defaultTransition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 500),
       home: const SplashScreen(),
