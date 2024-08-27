@@ -35,7 +35,7 @@ class ActiveFormScreen extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
             appBar: baseAppBar(
-                title: showActiveFormsOnly ? 'Active Forms' : 'All Forms'),
+                title: showActiveFormsOnly ? 'active_form'.tr : 'All_Forms'.tr),
             body: Container(
               height: hp!(100),
               width: wp!(100),

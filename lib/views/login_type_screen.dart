@@ -30,7 +30,7 @@ class LoginTypeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 commonButton(
-                    text: 'Login for NGO'.tr,
+                    text: 'Login_for_NGO'.tr,
                     bg: Colors.white,
                     textColor: black,
                     tap: () => Get.to(() => LoginScreen()),
@@ -40,7 +40,7 @@ class LoginTypeScreen extends StatelessWidget {
                   height: 20,
                 ),
                 commonButton(
-                    text: 'Entry For All'.tr,
+                    text: 'Entry_For_All'.tr,
                     bg: Colors.white,
                     textColor: black,
                     tap: () {}/*=> OdkUtil.instance.navigateToAwaztulo()*/,
