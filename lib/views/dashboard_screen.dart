@@ -138,23 +138,23 @@ class DashboardScreen extends StatelessWidget {
                       Expanded(
                           flex: 9,
                           child: _ongoingProjectList()
-                      ),
-
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                            width: wp!(100),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text('powered_by'.tr),
-                                const SizedBox(height: 8),
-                                Image.asset('assets/images/mpower.png')
-                              ],
-                            )
-                        ),
                       )
+
+                      // Expanded(
+                      //   flex: 2,
+                      //   child: Container(
+                      //       width: wp!(100),
+                      //       child: Column(
+                      //         mainAxisAlignment: MainAxisAlignment.center,
+                      //         crossAxisAlignment: CrossAxisAlignment.center,
+                      //         children: [
+                      //           Text('powered_by'.tr),
+                      //           const SizedBox(height: 8),
+                      //           Image.asset('assets/images/mpower.png')
+                      //         ],
+                      //       )
+                      //   ),
+                      // )
                     ],
                   ),
                 ),
