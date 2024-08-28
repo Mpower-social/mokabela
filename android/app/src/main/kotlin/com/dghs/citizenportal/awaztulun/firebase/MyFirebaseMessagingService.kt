@@ -78,7 +78,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             val notificationBuilder = NotificationCompat.Builder(Collect.getInstance(), getString(R.string.notification_channel_id))
                 .setContentTitle(title)
                 .setContentText(Html.fromHtml(message))
-                .setSmallIcon(R.drawable.dghs_govt)
+                .setSmallIcon(R.drawable.msurvey_appicon)
                 .setColor(resources.getColor(R.color.blue))
                 .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
 //            .setDefaults(NotificationCompat.DEFAULT_ALL)

@@ -74,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                               horPadding: 10,
                               fillColor: primaryColor,
                               borderColor: grey,
-                              hintTextStr: '${'enter'.tr} ${'email'.tr}'),
+                              hintTextStr: '${'email'.tr} ${'enter'.tr} '),
                           validator: (v) {
                             return Utils.validateEmail(v!);
                           },
@@ -104,7 +104,7 @@ class LoginScreen extends StatelessWidget {
                               horPadding: 10,
                               fillColor: primaryColor,
                               borderColor: grey,
-                              hintTextStr: '${'enter'.tr} ${'password'.tr}',
+                              hintTextStr: '${'password'.tr} ${'enter'.tr} ',
                               suffixIcon: IconButton(
                                   onPressed: () {
                                     controller.isPassVisible.value =

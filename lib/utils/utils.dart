@@ -6,6 +6,7 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:m_survey/utils/shared_pref.dart';
+import 'package:m_survey/views/login_type_screen.dart';
 
 import '../views/login_screen.dart';
 
@@ -91,6 +92,6 @@ class Utils {
 
   static logoutOperation() {
     SharedPref.sharedPref.clear();
-    Get.offAll(() => LoginScreen());
+    Get.offAll(() => LoginTypeScreen());
   }
 }
