@@ -74,7 +74,7 @@ Widget drawer(String name, String designation, {required wp}) {
                     color: white,
                   ),
                   title: Text(
-                    'Settings',
+                    'settings'.tr,
                     style: TextStyle(fontSize: 20, color: white),
                   ),
                   onTap: () {
@@ -122,15 +122,15 @@ Widget drawer(String name, String designation, {required wp}) {
                     color: white,
                   ),
                   title: Text(
-                    'Logout',
+                    'Logout'.tr,
                     style: TextStyle(fontSize: 20, color: white),
                   ),
                   onTap: () {
                     infoDialog(
-                        title: 'Log out',
-                        msg: 'Are you sure to Logout?',
-                        confirmText: 'Yes',
-                        cancelText: 'No',
+                        title: 'Logout'.tr,
+                        msg: 'logout_confirmation'.tr,
+                        confirmText: 'Yes'.tr,
+                        cancelText: 'No'.tr,
                         onCancelTap: () => Get.back(),
                         onOkTap: () => Utils.logoutOperation());
                   },
@@ -151,7 +151,7 @@ Widget drawer(String name, String designation, {required wp}) {
                     controller.getAllData(true);
                   },
                   icon: AppIcons.reload,
-                  title: 'Load',
+                  title: 'load'.tr,
                   width: wp),
               const SizedBox(
                 width: 30,
@@ -159,10 +159,10 @@ Widget drawer(String name, String designation, {required wp}) {
               iconButton(
                   onTap: ()async{
                     controller.sync();
-                    showToast(msg: 'Sync started');
+                    showToast(msg: 'sync_started'.tr);
                   },
                   icon: AppIcons.sync_icon,
-                  title: 'Sync',
+                  title: 'sync'.tr,
                   width: wp)
             ],
           ),

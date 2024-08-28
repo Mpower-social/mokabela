@@ -34,7 +34,14 @@ class Translation extends Translations {
       'Project: ':'Project: ',
       'All_Forms':'All Forms',
       'Total':'Total',
-      'Search':'Search'
+      'Search':'Search',
+      'Logout':'Logout',
+      'logout_confirmation':'Are you sure to Logout?',
+      'Yes':'Yes',
+      'No':'No',
+      'sync_started':'Sync started',
+      'sync':'sync',
+      'settings':'Settings'
     },
     'bn_BN': {
       'Login_for_NGO':'প্রাতিষ্ঠানিক ব্যবহারকারী',
@@ -67,7 +74,15 @@ class Translation extends Translations {
       'Project: ':'প্রকল্প: ',
       'Total':'মোট',
       'All_Forms':'সমস্ত ফর্ম',
-      'Search':'খুজুন'
+      'Search':'খুজুন',
+      'Logout':'লগ আউট',
+      'logout_confirmation':'আপনি লগআউট করতে চান?',
+      'Yes':'হ্যাঁ',
+      'No':'না',
+      'sync_started':'সিঙ্ক শুরু হয়েছে',
+      'sync':'সিঙ্ক',
+      'settings':'সেটিংস'
+
     },
     'de_DE': {
       'hello': 'Hallo Welt',
