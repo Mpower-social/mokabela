@@ -95,8 +95,8 @@ class NewHomeFragment : Fragment(), MapListener {
                 location?.let {
                     if(System.currentTimeMillis() - viewModel.lastRefreshTime > Constants.DEFAULT_UPDATE_TIME){
                         viewModel.lastRefreshTime = System.currentTimeMillis()
-                        val latitude = String.format(Locale.getDefault(), "%.4f", location.latitude).toDouble()
-                        val longitude = String.format(Locale.getDefault(), "%.4f", location.longitude).toDouble()
+                        val latitude = String.format(Locale.US, "%.4f", location.latitude).toDouble()
+                        val longitude = String.format(Locale.US, "%.4f", location.longitude).toDouble()
 
                         if(latitude != viewModel.latitude || longitude != viewModel.longitude) {
                             currentGeoPoint = GeoPoint(latitude,longitude)
