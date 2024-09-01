@@ -20,8 +20,8 @@ class Apis{
   //static var odkRelatedUrl = 'http://192.168.22.59:8111';//local
 
 
-  static var baseUrl = '$live/msurvey/api';//dev
-  static var odkUrl = odkUrlLive;
+  static var baseUrl = '$qa/msurvey/api';//qa
+  static var odkUrl = odkUrlQa;
 
   static var login = '$baseUrl/auth/login';
   static var refreshToken = '$baseUrl/auth/refresh-token';
