@@ -127,9 +127,9 @@ android {
             resValue "string", "privacy_url","https://cutt.ly/CevjmvWW";//https://drive.google.com/drive/folders/1cllMD497SYjJ6sUiASl71IOWSAZnLC8C?usp=sharing
             resValue "string", "app_url","https://cutt.ly/devjmaT7";// "https://drive.google.com/drive/folders/1dWwrvVob-i9LeH5LRzs5hGceTlu_3JUD?usp=sharing"
             resValue "string", "default_server_url", "http://192.168.22.59:3000"
-            resValue "string", "mokabela_server_url", "https://mokabela.net"
+            // resValue "string", "mokabela_server_url", "https://mokabela.net"
 
-//            resValue "string", "mokabela_server_url", "https://reliefdistributionqa-api.mpower-social.com"
+           resValue "string", "mokabela_server_url", "https://reliefdistributionqa-api.mpower-social.com"
         }
     }
 }
