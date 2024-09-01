@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:m_survey/views/dashboard_screen.dart';
 import 'package:m_survey/views/login_screen.dart';
@@ -25,6 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     wp = Screen(MediaQuery.of(context).size).wp;
@@ -39,12 +41,10 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              singleImageHolder('assets/images/msurvey_appicon.png',hp(50),wp(80)),
-             /* Text('mSurvey',
-              style: TextStyle(
-                color: primaryColor,
-                fontSize: 36
-              ),),*/
+              Image.asset(
+                'assets/images/msurvey_appicon.png',
+                width: wp(60),
+              ),
             ],
           ),
         ),
@@ -52,12 +52,12 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  void checkCredential()async {
+  void checkCredential() async {
     await Future.delayed(const Duration(seconds: 2));
-    if(await SharedPref.sharedPref.getString(SharedPref.TOKEN)!=null){
-      Get.offAll(()=>DashboardScreen());
-    }else{
-      Get.offAll(()=> LoginTypeScreen());
+    if (await SharedPref.sharedPref.getString(SharedPref.TOKEN) != null) {
+      Get.offAll(() => DashboardScreen());
+    } else {
+      Get.offAll(() => LoginTypeScreen());
     }
   }
 }

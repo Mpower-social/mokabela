@@ -1,99 +1,10 @@
 {
   "project_info": {
-    "project_number": "347834475766",
-    "firebase_url": "https://mpower-project.firebaseio.com",
-    "project_id": "mpower-project",
-    "storage_bucket": "mpower-project.appspot.com"
+    "project_number": "1072735118238",
+    "project_id": "citizen-dbec8",
+    "storage_bucket": "citizen-dbec8.appspot.com"
   },
   "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:347834475766:android:31ff7fc99e9cfc74c3f8d7",
-        "android_client_info": {
-          "package_name": "com.mpower.android.app.upba.rnat"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "347834475766-v6sq4d3g8kah3q890nmjk9m4spoh3h9l.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB68Vk9rCeWjSr25owNzuoqENuulHiUutQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "347834475766-v6sq4d3g8kah3q890nmjk9m4spoh3h9l.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:347834475766:android:8bfb269fbf2d2ca7c3f8d7",
-        "android_client_info": {
-          "package_name": "com.mpower.appbuilder.app_builder"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "347834475766-v6sq4d3g8kah3q890nmjk9m4spoh3h9l.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB68Vk9rCeWjSr25owNzuoqENuulHiUutQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "347834475766-v6sq4d3g8kah3q890nmjk9m4spoh3h9l.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:347834475766:android:3cd1b71dba83a4a2c3f8d7",
-        "android_client_info": {
-          "package_name": "com.mpower.hybrid.app.msurvey"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "347834475766-v6sq4d3g8kah3q890nmjk9m4spoh3h9l.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB68Vk9rCeWjSr25owNzuoqENuulHiUutQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "347834475766-v6sq4d3g8kah3q890nmjk9m4spoh3h9l.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-
     {
       "client_info": {
         "mobilesdk_app_id": "1:1072735118238:android:49a2ea5bd7274775496c8f",

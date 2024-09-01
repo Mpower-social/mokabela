@@ -9,10 +9,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'res/translation.dart';
 
-void main() async{
+void main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
-   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await SharedPref.sharedPref.init();
   runApp(const MyApp());
 }
@@ -25,12 +26,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'মোকাবেলা',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-       textTheme: GoogleFonts.robotoTextTheme()
-      ),
+          primarySwatch: Colors.blue, textTheme: GoogleFonts.robotoTextTheme()),
+      debugShowCheckedModeBanner: false,
       initialBinding: AllBindings(),
       translations: Translation(),
-      locale: const Locale('bn','BN'),
+      locale: const Locale('bn', 'BN'),
       defaultTransition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 500),
       home: const SplashScreen(),

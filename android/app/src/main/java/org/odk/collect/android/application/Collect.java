@@ -21,6 +21,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -28,9 +29,13 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.content.ContextCompat;
 import androidx.multidex.MultiDex;
 
+import com.dghs.citizenportal.awaztulun.di.components.CitizenComponent;
+import com.dghs.citizenportal.awaztulun.di.components.DaggerCitizenComponent;
+import com.dghs.citizenportal.awaztulun.di.modules.ApiModule;
+import com.dghs.citizenportal.awaztulun.di.modules.NetworkModule;
+import com.dghs.citizenportal.awaztulun.di.modules.OkHttpModule;
 import com.evernote.android.job.JobManager;
 import com.evernote.android.job.JobManagerCreateException;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -103,6 +108,7 @@ public class Collect extends FlutterApplication {
     private ExternalDataManager externalDataManager;
     private FirebaseAnalytics firebaseAnalytics;
     private AppDependencyComponent applicationComponent;
+    private CitizenComponent citizenComponent;
     private Context activityContext;
 
     @Inject
@@ -199,8 +205,13 @@ public class Collect extends FlutterApplication {
 
         NotificationUtils.createNotificationChannel(singleton);
 
-        ContextCompat.registerReceiver(this,new SmsSentBroadcastReceiver(), new IntentFilter(SMS_SEND_ACTION), ContextCompat.RECEIVER_NOT_EXPORTED);
-        ContextCompat.registerReceiver(this,new SmsNotificationReceiver(), new IntentFilter(SMS_NOTIFICATION_ACTION),ContextCompat.RECEIVER_EXPORTED);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(new SmsSentBroadcastReceiver(), new IntentFilter(SMS_SEND_ACTION), Context.RECEIVER_NOT_EXPORTED);
+            registerReceiver(new SmsNotificationReceiver(), new IntentFilter(SMS_NOTIFICATION_ACTION), Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(new SmsSentBroadcastReceiver(), new IntentFilter(SMS_SEND_ACTION));
+            registerReceiver(new SmsNotificationReceiver(), new IntentFilter(SMS_NOTIFICATION_ACTION));
+        }
 
         try {
             JobManager
@@ -220,7 +231,7 @@ public class Collect extends FlutterApplication {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         JodaTimeAndroid.init(this);
 
-        defaultSysLanguage = Locale.getDefault().getLanguage();
+        defaultSysLanguage = "bn";
         new LocaleHelper().updateLocale(this);
 
         initializeJavaRosa();
@@ -233,7 +244,7 @@ public class Collect extends FlutterApplication {
 
         setupRemoteAnalytics();
         //setupLeakCanary();
-        setupOSMDroid();
+        //setupOSMDroid();
 
         // Force inclusion of scoped storage strings so they can be translated
         Timber.i("%s %s", getString(R.string.scoped_storage_banner_text),
@@ -246,13 +257,17 @@ public class Collect extends FlutterApplication {
         setAnalyticsCollectionEnabled(isAnalyticsEnabled);
     }
 
-    protected void setupOSMDroid() {
-        org.osmdroid.config.Configuration.getInstance().setUserAgentValue(userAgentProvider.getUserAgent());
-    }
-
     private void setupDagger() {
+
         applicationComponent = DaggerAppDependencyComponent.builder()
                 .application(this)
+                .build();
+
+        citizenComponent = DaggerCitizenComponent.builder()
+                .appComponent(applicationComponent)
+                .apiModule(ApiModule.INSTANCE)
+                .okHttpClientModule(OkHttpModule.INSTANCE)
+                .networkModule(NetworkModule.INSTANCE)
                 .build();
 
         applicationComponent.inject(this);
@@ -397,6 +412,10 @@ public class Collect extends FlutterApplication {
                 );
     }
 
+    public String getMokabelaServerBaseAddress() {
+        return getString(R.string.mokabela_server_url);
+    }
+
     public String getUsername() {
         String userName = PreferenceManager
                 .getDefaultSharedPreferences(this)
@@ -418,5 +437,9 @@ public class Collect extends FlutterApplication {
 
     public Map<String, String> addMetaDataToSurveyForm(String instancePath, String formId) {
         return FormUtil.INSTANCE.addMetaDataToSurveyForm(instancePath, formId);
+    }
+
+    public CitizenComponent getCitizenComponent() {
+        return citizenComponent;
     }
 }

@@ -24,7 +24,6 @@
     <string name="dont_add_repeat">Do not add</string>
     
     <string name="add_another_menu">Add another</string>
-    <string name="cancel">Cancel</string>
     <string name="cancel_loading_form">Cancel</string>
     <string name="cancel_location">Cancel</string>
     <string name="canceling">Canceling</string>
@@ -627,8 +626,6 @@
     <string name="moving_backwards_disabled_message">Configure the device to prevent users from bypassing this setting?\n\nThe changes are:\n\u2022 Disable Edit Saved Form\n\u2022 Disable Save Form\n\u2022 Disable Go To Prompt\n\u2022 Set Constraint processing to Validate upon forward swipe</string>
     <string name="moving_backwards_enabled_title">Moving backwards enabled</string>
     <string name="moving_backwards_enabled_message">You may wish to review the following settings:\n\n\u2022 Edit Saved Form\n\u2022 Save Form\n\u2022 Go To Prompt\n\u2022 Constraint processing</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
     <string name="newer_version_of_a_form_info">This is an update to a form you have</string>
     <string name="svg_file_does_not_exist">SVG file does not exist!</string>
     <string name="start_video_capture_instruction">Tap the screen to start recording</string>
@@ -696,7 +693,6 @@
     <string name="missing_google_account_dialog_title">Google account not set</string>
     <string name="missing_google_account_dialog_desc">To submit forms via Google Sheets you have to set up your Google account in the Server settings.</string>
     <string name="sms_invalid_phone_number_description">Set a destination phone number for SMS submissions or change your transport type.</string>
-    <string name="notification_channel_name">General notifications</string>
     <string name="corrupt_imported_preferences_error">Current settings are corrupt. From the admin settings, reset settings or import working ones.</string>
     <string name="google_play_services_not_available">This form wants to track your location but Google Play Services are not available.</string>
     <string name="location_providers_disabled_dialog_message">This form wants to track your location but location providers are disabled. Please enable in Android settings.</string>

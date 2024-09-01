@@ -16,46 +16,52 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     hp = Screen(MediaQuery.of(context).size).hp;
     wp = Screen(MediaQuery.of(context).size).wp;
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: primaryColor,
-        body: SingleChildScrollView(
+    return Scaffold(
+      backgroundColor: primaryColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Container(
-            height: hp!(100)-kToolbarHeight,
+            height: hp!(100) - kToolbarHeight,
             width: wp!(100),
-            margin: const EdgeInsets.only(left: 40,right: 40),
+            margin: const EdgeInsets.only(left: 40, right: 40),
             child: GetX<LoginController>(
               init: LoginController(),
-              builder: (controller){
+              builder: (controller) {
                 return Form(
                   key: controller.loginFormKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-
                       ///tittle
-                      Text('মোকাবেলা',
+                      Text(
+                        'মোকাবেলা',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 45,color: white
-                        ),),
-                      const SizedBox(height: 5,),
+                            fontSize: 45,
+                            color: white),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+
                       ///subtittle
                       // Text('login_top_title'.tr,
                       //   textAlign: TextAlign.center,
                       //   style: TextStyle(
                       //       fontSize: 16,color: white
                       //   ),),
-                      const SizedBox(height: 40,),
-
+                      const SizedBox(
+                        height: 40,
+                      ),
 
                       ///input fields
                       Align(
                           alignment: Alignment.centerLeft,
-                          child: title(title: '${'email'.tr}*',color: white)
+                          child: title(title: '${'email'.tr}*', color: white)),
+                      const SizedBox(
+                        height: 8,
                       ),
-                      const SizedBox(height: 8,),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: TextFormField(
@@ -64,26 +70,28 @@ class LoginScreen extends StatelessWidget {
                           style: const TextStyle(color: Colors.white),
                           controller: controller.emailController,
                           decoration: CommonStyle.textFieldStyle(
-                              verPadding:15,
+                              verPadding: 15,
                               horPadding: 10,
                               fillColor: primaryColor,
                               borderColor: grey,
-                              hintTextStr: '${'enter'.tr} ${'email'.tr}'
-                          ),
-
-                          validator: (v){
+                              hintTextStr: '${'email'.tr} ${'enter'.tr} '),
+                          validator: (v) {
                             return Utils.validateEmail(v!);
                           },
                         ),
                       ),
 
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
 
                       Align(
                           alignment: Alignment.centerLeft,
-                          child: title(title: '${'password'.tr}*',color: white)
+                          child:
+                              title(title: '${'password'.tr}*', color: white)),
+                      const SizedBox(
+                        height: 8,
                       ),
-                      const SizedBox(height: 8,),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: TextFormField(
@@ -92,25 +100,32 @@ class LoginScreen extends StatelessWidget {
                           style: const TextStyle(color: Colors.white),
                           controller: controller.passController,
                           decoration: CommonStyle.textFieldStyle(
-                              verPadding:15,
+                              verPadding: 15,
                               horPadding: 10,
                               fillColor: primaryColor,
                               borderColor: grey,
-                              hintTextStr: '${'enter'.tr} ${'password'.tr}',
+                              hintTextStr: '${'password'.tr} ${'enter'.tr} ',
                               suffixIcon: IconButton(
-                                  onPressed: (){
-                                    controller.isPassVisible.value = !controller.isPassVisible.value;
-                                  }, icon: Icon(controller.isPassVisible.value?CupertinoIcons.eye_slash_fill:CupertinoIcons.eye_fill,color: white,)
-                              )
-                          ),
-
-                          validator: (v){
-                            if(v!.isEmpty) return '${'password'.tr} ${'must'.tr}';
+                                  onPressed: () {
+                                    controller.isPassVisible.value =
+                                        !controller.isPassVisible.value;
+                                  },
+                                  icon: Icon(
+                                    controller.isPassVisible.value
+                                        ? CupertinoIcons.eye_slash_fill
+                                        : CupertinoIcons.eye_fill,
+                                    color: white,
+                                  ))),
+                          validator: (v) {
+                            if (v!.isEmpty)
+                              return '${'password'.tr} ${'must'.tr}';
                             return null;
                           },
                         ),
                       ),
-                      const SizedBox(height: 30,),
+                      const SizedBox(
+                        height: 30,
+                      ),
 
                       ///login button
                       Align(
@@ -119,23 +134,25 @@ class LoginScreen extends StatelessWidget {
                             text: 'login'.tr,
                             bg: green,
                             textColor: black,
-                            tap: (){
+                            tap: () {
                               //Get.to(()=>DashboardScreen());
-                              if(controller.loginFormKey.currentState!.validate()){
+                              if (controller.loginFormKey.currentState!
+                                  .validate()) {
                                 controller.loginOperation();
                               }
                             },
                             width: wp!(100),
-                            height: 50,isLoading: controller.isLoading.value
-                        ),
+                            height: 50,
+                            isLoading: controller.isLoading.value),
                       ),
-                      const SizedBox(height: 30,),
-                      Text('login_bottom_title'.tr,
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Text(
+                        'login_bottom_title'.tr,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 16,color: white
-                        ),),
-
+                        style: TextStyle(fontSize: 16, color: white),
+                      ),
                     ],
                   ),
                 );

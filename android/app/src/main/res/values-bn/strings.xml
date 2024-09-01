@@ -167,7 +167,8 @@
   <string name="admin_password_incorrect">পাসওয়ার্ড সঠিক হয়নি।</string>
   <string name="enter_admin_password">এডমিন পাসওয়ার্ড দিন।</string>
   <string name="found_in_main">প্রধান মেনু্তে পাবেন</string>
-  <string name="form_forward">ফর্মের সামনের দিকে</string>
+  <string name="form_forward">সামনের দিকে</string>
+  <string name="form_backward">পিছনের দিকে</string>
   <string name="navigation">নেভিগেশান</string>
   <string name="swipe_navigation">swipe নেভিগেশান</string>
   <string name="buttons_navigation">buttons নেভিগেশান</string>
@@ -187,6 +188,13 @@
   <string name="enable_gps">GPS সক্ষম</string>
   <string name="clear">মুছে ফেলুন।</string>
   <string name="direction">অভিমুখ: %s</string>
+  <string name="save_as_draft_entry">ড্রাফট</string>
+  <string name="save_as_complete_entry">সম্পন্ন</string>
+  <string name="select_date">তারিখ নির্বাচন করুন</string>
+  <string name="add_repeat_question">\"%s\" যোগ করতে চান?</string>
+  <string name="add_repeat">যোগ করুন</string>
+  <string name="dont_add_repeat">যোগ করবেন না</string>
+  <string name="no_date_selected">তারিখ নির্বাচন করা হয়নি</string>
   <!--&lt; and &gt; surrounds the text so it will appear as <no form loaded>-->
   <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in W 18°48'8"-->
   <!--%1$s represents degrees, %2$s represents minutes and %3$s represents seconds as in E 18°48'8"-->

@@ -176,13 +176,15 @@ class DashboardController extends GetxController {
 
   downloadForm() async {
     if (await CheckNetwork().check()) {
-      _dashboardRepository.getFormList().then((value) async {
-        final results = await OdkUtil.instance.initializeOdk(value);
+      var formsData = await _dashboardRepository.getFormList();
+      if (formsData.isNotEmpty) {
+        final results = await OdkUtil.instance.initializeOdk(formsData);
         if (results != null && results.isNotEmpty) {
           print('Success');
+        } else {
+          print('failed');
         }
-        print('failed');
-      });
+      }
     }
   }
 

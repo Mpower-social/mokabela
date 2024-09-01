@@ -1,11 +1,6 @@
 package org.odk.collect.android.geo;
 
 import org.odk.collect.android.application.Collect;
-/*
-import org.osmdroid.tileprovider.MapTile;
-*/
-import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase;
-
 import java.io.Serializable;
 
 /**
@@ -19,8 +14,6 @@ class WebMapService implements Serializable {
     public final int tileSize;
     public final String copyright;
     public final String[] urlTemplates;
-
-    private OnlineTileSourceBase onlineTileSource;
 
     WebMapService(String cacheName, int minZoomLevel, int maxZoomLevel,
         int tileSize, String copyright, String... urlTemplates) {
@@ -36,24 +29,6 @@ class WebMapService implements Serializable {
         int maxZoomLevel, int tileSize, String copyright, String... urlTemplates) {
         this(Collect.getInstance().getString(cacheNameStringId),
             minZoomLevel, maxZoomLevel, tileSize, copyright, urlTemplates);
-    }
-
-    // Note: org.osmdroid.views.MapView.setTileSource takes an ITileSource,
-    // but really it requires an instance of OnlineTileSourceBase.
-    public OnlineTileSourceBase asOnlineTileSource() {
-      /*  if (onlineTileSource == null) {
-            String extension = getExtension(urlTemplates[0]);
-            onlineTileSource = new OnlineTileSourceBase(cacheName, minZoomLevel,
-                maxZoomLevel, tileSize, extension, urlTemplates, copyright) {
-                public String getTileURLString(MapTile tile) {
-                    String urlTemplate = urlTemplates[random.nextInt(urlTemplates.length)];
-                    return urlTemplate.replace("{x}", String.valueOf(tile.getX()))
-                        .replace("{y}", String.valueOf(tile.getY()))
-                        .replace("{z}", String.valueOf(tile.getZoomLevel()));
-                }
-            };
-        }*/
-        return onlineTileSource;
     }
 
     private String getExtension(String urlTemplate) {

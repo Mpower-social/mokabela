@@ -17,9 +17,4 @@ public class TestCollect extends Collect {
         // No leakcanary in unit tests.
         return RefWatcher.DISABLED;
     }
-
-    @Override
-    protected void setupOSMDroid() {
-        // no op for Robolectric
-    }
 }

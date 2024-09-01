@@ -26,7 +26,6 @@ import org.odk.collect.android.preferences.AdminSharedPreferences;
 import org.odk.collect.android.preferences.GeneralSharedPreferences;
 import org.odk.collect.android.storage.StoragePathProvider;
 import org.odk.collect.android.storage.StorageSubdirectory;
-import org.osmdroid.config.Configuration;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -61,11 +60,6 @@ public class ResetUtility {
                 case ResetAction.RESET_CACHE:
                     if (deleteFolderContents(storagePathProvider.getDirPath(StorageSubdirectory.CACHE))) {
                         failedResetActions.remove(failedResetActions.indexOf(ResetAction.RESET_CACHE));
-                    }
-                    break;
-                case ResetAction.RESET_OSM_DROID:
-                    if (deleteFolderContents(Configuration.getInstance().getOsmdroidTileCache().getPath())) {
-                        failedResetActions.remove(failedResetActions.indexOf(ResetAction.RESET_OSM_DROID));
                     }
                     break;
             }
