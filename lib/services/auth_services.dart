@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:m_survey/models/response/auth_response.dart';
 import 'package:m_survey/models/response/user_info_response.dart';
 import 'package:m_survey/network/dio_exception.dart';
 import 'package:m_survey/network/interceptors/refresh_token_interceptor.dart';
 import 'package:m_survey/widgets/show_toast.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../network/apis.dart';
 import '../network/base_api_provider.dart';
 
@@ -16,6 +18,16 @@ class AuthServices extends BaseApiProvider{
           data: jsonEncode({"username": username, "password": pass}));
       print(Apis.login);
       dio.interceptors.add(RefreshTokenInterceptor(dio));
+      if (kDebugMode) {
+        dio.interceptors.add(PrettyDioLogger(
+            requestHeader: true,
+            requestBody: true,
+            responseBody: true,
+            responseHeader: false,
+            error: true,
+            compact: true,
+            maxWidth: 90));
+      }
       print(response.data);
       return AuthResponse.fromJson(response.data);
 
