@@ -24,12 +24,12 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: List build directory (debugging step)
-        run: ls -R build/app/outputs/flutter-apk/
 
       - name: Build APK
         run: flutter build apk --release
 
+      - name: List build directory (debugging step)
+        run: ls -R build/app/outputs/flutter-apk/
 
 
       - name: Upload APK
