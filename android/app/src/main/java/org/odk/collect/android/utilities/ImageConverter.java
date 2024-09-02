@@ -41,7 +41,7 @@ public class ImageConverter {
 
     public static void execute(String imagePath, QuestionWidget questionWidget, Context context) {
         rotateImageIfNeeded(imagePath);
-        scaleDownImageIfNeeded(imagePath, questionWidget, context);
+        scaleDownImage(imagePath, 640);
     }
 
     private static void scaleDownImageIfNeeded(String imagePath, QuestionWidget questionWidget, Context context) {

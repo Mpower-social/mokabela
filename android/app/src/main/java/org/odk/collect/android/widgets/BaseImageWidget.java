@@ -111,7 +111,7 @@ public abstract class BaseImageWidget extends QuestionWidget implements FileWidg
             values.put(MediaStore.Images.Media.DISPLAY_NAME, newImage.getName());
             values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
-            values.put(MediaStore.Images.Media.DATA, newImage.getAbsolutePath());
+            // values.put(MediaStore.Images.Media.DATA, newImage.getAbsolutePath());
 
             MediaManager
                     .INSTANCE

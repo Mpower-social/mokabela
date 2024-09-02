@@ -192,7 +192,7 @@ public class VideoWidget extends QuestionWidget implements FileWidget {
             values.put(Video.Media.TITLE, newVideo.getName());
             values.put(Video.Media.DISPLAY_NAME, newVideo.getName());
             values.put(Video.Media.DATE_ADDED, System.currentTimeMillis());
-            values.put(Video.Media.DATA, newVideo.getAbsolutePath());
+            // values.put(Video.Media.DATA, newVideo.getAbsolutePath());
 
             MediaManager
                     .INSTANCE

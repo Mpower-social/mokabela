@@ -7,10 +7,11 @@ AppBar baseAppBarWithDrawer(
     {BuildContext? context, Function? onLeadingTap, String title = ''}) {
   return AppBar(
     backgroundColor: primaryColor,
+    iconTheme: IconThemeData(color: Colors.white),
     elevation: 0,
     title: Text(
       title,
-      style: TextStyle(fontWeight: FontWeight.bold),
+      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
     ),
     centerTitle: true,
     /* leading: IconButton(

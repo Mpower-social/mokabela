@@ -169,7 +169,7 @@ public class AudioWidget extends QuestionWidget implements FileWidget {
             values.put(Audio.Media.TITLE, newAudio.getName());
             values.put(Audio.Media.DISPLAY_NAME, newAudio.getName());
             values.put(Audio.Media.DATE_ADDED, System.currentTimeMillis());
-            values.put(Audio.Media.DATA, newAudio.getAbsolutePath());
+            // values.put(Audio.Media.DATA, newAudio.getAbsolutePath());
 
             MediaManager
                     .INSTANCE

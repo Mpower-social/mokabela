@@ -135,10 +135,7 @@ class DashboardScreen extends StatelessWidget {
                       ),
                       title(title: 'ongoing_project'.tr),
                       const SizedBox(height: 10),
-                      Expanded(
-                          flex: 9,
-                          child: _ongoingProjectList()
-                      )
+                      Expanded(flex: 9, child: _ongoingProjectList())
 
                       // Expanded(
                       //   flex: 2,
@@ -228,11 +225,19 @@ class DashboardScreen extends StatelessWidget {
               backgroundColor: primaryColor,
               label: Row(
                 children: [
-                  const Icon(AppIcons.reload),
+                  const Icon(
+                    AppIcons.reload,
+                    color: Colors.white,
+                  ),
                   const SizedBox(
                     width: 8,
                   ),
-                  Text('load'.tr)
+                  Text(
+                    'load'.tr,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  )
                 ],
               )),
         ),
@@ -253,14 +258,15 @@ class DashboardScreen extends StatelessWidget {
                 title: _controller.recentFormList[i].displayName,
                 idString: _controller.recentFormList[i].formId,
                 projectName: _controller.recentFormList[i].projectName,
-                isActive: _controller.recentFormList[i].status=='true'?true:false,
+                isActive: _controller.recentFormList[i].status == 'true'
+                    ? true
+                    : false,
                 target: _controller.recentFormList[i].target,
               ),
               ProjectListFromLocalDb(
-                projectName: _controller.recentFormList[i].projectName ?? '',
-                id: _controller.recentFormList[i].id ?? 0,
-                status: _controller.recentFormList[i].status
-              ),
+                  projectName: _controller.recentFormList[i].projectName ?? '',
+                  id: _controller.recentFormList[i].id ?? 0,
+                  status: _controller.recentFormList[i].status),
             ),
             child: recentFormCard(formData: _controller.recentFormList[i]),
           );

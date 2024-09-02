@@ -4,21 +4,19 @@ import 'package:m_survey/res/color.dart';
 import 'package:get/get.dart';
 import 'package:m_survey/views/notification_screen.dart';
 
-AppBar baseAppBar({
-  Function? onLeadingTap,
-  String title = '', String from=''
-}){
+AppBar baseAppBar(
+    {Function? onLeadingTap, String title = '', String from = ''}) {
   return AppBar(
     backgroundColor: primaryColor,
-    title: Text(title),
+    iconTheme: IconThemeData(color: Colors.white),
+    title: Text(title, style: TextStyle(color: Colors.white)),
     centerTitle: true,
     leading: IconButton(
       icon: const Icon(Icons.keyboard_backspace),
-      onPressed:()=> onLeadingTap??Get.back(),
+      onPressed: () => onLeadingTap ?? Get.back(),
     ),
-
     actions: [
-     /* Padding(
+      /* Padding(
         padding: const EdgeInsets.only(right: 10),
         child: Visibility(
           visible: from == Constant.NOTIFICATION?false:true,
