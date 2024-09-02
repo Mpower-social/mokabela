@@ -73,17 +73,17 @@ class FormDetailsScreen extends StatelessWidget {
                         width: wp!(85),
                         onTap: () => controller.navigateToFormList(FormStatus.draft, allFormsData,formId)),
                   ),
-                  SizedBox(
-                    height: hp!(1),
-                  ),
-                  Obx(() => iconButton(
-                      icon: CupertinoIcons.arrow_left_square_fill,
-                      title: '${'Reverted'.tr} (${controller.revertedFormCount})',
-                      bg: primaryColor,
-                      textColor: white,
-                      height: 45,
-                      width: wp!(85),
-                      onTap: () => controller.navigateToFormList(FormStatus.reverted, allFormsData,formId))),
+                  // SizedBox(
+                  //   height: hp!(1),
+                  // ),
+                  // Obx(() => iconButton(
+                  //     icon: CupertinoIcons.arrow_left_square_fill,
+                  //     title: '${'Reverted'.tr} (${controller.revertedFormCount})',
+                  //     bg: primaryColor,
+                  //     textColor: white,
+                  //     height: 45,
+                  //     width: wp!(85),
+                  //     onTap: () => controller.navigateToFormList(FormStatus.reverted, allFormsData,formId))),
                   SizedBox(
                     height: hp!(1),
                   ),

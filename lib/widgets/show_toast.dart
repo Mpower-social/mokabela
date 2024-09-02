@@ -5,7 +5,7 @@ showToast({msg, isError = false}) {
 
   return Fluttertoast.showToast(
       msg: msg,
-      toastLength: Toast.LENGTH_SHORT,
+      toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,
       backgroundColor: isError == false ? Colors.green : Colors.red,
