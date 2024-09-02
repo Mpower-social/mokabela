@@ -6,6 +6,10 @@ import static org.odk.collect.android.preferences.GeneralKeys.KEY_FONT_SIZE;
 
 public class QuestionTextSizeHelper {
 
+    public float getHeadline3() {
+        return getBaseFontSize() + 10; // 20sp by default
+    }
+
     public float getHeadline6() {
         return getBaseFontSize() - 1; // 20sp by default
     }
