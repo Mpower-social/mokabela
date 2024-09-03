@@ -26,7 +26,7 @@ jobs:
 
 
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --flavor dev
 
       - name: List build directory (debugging step)
         run: ls -R build/app/outputs/flutter-apk/
