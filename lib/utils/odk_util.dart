@@ -9,7 +9,6 @@ class OdkUtil {
 
   var methodChannel = MethodChannel('flutter_to_odk_communication');
 
-
   Future<dynamic> navigateToAwaztulo() async {
     return await methodChannel.invokeMethod('navigateToAwaztulun');
   }
@@ -18,9 +17,14 @@ class OdkUtil {
     return await methodChannel.invokeMethod('goToSettings');
   }
 
-  Future<dynamic> initializeOdk(String xmlData) async {
+  Future<dynamic> initializeOdk(String username) async {
     return await methodChannel
-        .invokeMethod('initializeOdk', {'xmlData': xmlData});
+        .invokeMethod('initializeOdk', {'username': username});
+  }
+
+  Future<dynamic> configureOdkForms(String xmlData) async {
+    return await methodChannel
+        .invokeMethod('configureOdkForms', {'xmlData': xmlData});
   }
 
   Future<dynamic> openForm(String formId, {Map arguments = const {}}) async {
@@ -29,11 +33,13 @@ class OdkUtil {
   }
 
   Future<dynamic> editForm(int instanceId) async {
-    return await methodChannel.invokeMethod('editForm', {'instanceId':instanceId});
+    return await methodChannel
+        .invokeMethod('editForm', {'instanceId': instanceId});
   }
 
   Future<dynamic> correctForm(FormData? formData) async {
-    return await methodChannel.invokeMethod('correctForm', {'data':jsonEncode(formData)});
+    return await methodChannel
+        .invokeMethod('correctForm', {'data': jsonEncode(formData)});
   }
 
   Future<dynamic> getDraftForms(List<String> formIds) async {

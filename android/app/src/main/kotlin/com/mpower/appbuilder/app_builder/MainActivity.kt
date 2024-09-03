@@ -59,10 +59,12 @@ class MainActivity: FlutterActivity() {
                     when {
                         call.method.equals("navigateToAwaztulun", true) -> {
                             startActivity(Intent(this@MainActivity, NewMainAwaztulunActivity::class.java))
+                            channelResult?.success("Success")
                         }
 
                         call.method.equals("goToSettings", true) -> {
                             startActivity(Intent(this@MainActivity, PreferencesActivity::class.java))
+                            channelResult?.success("Success")
                         }
                         call.method.equals("openForm", true) -> {
                             val formId = call.argument<String>("formId")
@@ -139,9 +141,12 @@ class MainActivity: FlutterActivity() {
 
                         }
                         call.method.equals("initializeOdk", true) -> {
-                            val formXml = call.argument<String>("xmlData")
                             val username = call.argument<String>("username") ?: "bahis_ulo"
                             initializeOdk(username)
+                            channelResult?.success("success")
+                        }
+                        call.method.equals("configureOdkForms", true) -> {
+                            val formXml = call.argument<String>("xmlData")
 
                             subscriptions.add(Observable.fromCallable {
 
@@ -150,7 +155,7 @@ class MainActivity: FlutterActivity() {
                                 .subscribeOn(Schedulers.io())
                                 .subscribe(
                                     {
-                                       // fetchGeoCsvAndProcess()
+                                        // fetchGeoCsvAndProcess()
                                         Log.v("Form Download: ", "Success")
                                         try {
                                             channelResult?.success("success")

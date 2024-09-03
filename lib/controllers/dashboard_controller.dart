@@ -56,10 +56,21 @@ class DashboardController extends GetxController {
         await SharedPref.sharedPref.getString(SharedPref.DESIGNATION) ?? '';
   }
 
+  Future<void> initOdkCollect() async {
+    var username =
+        await SharedPref.sharedPref.getString(SharedPref.USER_NAME) ?? '';
+    await OdkUtil.instance.initializeOdk(username);
+  }
+
   ///getting project list here
   Future<void> getAllData(bool forceLoad) async {
-    if (!await CheckNetwork().check()) forceLoad = false;
+    if (!await CheckNetwork().check()) {
+      forceLoad = false;
+    }
     isLoadingProject.value = true;
+
+    await initOdkCollect();
+
     submittedFormList.value =
         await _dashboardRepository.getSubmittedFormList(forceLoad);
     projectList.value =
@@ -72,7 +83,7 @@ class DashboardController extends GetxController {
         await _dashboardRepository.getProjectListOperation(forceLoad);
     await _dashboardRepository.getRevertedFormList(forceLoad);
 
-    downloadForm();
+    await downloadForm();
 
     await getFormData();
     await refreshDashBoardCount();
@@ -178,7 +189,7 @@ class DashboardController extends GetxController {
     if (await CheckNetwork().check()) {
       var formsData = await _dashboardRepository.getFormList();
       if (formsData.isNotEmpty) {
-        final results = await OdkUtil.instance.initializeOdk(formsData);
+        final results = await OdkUtil.instance.configureOdkForms(formsData);
         if (results != null && results.isNotEmpty) {
           print('Success');
         } else {

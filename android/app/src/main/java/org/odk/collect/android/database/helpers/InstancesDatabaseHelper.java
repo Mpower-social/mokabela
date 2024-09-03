@@ -243,6 +243,12 @@ public class InstancesDatabaseHelper extends SQLiteOpenHelper {
 
     public static boolean databaseNeedsUpgrade() {
         boolean isDatabaseHelperOutOfDate = false;
+
+        File file = new File(getDatabasePath());
+        if(!file.exists()) {
+            return isDatabaseHelperOutOfDate;
+        }
+
         try {
             SQLiteDatabase db = SQLiteDatabase.openDatabase(InstancesDatabaseHelper.getDatabasePath(), null, SQLiteDatabase.OPEN_READONLY);
             isDatabaseHelperOutOfDate = InstancesDatabaseHelper.DATABASE_VERSION != db.getVersion();
