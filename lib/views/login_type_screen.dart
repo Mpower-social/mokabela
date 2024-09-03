@@ -32,7 +32,7 @@ class LoginTypeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'assets/images/msurvey_app_banner.png',
+                        'assets/images/msurvey_appicon.jpeg',
                         width: wp!(60),
                       ),
                     ],

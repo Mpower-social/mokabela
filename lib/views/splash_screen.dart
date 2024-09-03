@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/msurvey_appicon.png',
+                'assets/images/msurvey_appicon.jpeg',
                 width: wp(60),
               ),
             ],
