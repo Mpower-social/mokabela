@@ -352,7 +352,14 @@ public class FormsDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public static boolean databaseNeedsUpgrade() {
+
         boolean isDatabaseHelperOutOfDate = false;
+
+        File file = new File(getDatabasePath());
+        if(!file.exists()) {
+            return isDatabaseHelperOutOfDate;
+        }
+
         try {
             SQLiteDatabase db = SQLiteDatabase.openDatabase(FormsDatabaseHelper.getDatabasePath(), null, SQLiteDatabase.OPEN_READONLY);
             isDatabaseHelperOutOfDate = FormsDatabaseHelper.DATABASE_VERSION != db.getVersion();
